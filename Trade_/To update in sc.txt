@@ -1,0 +1,19 @@
+
+UPDATE dbo.VoucherCat
+SET HeaderTable = 158623608
+	,LineTable = 190623722
+WHERE NCat = 'PR' 
+GO
+
+
+UPDATE dbo.VoucherCat
+SET HeaderTable = 1725249201
+	,LineTable = 1757249315
+WHERE NCat = 'SR' 
+GO
+
+
+INSERT INTO dbo.SubGroup (SubCode, Site_Code, Div_Code, SiteList, NamePrefix, Name, DispName, GroupCode, GroupNature, ManualCode, Nature, Add1, Add2, Add3, CityCode, CountryCode, PIN, Phone, Mobile, FAX, EMail, CSTNo, LSTNo, TINNo, PAN, TDS_Catg, ActiveYN, CreditLimit, CreditDays, DueDays, ContactPerson, Party_Type, PAdd1, PAdd2, PAdd3, PCityCode, PCountryCode, PPin, PPhone, PMobile, PFax, Curr_Bal, OpBal_DocId, FatherName, FatherNamePrefix, HusbandName, HusbandNamePrefix, DOB, Remark, Location, U_Name, U_EntDt, U_AE, Edit_Date, ModifiedBy, ApprovedBy, StCategory, SiteStr, STRegNo, ECCNo, EXREGNO, CEXRANGE, CEXDIV, COMMRATE, VATNo, CommonAc, UpLoadDate, ChequeReport, EntryBy, EntryDate, EntryType, EntryStatus, ApproveBy, ApproveDate, MoveToLog, IsDeleted, MoveToLogDate, Status, SisterConcernYn, UID, SalesTaxPostingGroup, ExcisePostingGroup, EntryTaxPostingGroup, TDSCat_Description, MasterType, Currency, SisterConcernSite, CostCenter, Parent, LedgerGroup, Zone, DuplicateTIN, Distributor, STNo, IECCode, [Range], Division, PartyType, PartyCat, ECCCode, Excise, FBTOnPer, FBTPer, PolicyNo, Transfered, Upline, Department, Designation, DrugLicenseNo, DivisionList, Guarantor, InsideOutside, PartyRateGroup)
+VALUES ('|PARTY|', '1', 'D', '|1|', NULL, '|PARTY|', '|PARTY|', NULL, 'A', 'Party', 'Others', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'CST-1', 'LST-1', 'TIN-1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SA', '2008-10-21', 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Rs.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+

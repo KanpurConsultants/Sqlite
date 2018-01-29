@@ -1,0 +1,38 @@
+; Field definition file for table: ADORecordset
+Site_Code	string	255	1	
+SubCode	string	255	D100001390	
+Process	string	255	BIND	
+V_Date	datetime	01/Apr/2014 12:00:00 AM	
+DocID	string	255	Opening	
+V_No	long	1	
+RecID	string	255	1	
+V_Type	string	255	Opening	
+TransactionType	string	255	Opening	
+Name	string	255	Shiv Shankar Yadav - Naraur {106134}	
+Item	string	255	D10825	
+Dimension1	string	255		
+Dimension2	string	255		
+LotNo	string	255		
+Opening	number	1	
+ReceiveQty	number	0	
+IssueQty	number	0	
+OpeningMeasure	number	9.5625	
+ReceiveMeasure	number	0	
+IssueMeasure	number	0	
+Sr	number	0	
+Site_Name	string	255	SURYA CARPET PVT. LTD.	
+ProcessDesc	string	255	Binding	
+ProcessSr	number	50	
+ItemDesc	string	255	ATH5008-811	
+ItemGroupDesc	string	255	ATH-5008	
+Unit	string	255	Pcs	
+LotWiseYesNo	string	255	TUFTED	
+Caption_Dimension1	string	255	FirstDimension	
+Caption_Dimension2	string	255	SecondDimension	
+D1Desc	string	255		
+D2Desc	string	255		
+UnitDecimalPlaces	number	0	
+MeasureUnitDecimalPlaces	number	4	
+ShowZeroBalances	string	255	None	
+GroupOn	string	255	Job Worker	
+GroupOnValue	string	255	Shiv Shankar Yadav - Naraur {106134}	

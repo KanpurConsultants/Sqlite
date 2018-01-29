@@ -1,0 +1,144 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1    SI 2017       1	
+V_Type	string	255	SI	
+V_Prefix	string	255	2017	
+V_Date	datetime	01/Apr/2017 12:00:00 AM	
+V_No	long	1	
+Div_Code	string	255	D	
+Site_Code	string	255	1	
+ReferenceNo	string	255	17-0001	
+Godown	string	255		
+Vendor	string	255		
+SaleToParty	string	255	D10002	
+SaleToPartyName	string	255	UNNATI HERBAL {51200002}	
+SaleToPartyAddress	string	255		
+SaleToPartyCity	string	255	D00001	
+SaleToPartyMobile	string	255		
+SaleToPartyTinNo	string	255		
+SaleToPartyCstNo	string	255		
+ShipToParty	string	255		
+ShipToPartyName	string	255		
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255		
+ShipToPartyMobile	string	255		
+SaleOrder	string	255		
+SaleChallan	string	255		
+Currency	string	255		
+SalesTaxGroupParty	string	255	Local	
+Structure	string	255	INV	
+BillingType	string	255		
+Form	string	255		
+FormNo	string	255		
+Transporter	string	255		
+Vehicle	string	255		
+VehicleDescription	string	255		
+Driver	string	255		
+DriverName	string	255		
+DriverContactNo	string	255		
+LrNo	string	255		
+LrDate	datetime		
+PrivateMark	string	255		
+PortOfLoading	string	255		
+DestinationPort	string	255		
+FinalPlaceOfDelivery	string	255		
+PreCarriageBy	string	255		
+PlaceOfPreCarriage	string	255		
+ShipmentThrough	string	255		
+CreditDays	number	0	
+ReferenceDocId	string	255		
+Remarks	string	255		
+TotalQty	number	8	
+TotalMeasure	number	0	
+TotalAmount	number	870.02	
+EntryBy	string	255	sa	
+EntryDate	datetime	07/Jul/2017 5:14:00 PM	
+EntryType	string	255	Edit	
+EntryStatus	string	255	Add	
+ApproveBy	string	255		
+ApproveDate	datetime		
+MoveToLog	string	255		
+MoveToLogDate	datetime		
+IsDeleted	boolean		
+Status	string	255	Active	
+UID	string	255		
+PaymentMode	string	255		
+TableCode	string	255		
+PostingAc	string	255		
+SaleToPartyAdd1	string	255	3A-159, AVAS VIKAS, HANSPURAM, NAUBASTA,
+	
+SaleToPartyAdd2	string	255		
+CustomFields	string	255		
+CreditLimit	number	0	
+BaleNoStr	string	255	-	
+InvoiceGenType	string	255	Direct	
+TotalDeliveryMeasure	number	0	
+TotalBale	number	4	
+SaleOrder1	string	255		
+SaleOrderSr	number	0	
+SaleChallan1	string	255	D1    SI 2017       1	
+SaleChallanSr	number	1	
+Item	string	255	D10103	
+Specification	string	255		
+SalesTaxGroupItem	string	255	HEALTH CARE	
+DocQty	number		
+Qty	number	1	
+Unit	string	255	Pcs	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+TotalDocMeasure	number		
+TotalMeasure1	number	0	
+Rate	number	120	
+Amount	number	120	
+ReferenceDocId1	string	255		
+LotNo	string	255		
+UID1	string	255		
+BusinessVolume	number	84	
+PointValue	number	7	
+BaleNo	string	255		
+Remark	string	255		
+BillingType1	string	255	Qty	
+Item_UID	string	255		
+ItemInvoiceGroup	string	255		
+SaleInvoice	string	255	D1    SI 2017       1	
+SaleInvoiceSr	number	1	
+DeliveryMeasure	string	255		
+DeliveryMeasureMultiplier	number	1	
+TotalDeliveryMeasure1	number	0	
+RateType	string	255		
+ItemDesc	string	255	AMBROZIA  SPIRULINA 	
+ItemManualCode	string	255	AH0001	
+GodownDesc	string	255		
+PartyName	string	255	UNNATI HERBAL {51200002}	
+PartyManualCode	string	255	51200002	
+Add1	string	255	3A-159, AVAS VIKAS, HANSPURAM, NAUBASTA,
+	
+Add2	string	255		
+Add3	string	255		
+CityName	string	255	Kanpur	
+BillToPartyName	string	255	Cash A/c	
+H_Gross_Amount	number	870.02	
+H_Sales_Tax_Taxable_Amt	number	828.6	
+H_Vat_Per	number	0	
+H_Vat	number	41.42	
+H_Cst_Per	number	0	
+H_Cst	number	0	
+H_Total_Price	number	870.02	
+H_Other_Charges_Per	number	0	
+H_Other_Charges	number	0	
+H_Discount_Per	number	0	
+H_Discount	number	0	
+H_Round_Off	number	0.02	
+H_Net_Amount	number	870	
+L_Gross_Amount	number	120	
+L_Sales_Tax_Taxable_Amt	number	114.29	
+L_Vat_Per	number	5	
+L_Vat	number	5.71	
+L_Cst_Per	number	0	
+L_Cst	number	0	
+L_Total_Price	number	120	
+L_Other_Charges_Per	number	0	
+L_Other_Charges	number	0	
+L_Discount_Per	number	0	
+L_Discount	number	0	
+L_Round_Off	number	0	
+L_Net_Amount	number	120	

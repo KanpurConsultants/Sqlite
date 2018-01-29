@@ -1,0 +1,340 @@
+D:\SchoolDress\Project\Customised\obj\Release\Customised.exe
+D:\SchoolDress\Project\Customised\obj\Release\Customised.xml
+D:\SchoolDress\Project\Customised\obj\Release\Customised.pdb
+D:\SchoolDress\Release\Customised.exe
+D:\SchoolDress\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempItem.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempPayment.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.Resources.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\SchoolDress\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\SchoolDress\Release\Customised.pdb
+D:\SchoolDress\Release\Customised.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\SchoolDress\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\Hotel\Release\Customised.exe
+E:\Matrix\Hotel\Release\Customised.pdb
+E:\Matrix\Hotel\Release\Customised.xml
+E:\Matrix\Hotel\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmBom.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempPayment.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Matrix\Hotel\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Projects\HT\Release\Customised.exe
+F:\Active Projects\HT\Release\Customised.pdb
+F:\Active Projects\HT\Release\Customised.xml
+F:\Active Projects\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.exe
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.xml
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Active Projects\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.xml
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.pdb
+E:\Matrix\HT\Release\Customised.exe
+E:\Matrix\HT\Release\Customised.pdb
+E:\Matrix\HT\Release\Customised.xml
+E:\Matrix\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.Resources.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.exe
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+E:\Matrix\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.exe
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.xml
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Active Project\HT\Release\Customised.exe
+F:\Active Project\HT\Release\Customised.pdb
+F:\Active Project\HT\Release\Customised.xml
+F:\Active Project\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Active Project\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.exe
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.xml
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.pdb
+F:\Arpit\Active Project\HT\Release\Customised.exe
+F:\Arpit\Active Project\HT\Release\Customised.pdb
+F:\Arpit\Active Project\HT\Release\Customised.xml
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmNCat.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleWithoutKOT.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmOutlet.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBillSetlement.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmAdjustBills.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemCategory.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItemGroup.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMenuItem.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleOrder.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmRequistion.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempSaleInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOTNature.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmKOT.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleReturnEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyPayment.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmCreditNote.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmMoneyReceipt.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSaleEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseReturnEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmPurchaseEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmBom.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableMaster.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmTableStatusDisplay.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempPurchInvoiceCommon.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.TempPayment.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmSteward.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.FrmConsumptionEntry.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Arpit\Active Project\HT\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Trade\Release\Customised.exe
+D:\Active Project\Trade\Release\Customised.pdb
+D:\Active Project\Trade\Release\Customised.xml
+D:\Active Project\Trade\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmItem.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmSaleInvoiceChallanList.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmParty.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.MDIMain.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.Resources.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.exe
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.xml
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.pdb
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmCity.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmDebitCreditNote.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmDuesPaymentEnviro.resources
+D:\Active Project\Trade\Project\Customised\obj\Release\Customised.FrmPaymentReceipt.resources
+F:\Arpit\Active Project\Ample V2\Release\Customised.exe
+F:\Arpit\Active Project\Ample V2\Release\Customised.pdb
+F:\Arpit\Active Project\Ample V2\Release\Customised.xml
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmDebitCreditNote.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmDuesPaymentEnviro.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmItem.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoiceChallanList.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmParty.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.MDIMain.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmCity.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmPaymentReceipt.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.Resources.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.exe
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.xml
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.pdb
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmDifferentialIncome.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmDistributer.resources
+F:\Arpit\Active Project\Ample V2\Project\Customised\obj\Release\Customised.FrmDIstributerQuery.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.exe
+G:\Ample V2\Project\Customised\obj\Release\Customised.xml
+G:\Ample V2\Project\Customised\obj\Release\Customised.pdb
+G:\Ample V2\Release\Customised.exe
+G:\Ample V2\Release\Customised.pdb
+G:\Ample V2\Release\Customised.xml
+G:\Ample V2\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmDebitCreditNote.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmDifferentialIncome.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmDistributer.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmDIstributerQuery.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmDuesPaymentEnviro.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmItem.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoiceChallanList.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmParty.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.MDIMain.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmCity.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.FrmPaymentReceipt.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.Resources.resources
+G:\Ample V2\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+I:\Ample V2\Project\Customised\obj\Release\Customised.exe
+I:\Ample V2\Project\Customised\obj\Release\Customised.xml
+I:\Ample V2\Project\Customised\obj\Release\Customised.pdb
+I:\Ample V2\Release\Customised.exe
+I:\Ample V2\Release\Customised.pdb
+I:\Ample V2\Release\Customised.xml
+I:\Ample V2\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmDebitCreditNote.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmDifferentialIncome.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmDistributer.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmDIstributerQuery.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmDuesPaymentEnviro.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmItem.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoiceChallanList.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmParty.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.MDIMain.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmCity.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.FrmPaymentReceipt.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.Resources.resources
+I:\Ample V2\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+H:\Ample V2\Release\Customised.exe
+H:\Ample V2\Release\Customised.pdb
+H:\Ample V2\Release\Customised.xml
+H:\Ample V2\Project\Customised\obj\Release\ResolveAssemblyReference.cache
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmDebitCreditNote.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmDifferentialIncome.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmDistributer.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmDIstributerQuery.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmDuesPaymentEnviro.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmEnviro.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmItem.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemCategory.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmItemGroup.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoice.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoiceChallanList.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmParty.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmSaleInvoicePartyDetail.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.MDIMain.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmCity.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.FrmPaymentReceipt.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.Resources.resources
+H:\Ample V2\Project\Customised\obj\Release\Customised.vbproj.GenerateResource.Cache
+H:\Ample V2\Project\Customised\obj\Release\Customised.exe
+H:\Ample V2\Project\Customised\obj\Release\Customised.xml
+H:\Ample V2\Project\Customised\obj\Release\Customised.pdb
+F:\Project\Ample\Project\Customised\obj\Release\Customised.exe
+F:\Project\Ample\Project\Customised\obj\Release\Customised.xml
+F:\Project\Ample\Project\Customised\obj\Release\Customised.pdb

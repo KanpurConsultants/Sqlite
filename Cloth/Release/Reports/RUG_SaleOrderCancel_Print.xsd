@@ -1,0 +1,79 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Table">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocID" type="xs:string" minOccurs="0" />
+              <xs:element name="VoucherNo" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Type" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Prefix" type="xs:string" minOccurs="0" />
+              <xs:element name="V_Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="V_No" type="xs:long" minOccurs="0" />
+              <xs:element name="Div_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="Site_Code" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToParty" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyName" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyAdd1" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyAdd2" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyCity" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyCityName" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyState" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleToPartyCountry" type="xs:string" minOccurs="0" />
+              <xs:element name="PartyOrderNo" type="xs:string" minOccurs="0" />
+              <xs:element name="PriceMode" type="xs:string" minOccurs="0" />
+              <xs:element name="SalesTaxGroupParty" type="xs:string" minOccurs="0" />
+              <xs:element name="Mobile" type="xs:string" minOccurs="0" />
+              <xs:element name="EMail" type="xs:string" minOccurs="0" />
+              <xs:element name="Status" type="xs:string" minOccurs="0" />
+              <xs:element name="Currency" type="xs:string" minOccurs="0" />
+              <xs:element name="TermsAndConditions" type="xs:string" minOccurs="0" />
+              <xs:element name="Remarks" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalQty" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalMeasure" type="xs:double" minOccurs="0" />
+              <xs:element name="EntryBy" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="EntryType" type="xs:string" minOccurs="0" />
+              <xs:element name="EntryStatus" type="xs:string" minOccurs="0" />
+              <xs:element name="ApproveBy" type="xs:string" minOccurs="0" />
+              <xs:element name="ApproveDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MoveToLog" type="xs:string" minOccurs="0" />
+              <xs:element name="MoveToLogDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="UID" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:string" minOccurs="0" />
+              <xs:element name="SR" type="xs:int" minOccurs="0" />
+              <xs:element name="TotalAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="IsDeleted" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Item" type="xs:string" minOccurs="0" />
+              <xs:element name="Qty" type="xs:double" minOccurs="0" />
+              <xs:element name="Unit" type="xs:string" minOccurs="0" />
+              <xs:element name="MeasurePerPcs" type="xs:double" minOccurs="0" />
+              <xs:element name="MeasureUnit" type="xs:string" minOccurs="0" />
+              <xs:element name="LineTotalMeasure" type="xs:double" minOccurs="0" />
+              <xs:element name="Rate" type="xs:double" minOccurs="0" />
+              <xs:element name="Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="ItemDesc" type="xs:string" minOccurs="0" />
+              <xs:element name="SiteName" type="xs:string" minOccurs="0" />
+              <xs:element name="Specification" type="xs:string" minOccurs="0" />
+              <xs:element name="ChallanQty" type="xs:double" minOccurs="0" />
+              <xs:element name="SaleToPartyTinNo" type="xs:string" minOccurs="0" />
+              <xs:element name="SaleOrderManualNo" type="xs:string" minOccurs="0" />
+              <xs:element name="ReferenceNo" type="xs:string" minOccurs="0" />
+              <xs:element name="H_Gross_Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Freight_Per" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Freight" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Discount_Per" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Discount" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Other_Charges_Per" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Other_Charges" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Round_Off" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Net_Amount" type="xs:double" minOccurs="0" />
+              <xs:element name="H_Landed_Value" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

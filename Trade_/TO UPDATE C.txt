@@ -1,0 +1,136 @@
+ALTER TABLE PostingGroupSalesTaxParty ADD Nature VARCHAR(10)
+
+UPDATE dbo.PostingGroupSalesTaxParty
+SET Nature = 'CENTRAL'
+WHERE Description = 'Central'
+GO
+
+UPDATE dbo.PostingGroupSalesTaxParty
+SET Nature = 'CENTRAL'
+WHERE Description = 'Central Form `C`'
+GO
+
+UPDATE dbo.PostingGroupSalesTaxParty
+SET Nature = 'LOCAL'
+WHERE Description = 'Local'
+GO
+
+
+
+
+
+IF OBJECT_ID ('dbo.Report_Filter_DataType') IS NOT NULL
+	DROP TABLE dbo.Report_Filter_DataType
+GO
+
+CREATE TABLE dbo.Report_Filter_DataType
+	(
+	Code VARCHAR (1) NULL,
+	Name VARCHAR (10) NULL
+	)
+GO
+
+
+IF OBJECT_ID ('dbo.Report_For') IS NOT NULL
+	DROP TABLE dbo.Report_For
+GO
+
+CREATE TABLE dbo.Report_For
+	(
+	Name VARCHAR (50) NULL
+	)
+GO
+
+
+IF OBJECT_ID ('dbo.Report_Help_DataType') IS NOT NULL
+	DROP TABLE dbo.Report_Help_DataType
+GO
+
+CREATE TABLE dbo.Report_Help_DataType
+	(
+	Code VARCHAR (1) NULL,
+	Name VARCHAR (20) NULL
+	)
+GO
+
+
+IF OBJECT_ID ('dbo.Report_HGColFormat') IS NOT NULL
+	DROP TABLE dbo.Report_HGColFormat
+GO
+
+CREATE TABLE dbo.Report_HGColFormat
+	(
+	MnuModule    VARCHAR (20) NULL,
+	MnuName      VARCHAR (100) NULL,
+	FieldCode    VARCHAR (50) NULL,
+	ColIndex     INT NULL,
+	HeaderText   VARCHAR (50) NULL,
+	ColWidth     REAL NULL,
+	ColAlignment VARCHAR (5) NULL,
+	ColDisplay   VARCHAR (1) NULL
+	)
+GO
+
+
+IF OBJECT_ID ('dbo.Report_Initialize') IS NOT NULL
+	DROP TABLE dbo.Report_Initialize
+GO
+
+CREATE TABLE dbo.Report_Initialize
+	(
+	MnuModule           VARCHAR (20) NULL,
+	MnuName             VARCHAR (100) NULL,
+	RowIndex            INT NULL,
+	FieldCode           VARCHAR (50) NULL,
+	FieldName           VARCHAR (50) NULL,
+	FieldDataType       VARCHAR (1) NULL,
+	FieldFilterDataType VARCHAR (1) NULL,
+	DefaultValue        VARCHAR (100) NULL,
+	DisplayOnReport     VARCHAR (1) NULL,
+	DMHGQuery           VARCHAR (max) NULL,
+	DMHGHeight          INT NULL,
+	DMHGWidth           INT NULL
+	)
+GO
+
+
+IF OBJECT_ID ('dbo.Report_Module_Menu') IS NOT NULL
+	DROP TABLE dbo.Report_Module_Menu
+GO
+
+CREATE TABLE dbo.Report_Module_Menu
+	(
+	MnuModule                VARCHAR (20) NULL,
+	MnuName                  VARCHAR (100) NULL,
+	MnuText                  VARCHAR (100) NULL,
+	SNo                      INT NULL,
+	MnuLevel                 INT NULL,
+	Parent                   VARCHAR (100) NULL,
+	Remark                   VARCHAR (255) NULL,
+	ReportFor                VARCHAR (50) NULL,
+	NoOfSubReport            REAL NULL,
+	Active                   VARCHAR (1) NULL,
+	IsParent                 BIT NULL,
+	Report_File_Sql          NVARCHAR (max) NULL,
+	Report_Title_Sql         NVARCHAR (max) NULL,
+	Report_ProcedureName_Sql NVARCHAR (max) NULL
+	)
+GO
+
+
+
+
+UPDATE dbo.Voucher_Type
+SET Category = 'PURCH'
+WHERE V_Type = 'ESTMT'
+GO
+
+UPDATE dbo.Voucher_Type
+SET Category = 'PURCH'
+WHERE V_Type = 'PINV'
+GO
+
+
+
+UPDATE SubGroup SET TINNo ='UNKNOWN'
+WHERE SubCode IN ('D100000070', 'D200000022')

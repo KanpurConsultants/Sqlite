@@ -1,0 +1,17 @@
+D:\Active Project\Purchase\Release\Purchase.pdb
+D:\Active Project\Purchase\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchInvoice.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchInvoiceChallanList.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderCancel.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.Resources.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.MDIMain.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.vbproj.GenerateResource.Cache
+D:\Active Project\Purchase\Project\obj\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Release\Purchase.pdb
+D:\Active Project\Purchase\Release\Purchase.exe
+D:\Active Project\Purchase\Project\obj\Release\Purchase.exe
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmGoodsReceipt.resources
+D:\Active Project\Store\Project\obj\Release\Purchase.exe
+D:\Active Project\Store\Project\obj\Release\Purchase.xml
+D:\Active Project\Store\Project\obj\Release\Purchase.pdb

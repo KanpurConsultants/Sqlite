@@ -1,0 +1,40 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	W1    WO 2013      24	
+V_Type	string	255	WO	
+V_Date	datetime	30/Nov/2013 12:00:00 AM	
+ManualRefNo	string	255	13-0018	
+Currency	string	255	INR	
+DecimalPlaces	number	3	
+MeasureDecimalPlace	number		
+PartyDeliveryDate	datetime	31/Dec/2013 12:00:00 AM	
+WorkToPartyName	string	255	Surya Carpet Pvt. Ltd., BHADOHI (U.P.)	
+PartyOrderNo	string	255		
+PartyOrderDate	datetime	30/Nov/2013 12:00:00 AM	
+Remarks	string	255	
+	
+Sr	number	1	
+OrderNo	number	0	
+Item	string	255	W10220	
+Qty	number	5050	
+Unit	string	255	KG	
+MeasurePerPcs	number		
+MeasureUnit	string	255		
+TotalMeasure	number	5050	
+Rate	number	24	
+Amount	number	121200	
+RatePerQty	number	24	
+LineRemark	string	255		
+RateType	string	255		
+ItemDesc	string	255	60 C CREAMY	
+VoucherTypeDesc	string	255	Spinning Work Order	
+ChallanNo	string	255	13-0631	
+ChallanDate	datetime	30/Jan/2014 12:00:00 AM	
+ChallanQty	number	700	
+ChallanMeasure	number	700	
+Ageing	number	36	
+TotalOrdQty	number	5050	
+TotalOrdMeasure	number	5050	
+OrderOn	datetime	30/Nov/2013 12:00:00 AM	
+TotalBalQty	number	0	
+TotalBalMeasure	number	0	
+TotalBalAmount	number	0	

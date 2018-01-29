@@ -1,0 +1,31 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	HC    SO 2013      25	
+V_Type	string	255	SO	
+V_Date	date	11/Apr/2013 12:00:00 AM	
+ReferenceNo	string	255	13-0025	
+Currency	string	255	USD	
+DecimalPlaces	number	0	
+PartyOrderNo	string	255	PO1523	
+SaleToPartyName	string	255	Surya Carpet Inc, CALHOUN, GA-30701	
+PartyDeliveryDate	date	30/Apr/2013 12:00:00 AM	
+GrpField	string	255		
+GrpFieldDesc	string	255		
+GrpFieldHead	string	255		
+PartyOrderDate	date	11/Apr/2013 12:00:00 AM	
+Remarks	string	255		
+LineRemark	string	255		
+V_Month	date	01/Apr/2013 12:00:00 AM	
+Sr	number	1	
+Item	string	255	HC0278	
+Qty	number	50	
+Unit	string	255	PCS	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+TotalMeasure	number	0	
+Rate	number	35	
+Amount	number	1750	
+AmountTitle	string	255	Amount	
+Landed_Value	number	1750	
+RateType	string	255		
+ItemDesc	string	255	POUF150-181818	
+VoucherTypeDesc	string	255	Sale Order	

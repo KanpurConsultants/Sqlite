@@ -1,0 +1,90 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	R1 CPINV 2013       2	
+V_Type	string	255	CPINV	
+V_Date	datetime	20/Apr/2013 12:00:00 AM	
+ReferenceNo	string	255	6	
+Currency	string	255	Rs.	
+SalesTaxGroupParty	string	255	Local {Form `H`}	
+BillingType	string	255	Measure	
+VendorDocNo	string	255	1314001	
+VendorDocDate	datetime	20/Apr/2013 12:00:00 AM	
+Form	string	255		
+FormNo	string	255		
+Remarks	string	255	Penalti @4760	
+EntryBy	string	255	an	
+EntryDate	datetime	30/Apr/2013 3:11:00 PM	
+ApproveBy	string	255		
+ApproveDate	datetime		
+DocId1	string	255	R1 CPINV 2013       2	
+Sr	number	1	
+Item	string	255	R129790	
+Specification	string	255		
+SalesTaxGroupItem	string	255	NA	
+DocQty	number	3	
+RejQty	number		
+Qty	number	3	
+Unit	string	255	Pcs	
+Item_UID	string	255		
+DeliveryMeasurePerPcs	number	9.75	
+DeliveryMeasure	string	255	Sq.Yard	
+TotalDocDeliveryMeasure	number		
+TotalRejDeliveryMeasure	number		
+TotalDeliveryMeasure	number	29.25	
+Rate	number	720	
+Amount	number	21060	
+Remark	string	255		
+LotNo	string	255		
+VendorName	string	255	NYZ Global	
+Add1	string	255	Station Road Bhadohi - 221401	
+Add2	string	255		
+Add3	string	255		
+VendorMobile	string	255		
+VendorCityName	string	255	BHADOHI (U.P.)	
+ItemDesc	string	255	VOY58-811	
+PurchChallanNo	string	255	6	
+PurchOrderNo	string	255		
+PurchOrderSr	number	14	
+SizeDesc	string	255	8`X11`	
+L_Gross_Amount	number	21060	
+L_Basic_Excise_Duty_Per	number		
+L_Basic_Excise_Duty	number		
+L_Excise_ECess_Per	number		
+L_Excise_ECess	number		
+L_Excise_HECess_Per	number		
+L_Excise_HECess	number		
+L_Total_Excise_Duty	number		
+L_Discount_Pre_Tax_Per	number	0	
+L_Discount_Pre_Tax	number	0	
+L_Other_Additions_Pre_Tax	number	0	
+L_Sales_Tax_Taxable_Amt	number	21060	
+L_Vat_Per	number	0	
+L_Vat	number	0	
+L_Sat_Per	number	0	
+L_Sat	number	0	
+L_Cst_Per	number	0	
+L_Cst	number	0	
+L_Custom_Duty_Taxable_Amt	number		
+L_Custom_Duty_Per	number		
+L_Custom_Duty	number		
+L_Custom_Duty_ECess_Per	number		
+L_Custom_Duty_ECess	number		
+L_Custom_Duty_HECess_Per	number		
+L_Custom_Duty_HECess	number		
+L_Additional_Duty_Per	number		
+L_Additional_Duty	number		
+L_Total_Custom_Duty	number		
+L_Sub_Total	number	21060	
+L_Insurance_Per	number	0	
+L_Insurance	number	0	
+L_Freight_Per	number	0	
+L_Freight	number	0	
+L_Handling_Charges_Per	number	0	
+L_Handling_Charges	number	0	
+L_Other_Charges_Per	number	0	
+L_Other_Charges	number	0	
+L_Discount_Per	number	0	
+L_Discount	number	225.95	
+L_Round_Off_Per	number	0	
+L_Round_Off	number	0	
+L_Net_Amount	number	20834	
+L_Freight_Outward	number		

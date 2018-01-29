@@ -1,0 +1,49 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1    SI 2017     158	
+Sr	number	1	
+SaleOrder	string	255		
+SaleOrderSr	number	0	
+SaleChallan	string	255	D1    SI 2017     158	
+SaleChallanSr	number	1	
+BaleNo	string	255		
+Item	string	255	D10091	
+ItemManualCode	string	255	P0004	
+SalesTaxGroupItem	string	255	GST 12%	
+DocQty	number		
+Qty	number	2	
+FreeQty	number	0	
+Unit	string	255	Pcs	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+TotalDocMeasure	number		
+TotalMeasure	number	0	
+Rate	number	200	
+Amount	number	400	
+ReferenceDocId	string	255		
+LotNo	string	255		
+UID	string	255		
+Specification	string	255		
+Gross_Amount	number	400	
+Sales_Tax_Taxable_Amt	number	357.14	
+Vat_Per	number	6	
+Vat	number	21.43	
+Sat_Per	number	6	
+Sat	number	21.43	
+Cst_Per	number	0	
+Cst	number	0	
+Total_Price	number	400	
+Discount_Per	number	0	
+Discount	number	0	
+Other_Charges_Per	number	0	
+Other_Charges	number	0	
+Round_Off	number	0	
+Net_Amount	number	400	
+ItemDesc	string	255	Ambrozia Ayur. Shampoo	
+V_Date	datetime	01/Jul/2017 12:00:00 AM	
+ReferenceNo	string	255	17-0156	
+SaleToPartyName	string	255	Rahul Mishra	
+Remark	string	255		
+GodownName	string	255	Main Godown	
+PointValue	number	10	
+BusinessVolume	number	120	
+StockPointName	string	255		

@@ -1,0 +1,38 @@
+; Field definition file for table: ADORecordset
+Site_Code	string	255	1	
+SubCode	string	255	R100000788	
+Process	string	255	WASH	
+V_Date	datetime	06/May/2012 12:00:00 AM	
+DocID	string	255	R1  WASH 2012      56	
+V_No	long	56	
+RecID	string	255		
+V_Type	string	255	WASH	
+TransactionType	string	255	Washing	
+Name	string	255	GHANSHYAM YADAV,CHAKHARDAYAL {302003}	
+Item	string	255	R10181	
+Dimension1	string	255		
+Dimension2	string	255		
+LotNo	string	255		
+Opening	number	0	
+ReceiveQty	number	3	
+IssueQty	number	0	
+OpeningMeasure	number	0	
+ReceiveMeasure	number	12.9375	
+IssueMeasure	number	0	
+Sr	number	1	
+Site_Name	string	255	SURYA CARPET PVT. LTD.	
+ProcessDesc	string	255	Washing	
+ProcessSr	number	20	
+ItemDesc	string	255	FAL1005-58	
+ItemGroupDesc	string	255	FAL-1005	
+Unit	string	255	Pcs	
+LotWiseYesNo	string	255	KELIM	
+Caption_Dimension1	string	255	FirstDimension	
+Caption_Dimension2	string	255	SecondDimension	
+D1Desc	string	255		
+D2Desc	string	255		
+UnitDecimalPlaces	number	0	
+MeasureUnitDecimalPlaces	number	4	
+ShowZeroBalances	string	255	None	
+GroupOn	string	255	Job Worker	
+GroupOnValue	string	255	GHANSHYAM YADAV,CHAKHARDAYAL {302003}	

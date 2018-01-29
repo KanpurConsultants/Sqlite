@@ -1,0 +1,9 @@
+; Field definition file for table: ADORecordset
+Name	string	255	RAJESH KUMAR SINGH {51200036}	
+DistributorCode	string	255	51200036	
+SaleToParty	string	255	D10036	
+LastMonthPurchase	number	15720	
+CurrentMonthPurchase	number	8460	
+BusinessVolume	number	975	
+RepurchaseBonusPer	number	8	
+BonusAmount	number	78	

@@ -1,0 +1,13 @@
+; Field definition file for table: ADORecordset
+GrpField	string	255	13/04	
+GrpFieldDesc	string	255	Apr-13	
+GrpFieldHead	string	255	Month	
+DocID	string	255	D1    SI 2013      32	
+V_Date	date	17/Apr/2013 12:00:00 AM	
+SaleToPartyName	string	255	SANJAY MEDICAL STORE {HILIOLI}, LUCKNOW	
+AgentName	string	255	LUCKNOW {SANDEEP}, LUCKNOW	
+ReferenceNo	string	255	LS-00001	
+ItemDesc	string	255	ALBA BOLUS STP	
+Net_Amount	number	7874.99	
+Qty	number	250	
+Unit	string	255	STRI	

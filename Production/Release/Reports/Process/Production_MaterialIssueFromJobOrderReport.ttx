@@ -1,0 +1,21 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1 WVISS 2014    9472	
+V_Type	string	255	WVISS	
+V_Date	datetime	26/Mar/2015 12:00:00 AM	
+ManualRefNo	string	255	14-9470	
+Process	string	255	WVORD	
+JobWorker	string	255	D100000080	
+Qty	number	3.95	
+LotNo	string	255		
+ProcessSr	number	1	
+ProcessDesc	string	255	Weaving	
+JobWorkerName	string	255	Deepak Tripathi,Ugapur	
+ItemDesc	string	255	60 C IMP CR \ WHITE	
+Sr	number	1	
+FromProcessDesc	string	255		
+Caption_Dimension1	string	255	Colour	
+Caption_Dimension2	string	255		
+D1Desc	string	255		
+D2Desc	string	255		
+IsMultiProcess	number	1	
+IsProcessinNewPage	number	0	

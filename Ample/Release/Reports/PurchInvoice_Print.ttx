@@ -1,0 +1,65 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1  PINV 2012       7	
+V_Type	string	255	PINV	
+V_Prefix	string	255	2012	
+V_Date	date	23/Aug/2012 12:00:00 AM	
+V_No	long	7	
+Div_Code	string	255	D	
+Site_Code	string	255	1	
+ReferenceNo	string	255	6	
+Vendor	string	255	D100001277	
+PurchOrder	string	255		
+PurchChallan	string	255		
+Currency	string	255		
+Godown	string	255		
+SalesTaxGroupParty	string	255		
+Structure	string	255	PURCH	
+BillingType	string	255		
+VendorDocNo	string	255	900	
+VendorDocDate	date		
+Form	string	255		
+FormNo	string	255		
+ReferenceDocId	string	255		
+Remarks	string	255		
+TotalQty	number	379.95	
+TotalMeasure	number	741	
+TotalAmount	number	52433.1	
+EntryBy	string	255	SUPER	
+EntryDate	date	18/Oct/2012 3:04:00 PM	
+EntryType	string	255	Edit	
+EntryStatus	string	255	Open	
+ApproveBy	string	255		
+ApproveDate	date		
+DocId1	string	255	D1  PINV 2012       7	
+Sr	number	1	
+PurchOrder1	string	255		
+PurchChallan1	string	255	D1  PINV 2012       7	
+Item	string	255	D10004	
+Specification	string	255		
+SalesTaxGroupItem	string	255	General	
+DocQty	number	48.4	
+Qty	number	48.4	
+Unit	string	255	Kg	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255	Meter	
+TotalDocMeasure	number	94.25	
+TotalMeasure1	number	94.25	
+Rate	number	138	
+Amount	number	6679.2	
+ReferenceDocId1	string	255		
+Remark	string	255		
+LotNo	string	255		
+VendorName	string	255	Baranwal Paints, Ghosia	
+Add1	string	255	.	
+Add2	string	255		
+Add3	string	255		
+VendorMobile	string	255		
+VendorCityName	string	255	GHOSIA	
+ItemDesc	string	255	Cloth 10`6"	
+H_Gross_Amount	number	52433.1	
+H_Discount_Per	number	0	
+H_DIscount	number	0	
+H_Other_Charges_Per	number	0	
+H_Other_Charges	number	0	
+H_Round_Off	number	0.9	
+H_Net_Amount	number	52434	

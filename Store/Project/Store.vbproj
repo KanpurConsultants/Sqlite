@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B24A827D-4755-4A74-9EB8-714CE7C7FAB8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Store.My.MyApplication</StartupObject>
+    <RootNamespace>Store</RootNamespace>
+    <AssemblyName>Store</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <ExcludedPermissions>
+    </ExcludedPermissions>
+    <ApplicationIcon>database.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>..\Release\</OutputPath>
+    <DocumentationFile>Store.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DocumentationFile>Store.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AgControls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="AgCustomFields, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\Release\AgCustomFields.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\AgLibrary.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgStructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\AgStructure.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AgTemplate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\CrystalDecisions.Enterprise.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.2.3600.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\CrystalDecisions.Enterprise.InfoStore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DMHelpGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\DMHelpGrid.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Interop.ADODB, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\Interop.ADODB.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ReportLayout, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Core.1.0.105.2\lib\net20\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.SQLite.Linq.1.0.105.2\lib\net20\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topctrl, Version=1.0.4168.34907, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release\Topctrl.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\ClsFunction.vb" />
+    <Compile Include="Class\ClsMain.vb" />
+    <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Form\FrmReasonMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmComputer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmGatePass.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmShift.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDimension1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmDimension2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemMasterBOMDetail.Designer.vb">
+      <DependentUpon>FrmItemMasterBOMDetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmItemMasterBOMDetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemMasterUnitConversion.Designer.vb">
+      <DependentUpon>FrmItemMasterUnitConversion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmItemMasterUnitConversion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmBom.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmInternalProcess.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemInvoiceGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemRateGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.Designer.vb">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmImportFromExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemReportingGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPartyRateGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockAdjustmentEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPhysicalStockEntry.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmQCGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmStockTransfer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.designer.vb">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmEnviro.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemCategory.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmItemGroup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRequisition.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRequisitionApproval.Designer.vb">
+      <DependentUpon>FrmRequisitionApproval.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmRequisitionApproval.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmStoreIssue.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmStoreReceive.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmTariffHead.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmTermConditionMaster.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmUnitConversion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmVatCommodityCode.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MDIMain.designer.vb">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmGodown.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modules\MdlFunction.vb" />
+    <Compile Include="Modules\MdlVar.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\FrmReasonMaster.resx">
+      <DependentUpon>FrmReasonMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmComputer.resx">
+      <DependentUpon>FrmComputer.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmGatePass.resx">
+      <DependentUpon>FrmGatePass.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmShift.resx">
+      <DependentUpon>FrmShift.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDimension1.resx">
+      <DependentUpon>FrmDimension1.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDimension2.resx">
+      <DependentUpon>FrmDimension2.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemMasterBOMDetail.resx">
+      <DependentUpon>FrmItemMasterBOMDetail.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemMasterUnitConversion.resx">
+      <DependentUpon>FrmItemMasterUnitConversion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmBom.resx">
+      <DependentUpon>FrmBom.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmInternalProcess.resx">
+      <DependentUpon>FrmInternalProcess.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemInvoiceGroup.resx">
+      <DependentUpon>FrmItemInvoiceGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemRateGroup.resx">
+      <DependentUpon>FrmItemRateGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmImportFromExcel.resx">
+      <DependentUpon>FrmImportFromExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemMaster.resx">
+      <DependentUpon>FrmItemMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemReportingGroup.resx">
+      <DependentUpon>FrmItemReportingGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPartyRateGroup.resx">
+      <DependentUpon>FrmPartyRateGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockAdjustmentEntry.resx">
+      <DependentUpon>FrmPhysicalStockAdjustmentEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPhysicalStockEntry.resx">
+      <DependentUpon>FrmPhysicalStockEntry.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmQCGroup.resx">
+      <DependentUpon>FrmQCGroup.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateList.resx">
+      <DependentUpon>FrmRateList.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmStockTransfer.resx">
+      <DependentUpon>FrmStockTransfer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmCity.resx">
+      <DependentUpon>FrmCity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmEnviro.resx">
+      <DependentUpon>FrmEnviro.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemCategory.resx">
+      <DependentUpon>FrmItemCategory.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmItemGroup.resx">
+      <DependentUpon>FrmItemGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmParty.resx">
+      <DependentUpon>FrmParty.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRequisition.resx">
+      <DependentUpon>FrmRequisition.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRequisitionApproval.resx">
+      <DependentUpon>FrmRequisitionApproval.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmStoreIssue.resx">
+      <DependentUpon>FrmStoreIssue.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmStoreReceive.resx">
+      <DependentUpon>FrmStoreReceive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmTariffHead.resx">
+      <DependentUpon>FrmTariffHead.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmTermConditionMaster.resx">
+      <DependentUpon>FrmTermConditionMaster.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmUnitConversion.resx">
+      <DependentUpon>FrmUnitConversion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmVatCommodityCode.resx">
+      <DependentUpon>FrmVatCommodityCode.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MDIMain.resx">
+      <DependentUpon>MDIMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmGodown.resx">
+      <DependentUpon>FrmGodown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BaseApplicationManifest Include="My Project\app.manifest" />
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Tree_Child.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dataman.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\copy1-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\approved.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disc1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy of stock-vector-vector-ok-and-cancel-button-set-54696784.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnLock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter1.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="database.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="packages\System.Data.SQLite.Core.1.0.105.2\build\net20\System.Data.SQLite.Core.targets" Condition="Exists('packages\System.Data.SQLite.Core.1.0.105.2\build\net20\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\System.Data.SQLite.Core.1.0.105.2\build\net20\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.Data.SQLite.Core.1.0.105.2\build\net20\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

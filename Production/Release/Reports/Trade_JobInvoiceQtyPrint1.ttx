@@ -1,0 +1,63 @@
+; Field definition file for table: ADORecordset
+V_Date	datetime	31/Jul/2017 12:00:00 AM	
+ManualRefNo	string	255	HSINV-17-0029	
+Remarks	string	255	july month payment	
+EntryBy	string	255	shivam	
+EntryDate	datetime	04/Sep/2017 6:49:00 PM	
+ApproveBy	string	255		
+ApproveDate	datetime		
+JobWorkerDocNo	string	255		
+Qty	number	272	
+Unit	string	255	KG	
+MeasurePerPcs	number	0	
+LotNo	string	255	1926/20	
+LossQty	number	0	
+RecDocQty	number	272	
+RecLossQty	number	0	
+TotalMeasure	number	0	
+MeasureUnit	string	255		
+Rate	number	34	
+Amount	number	9248	
+Net_Amount	number		
+PerimeterPerPcs	number		
+TotalPerimeter	number		
+LineRemark	string	255		
+ReceiveNo	string	255	17-0058	
+ReceiveDate	datetime	08/Jul/2017 12:00:00 AM	
+OrderNo	string	255	17-0018	
+OrderDate	datetime	19/Jun/2017 12:00:00 AM	
+Item_Uid	string	255		
+JobWorkerName	string	255	Rajesh {Rajesh}	
+MachineName	string	255		
+ItemSpecification	string	255		
+D1Desc	string	255		
+D2Desc	string	255		
+Caption_Dimension1	string	255	Party	
+Caption_Dimension2	string	255	Quality	
+Freight	number		
+Add1	string	255	Mamhar	
+Add2	string	255		
+Add3	string	255		
+Mobile	string	255		
+PAN	string	255		
+JobRecByName	string	255	Babbu Dubey {Babbu Dubey}	
+GodownDesc	string	255	Main Godown	
+ItemDesc	string	255	45 C Bamboo Silk	
+Item_UidDesc	string	255		
+DecimalPlaces	number	3	
+DebitNoteAmount	number	0	
+ItemGroupDesc	string	255	Hand Spun Yarn	
+GatePassTitle	string	255	Hand Spun Invoice 	
+L_Gross_Amount	number	9248	
+L_Discount_Pre_Tax_Per	number	0	
+L_Discount_Pre_Tax	number	0	
+L_Other_Additions_Pre_Tax	number	0	
+L_Sub_Total	number	9248	
+L_Round_Off_Per	number	0	
+L_Round_Off	number	0	
+L_Net_Amount	number	9248	
+L_Sales_Tax_Taxable_Amt	number	9248	
+L_Sales_Tax_Per	number	9	
+L_Sales_Tax	number	832.32	
+L_Sales_Additional_Tax_Per	number	9	
+L_Sales_Additional_Tax	number	832.32	

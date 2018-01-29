@@ -1,0 +1,14 @@
+D:\Active Project\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceChallanList.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.Resources.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+D:\Active Project\Release\Purchase.exe
+D:\Active Project\Release\Purchase.pdb
+D:\Active Project\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.exe
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.pdb
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmGoodsReceipt.resources

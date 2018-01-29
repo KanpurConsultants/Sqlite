@@ -1,0 +1,44 @@
+; Field definition file for table: ADORecordset
+Site_Code	string	255	C	
+SubCode	string	255	HC00000033	
+Process	string	255	ARI	
+V_Date	datetime	09/Nov/2013 12:00:00 AM	
+DocID	string	255	HC    JI 2013      27	
+V_No	long	27	
+RecID	string	255	13-0026	
+V_Type	string	255	JI	
+TransactionType	string	255	Material Issue To JobWork	
+Name	string	255	Ashwani Embroidery {W0008}	
+Item	string	255	HC1240	
+Dimension1	string	255		
+Dimension2	string	255		
+LotNo	string	255		
+Opening	number	0	
+ReceiveQty	number	54	
+IssueQty	number	0	
+OpeningMeasure	number	0	
+ReceiveMeasure	number	0	
+IssueMeasure	number	0	
+Sr	number	1	
+Site_Name	string	255	SURYA CARPET PVT. LTD.	
+ProcessDesc	string	255	ARI Embroidery	
+ProcessSr	number	41	
+ItemDesc	string	255	COTTON DUCK-2222	
+ItemGroupDesc	string	255	PANNEL	
+Unit	string	255	SET	
+LotWiseYesNo	string	255	All	
+Caption_Dimension1	string	255	Design	
+Caption_Dimension2	string	255	Colour	
+D1Desc	string	255		
+D2Desc	string	255		
+UnitDecimalPlaces	number	0	
+MeasureUnitDecimalPlaces	number		
+ShowZeroBalances	string	255	None	
+GroupOn	string	255	Job Worker	
+GroupOnValue	string	255	Ashwani Embroidery {W0008}	
+mShowForHead1	string	255		
+mShowForHead2	string	255		
+mShowForHead3	string	255		
+mShowForValue1	string	255		
+mShowForValue2	string	255		
+mShowForValue3	string	255		

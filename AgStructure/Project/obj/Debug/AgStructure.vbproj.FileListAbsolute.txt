@@ -1,0 +1,87 @@
+F:\Arpit\Active Project\Ample\Release\AgStructure.exe
+F:\Arpit\Active Project\Ample\Release\AgStructure.pdb
+F:\Arpit\Active Project\Ample\Release\AgStructure.xml
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.exe
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.xml
+F:\Arpit\Active Project\AgStructure\Project\obj\Debug\AgStructure.pdb
+F:\Arpit\Active Project\AgStructure\Release\AgStructure.exe
+F:\Arpit\Active Project\AgStructure\Release\AgStructure.pdb
+F:\Arpit\Active Project\AgStructure\Release\AgStructure.xml
+G:\Common\AgStructure\Project\obj\Debug\AgStructure.exe
+G:\Common\AgStructure\Project\obj\Debug\AgStructure.xml
+G:\Common\AgStructure\Project\obj\Debug\AgStructure.pdb
+I:\Common\AgStructure\Release\AgStructure.exe
+I:\Common\AgStructure\Release\AgStructure.pdb
+I:\Common\AgStructure\Release\AgStructure.xml
+I:\Common\AgStructure\Project\obj\Debug\ResolveAssemblyReference.cache
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.exe
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.xml
+I:\Common\AgStructure\Project\obj\Debug\AgStructure.pdb
+E:\Arpit\Active Project\Common\AgStructure\Release\AgStructure.exe
+E:\Arpit\Active Project\Common\AgStructure\Release\AgStructure.pdb
+E:\Arpit\Active Project\Common\AgStructure\Release\AgStructure.xml
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.exe
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.xml
+E:\Arpit\Active Project\Common\AgStructure\Project\obj\Debug\AgStructure.pdb
+H:\Common\AgStructure\Project\obj\Debug\AgStructure.exe
+H:\Common\AgStructure\Project\obj\Debug\AgStructure.xml
+H:\Common\AgStructure\Project\obj\Debug\AgStructure.pdb
+F:\Project\Common\AgStructure\Release\AgStructure.exe
+F:\Project\Common\AgStructure\Release\AgStructure.pdb
+F:\Project\Common\AgStructure\Release\AgStructure.xml
+F:\Project\Common\AgStructure\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.exe
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.xml
+F:\Project\Common\AgStructure\Project\obj\Debug\AgStructure.pdb
+C:\Users\Arpit\Downloads\fb\AgStructure\Project\obj\Debug\AgStructure.exe
+C:\Users\Arpit\Downloads\fb\AgStructure\Project\obj\Debug\AgStructure.xml
+C:\Users\Arpit\Downloads\fb\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.pdb
+D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.xml
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.dll.config
+D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.dll
+D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.dll

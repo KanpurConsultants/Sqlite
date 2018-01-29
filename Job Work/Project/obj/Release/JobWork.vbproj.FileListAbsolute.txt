@@ -1,0 +1,72 @@
+D:\Active Projects\Job Work\Release\Job Work.exe.config
+D:\Active Projects\Job Work\Release\Job Work.exe
+D:\Active Projects\Job Work\Release\Job Work.pdb
+D:\Active Projects\Job Work\Release\Job Work.xml
+D:\Active Projects\Job Work\Project\obj\Release\ResolveAssemblyReference.cache
+D:\Active Projects\Job Work\Project\obj\Release\JobWork.MDIMain.resources
+D:\Active Projects\Job Work\Project\obj\Release\JobWork.Resources.resources
+D:\Active Projects\Job Work\Project\obj\Release\JobWork.vbproj.GenerateResource.Cache
+D:\Active Projects\Job Work\Project\obj\Release\Job Work.exe
+D:\Active Projects\Job Work\Project\obj\Release\Job Work.xml
+D:\Active Projects\Job Work\Project\obj\Release\Job Work.pdb
+E:\Arpit\Active Project\Job Work\Release\Job Work.exe.config
+E:\Arpit\Active Project\Job Work\Project\obj\Release\Job Work.exe
+E:\Arpit\Active Project\Job Work\Project\obj\Release\Job Work.xml
+E:\Arpit\Active Project\Job Work\Project\obj\Release\Job Work.pdb
+E:\Arpit\Active Project\Job Work\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmWorkOrder.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDispatch.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.MDIMain.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.Resources.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Job Work\Release\Job Work.exe
+E:\Arpit\Active Project\Job Work\Release\Job Work.pdb
+E:\Arpit\Active Project\Job Work\Release\Job Work.xml
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDelivery.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmWorkOrderAmendment.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmPartyDetail.resources
+E:\Arpit\Active Project\Job Work\Project\obj\Release\JobWork.FrmWorkOrderCancel.resources
+E:\Active Projects\Job Work\Release\Job Work.exe.config
+E:\Active Projects\Job Work\Release\Job Work.exe
+E:\Active Projects\Job Work\Release\Job Work.pdb
+E:\Active Projects\Job Work\Release\Job Work.xml
+E:\Active Projects\Job Work\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderBom.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrder.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderCancel.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderAmendment.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmPartyDetail.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDelivery.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDispatch.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.MDIMain.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.Resources.resources
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.vbproj.GenerateResource.Cache
+E:\Active Projects\Job Work\Project\obj\Release\Job Work.exe
+E:\Active Projects\Job Work\Project\obj\Release\Job Work.xml
+E:\Active Projects\Job Work\Project\obj\Release\Job Work.pdb
+E:\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderInvoice.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.vbprojResolveAssemblyReference.cache
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderInvoice.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderBom.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrder.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderCancel.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderAmendment.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmPartyDetail.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDelivery.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDispatch.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.MDIMain.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.Resources.resources
+C:\Users\Arpit\Downloads\fb\Active Projects17Feb14\Active Projects\Job Work\Project\obj\Release\JobWork.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\Job Work\Release\Job Work.exe.config
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderInvoice.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderBom.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrder.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderCancel.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderAmendment.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmPartyDetail.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDelivery.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.FrmWorkOrderDispatch.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.Resources.resources
+D:\Satyam\Active Projects\SqLite\Job Work\Project\obj\Release\JobWork.vbproj.GenerateResource.Cache

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dgl1>
+  <Row>
+    <Item>60 C IMP CR</Item>
+    <Shade>9001</Shade>
+    <Design>FT-541</Design>
+    <Colour />
+    <ProdOrder>PO1706</ProdOrder>
+    <Qty>100</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP CR</Item>
+    <Shade>9001</Shade>
+    <Design>FT-542</Design>
+    <Colour />
+    <ProdOrder>PO1706</ProdOrder>
+    <Qty>500</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP CR</Item>
+    <Shade>BM-06</Shade>
+    <Design>FT-393</Design>
+    <Colour>MD. GREY</Colour>
+    <ProdOrder>PO1517</ProdOrder>
+    <Qty>17</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>30 C SHT Pale Yellow</Item>
+    <Shade>HT-5</Shade>
+    <Design>JTII-2035</Design>
+    <Colour>BEIGE</Colour>
+    <ProdOrder>PO1708</ProdOrder>
+    <Qty>15</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>30 C SHT Pale Yellow</Item>
+    <Shade>HT-7</Shade>
+    <Design>KELIM-1</Design>
+    <Colour>BLUE</Colour>
+    <ProdOrder>010111</ProdOrder>
+    <Qty>13</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>30 C SHT Pale Yellow</Item>
+    <Shade>HT-6</Shade>
+    <Design>KELIM-1</Design>
+    <Colour>LT.BROWN</Colour>
+    <ProdOrder>010111</ProdOrder>
+    <Qty>12</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP PALE</Item>
+    <Shade>9002</Shade>
+    <Design>FT-541</Design>
+    <Colour>BROWN</Colour>
+    <ProdOrder>PO1706</ProdOrder>
+    <Qty>700</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP PALE</Item>
+    <Shade>9004</Shade>
+    <Design>FT-542</Design>
+    <Colour>ORANGE</Colour>
+    <ProdOrder>PO1706</ProdOrder>
+    <Qty>100</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>30 C SHT Pale Yellow</Item>
+    <Shade>HT-11</Shade>
+    <Design>KELIM-1</Design>
+    <Colour>BROWN</Colour>
+    <ProdOrder>010111</ProdOrder>
+    <Qty>15</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP CR</Item>
+    <Shade>13-4409</Shade>
+    <Design>BDW-4010</Design>
+    <Colour />
+    <ProdOrder>PO1636</ProdOrder>
+    <Qty>25</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>30 C HT</Item>
+    <Shade>HT-13</Shade>
+    <Design>KELIM-1</Design>
+    <Colour>GREEN</Colour>
+    <ProdOrder>010111</ProdOrder>
+    <Qty>13</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>30 C HT</Item>
+    <Shade>HT-35</Shade>
+    <Design>KELIM-1</Design>
+    <Colour>RUST</Colour>
+    <ProdOrder>010111</ProdOrder>
+    <Qty>15</Qty>
+    <Rate>24</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP PALE</Item>
+    <Shade>9109</Shade>
+    <Design>POUF-143</Design>
+    <Colour>BROWN</Colour>
+    <ProdOrder>PO1398P</ProdOrder>
+    <Qty>11</Qty>
+    <Rate>22</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP PALE</Item>
+    <Shade>9113</Shade>
+    <Design>POUF-148</Design>
+    <Colour />
+    <ProdOrder />
+    <Qty>5</Qty>
+    <Rate>32</Rate>
+  </Row>
+  <Row>
+    <Item>60 C IMP CR</Item>
+    <Shade>9106</Shade>
+    <Design>POUF-148</Design>
+    <Colour>IVORY</Colour>
+    <ProdOrder>PO1398P</ProdOrder>
+    <Qty>8</Qty>
+    <Rate>32</Rate>
+  </Row>
+</Dgl1>

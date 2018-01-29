@@ -1,0 +1,35 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1  PINV 2012       2	
+Sr	number	1	
+PurchOrder	string	255		
+PurchChallan	string	255	D1  PINV 2012       2	
+PurchChallanSr	number	1	
+BaleNo	string	255		
+Item	string	255	D10001	
+ItemManualCode	string	255	Cloth 8`6"	
+SalesTaxGroupItem	string	255	General	
+DocQty	number	495.8	
+Qty	number	495.8	
+Unit	string	255	Kg	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255	Meter	
+TotalDocMeasure	number	1189	
+TotalMeasure	number	1189	
+Rate	number	138	
+Amount	number	68420.4	
+ReferenceDocId	string	255		
+LotNo	string	255		
+UID	string	255		
+Specification	string	255		
+Gross_Amount	number	68420.4	
+Discount_Per	number	0	
+Discount	number	0	
+Other_Charges_Per	number	0	
+Other_Charges	number	0	
+Round_Off	number	-0.4	
+Net_Amount	number	68420	
+ItemDesc	string	255	Cloth 8`6"	
+V_Date	date	29/May/2012 12:00:00 AM	
+ReferenceNo	string	255	1	
+VendorName	string	255	Kumar International, Bhadohi	
+Remark	string	255		

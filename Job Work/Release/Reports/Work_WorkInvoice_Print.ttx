@@ -1,0 +1,46 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	W1  WINV 2013      26	
+V_Type	string	255	WINV	
+V_Prefix	string	255	2013	
+V_Date	datetime	08/Feb/2014 12:00:00 AM	
+V_No	long	26	
+ManualRefNo	string	255	13-0022	
+EntryBy	string	255	SUPER	
+SalesTaxGroupParty	string	255	LOCAL	
+PartyName	string	255	Surya Carpet Pvt. Ltd.	
+PartyAdd1	string	255	UGAPUR, AURAI, S.R.N.	
+PartyAdd2	string	255		
+PartyCity	string	255	BHADOHI (U.P.)	
+PartyMobile	string	255		
+BillToParty	string	255	W100000032	
+TermsAndConditions	string	255	3-For Seven days Credit.	
+BillToPartyName	string	255	Surya Carpet Pvt. Ltd.	
+Currency	string	255	Rs.	
+Remarks	string	255		
+Sr	number	1	
+V_Nature	string	255		
+DispatchNo	string	255	WDP-13-0638	
+WorkDispatchSr	number	1	
+Specification	string	255		
+LotNo	string	255	LSC-4093	
+DocQty	number	21.65	
+LossQty	number	0	
+Qty	number	21.65	
+Unit	string	255	KG	
+MeasurePerPcs	number	0	
+BaleNo	string	255		
+Rate	number	42	
+Amount	number	909.3	
+LineRemark	string	255		
+GodownDesc	string	255	Main Godown	
+DecimalPlaces	number	3	
+ItemDesc	string	255	40 C NZ SPRING TWIST	
+ItemType	string	255	FM	
+L_Gross_Amount	number	909.3	
+L_Discount_Per	number	0	
+L_Discount	number	0	
+L_Other_Charges_Per	number	0	
+L_Other_Charges	number	0	
+L_Round_Off	number	0	
+L_Net_Amount	number	909.3	
+L_Landed_Value	number	909.3	

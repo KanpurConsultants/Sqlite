@@ -1,0 +1,81 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1    SI 2017       1	
+V_Type	string	255	SI	
+V_Prefix	string	255	2017	
+V_Date	datetime	01/Apr/2017 12:00:00 AM	
+V_No	long	1	
+Div_Code	string	255	D	
+Site_Code	string	255	1	
+ReferenceNo	string	255	17-0001	
+SaleToParty	string	255	D10002	
+BillToPartyName	string	255	Cash A/c	
+SaleToPartyName	string	255	UNNATI HERBAL {51200002}	
+SaleToPartyManualCode	string	255	51200002	
+Add1	string	255	3A-159, AVAS VIKAS, HANSPURAM, NAUBASTA,
+	
+Add2	string	255		
+Add3	string	255		
+SaleToPartyCityName	string	255	Kanpur	
+SaleToPartyMobile	string	255		
+ShipToParty	string	255		
+ShipToPartyName	string	255		
+ShipToPartyAddress	string	255		
+ShipToPartyCity	string	255		
+ShipToPartyMobile	string	255		
+SaleOrder	string	255		
+SaleChallan	string	255		
+Currency	string	255		
+SalesTaxGroupParty	string	255	Local	
+Structure	string	255	INV	
+BillingType	string	255		
+Form	string	255		
+FormNo	string	255		
+ReferenceDocId	string	255		
+Remarks	string	255		
+TotalQty	number	8	
+TotalMeasure	number	0	
+TotalAmount	number	870.02	
+EntryBy	string	255	sa	
+EntryDate	datetime	07/Jul/2017 5:14:00 PM	
+EntryType	string	255	Edit	
+EntryStatus	string	255	Add	
+ApproveBy	string	255		
+ApproveDate	datetime		
+MoveToLog	string	255		
+MoveToLogDate	datetime		
+IsDeleted	boolean		
+Status	string	255	Active	
+UID	string	255		
+TableCode	string	255		
+PaymentMode	string	255		
+PostingAc	string	255		
+Godown	string	255		
+Vendor	string	255		
+SaleToPartyTinNo	string	255		
+SaleToPartyCstNo	string	255		
+Transporter	string	255		
+Vehicle	string	255		
+VehicleDescription	string	255		
+Driver	string	255		
+DriverName	string	255		
+DriverContactNo	string	255		
+LrNo	string	255		
+LrDate	datetime		
+PrivateMark	string	255		
+PortOfLoading	string	255		
+DestinationPort	string	255		
+FinalPlaceOfDelivery	string	255		
+PreCarriageBy	string	255		
+PlaceOfPreCarriage	string	255		
+ShipmentThrough	string	255		
+CreditDays	number	0	
+Gross_Amount	number	870.02	
+Sales_Tax_Taxable_Amt	number	828.6	
+Vat_Per	number	0	
+Vat	number	41.42	
+Discount_Per	number	0	
+Discount	number	0	
+Other_Charges_Per	number	0	
+Other_Charges	number	0	
+Round_Off	number	0.02	
+Net_Amount	number	870	

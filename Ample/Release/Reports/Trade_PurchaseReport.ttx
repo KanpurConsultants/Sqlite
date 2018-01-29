@@ -1,0 +1,48 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1  PINV 2012       2	
+V_Type	string	255	PINV	
+V_Prefix	string	255	2012	
+V_Date	date	29/May/2012 12:00:00 AM	
+V_No	long	2	
+Div_Code	string	255	D	
+Site_Code	string	255	1	
+ReferenceNo	string	255	1	
+Vendor	string	255	D100001276	
+VendorName	string	255	Kumar International, Bhadohi	
+Add1	string	255	.	
+Add2	string	255		
+Add3	string	255		
+VendorCityName	string	255	Bhadohi	
+PurchOrder	string	255		
+PurchChallan	string	255		
+Currency	string	255		
+SalesTaxGroupParty	string	255		
+Structure	string	255	PURCH	
+BillingType	string	255		
+Form	string	255		
+FormNo	string	255		
+ReferenceDocId	string	255		
+Remarks	string	255		
+TotalQty	number	495.8	
+TotalMeasure	number	1189	
+TotalAmount	number	68420.4	
+EntryBy	string	255	sa	
+EntryDate	date	19/Oct/2012 5:23:00 PM	
+EntryType	string	255	Edit	
+EntryStatus	string	255	Open	
+ApproveBy	string	255		
+ApproveDate	date		
+MoveToLog	string	255		
+MoveToLogDate	date		
+IsDeleted	boolean		
+Status	string	255	Active	
+UID	string	255		
+Godown	string	255		
+Vendor1	string	255	D100001276	
+Gross_Amount	number	68420.4	
+Discount_Per	number	0	
+Discount	number	0	
+Other_Charges_Per	number	0	
+Other_Charges	number	0	
+Round_Off	number	-0.4	
+Net_Amount	number	68420	

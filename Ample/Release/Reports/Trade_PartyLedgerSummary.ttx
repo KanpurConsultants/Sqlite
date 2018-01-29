@@ -1,0 +1,14 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1    SI 2012       4	
+V_Type	string	255	SI	
+V_Date	date	07/Jun/2012 12:00:00 AM	
+SubCode	string	255	D100000080	
+AmtDr	number	4430	
+AmtCr	number	0	
+TransactionType	string	255	Sale Invoice	
+Narration	string	255	 Cheque No. : Null Date : 	
+Site_Code	string	255	1	
+DivCode	string	255	D	
+RecId	string	255	1	
+Particular	string	255	SI-4	
+PartyName	string	255	Deepak Tripathi,Ugapur {101033}	

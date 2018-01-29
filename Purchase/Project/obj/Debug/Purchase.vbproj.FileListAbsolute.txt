@@ -1,0 +1,194 @@
+D:\Support\Project\AgControls\Release\Purchase.exe
+D:\Support\Project\AgControls\Release\Purchase.pdb
+D:\Support\Project\AgControls\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPartyDetail.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchaseImportFromExcel.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.Resources.resources
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.exe
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.pdb
+D:\Active Project\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+D:\Support\Project\AgControls\Release\Purchase.exe.config
+D:\Active Project\Purchase\Release\Purchase.exe.config
+D:\Active Project\Purchase\Release\Purchase.exe
+D:\Active Project\Purchase\Release\Purchase.pdb
+D:\Active Project\Purchase\Release\Purchase.xml
+\\arpit-pc\Active Project\Purchase\Release\Purchase.exe.config
+\\arpit-pc\Active Project\Purchase\Project\obj\Debug\Purchase.xml
+\\arpit-pc\Active Project\Purchase\Project\obj\Debug\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Release\Purchase.exe.config
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.xml
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.Resources.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Purchase\Release\Purchase.exe
+E:\Arpit\Active Project\Purchase\Release\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Release\Purchase.xml
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.exe
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+\\arpit-pc\Active Project\Purchase\Project\obj\Debug\Purchase.exe
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+F:\Project\Purchase200813\Purchase\Release\Purchase.exe.config
+F:\Project\Purchase200813\Purchase\Release\Purchase.exe
+F:\Project\Purchase200813\Purchase\Release\Purchase.pdb
+F:\Project\Purchase200813\Purchase\Release\Purchase.xml
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPartyDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.Resources.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.exe
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.xml
+F:\Project\Purchase200813\Purchase\Project\obj\Debug\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+D:\Active Projects\Purchase\Release\Purchase.exe.config
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.exe
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.xml
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.pdb
+D:\Active Projects\Purchase\Release\Purchase.exe
+D:\Active Projects\Purchase\Release\Purchase.pdb
+D:\Active Projects\Purchase\Release\Purchase.xml
+D:\Active Projects\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPartyDetail.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.Resources.resources
+D:\Active Projects\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentCancel.resources
+E:\Active Projects\Purchase\Release\Purchase.exe.config
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.exe
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.xml
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.pdb
+E:\Active Projects\Purchase\Release\Purchase.exe
+E:\Active Projects\Purchase\Release\Purchase.pdb
+E:\Active Projects\Purchase\Release\Purchase.xml
+E:\Active Projects\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentCancel.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.Resources.resources
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+E:\Active Projects\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanReturn.resources
+E:\Akash\Purchase\Release\Purchase.exe.config
+E:\Akash\Purchase\Project\obj\Debug\Purchase.exe
+E:\Akash\Purchase\Project\obj\Debug\Purchase.xml
+E:\Akash\Purchase\Project\obj\Debug\Purchase.pdb
+E:\Akash\Purchase\Release\Purchase.exe
+E:\Akash\Purchase\Release\Purchase.pdb
+E:\Akash\Purchase\Release\Purchase.xml
+E:\Akash\Purchase\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanReturn.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentCancel.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.Resources.resources
+E:\Akash\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\Purchase\Release\Purchase.exe.config
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.exe
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.xml
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.pdb
+D:\Satyam\Active Projects\SqLite\Purchase\Release\Purchase.exe
+D:\Satyam\Active Projects\SqLite\Purchase\Release\Purchase.pdb
+D:\Satyam\Active Projects\SqLite\Purchase\Release\Purchase.xml
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanReturn.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentCancel.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.FrmQCGroupMaster.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.Resources.resources
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.vbprojResolveAssemblyReference.cache

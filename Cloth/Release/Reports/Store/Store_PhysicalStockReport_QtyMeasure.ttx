@@ -1,0 +1,18 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	D1 CPSTK 2013     393	
+V_Type	string	255	CPSTK	
+V_Date	datetime	31/Mar/2014 12:00:00 AM	
+ManualRefNo	string	255	13-0353	
+PartyName	string	255		
+Remarks	string	255		
+ProcessDesc	string	255		
+VoucherTypeDesc	string	255	Carpet Physical Stock Entry	
+ItemDesc	string	255	M343-6SAM	
+Unit	string	255	Pcs	
+DecimalPlaces	number	0	
+MeasureDecimalPlace	number	4	
+Qty	number	128	
+TotalMeasure	number	3.5584	
+MeasureUnit	string	255	Sq.Yard	
+HeaderRemark	string	255	6 c.m	
+LineRemark	string	255		

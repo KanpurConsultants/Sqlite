@@ -1,0 +1,21 @@
+; Field definition file for table: ADORecordset
+MainDistributor	string	255	D10006	
+ParentDistributer	string	255	D10006	
+SubCode	string	255	D10007	
+Name	string	255	BARKHA GUPTA {51200007}	
+Level	number	0	
+TotalSelfPVLastMonth	long	0	
+TotalTeamPVLastMonth	long	3455	
+TotalSelfPVCurrentMonth	long	800	
+TotalTeamPVCurrentMonth	long	0	
+CommissionPer	Currency	21.0000	
+TotalSelfPV	long	2140	
+TotalTeamPV	long	84591	
+MainDistributerName	string	255	NEHA GUPTA {51200006}	
+Main_TotalSelfPv	long	1694	
+Main_TotalTeamPv	long	88110	
+Main_TotalSelfPvLastMonth	long	39	
+Main_TotalTeamPvLastMonth	long	3484	
+Main_TotalSelfPvCurrentMonth	long	114	
+Main_TotalTeamPvCurrentMonth	long	800	
+ParentDistributerCode	string	255	51200006	

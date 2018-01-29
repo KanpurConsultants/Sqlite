@@ -1,0 +1,14 @@
+; Field definition file for table: ADORecordset
+DOCID	string	255	R1 CPSTK 2015      91	
+V_DATE	datetime	13/Sep/2015 12:00:00 AM	
+MANUALREFNO	string	255	15-0089	
+ITEM	string	255	D173810	
+ITEMDESC	string	255	ASSORTTUFTED-811	
+ITEM_UIDCODE	string	255		
+ITEM_UIDDESC	string	255		
+QTY	number	1	
+UNIT	string	255	PCS	
+TOTALMEASURE	number	9.75	
+REMARKS	string	255		
+PROCESSDESC	string	255	Packing	
+URGENT	number	0	

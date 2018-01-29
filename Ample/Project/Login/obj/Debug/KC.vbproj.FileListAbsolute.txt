@@ -1,0 +1,109 @@
+D:\SchoolDress\Project\Login\obj\Debug\KC.exe
+D:\SchoolDress\Project\Login\obj\Debug\KC.xml
+D:\SchoolDress\Project\Login\obj\Debug\KC.pdb
+D:\SchoolDress\Release\KC.exe
+D:\SchoolDress\Release\KC.pdb
+D:\SchoolDress\Release\KC.xml
+D:\SchoolDress\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+D:\SchoolDress\Project\Login\obj\Debug\KC.FrmCompany.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.FrmDivisionSelection.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.FrmLogin.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.FrmSiteSelection.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.MDIMain.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.Resources.resources
+D:\SchoolDress\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+E:\Matrix\SchoolDress\Project\Login\obj\Debug\KC.exe
+E:\Matrix\SchoolDress\Project\Login\obj\Debug\KC.xml
+E:\Matrix\SchoolDress\Project\Login\obj\Debug\KC.pdb
+E:\Matrix\HT\Project\Login\obj\Debug\KC.exe
+E:\Matrix\HT\Project\Login\obj\Debug\KC.xml
+E:\Matrix\HT\Project\Login\obj\Debug\KC.pdb
+E:\Matrix\HT\Release\KC.exe
+E:\Matrix\HT\Release\KC.pdb
+E:\Matrix\HT\Release\KC.xml
+E:\Matrix\HT\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+E:\Matrix\HT\Project\Login\obj\Debug\KC.FrmCompany.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.FrmDivisionSelection.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.FrmLogin.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.FrmSiteSelection.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.MDIMain.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.Resources.resources
+E:\Matrix\HT\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+D:\Active Project\HT\Project\Login\obj\Debug\KC.exe
+D:\Active Project\HT\Project\Login\obj\Debug\KC.xml
+D:\Active Project\HT\Project\Login\obj\Debug\KC.pdb
+D:\Active Project\HT\Release\KC.exe
+D:\Active Project\HT\Release\KC.pdb
+D:\Active Project\HT\Release\KC.xml
+D:\Active Project\HT\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Project\HT\Project\Login\obj\Debug\KC.FrmCompany.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.FrmDivisionSelection.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.FrmLogin.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.FrmSiteSelection.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.MDIMain.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.Resources.resources
+D:\Active Project\HT\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+D:\Active Project\HT\Project\Login\obj\Debug\KC.FrmServerNotFound.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Project\Trade\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+D:\Active Project\Trade\Release\Trade.exe
+D:\Active Project\Trade\Release\Trade.pdb
+D:\Active Project\Trade\Release\Trade.xml
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.FrmCompany.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.FrmDivisionSelection.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.FrmLogin.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.FrmServerNotFound.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.FrmSiteSelection.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.MDIMain.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.Resources.resources
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.exe
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.xml
+D:\Active Project\Trade\Project\Login\obj\Debug\Trade.pdb
+F:\Arpit\Active Project\Ample V2\Release\Trade.exe
+F:\Arpit\Active Project\Ample V2\Release\Trade.pdb
+F:\Arpit\Active Project\Ample V2\Release\Trade.xml
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmCompany.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmDivisionSelection.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmLogin.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmServerNotFound.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmSiteSelection.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.MDIMain.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.Resources.resources
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.exe
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.xml
+F:\Arpit\Active Project\Ample V2\Project\Login\obj\Debug\Trade.pdb
+\\server2008\Active Project\Ample V2\Release\Trade.exe
+\\server2008\Active Project\Ample V2\Release\Trade.pdb
+\\server2008\Active Project\Ample V2\Release\Trade.xml
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmCompany.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmDivisionSelection.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmLogin.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmServerNotFound.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.FrmSiteSelection.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.MDIMain.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.Resources.resources
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.exe
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.xml
+\\server2008\Active Project\Ample V2\Project\Login\obj\Debug\Trade.pdb
+I:\Ample V2\Release\Trade.exe
+I:\Ample V2\Release\Trade.pdb
+I:\Ample V2\Release\Trade.xml
+I:\Ample V2\Project\Login\obj\Debug\ResolveAssemblyReference.cache
+I:\Ample V2\Project\Login\obj\Debug\Trade.FrmCompany.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.FrmDivisionSelection.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.FrmLogin.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.FrmServerNotFound.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.FrmSiteSelection.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.MDIMain.resources
+I:\Ample V2\Project\Login\obj\Debug\Trade.Resources.resources
+I:\Ample V2\Project\Login\obj\Debug\KC.vbproj.GenerateResource.Cache
+I:\Ample V2\Project\Login\obj\Debug\Trade.exe
+I:\Ample V2\Project\Login\obj\Debug\Trade.xml
+I:\Ample V2\Project\Login\obj\Debug\Trade.pdb
+D:\Temp\Ample_22jul17\Ample\Project\Login\obj\Debug\Trade.exe
+D:\Temp\Ample_22jul17\Ample\Project\Login\obj\Debug\Trade.xml
+D:\Temp\Ample_22jul17\Ample\Project\Login\obj\Debug\Trade.pdb

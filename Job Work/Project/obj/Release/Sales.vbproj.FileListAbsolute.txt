@@ -1,0 +1,26 @@
+E:\Arpit\Active Project\Sales\Release\Sales.pdb
+E:\Arpit\Active Project\Sales\Release\Sales.xml
+E:\Arpit\Active Project\Sales\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.MDIMain.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.Resources.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.xml
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.pdb
+E:\Arpit\Active Project\Sales\Release\Sales.exe.config
+E:\Arpit\Active Project\Sales\Release\Sales.exe
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.exe
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleChallan.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleInvoice.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleReturn.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleOrder.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleOrderAmendment.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleOrderCancel.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmSaleOrderDelivery.resources
+E:\Arpit\Active Project\Sales\Project\obj\Release\Sales.FrmImportSaleOrderFromExcel.resources
+D:\Active Projects\Job Work\Release\Sales.exe.config
+D:\Active Projects\Job Work\Project\obj\Release\Sales.exe
+D:\Active Projects\Job Work\Project\obj\Release\Sales.xml
+D:\Active Projects\Job Work\Project\obj\Release\Sales.pdb
+D:\Active Projects\Job Work\Release\Job Work.exe.config

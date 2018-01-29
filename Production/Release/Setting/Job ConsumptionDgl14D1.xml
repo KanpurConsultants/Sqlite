@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>S.No.</Name>
+    <Index>0</Index>
+    <Width>40</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Cost Center</Name>
+    <Index>1</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Party Name</Name>
+    <Index>2</Index>
+    <Width>200</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item</Name>
+    <Index>3</Index>
+    <Width>200</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Lot No</Name>
+    <Index>4</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty</Name>
+    <Index>5</Index>
+    <Width>70</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Unit</Name>
+    <Index>6</Index>
+    <Width>50</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty Decimal Places</Name>
+    <Index>7</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Per Pcs</Name>
+    <Index>8</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Measure</Name>
+    <Index>9</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Unit</Name>
+    <Index>10</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Decimal Places</Name>
+    <Index>11</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Rate</Name>
+    <Index>12</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount</Name>
+    <Index>13</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark</Name>
+    <Index>14</Index>
+    <Width>200</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

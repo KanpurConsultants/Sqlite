@@ -1,0 +1,8 @@
+; Field definition file for table: ADORecordset
+Item_UID	string	255	50000001	
+CarpetSku	string	255	CAE1130-1616	
+Design	string	255	CAE-1130	
+Size	string	255	1`6"X1`6"T	
+Colour	string	255	DK.GREY/CREMY	
+Quality	string	255	TUFTED-2.200	
+BarCodeImg	BLOB		

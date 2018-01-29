@@ -1,0 +1,3209 @@
+﻿Imports System.IO
+Imports CrystalDecisions.CrystalReports.Engine
+Public Class FrmJobOrder
+    Inherits AgTemplate.TempTransaction
+    Public mQry$
+
+    Public Const ColSNo As String = "S.No."
+    Public WithEvents Dgl1 As New AgControls.AgDataGrid
+    Public Const Col1Item_Uid As String = "Item_Uid"
+    Public Const Col1Item As String = "Item"
+    Public Const Col1ItemGroup As String = "Item Group"
+
+    Public Const Col1Dimension1 As String = "Dimension1"
+    Public Const Col1Dimension2 As String = "Dimension2"
+
+    Public Const Col1LotNo As String = "Lot No"
+    Public Const Col1FromProcess As String = "From Process"
+    Public Const Col1ProdOrder As String = "Prod Order"
+    Public Const Col1ProdOrderSr As String = "Prod Order Sr"
+    Public Const Col1Qty As String = "Qty"
+    Public Const Col1Unit As String = "Unit"
+    Public Const Col1QtyDecimalPlaces As String = "Qty Decimal Places"
+    Public Const Col1MeasurePerPcs As String = "Measure Per Pcs"
+    Public Const Col1TotalMeasure As String = "Total Measure"
+    Public Const Col1MeasureUnit As String = "Measure Unit"
+    Public Const Col1MeasureDecimalPlaces As String = "Measure Decimal Places"
+    Public Const Col1Rate As String = "Rate"
+    Public Const Col1Amount As String = "Amount"
+    Public Const Col1ProcessSequence As String = "Process Sequence"
+    Public Const Col1ProcessIterationsAllowed As String = "Process Iterations Allowed"
+    Public Const Col1V_Nature As String = "V_Nature"
+    Public Const Col1Remark As String = "Remark"
+
+    Public WithEvents Dgl3 As New AgControls.AgDataGrid
+    Public Const Col3Parameter As String = "Parameter"
+    Public Const Col3StdValue As String = "Standard Value"
+
+    Public WithEvents Dgl5 As New AgControls.AgDataGrid
+    Public Const Col5Head As String = "Head"
+    Public Const Col5AtRate As String = "@"
+    Public Const Col5Amount As String = "Amount"
+
+    Protected Const Row5GrossAmount As Byte = 0
+    Protected Const Row5RoundOff As Byte = 1
+    Protected Const Row5NetAmount As Byte = 2
+
+    Protected mLastOrderBy$ = ""
+
+    Dim ImportMessegeStr$ = ""
+    Dim ImportMode As Boolean = False
+    Dim ImportAction_NewImport As String = "New Import"
+    Dim ImportAction_ClearImport As String = "Clear Import"
+
+    Dim isRecordLocked As Boolean
+
+    Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
+        ' This call is required by the Windows Form Designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        Topctrl1.FSetParent(Me, StrUPVar, DTUP)
+        Topctrl1.SetDisp(True)
+
+        EntryNCat = strNCat
+
+        mQry = "Select H.* from Voucher_Type_Settings H With (NoLock) Left Join Voucher_Type Vt With (NoLock) On H.V_Type = Vt.V_Type  Where Vt.NCat In ('" & EntryNCat & "') And H.Div_Code = '" & AgL.PubDivCode & "' And H.Site_Code ='" & AgL.PubSiteCode & "' "
+        DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+    End Sub
+
+#Region "Form Designer Code"
+    Private Sub InitializeComponent()
+        Me.Dgl1 = New AgControls.AgDataGrid
+        Me.TxtManualRefNo = New AgControls.AgTextBox
+        Me.LblManualRefNo = New System.Windows.Forms.Label
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.LblTotalAmount = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.LblTotalMeasure = New System.Windows.Forms.Label
+        Me.Label33 = New System.Windows.Forms.Label
+        Me.LblTotalQty = New System.Windows.Forms.Label
+        Me.LblTotalQtyText = New System.Windows.Forms.Label
+        Me.Pnl1 = New System.Windows.Forms.Panel
+        Me.Label30 = New System.Windows.Forms.Label
+        Me.TxtRemarks = New AgControls.AgTextBox
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
+        Me.LblJobWorkerReq = New System.Windows.Forms.Label
+        Me.TxtJobWorker = New AgControls.AgTextBox
+        Me.LblJobWorker = New System.Windows.Forms.Label
+        Me.TxtDueDate = New AgControls.AgTextBox
+        Me.LblDueDate = New System.Windows.Forms.Label
+        Me.TxtTermsAndConditions = New AgControls.AgTextBox
+        Me.LinkLabel2 = New System.Windows.Forms.LinkLabel
+        Me.Pnl3 = New System.Windows.Forms.Panel
+        Me.LblJobInstructions = New System.Windows.Forms.LinkLabel
+        Me.TxtInsideOutside = New AgControls.AgTextBox
+        Me.LblInsideOutside = New System.Windows.Forms.Label
+        Me.TxtBillingType = New AgControls.AgTextBox
+        Me.Label32 = New System.Windows.Forms.Label
+        Me.TxtOrderBy = New AgControls.AgTextBox
+        Me.LblOrderBy = New System.Windows.Forms.Label
+        Me.LblOrderByReq = New System.Windows.Forms.Label
+        Me.LblDueDateReq = New System.Windows.Forms.Label
+        Me.TxtGodown = New AgControls.AgTextBox
+        Me.LblGodown = New System.Windows.Forms.Label
+        Me.LblWithMaterialYN = New System.Windows.Forms.Label
+        Me.TxtWithMaterialYN = New AgControls.AgTextBox
+        Me.TxtRate = New AgControls.AgTextBox
+        Me.LblRate = New System.Windows.Forms.Label
+        Me.Pnl5 = New System.Windows.Forms.Panel
+        Me.RbtAllItems = New System.Windows.Forms.RadioButton
+        Me.RbtForStock = New System.Windows.Forms.RadioButton
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.TxtProcess = New AgControls.AgTextBox
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.Label5 = New System.Windows.Forms.Label
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.RbtForPrevProcessStock = New System.Windows.Forms.RadioButton
+        Me.BtnImprtFromText = New System.Windows.Forms.Button
+        Me.ChkShowOnlyImportedRecords = New System.Windows.Forms.CheckBox
+        Me.Label10 = New System.Windows.Forms.Label
+        Me.TxtItemDivision = New AgControls.AgTextBox
+        Me.Label11 = New System.Windows.Forms.Label
+        Me.RbtForProdOrder = New System.Windows.Forms.RadioButton
+        Me.GroupBox2.SuspendLayout()
+        Me.GBoxMoveToLog.SuspendLayout()
+        Me.GBoxApprove.SuspendLayout()
+        Me.GBoxEntryType.SuspendLayout()
+        Me.GrpUP.SuspendLayout()
+        Me.GBoxDivision.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TP1.SuspendLayout()
+        CType(Me.DTMaster, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Dgl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.SuspendLayout()
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Location = New System.Drawing.Point(829, 585)
+        Me.GroupBox2.Size = New System.Drawing.Size(148, 40)
+        '
+        'TxtStatus
+        '
+        Me.TxtStatus.AgSelectedValue = ""
+        Me.TxtStatus.Location = New System.Drawing.Point(29, 19)
+        Me.TxtStatus.Tag = ""
+        '
+        'CmdStatus
+        '
+        Me.CmdStatus.Size = New System.Drawing.Size(26, 19)
+        '
+        'GBoxMoveToLog
+        '
+        Me.GBoxMoveToLog.Location = New System.Drawing.Point(648, 585)
+        Me.GBoxMoveToLog.Size = New System.Drawing.Size(148, 40)
+        '
+        'TxtMoveToLog
+        '
+        Me.TxtMoveToLog.Location = New System.Drawing.Point(29, 19)
+        Me.TxtMoveToLog.Tag = ""
+        '
+        'CmdMoveToLog
+        '
+        Me.CmdMoveToLog.Size = New System.Drawing.Size(26, 19)
+        '
+        'GBoxApprove
+        '
+        Me.GBoxApprove.Location = New System.Drawing.Point(467, 585)
+        Me.GBoxApprove.Text = "Approved By"
+        '
+        'TxtApproveBy
+        '
+        Me.TxtApproveBy.Size = New System.Drawing.Size(116, 18)
+        Me.TxtApproveBy.Tag = ""
+        '
+        'GBoxEntryType
+        '
+        Me.GBoxEntryType.Location = New System.Drawing.Point(168, 585)
+        Me.GBoxEntryType.Size = New System.Drawing.Size(119, 40)
+        '
+        'TxtEntryType
+        '
+        Me.TxtEntryType.Location = New System.Drawing.Point(3, 19)
+        Me.TxtEntryType.Tag = ""
+        '
+        'GrpUP
+        '
+        Me.GrpUP.Location = New System.Drawing.Point(16, 585)
+        Me.GrpUP.Size = New System.Drawing.Size(119, 40)
+        '
+        'TxtEntryBy
+        '
+        Me.TxtEntryBy.Location = New System.Drawing.Point(3, 19)
+        Me.TxtEntryBy.Tag = ""
+        Me.TxtEntryBy.Text = ""
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.GroupBox1.Location = New System.Drawing.Point(2, 581)
+        Me.GroupBox1.Size = New System.Drawing.Size(1002, 4)
+        '
+        'GBoxDivision
+        '
+        Me.GBoxDivision.Location = New System.Drawing.Point(320, 585)
+        Me.GBoxDivision.Size = New System.Drawing.Size(114, 40)
+        '
+        'TxtDivision
+        '
+        Me.TxtDivision.AgSelectedValue = ""
+        Me.TxtDivision.Location = New System.Drawing.Point(3, 19)
+        Me.TxtDivision.Tag = ""
+        '
+        'TxtDocId
+        '
+        Me.TxtDocId.AgSelectedValue = ""
+        Me.TxtDocId.BackColor = System.Drawing.Color.White
+        Me.TxtDocId.Tag = ""
+        Me.TxtDocId.Text = ""
+        '
+        'LblV_No
+        '
+        Me.LblV_No.Location = New System.Drawing.Point(229, 219)
+        Me.LblV_No.Size = New System.Drawing.Size(88, 16)
+        Me.LblV_No.Tag = ""
+        Me.LblV_No.Text = "Job Order No."
+        Me.LblV_No.Visible = False
+        '
+        'TxtV_No
+        '
+        Me.TxtV_No.AgSelectedValue = ""
+        Me.TxtV_No.BackColor = System.Drawing.Color.White
+        Me.TxtV_No.Location = New System.Drawing.Point(351, 218)
+        Me.TxtV_No.Size = New System.Drawing.Size(149, 18)
+        Me.TxtV_No.TabIndex = 3
+        Me.TxtV_No.Tag = ""
+        Me.TxtV_No.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.TxtV_No.Visible = False
+        '
+        'Label2
+        '
+        Me.Label2.Location = New System.Drawing.Point(107, 33)
+        Me.Label2.Tag = ""
+        '
+        'LblV_Date
+        '
+        Me.LblV_Date.BackColor = System.Drawing.Color.Transparent
+        Me.LblV_Date.Location = New System.Drawing.Point(10, 28)
+        Me.LblV_Date.Size = New System.Drawing.Size(71, 16)
+        Me.LblV_Date.Tag = ""
+        Me.LblV_Date.Text = "Order Date"
+        '
+        'LblV_TypeReq
+        '
+        Me.LblV_TypeReq.Location = New System.Drawing.Point(333, 13)
+        Me.LblV_TypeReq.Tag = ""
+        '
+        'TxtV_Date
+        '
+        Me.TxtV_Date.AgSelectedValue = ""
+        Me.TxtV_Date.BackColor = System.Drawing.Color.White
+        Me.TxtV_Date.Location = New System.Drawing.Point(123, 27)
+        Me.TxtV_Date.TabIndex = 2
+        Me.TxtV_Date.Tag = ""
+        '
+        'LblV_Type
+        '
+        Me.LblV_Type.Location = New System.Drawing.Point(229, 9)
+        Me.LblV_Type.Size = New System.Drawing.Size(71, 16)
+        Me.LblV_Type.Tag = ""
+        Me.LblV_Type.Text = "Order Type"
+        '
+        'TxtV_Type
+        '
+        Me.TxtV_Type.AgSelectedValue = ""
+        Me.TxtV_Type.BackColor = System.Drawing.Color.White
+        Me.TxtV_Type.Location = New System.Drawing.Point(351, 7)
+        Me.TxtV_Type.Size = New System.Drawing.Size(126, 18)
+        Me.TxtV_Type.TabIndex = 1
+        Me.TxtV_Type.Tag = ""
+        '
+        'LblSite_CodeReq
+        '
+        Me.LblSite_CodeReq.Location = New System.Drawing.Point(107, 13)
+        Me.LblSite_CodeReq.Tag = ""
+        '
+        'LblSite_Code
+        '
+        Me.LblSite_Code.BackColor = System.Drawing.Color.Transparent
+        Me.LblSite_Code.Location = New System.Drawing.Point(10, 9)
+        Me.LblSite_Code.Size = New System.Drawing.Size(87, 16)
+        Me.LblSite_Code.Tag = ""
+        Me.LblSite_Code.Text = "Branch Name"
+        '
+        'TxtSite_Code
+        '
+        Me.TxtSite_Code.AgMandatory = True
+        Me.TxtSite_Code.AgSelectedValue = ""
+        Me.TxtSite_Code.BackColor = System.Drawing.Color.White
+        Me.TxtSite_Code.Location = New System.Drawing.Point(123, 7)
+        Me.TxtSite_Code.Size = New System.Drawing.Size(100, 18)
+        Me.TxtSite_Code.TabIndex = 0
+        Me.TxtSite_Code.Tag = ""
+        '
+        'LblDocId
+        '
+        Me.LblDocId.Tag = ""
+        '
+        'LblPrefix
+        '
+        Me.LblPrefix.Location = New System.Drawing.Point(289, 219)
+        Me.LblPrefix.Tag = ""
+        Me.LblPrefix.Visible = False
+        '
+        'TabControl1
+        '
+        Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Location = New System.Drawing.Point(-4, 19)
+        Me.TabControl1.Size = New System.Drawing.Size(991, 142)
+        Me.TabControl1.TabIndex = 0
+        '
+        'TP1
+        '
+        Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.Label10)
+        Me.TP1.Controls.Add(Me.TxtItemDivision)
+        Me.TP1.Controls.Add(Me.Label11)
+        Me.TP1.Controls.Add(Me.Label7)
+        Me.TP1.Controls.Add(Me.TxtProcess)
+        Me.TP1.Controls.Add(Me.Label4)
+        Me.TP1.Controls.Add(Me.Label5)
+        Me.TP1.Controls.Add(Me.Label3)
+        Me.TP1.Controls.Add(Me.TxtRate)
+        Me.TP1.Controls.Add(Me.LblRate)
+        Me.TP1.Controls.Add(Me.LblWithMaterialYN)
+        Me.TP1.Controls.Add(Me.TxtWithMaterialYN)
+        Me.TP1.Controls.Add(Me.TxtGodown)
+        Me.TP1.Controls.Add(Me.LblGodown)
+        Me.TP1.Controls.Add(Me.LblDueDateReq)
+        Me.TP1.Controls.Add(Me.TxtOrderBy)
+        Me.TP1.Controls.Add(Me.LblOrderBy)
+        Me.TP1.Controls.Add(Me.LblOrderByReq)
+        Me.TP1.Controls.Add(Me.TxtInsideOutside)
+        Me.TP1.Controls.Add(Me.LblInsideOutside)
+        Me.TP1.Controls.Add(Me.TxtManualRefNo)
+        Me.TP1.Controls.Add(Me.Label32)
+        Me.TP1.Controls.Add(Me.TxtBillingType)
+        Me.TP1.Controls.Add(Me.LblManualRefNo)
+        Me.TP1.Controls.Add(Me.TxtDueDate)
+        Me.TP1.Controls.Add(Me.LblDueDate)
+        Me.TP1.Controls.Add(Me.TxtRemarks)
+        Me.TP1.Controls.Add(Me.Label30)
+        Me.TP1.Controls.Add(Me.TxtJobWorker)
+        Me.TP1.Controls.Add(Me.LblJobWorker)
+        Me.TP1.Controls.Add(Me.LblJobWorkerReq)
+        Me.TP1.Location = New System.Drawing.Point(4, 22)
+        Me.TP1.Size = New System.Drawing.Size(983, 116)
+        Me.TP1.Text = "Document Detail"
+        Me.TP1.Controls.SetChildIndex(Me.LblJobWorkerReq, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblJobWorker, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtJobWorker, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label30, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtRemarks, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblDueDate, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtDueDate, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblManualRefNo, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtBillingType, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label32, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtManualRefNo, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblInsideOutside, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtInsideOutside, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtV_No, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtSite_Code, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblV_Date, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label2, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblV_No, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblSite_Code, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtV_Date, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblSite_CodeReq, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblPrefix, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblV_Type, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblV_TypeReq, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtV_Type, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblDocId, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtDocId, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblOrderByReq, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblOrderBy, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtOrderBy, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblDueDateReq, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblGodown, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtGodown, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtWithMaterialYN, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblWithMaterialYN, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblRate, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtRate, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label3, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label5, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label4, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtProcess, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label7, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label11, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtItemDivision, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label10, 0)
+        '
+        'Topctrl1
+        '
+        Me.Topctrl1.Size = New System.Drawing.Size(984, 41)
+        Me.Topctrl1.TabIndex = 5
+        '
+        'Dgl1
+        '
+        Me.Dgl1.AgAllowFind = True
+        Me.Dgl1.AgLastColumn = -1
+        Me.Dgl1.AgMandatoryColumn = 0
+        Me.Dgl1.AgReadOnlyColumnColor = System.Drawing.Color.Ivory
+        Me.Dgl1.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.Dgl1.AgSkipReadOnlyColumns = False
+        Me.Dgl1.CancelEditingControlValidating = False
+        Me.Dgl1.GridSearchMethod = AgControls.AgLib.TxtSearchMethod.Comprehensive
+        Me.Dgl1.Location = New System.Drawing.Point(0, 0)
+        Me.Dgl1.Name = "Dgl1"
+        Me.Dgl1.Size = New System.Drawing.Size(240, 150)
+        Me.Dgl1.TabIndex = 0
+        '
+        'TxtManualRefNo
+        '
+        Me.TxtManualRefNo.AgAllowUserToEnableMasterHelp = False
+        Me.TxtManualRefNo.AgLastValueTag = Nothing
+        Me.TxtManualRefNo.AgLastValueText = Nothing
+        Me.TxtManualRefNo.AgMandatory = True
+        Me.TxtManualRefNo.AgMasterHelp = False
+        Me.TxtManualRefNo.AgNumberLeftPlaces = 8
+        Me.TxtManualRefNo.AgNumberNegetiveAllow = False
+        Me.TxtManualRefNo.AgNumberRightPlaces = 2
+        Me.TxtManualRefNo.AgPickFromLastValue = False
+        Me.TxtManualRefNo.AgRowFilter = ""
+        Me.TxtManualRefNo.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtManualRefNo.AgSelectedValue = Nothing
+        Me.TxtManualRefNo.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtManualRefNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtManualRefNo.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtManualRefNo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtManualRefNo.Location = New System.Drawing.Point(351, 27)
+        Me.TxtManualRefNo.MaxLength = 50
+        Me.TxtManualRefNo.Name = "TxtManualRefNo"
+        Me.TxtManualRefNo.Size = New System.Drawing.Size(126, 18)
+        Me.TxtManualRefNo.TabIndex = 3
+        '
+        'LblManualRefNo
+        '
+        Me.LblManualRefNo.AutoSize = True
+        Me.LblManualRefNo.BackColor = System.Drawing.Color.Transparent
+        Me.LblManualRefNo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblManualRefNo.Location = New System.Drawing.Point(229, 27)
+        Me.LblManualRefNo.Name = "LblManualRefNo"
+        Me.LblManualRefNo.Size = New System.Drawing.Size(60, 16)
+        Me.LblManualRefNo.TabIndex = 706
+        Me.LblManualRefNo.Text = "Order No"
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Cornsilk
+        Me.Panel1.Controls.Add(Me.LblTotalAmount)
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.LblTotalMeasure)
+        Me.Panel1.Controls.Add(Me.Label33)
+        Me.Panel1.Controls.Add(Me.LblTotalQty)
+        Me.Panel1.Controls.Add(Me.LblTotalQtyText)
+        Me.Panel1.Location = New System.Drawing.Point(4, 438)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(972, 21)
+        Me.Panel1.TabIndex = 694
+        '
+        'LblTotalAmount
+        '
+        Me.LblTotalAmount.AutoSize = True
+        Me.LblTotalAmount.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalAmount.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.LblTotalAmount.Location = New System.Drawing.Point(844, 2)
+        Me.LblTotalAmount.Name = "LblTotalAmount"
+        Me.LblTotalAmount.Size = New System.Drawing.Size(12, 16)
+        Me.LblTotalAmount.TabIndex = 672
+        Me.LblTotalAmount.Text = "."
+        Me.LblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Maroon
+        Me.Label1.Location = New System.Drawing.Point(735, 2)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(100, 16)
+        Me.Label1.TabIndex = 671
+        Me.Label1.Text = "Total Amount :"
+        '
+        'LblTotalMeasure
+        '
+        Me.LblTotalMeasure.AutoSize = True
+        Me.LblTotalMeasure.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalMeasure.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.LblTotalMeasure.Location = New System.Drawing.Point(460, 3)
+        Me.LblTotalMeasure.Name = "LblTotalMeasure"
+        Me.LblTotalMeasure.Size = New System.Drawing.Size(12, 16)
+        Me.LblTotalMeasure.TabIndex = 670
+        Me.LblTotalMeasure.Text = "."
+        Me.LblTotalMeasure.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label33.ForeColor = System.Drawing.Color.Maroon
+        Me.Label33.Location = New System.Drawing.Point(354, 3)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(105, 16)
+        Me.Label33.TabIndex = 669
+        Me.Label33.Text = "Total Measure :"
+        '
+        'LblTotalQty
+        '
+        Me.LblTotalQty.AutoSize = True
+        Me.LblTotalQty.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalQty.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.LblTotalQty.Location = New System.Drawing.Point(94, 3)
+        Me.LblTotalQty.Name = "LblTotalQty"
+        Me.LblTotalQty.Size = New System.Drawing.Size(12, 16)
+        Me.LblTotalQty.TabIndex = 668
+        Me.LblTotalQty.Text = "."
+        Me.LblTotalQty.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LblTotalQtyText
+        '
+        Me.LblTotalQtyText.AutoSize = True
+        Me.LblTotalQtyText.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTotalQtyText.ForeColor = System.Drawing.Color.Maroon
+        Me.LblTotalQtyText.Location = New System.Drawing.Point(9, 3)
+        Me.LblTotalQtyText.Name = "LblTotalQtyText"
+        Me.LblTotalQtyText.Size = New System.Drawing.Size(72, 16)
+        Me.LblTotalQtyText.TabIndex = 667
+        Me.LblTotalQtyText.Text = "Total Qty :"
+        '
+        'Pnl1
+        '
+        Me.Pnl1.Location = New System.Drawing.Point(4, 186)
+        Me.Pnl1.Name = "Pnl1"
+        Me.Pnl1.Size = New System.Drawing.Size(972, 252)
+        Me.Pnl1.TabIndex = 1
+        '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label30.Location = New System.Drawing.Point(486, 69)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(60, 16)
+        Me.Label30.TabIndex = 723
+        Me.Label30.Text = "Remarks"
+        '
+        'TxtRemarks
+        '
+        Me.TxtRemarks.AgAllowUserToEnableMasterHelp = False
+        Me.TxtRemarks.AgLastValueTag = Nothing
+        Me.TxtRemarks.AgLastValueText = Nothing
+        Me.TxtRemarks.AgMandatory = False
+        Me.TxtRemarks.AgMasterHelp = False
+        Me.TxtRemarks.AgNumberLeftPlaces = 0
+        Me.TxtRemarks.AgNumberNegetiveAllow = False
+        Me.TxtRemarks.AgNumberRightPlaces = 0
+        Me.TxtRemarks.AgPickFromLastValue = False
+        Me.TxtRemarks.AgRowFilter = ""
+        Me.TxtRemarks.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtRemarks.AgSelectedValue = Nothing
+        Me.TxtRemarks.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtRemarks.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtRemarks.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtRemarks.Location = New System.Drawing.Point(587, 68)
+        Me.TxtRemarks.MaxLength = 255
+        Me.TxtRemarks.Multiline = True
+        Me.TxtRemarks.Name = "TxtRemarks"
+        Me.TxtRemarks.Size = New System.Drawing.Size(384, 37)
+        Me.TxtRemarks.TabIndex = 13
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.BackColor = System.Drawing.Color.SteelBlue
+        Me.LinkLabel1.DisabledLinkColor = System.Drawing.Color.White
+        Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.LinkLabel1.LinkColor = System.Drawing.Color.White
+        Me.LinkLabel1.Location = New System.Drawing.Point(4, 165)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(190, 20)
+        Me.LinkLabel1.TabIndex = 731
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Job Order For Following Items"
+        Me.LinkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'LblJobWorkerReq
+        '
+        Me.LblJobWorkerReq.AutoSize = True
+        Me.LblJobWorkerReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblJobWorkerReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblJobWorkerReq.Location = New System.Drawing.Point(107, 92)
+        Me.LblJobWorkerReq.Name = "LblJobWorkerReq"
+        Me.LblJobWorkerReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblJobWorkerReq.TabIndex = 732
+        Me.LblJobWorkerReq.Text = "Ä"
+        '
+        'TxtJobWorker
+        '
+        Me.TxtJobWorker.AgAllowUserToEnableMasterHelp = False
+        Me.TxtJobWorker.AgLastValueTag = Nothing
+        Me.TxtJobWorker.AgLastValueText = Nothing
+        Me.TxtJobWorker.AgMandatory = True
+        Me.TxtJobWorker.AgMasterHelp = False
+        Me.TxtJobWorker.AgNumberLeftPlaces = 8
+        Me.TxtJobWorker.AgNumberNegetiveAllow = False
+        Me.TxtJobWorker.AgNumberRightPlaces = 2
+        Me.TxtJobWorker.AgPickFromLastValue = False
+        Me.TxtJobWorker.AgRowFilter = ""
+        Me.TxtJobWorker.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtJobWorker.AgSelectedValue = Nothing
+        Me.TxtJobWorker.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtJobWorker.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtJobWorker.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtJobWorker.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtJobWorker.Location = New System.Drawing.Point(123, 87)
+        Me.TxtJobWorker.MaxLength = 20
+        Me.TxtJobWorker.Name = "TxtJobWorker"
+        Me.TxtJobWorker.Size = New System.Drawing.Size(354, 18)
+        Me.TxtJobWorker.TabIndex = 6
+        '
+        'LblJobWorker
+        '
+        Me.LblJobWorker.AutoSize = True
+        Me.LblJobWorker.BackColor = System.Drawing.Color.Transparent
+        Me.LblJobWorker.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblJobWorker.Location = New System.Drawing.Point(10, 87)
+        Me.LblJobWorker.Name = "LblJobWorker"
+        Me.LblJobWorker.Size = New System.Drawing.Size(74, 16)
+        Me.LblJobWorker.TabIndex = 731
+        Me.LblJobWorker.Text = "Job Worker"
+        '
+        'TxtDueDate
+        '
+        Me.TxtDueDate.AgAllowUserToEnableMasterHelp = False
+        Me.TxtDueDate.AgLastValueTag = Nothing
+        Me.TxtDueDate.AgLastValueText = Nothing
+        Me.TxtDueDate.AgMandatory = True
+        Me.TxtDueDate.AgMasterHelp = False
+        Me.TxtDueDate.AgNumberLeftPlaces = 0
+        Me.TxtDueDate.AgNumberNegetiveAllow = False
+        Me.TxtDueDate.AgNumberRightPlaces = 0
+        Me.TxtDueDate.AgPickFromLastValue = False
+        Me.TxtDueDate.AgRowFilter = ""
+        Me.TxtDueDate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtDueDate.AgSelectedValue = Nothing
+        Me.TxtDueDate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtDueDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
+        Me.TxtDueDate.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtDueDate.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtDueDate.Location = New System.Drawing.Point(587, 8)
+        Me.TxtDueDate.MaxLength = 0
+        Me.TxtDueDate.Name = "TxtDueDate"
+        Me.TxtDueDate.Size = New System.Drawing.Size(163, 18)
+        Me.TxtDueDate.TabIndex = 7
+        '
+        'LblDueDate
+        '
+        Me.LblDueDate.AutoSize = True
+        Me.LblDueDate.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDueDate.Location = New System.Drawing.Point(486, 8)
+        Me.LblDueDate.Name = "LblDueDate"
+        Me.LblDueDate.Size = New System.Drawing.Size(62, 16)
+        Me.LblDueDate.TabIndex = 736
+        Me.LblDueDate.Text = "Due Date"
+        '
+        'TxtTermsAndConditions
+        '
+        Me.TxtTermsAndConditions.AgAllowUserToEnableMasterHelp = False
+        Me.TxtTermsAndConditions.AgLastValueTag = Nothing
+        Me.TxtTermsAndConditions.AgLastValueText = Nothing
+        Me.TxtTermsAndConditions.AgMandatory = False
+        Me.TxtTermsAndConditions.AgMasterHelp = False
+        Me.TxtTermsAndConditions.AgNumberLeftPlaces = 0
+        Me.TxtTermsAndConditions.AgNumberNegetiveAllow = False
+        Me.TxtTermsAndConditions.AgNumberRightPlaces = 0
+        Me.TxtTermsAndConditions.AgPickFromLastValue = False
+        Me.TxtTermsAndConditions.AgRowFilter = ""
+        Me.TxtTermsAndConditions.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtTermsAndConditions.AgSelectedValue = Nothing
+        Me.TxtTermsAndConditions.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtTermsAndConditions.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtTermsAndConditions.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtTermsAndConditions.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTermsAndConditions.Location = New System.Drawing.Point(7, 486)
+        Me.TxtTermsAndConditions.MaxLength = 255
+        Me.TxtTermsAndConditions.Multiline = True
+        Me.TxtTermsAndConditions.Name = "TxtTermsAndConditions"
+        Me.TxtTermsAndConditions.Size = New System.Drawing.Size(301, 90)
+        Me.TxtTermsAndConditions.TabIndex = 2
+        '
+        'LinkLabel2
+        '
+        Me.LinkLabel2.BackColor = System.Drawing.Color.SteelBlue
+        Me.LinkLabel2.DisabledLinkColor = System.Drawing.Color.White
+        Me.LinkLabel2.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.LinkLabel2.LinkColor = System.Drawing.Color.White
+        Me.LinkLabel2.Location = New System.Drawing.Point(4, 464)
+        Me.LinkLabel2.Name = "LinkLabel2"
+        Me.LinkLabel2.Size = New System.Drawing.Size(162, 20)
+        Me.LinkLabel2.TabIndex = 748
+        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.Text = "Job Terms && Conditions"
+        Me.LinkLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Pnl3
+        '
+        Me.Pnl3.Location = New System.Drawing.Point(313, 485)
+        Me.Pnl3.Name = "Pnl3"
+        Me.Pnl3.Size = New System.Drawing.Size(307, 92)
+        Me.Pnl3.TabIndex = 3
+        '
+        'LblJobInstructions
+        '
+        Me.LblJobInstructions.BackColor = System.Drawing.Color.SteelBlue
+        Me.LblJobInstructions.DisabledLinkColor = System.Drawing.Color.White
+        Me.LblJobInstructions.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblJobInstructions.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
+        Me.LblJobInstructions.LinkColor = System.Drawing.Color.White
+        Me.LblJobInstructions.Location = New System.Drawing.Point(313, 464)
+        Me.LblJobInstructions.Name = "LblJobInstructions"
+        Me.LblJobInstructions.Size = New System.Drawing.Size(114, 20)
+        Me.LblJobInstructions.TabIndex = 750
+        Me.LblJobInstructions.TabStop = True
+        Me.LblJobInstructions.Text = "Job Instructions"
+        Me.LblJobInstructions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TxtInsideOutside
+        '
+        Me.TxtInsideOutside.AgAllowUserToEnableMasterHelp = False
+        Me.TxtInsideOutside.AgLastValueTag = Nothing
+        Me.TxtInsideOutside.AgLastValueText = Nothing
+        Me.TxtInsideOutside.AgMandatory = False
+        Me.TxtInsideOutside.AgMasterHelp = False
+        Me.TxtInsideOutside.AgNumberLeftPlaces = 8
+        Me.TxtInsideOutside.AgNumberNegetiveAllow = False
+        Me.TxtInsideOutside.AgNumberRightPlaces = 2
+        Me.TxtInsideOutside.AgPickFromLastValue = False
+        Me.TxtInsideOutside.AgRowFilter = ""
+        Me.TxtInsideOutside.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtInsideOutside.AgSelectedValue = Nothing
+        Me.TxtInsideOutside.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtInsideOutside.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtInsideOutside.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtInsideOutside.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtInsideOutside.Location = New System.Drawing.Point(871, 28)
+        Me.TxtInsideOutside.MaxLength = 50
+        Me.TxtInsideOutside.Name = "TxtInsideOutside"
+        Me.TxtInsideOutside.Size = New System.Drawing.Size(100, 18)
+        Me.TxtInsideOutside.TabIndex = 10
+        '
+        'LblInsideOutside
+        '
+        Me.LblInsideOutside.AutoSize = True
+        Me.LblInsideOutside.BackColor = System.Drawing.Color.Transparent
+        Me.LblInsideOutside.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblInsideOutside.Location = New System.Drawing.Point(756, 29)
+        Me.LblInsideOutside.Name = "LblInsideOutside"
+        Me.LblInsideOutside.Size = New System.Drawing.Size(91, 16)
+        Me.LblInsideOutside.TabIndex = 749
+        Me.LblInsideOutside.Text = "Inside/Outside"
+        '
+        'TxtBillingType
+        '
+        Me.TxtBillingType.AgAllowUserToEnableMasterHelp = False
+        Me.TxtBillingType.AgLastValueTag = Nothing
+        Me.TxtBillingType.AgLastValueText = Nothing
+        Me.TxtBillingType.AgMandatory = False
+        Me.TxtBillingType.AgMasterHelp = False
+        Me.TxtBillingType.AgNumberLeftPlaces = 0
+        Me.TxtBillingType.AgNumberNegetiveAllow = False
+        Me.TxtBillingType.AgNumberRightPlaces = 0
+        Me.TxtBillingType.AgPickFromLastValue = False
+        Me.TxtBillingType.AgRowFilter = ""
+        Me.TxtBillingType.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtBillingType.AgSelectedValue = Nothing
+        Me.TxtBillingType.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtBillingType.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtBillingType.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtBillingType.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtBillingType.Location = New System.Drawing.Point(93, 217)
+        Me.TxtBillingType.MaxLength = 20
+        Me.TxtBillingType.Name = "TxtBillingType"
+        Me.TxtBillingType.Size = New System.Drawing.Size(101, 18)
+        Me.TxtBillingType.TabIndex = 6
+        Me.TxtBillingType.Text = "TxtBillingOn"
+        Me.TxtBillingType.Visible = False
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label32.Location = New System.Drawing.Point(23, 217)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(64, 16)
+        Me.Label32.TabIndex = 729
+        Me.Label32.Text = "Billing On"
+        Me.Label32.Visible = False
+        '
+        'TxtOrderBy
+        '
+        Me.TxtOrderBy.AgAllowUserToEnableMasterHelp = False
+        Me.TxtOrderBy.AgLastValueTag = Nothing
+        Me.TxtOrderBy.AgLastValueText = Nothing
+        Me.TxtOrderBy.AgMandatory = True
+        Me.TxtOrderBy.AgMasterHelp = False
+        Me.TxtOrderBy.AgNumberLeftPlaces = 8
+        Me.TxtOrderBy.AgNumberNegetiveAllow = False
+        Me.TxtOrderBy.AgNumberRightPlaces = 2
+        Me.TxtOrderBy.AgPickFromLastValue = False
+        Me.TxtOrderBy.AgRowFilter = ""
+        Me.TxtOrderBy.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtOrderBy.AgSelectedValue = Nothing
+        Me.TxtOrderBy.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtOrderBy.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtOrderBy.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtOrderBy.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtOrderBy.Location = New System.Drawing.Point(123, 67)
+        Me.TxtOrderBy.MaxLength = 20
+        Me.TxtOrderBy.Name = "TxtOrderBy"
+        Me.TxtOrderBy.Size = New System.Drawing.Size(354, 18)
+        Me.TxtOrderBy.TabIndex = 5
+        '
+        'LblOrderBy
+        '
+        Me.LblOrderBy.AutoSize = True
+        Me.LblOrderBy.BackColor = System.Drawing.Color.Transparent
+        Me.LblOrderBy.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblOrderBy.Location = New System.Drawing.Point(10, 67)
+        Me.LblOrderBy.Name = "LblOrderBy"
+        Me.LblOrderBy.Size = New System.Drawing.Size(60, 16)
+        Me.LblOrderBy.TabIndex = 751
+        Me.LblOrderBy.Text = "Order By"
+        '
+        'LblOrderByReq
+        '
+        Me.LblOrderByReq.AutoSize = True
+        Me.LblOrderByReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblOrderByReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblOrderByReq.Location = New System.Drawing.Point(107, 73)
+        Me.LblOrderByReq.Name = "LblOrderByReq"
+        Me.LblOrderByReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblOrderByReq.TabIndex = 752
+        Me.LblOrderByReq.Text = "Ä"
+        '
+        'LblDueDateReq
+        '
+        Me.LblDueDateReq.AutoSize = True
+        Me.LblDueDateReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.LblDueDateReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.LblDueDateReq.Location = New System.Drawing.Point(570, 13)
+        Me.LblDueDateReq.Name = "LblDueDateReq"
+        Me.LblDueDateReq.Size = New System.Drawing.Size(10, 7)
+        Me.LblDueDateReq.TabIndex = 753
+        Me.LblDueDateReq.Text = "Ä"
+        '
+        'TxtGodown
+        '
+        Me.TxtGodown.AgAllowUserToEnableMasterHelp = False
+        Me.TxtGodown.AgLastValueTag = Nothing
+        Me.TxtGodown.AgLastValueText = Nothing
+        Me.TxtGodown.AgMandatory = True
+        Me.TxtGodown.AgMasterHelp = False
+        Me.TxtGodown.AgNumberLeftPlaces = 0
+        Me.TxtGodown.AgNumberNegetiveAllow = False
+        Me.TxtGodown.AgNumberRightPlaces = 0
+        Me.TxtGodown.AgPickFromLastValue = False
+        Me.TxtGodown.AgRowFilter = ""
+        Me.TxtGodown.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtGodown.AgSelectedValue = Nothing
+        Me.TxtGodown.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtGodown.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtGodown.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtGodown.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtGodown.Location = New System.Drawing.Point(587, 28)
+        Me.TxtGodown.MaxLength = 255
+        Me.TxtGodown.Name = "TxtGodown"
+        Me.TxtGodown.Size = New System.Drawing.Size(163, 18)
+        Me.TxtGodown.TabIndex = 9
+        '
+        'LblGodown
+        '
+        Me.LblGodown.AutoSize = True
+        Me.LblGodown.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblGodown.Location = New System.Drawing.Point(486, 29)
+        Me.LblGodown.Name = "LblGodown"
+        Me.LblGodown.Size = New System.Drawing.Size(55, 16)
+        Me.LblGodown.TabIndex = 757
+        Me.LblGodown.Text = "Godown"
+        '
+        'LblWithMaterialYN
+        '
+        Me.LblWithMaterialYN.AutoSize = True
+        Me.LblWithMaterialYN.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblWithMaterialYN.Location = New System.Drawing.Point(756, 50)
+        Me.LblWithMaterialYN.Name = "LblWithMaterialYN"
+        Me.LblWithMaterialYN.Size = New System.Drawing.Size(111, 16)
+        Me.LblWithMaterialYN.TabIndex = 761
+        Me.LblWithMaterialYN.Text = "With Material Y/N"
+        '
+        'TxtWithMaterialYN
+        '
+        Me.TxtWithMaterialYN.AgAllowUserToEnableMasterHelp = False
+        Me.TxtWithMaterialYN.AgLastValueTag = Nothing
+        Me.TxtWithMaterialYN.AgLastValueText = Nothing
+        Me.TxtWithMaterialYN.AgMandatory = False
+        Me.TxtWithMaterialYN.AgMasterHelp = False
+        Me.TxtWithMaterialYN.AgNumberLeftPlaces = 0
+        Me.TxtWithMaterialYN.AgNumberNegetiveAllow = False
+        Me.TxtWithMaterialYN.AgNumberRightPlaces = 0
+        Me.TxtWithMaterialYN.AgPickFromLastValue = False
+        Me.TxtWithMaterialYN.AgRowFilter = ""
+        Me.TxtWithMaterialYN.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtWithMaterialYN.AgSelectedValue = Nothing
+        Me.TxtWithMaterialYN.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtWithMaterialYN.AgValueType = AgControls.AgTextBox.TxtValueType.YesNo_Value
+        Me.TxtWithMaterialYN.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtWithMaterialYN.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtWithMaterialYN.Location = New System.Drawing.Point(870, 48)
+        Me.TxtWithMaterialYN.MaxLength = 20
+        Me.TxtWithMaterialYN.Name = "TxtWithMaterialYN"
+        Me.TxtWithMaterialYN.Size = New System.Drawing.Size(101, 18)
+        Me.TxtWithMaterialYN.TabIndex = 12
+        '
+        'TxtRate
+        '
+        Me.TxtRate.AgAllowUserToEnableMasterHelp = False
+        Me.TxtRate.AgLastValueTag = Nothing
+        Me.TxtRate.AgLastValueText = Nothing
+        Me.TxtRate.AgMandatory = False
+        Me.TxtRate.AgMasterHelp = False
+        Me.TxtRate.AgNumberLeftPlaces = 0
+        Me.TxtRate.AgNumberNegetiveAllow = False
+        Me.TxtRate.AgNumberRightPlaces = 0
+        Me.TxtRate.AgPickFromLastValue = False
+        Me.TxtRate.AgRowFilter = ""
+        Me.TxtRate.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtRate.AgSelectedValue = Nothing
+        Me.TxtRate.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtRate.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtRate.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtRate.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtRate.Location = New System.Drawing.Point(871, 8)
+        Me.TxtRate.MaxLength = 0
+        Me.TxtRate.Name = "TxtRate"
+        Me.TxtRate.Size = New System.Drawing.Size(100, 18)
+        Me.TxtRate.TabIndex = 8
+        '
+        'LblRate
+        '
+        Me.LblRate.AutoSize = True
+        Me.LblRate.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblRate.Location = New System.Drawing.Point(756, 9)
+        Me.LblRate.Name = "LblRate"
+        Me.LblRate.Size = New System.Drawing.Size(35, 16)
+        Me.LblRate.TabIndex = 763
+        Me.LblRate.Text = "Rate"
+        '
+        'Pnl5
+        '
+        Me.Pnl5.Location = New System.Drawing.Point(624, 484)
+        Me.Pnl5.Name = "Pnl5"
+        Me.Pnl5.Size = New System.Drawing.Size(353, 93)
+        Me.Pnl5.TabIndex = 4
+        '
+        'RbtAllItems
+        '
+        Me.RbtAllItems.AutoSize = True
+        Me.RbtAllItems.BackColor = System.Drawing.Color.Transparent
+        Me.RbtAllItems.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbtAllItems.Location = New System.Drawing.Point(198, 167)
+        Me.RbtAllItems.Name = "RbtAllItems"
+        Me.RbtAllItems.Size = New System.Drawing.Size(84, 17)
+        Me.RbtAllItems.TabIndex = 759
+        Me.RbtAllItems.TabStop = True
+        Me.RbtAllItems.Text = "All Items"
+        Me.RbtAllItems.UseVisualStyleBackColor = False
+        '
+        'RbtForStock
+        '
+        Me.RbtForStock.AutoSize = True
+        Me.RbtForStock.BackColor = System.Drawing.Color.Transparent
+        Me.RbtForStock.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbtForStock.Location = New System.Drawing.Point(283, 167)
+        Me.RbtForStock.Name = "RbtForStock"
+        Me.RbtForStock.Size = New System.Drawing.Size(87, 17)
+        Me.RbtForStock.TabIndex = 760
+        Me.RbtForStock.TabStop = True
+        Me.RbtForStock.Text = "For Stock"
+        Me.RbtForStock.UseVisualStyleBackColor = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(333, 34)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(10, 7)
+        Me.Label3.TabIndex = 764
+        Me.Label3.Text = "Ä"
+        '
+        'TxtProcess
+        '
+        Me.TxtProcess.AgAllowUserToEnableMasterHelp = False
+        Me.TxtProcess.AgLastValueTag = Nothing
+        Me.TxtProcess.AgLastValueText = Nothing
+        Me.TxtProcess.AgMandatory = True
+        Me.TxtProcess.AgMasterHelp = False
+        Me.TxtProcess.AgNumberLeftPlaces = 8
+        Me.TxtProcess.AgNumberNegetiveAllow = False
+        Me.TxtProcess.AgNumberRightPlaces = 2
+        Me.TxtProcess.AgPickFromLastValue = False
+        Me.TxtProcess.AgRowFilter = ""
+        Me.TxtProcess.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtProcess.AgSelectedValue = Nothing
+        Me.TxtProcess.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtProcess.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtProcess.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtProcess.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtProcess.Location = New System.Drawing.Point(123, 47)
+        Me.TxtProcess.MaxLength = 20
+        Me.TxtProcess.Name = "TxtProcess"
+        Me.TxtProcess.Size = New System.Drawing.Size(354, 18)
+        Me.TxtProcess.TabIndex = 4
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(10, 47)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(56, 16)
+        Me.Label4.TabIndex = 766
+        Me.Label4.Text = "Process"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label5.Location = New System.Drawing.Point(107, 53)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(10, 7)
+        Me.Label5.TabIndex = 767
+        Me.Label5.Text = "Ä"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(570, 33)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(10, 7)
+        Me.Label7.TabIndex = 769
+        Me.Label7.Text = "Ä"
+        '
+        'RbtForPrevProcessStock
+        '
+        Me.RbtForPrevProcessStock.AutoSize = True
+        Me.RbtForPrevProcessStock.BackColor = System.Drawing.Color.Transparent
+        Me.RbtForPrevProcessStock.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbtForPrevProcessStock.Location = New System.Drawing.Point(439, 465)
+        Me.RbtForPrevProcessStock.Name = "RbtForPrevProcessStock"
+        Me.RbtForPrevProcessStock.Size = New System.Drawing.Size(176, 17)
+        Me.RbtForPrevProcessStock.TabIndex = 761
+        Me.RbtForPrevProcessStock.TabStop = True
+        Me.RbtForPrevProcessStock.Text = "For Prev Process Stock"
+        Me.RbtForPrevProcessStock.UseVisualStyleBackColor = False
+        Me.RbtForPrevProcessStock.Visible = False
+        '
+        'BtnImprtFromText
+        '
+        Me.BtnImprtFromText.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnImprtFromText.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnImprtFromText.Location = New System.Drawing.Point(871, 160)
+        Me.BtnImprtFromText.Name = "BtnImprtFromText"
+        Me.BtnImprtFromText.Size = New System.Drawing.Size(105, 25)
+        Me.BtnImprtFromText.TabIndex = 762
+        Me.BtnImprtFromText.TabStop = False
+        Me.BtnImprtFromText.Text = "New Import"
+        Me.BtnImprtFromText.UseVisualStyleBackColor = True
+        '
+        'ChkShowOnlyImportedRecords
+        '
+        Me.ChkShowOnlyImportedRecords.AutoSize = True
+        Me.ChkShowOnlyImportedRecords.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkShowOnlyImportedRecords.Location = New System.Drawing.Point(652, 167)
+        Me.ChkShowOnlyImportedRecords.Name = "ChkShowOnlyImportedRecords"
+        Me.ChkShowOnlyImportedRecords.Size = New System.Drawing.Size(214, 17)
+        Me.ChkShowOnlyImportedRecords.TabIndex = 0
+        Me.ChkShowOnlyImportedRecords.Text = "Show Only Imported Records"
+        Me.ChkShowOnlyImportedRecords.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label10.Location = New System.Drawing.Point(856, 35)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(10, 7)
+        Me.Label10.TabIndex = 772
+        Me.Label10.Text = "Ä"
+        '
+        'TxtItemDivision
+        '
+        Me.TxtItemDivision.AgAllowUserToEnableMasterHelp = False
+        Me.TxtItemDivision.AgLastValueTag = Nothing
+        Me.TxtItemDivision.AgLastValueText = Nothing
+        Me.TxtItemDivision.AgMandatory = False
+        Me.TxtItemDivision.AgMasterHelp = False
+        Me.TxtItemDivision.AgNumberLeftPlaces = 0
+        Me.TxtItemDivision.AgNumberNegetiveAllow = False
+        Me.TxtItemDivision.AgNumberRightPlaces = 0
+        Me.TxtItemDivision.AgPickFromLastValue = False
+        Me.TxtItemDivision.AgRowFilter = ""
+        Me.TxtItemDivision.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtItemDivision.AgSelectedValue = Nothing
+        Me.TxtItemDivision.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtItemDivision.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtItemDivision.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtItemDivision.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtItemDivision.Location = New System.Drawing.Point(587, 48)
+        Me.TxtItemDivision.MaxLength = 255
+        Me.TxtItemDivision.Name = "TxtItemDivision"
+        Me.TxtItemDivision.Size = New System.Drawing.Size(163, 18)
+        Me.TxtItemDivision.TabIndex = 11
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(486, 49)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(81, 16)
+        Me.Label11.TabIndex = 771
+        Me.Label11.Text = "Item Division"
+        '
+        'RbtForProdOrder
+        '
+        Me.RbtForProdOrder.AutoSize = True
+        Me.RbtForProdOrder.BackColor = System.Drawing.Color.Transparent
+        Me.RbtForProdOrder.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RbtForProdOrder.Location = New System.Drawing.Point(374, 167)
+        Me.RbtForProdOrder.Name = "RbtForProdOrder"
+        Me.RbtForProdOrder.Size = New System.Drawing.Size(162, 17)
+        Me.RbtForProdOrder.TabIndex = 766
+        Me.RbtForProdOrder.TabStop = True
+        Me.RbtForProdOrder.Text = "For Production Order"
+        Me.RbtForProdOrder.UseVisualStyleBackColor = False
+        '
+        'FrmRugFinishingOrder
+        '
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.BackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.ClientSize = New System.Drawing.Size(984, 626)
+        Me.Controls.Add(Me.RbtForProdOrder)
+        Me.Controls.Add(Me.ChkShowOnlyImportedRecords)
+        Me.Controls.Add(Me.BtnImprtFromText)
+        Me.Controls.Add(Me.RbtForPrevProcessStock)
+        Me.Controls.Add(Me.LblJobInstructions)
+        Me.Controls.Add(Me.Pnl3)
+        Me.Controls.Add(Me.LinkLabel2)
+        Me.Controls.Add(Me.Pnl5)
+        Me.Controls.Add(Me.TxtTermsAndConditions)
+        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Pnl1)
+        Me.Controls.Add(Me.RbtForStock)
+        Me.Controls.Add(Me.RbtAllItems)
+        Me.Name = "FrmRugFinishingOrder"
+        Me.Text = "Template Job Order"
+        Me.Controls.SetChildIndex(Me.TabControl1, 0)
+        Me.Controls.SetChildIndex(Me.RbtAllItems, 0)
+        Me.Controls.SetChildIndex(Me.RbtForStock, 0)
+        Me.Controls.SetChildIndex(Me.Pnl1, 0)
+        Me.Controls.SetChildIndex(Me.Panel1, 0)
+        Me.Controls.SetChildIndex(Me.LinkLabel1, 0)
+        Me.Controls.SetChildIndex(Me.TxtTermsAndConditions, 0)
+        Me.Controls.SetChildIndex(Me.Pnl5, 0)
+        Me.Controls.SetChildIndex(Me.LinkLabel2, 0)
+        Me.Controls.SetChildIndex(Me.Pnl3, 0)
+        Me.Controls.SetChildIndex(Me.LblJobInstructions, 0)
+        Me.Controls.SetChildIndex(Me.GBoxApprove, 0)
+        Me.Controls.SetChildIndex(Me.Topctrl1, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox1, 0)
+        Me.Controls.SetChildIndex(Me.GrpUP, 0)
+        Me.Controls.SetChildIndex(Me.GBoxEntryType, 0)
+        Me.Controls.SetChildIndex(Me.GBoxMoveToLog, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox2, 0)
+        Me.Controls.SetChildIndex(Me.GBoxDivision, 0)
+        Me.Controls.SetChildIndex(Me.RbtForPrevProcessStock, 0)
+        Me.Controls.SetChildIndex(Me.BtnImprtFromText, 0)
+        Me.Controls.SetChildIndex(Me.ChkShowOnlyImportedRecords, 0)
+        Me.Controls.SetChildIndex(Me.RbtForProdOrder, 0)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
+        Me.GBoxMoveToLog.ResumeLayout(False)
+        Me.GBoxMoveToLog.PerformLayout()
+        Me.GBoxApprove.ResumeLayout(False)
+        Me.GBoxApprove.PerformLayout()
+        Me.GBoxEntryType.ResumeLayout(False)
+        Me.GBoxEntryType.PerformLayout()
+        Me.GrpUP.ResumeLayout(False)
+        Me.GrpUP.PerformLayout()
+        Me.GBoxDivision.ResumeLayout(False)
+        Me.GBoxDivision.PerformLayout()
+        Me.TabControl1.ResumeLayout(False)
+        Me.TP1.ResumeLayout(False)
+        Me.TP1.PerformLayout()
+        CType(Me.DTMaster, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Dgl1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
+
+    End Sub
+    Protected WithEvents TxtManualRefNo As AgControls.AgTextBox
+    Protected WithEvents LblManualRefNo As System.Windows.Forms.Label
+    Protected WithEvents Panel1 As System.Windows.Forms.Panel
+    Protected WithEvents Pnl1 As System.Windows.Forms.Panel
+    Protected WithEvents TxtRemarks As AgControls.AgTextBox
+    Protected WithEvents Label30 As System.Windows.Forms.Label
+    Protected WithEvents LblTotalMeasure As System.Windows.Forms.Label
+    Protected WithEvents Label33 As System.Windows.Forms.Label
+    Protected WithEvents LblTotalQty As System.Windows.Forms.Label
+    Protected WithEvents LblTotalQtyText As System.Windows.Forms.Label
+    Protected WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Protected WithEvents LblJobWorkerReq As System.Windows.Forms.Label
+    Protected WithEvents TxtJobWorker As AgControls.AgTextBox
+    Protected WithEvents LblJobWorker As System.Windows.Forms.Label
+    Protected WithEvents TxtDueDate As AgControls.AgTextBox
+    Protected WithEvents LblDueDate As System.Windows.Forms.Label
+    Protected WithEvents TxtTermsAndConditions As AgControls.AgTextBox
+    Protected WithEvents LblTotalAmount As System.Windows.Forms.Label
+    Protected WithEvents Label1 As System.Windows.Forms.Label
+    Protected WithEvents LinkLabel2 As System.Windows.Forms.LinkLabel
+    Protected WithEvents Pnl3 As System.Windows.Forms.Panel
+    Protected WithEvents LblJobInstructions As System.Windows.Forms.LinkLabel
+    Protected WithEvents TxtInsideOutside As AgControls.AgTextBox
+    Protected WithEvents LblInsideOutside As System.Windows.Forms.Label
+    Protected WithEvents TxtBillingType As AgControls.AgTextBox
+    Protected WithEvents Label32 As System.Windows.Forms.Label
+    Protected WithEvents TxtOrderBy As AgControls.AgTextBox
+    Protected WithEvents LblOrderBy As System.Windows.Forms.Label
+    Protected WithEvents LblOrderByReq As System.Windows.Forms.Label
+    Protected WithEvents LblDueDateReq As System.Windows.Forms.Label
+    Protected WithEvents TxtGodown As AgControls.AgTextBox
+    Protected WithEvents LblGodown As System.Windows.Forms.Label
+    Protected WithEvents LblWithMaterialYN As System.Windows.Forms.Label
+    Protected WithEvents TxtWithMaterialYN As AgControls.AgTextBox
+    Protected WithEvents TxtRate As AgControls.AgTextBox
+    Protected WithEvents LblRate As System.Windows.Forms.Label
+    Protected WithEvents Pnl5 As System.Windows.Forms.Panel
+    Protected WithEvents RbtAllItems As System.Windows.Forms.RadioButton
+    Protected WithEvents RbtForStock As System.Windows.Forms.RadioButton
+    Protected WithEvents Label3 As System.Windows.Forms.Label
+    Protected WithEvents TxtProcess As AgControls.AgTextBox
+    Protected WithEvents Label4 As System.Windows.Forms.Label
+    Protected WithEvents Label5 As System.Windows.Forms.Label
+    Protected WithEvents Label7 As System.Windows.Forms.Label
+    Protected WithEvents RbtForPrevProcessStock As System.Windows.Forms.RadioButton
+    Protected WithEvents BtnImprtFromText As System.Windows.Forms.Button
+    Protected WithEvents ChkShowOnlyImportedRecords As System.Windows.Forms.CheckBox
+    Protected WithEvents Label10 As System.Windows.Forms.Label
+    Protected WithEvents TxtItemDivision As AgControls.AgTextBox
+    Protected WithEvents Label11 As System.Windows.Forms.Label
+    Protected WithEvents RbtForProdOrder As System.Windows.Forms.RadioButton
+#End Region
+
+    Private Sub FrmFinishingOrder_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As System.Data.SqlClient.SqlConnection, ByVal Cmd As System.Data.SqlClient.SqlCommand) Handles Me.BaseEvent_ApproveDeletion_InTrans
+        mQry = " Delete from Stock Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " Delete from StockProcess Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " Delete from StockVirtual Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " Delete from JobIssRecUid Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " Delete from JobOrderBom Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " UPDATE JobOrder Set CostCenter = Null Where CostCenter = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " Delete From CostCenterMast Where Code = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+    End Sub
+
+    Private Sub FrmQuality1_BaseEvent_Form_PreLoad() Handles Me.BaseEvent_Form_PreLoad
+        MainTableName = "JobOrder"
+        LogTableName = "JobOrder_Log"
+        MainLineTableCsv = "JobOrderdetail,JobOrderQCInstruction"
+        LogLineTableCsv = "JobOrderdetail_Log,JobOrderQCInstruction_Log"
+
+        AgL.GridDesign(Dgl1)
+        AgL.GridDesign(Dgl3)
+        AgL.GridDesign(Dgl5)
+    End Sub
+
+    Private Sub FrmQuality1_BaseFunction_FIniMast(ByVal BytDel As Byte, ByVal BytRefresh As Byte) Handles Me.BaseFunction_FIniMast
+        Dim mCondStr$
+        mCondStr = " " & AgL.CondStrFinancialYear("M.V_Date", AgL.PubStartDate, AgL.PubEndDate) & _
+                       " And " & AgL.PubSiteCondition("M.Site_Code", AgL.PubSiteCode) & " " & AgL.RetDivisionCondition(AgL, "M.Div_Code")
+        mCondStr = mCondStr & " And Vt.NCat in ('" & EntryNCat & "')"
+
+        If ChkShowOnlyImportedRecords.Checked Then
+            mCondStr = mCondStr & " And M.EntryStatus = '" & AgTemplate.ClsMain.LogStatus.LogImport & "' " & _
+                                    " And M.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
+        mQry = " Select M.DocID As SearchCode " & _
+            " From JobOrder M  With (NoLock) " & _
+            " Left Join Voucher_Type Vt  With (NoLock) On M.V_Type = Vt.V_Type  " & _
+            " Where IsNull(IsDeleted,0) = 0  " & mCondStr & "  Order By M.V_Date Desc "
+
+        Topctrl1.FIniForm(DTMaster, AgL.GCn, mQry, , , , , BytDel, BytRefresh)
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
+        Dim mCondStr$
+
+        mCondStr = " And IsNull(H.IsDeleted,0)=0 " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) & _
+                        " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " " & AgL.RetDivisionCondition(AgL, "H.Div_Code")
+        mCondStr = mCondStr & " And Vt.NCat in ('" & EntryNCat & "')"
+
+        If ChkShowOnlyImportedRecords.Checked Then
+            mCondStr = mCondStr & " And H.EntryStatus = '" & AgTemplate.ClsMain.LogStatus.LogImport & "' " & _
+                                    " And H.EntryBy = '" & AgL.PubUserName & "'"
+        End If
+
+        AgL.PubFindQry = " SELECT H.DocId AS SearchCode, H.V_Type AS [ORDER_Type], H.V_Date AS [ORDER_Date],  " & _
+                    " H.ManualRefNo AS [Order_No], H.DueDate AS [Due_Date], " & _
+                    " SGJ.Name AS [Job_Worker], SGO.Name AS [ORDER_BY], G.Description AS Godown,  " & _
+                    " H.TotalQty AS [Total_Qty], H.TotalMeasure AS [Total_Measure], H.TotalAmount AS [Total_Amount],  " & _
+                    " H.Remarks, H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date], " & _
+                    " H.ApproveBy AS [Approve By], H.ApproveDate AS [Approve Date]  " & _
+                    " FROM JobOrder H  With (NoLock) " & _
+                    " LEFT JOIN Voucher_Type Vt  With (NoLock) ON H.V_Type = vt.V_Type  " & _
+                    " LEFT JOIN SubGroup SGJ  With (NoLock) ON SGJ.SubCode=H.JobWorker  " & _
+                    " LEFT JOIN SubGroup SGO  With (NoLock) ON SGO.SubCode = H.OrderBy  " & _
+                    " LEFT JOIN Godown G  With (NoLock) ON G.Code = H.Godown   " & _
+                    " Where 1=1  " & mCondStr
+        AgL.PubFindQryOrdBy = "[Order Date]"
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseFunction_IniGrid() Handles Me.BaseFunction_IniGrid
+        Dgl1.ColumnCount = 0
+        With AgCL
+            .AddAgTextColumn(Dgl1, ColSNo, 40, 5, ColSNo, True, True, False)
+            .AddAgTextColumn(Dgl1, Col1Item_Uid, 80, 0, Col1Item_Uid, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ItemUID")), Boolean), False, False)
+            .AddAgTextColumn(Dgl1, Col1Item, 150, 0, Col1Item, True, False, False)
+            .AddAgTextColumn(Dgl1, Col1ItemGroup, 100, 0, Col1ItemGroup, True, True)
+
+            .AddAgTextColumn(Dgl1, Col1Dimension1, 100, 0, ClsMain.FGetDimension1Caption(), CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Dimension1")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1Dimension2, 100, 0, ClsMain.FGetDimension2Caption(), CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Dimension2")), Boolean), False)
+
+            .AddAgTextColumn(Dgl1, Col1LotNo, 80, 20, Col1LotNo, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_LotNo")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1FromProcess, 90, 0, Col1FromProcess, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ProcessLine")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_ProcessLine")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1ProdOrder, 100, 0, Col1ProdOrder, True, True, False)
+            .AddAgTextColumn(Dgl1, Col1ProdOrderSr, 90, 0, Col1ProdOrderSr, False, False, False)
+            .AddAgNumberColumn(Dgl1, Col1Qty, 70, 8, 4, False, Col1Qty, True, False, True)
+            .AddAgTextColumn(Dgl1, Col1Unit, 70, 0, Col1Unit, True, True)
+            .AddAgTextColumn(Dgl1, Col1QtyDecimalPlaces, 50, 0, Col1QtyDecimalPlaces, False, True, False)
+            .AddAgNumberColumn(Dgl1, Col1MeasurePerPcs, 70, 8, 4, False, Col1MeasurePerPcs, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_MeasurePerPcs")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_MeasurePerPcs")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1TotalMeasure, 80, 8, 4, False, Col1TotalMeasure, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Measure")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Measure")), Boolean), True)
+            .AddAgTextColumn(Dgl1, Col1MeasureUnit, 70, 0, Col1MeasureUnit, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_MeasureUnit")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_MeasureUnit")), Boolean), True)
+            .AddAgTextColumn(Dgl1, Col1MeasureDecimalPlaces, 50, 0, Col1MeasureDecimalPlaces, False, True, False)
+            .AddAgNumberColumn(Dgl1, Col1Rate, 60, 8, 2, False, Col1Rate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1Amount, 80, 8, 2, False, Col1Amount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Amount")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Amount")), Boolean), True)
+            .AddAgTextColumn(Dgl1, Col1ProcessSequence, 100, 0, Col1ProcessSequence, False, True)
+            .AddAgTextColumn(Dgl1, Col1ProcessIterationsAllowed, 100, 0, Col1ProcessIterationsAllowed, False, True)
+            .AddAgTextColumn(Dgl1, Col1V_Nature, 150, 0, Col1V_Nature, False, False, False)
+            .AddAgTextColumn(Dgl1, Col1Remark, 150, 0, Col1Remark, True, False, False)
+        End With
+        AgL.AddAgDataGrid(Dgl1, Pnl1)
+        Dgl1.EnableHeadersVisualStyles = False
+        Dgl1.ColumnHeadersHeight = 40
+        Dgl1.AgSkipReadOnlyColumns = True
+
+        AgTemplate.ClsMain.ProcCreateLink(Dgl1, Col1ProdOrder)
+
+        Dgl1.AllowUserToOrderColumns = True
+
+        Dgl3.ColumnCount = 0
+        With AgCL
+            .AddAgTextColumn(Dgl3, ColSNo, 40, 5, ColSNo, True, True, False)
+            .AddAgTextColumn(Dgl3, Col3Parameter, 145, 0, Col3Parameter, True, True)
+            .AddAgTextColumn(Dgl3, Col3StdValue, 100, 0, Col3StdValue, True, False)
+        End With
+        AgL.AddAgDataGrid(Dgl3, Pnl3)
+        Dgl3.EnableHeadersVisualStyles = False
+        Dgl3.ColumnHeadersHeight = 20
+        Dgl3.AllowUserToAddRows = False
+        Dgl3.AgSkipReadOnlyColumns = True
+
+        Dgl5.ColumnCount = 0
+        With AgCL
+            .AddAgTextColumn(Dgl5, Col5Head, 150, 5, Col5Head, True, True)
+            .AddAgNumberColumn(Dgl5, Col5AtRate, 50, 5, 5, False, "@", True, True)
+            .AddAgNumberColumn(Dgl5, Col5Amount, 150, 5, 5, False, Col5Amount, True, False)
+        End With
+        AgL.AddAgDataGrid(Dgl5, Pnl5)
+        Dgl5.EnableHeadersVisualStyles = False
+        Dgl5.ColumnHeadersHeight = 18
+        Dgl5.AgSkipReadOnlyColumns = True
+
+        Dgl5.RowCount = 3
+        Dgl5.Item(Col5Head, Row5GrossAmount).Value = "Gross Amount"
+        Dgl5.Item(Col5Head, Row5RoundOff).Value = "Round Off"
+        Dgl5.Item(Col5Head, Row5NetAmount).Value = "Net Amount"
+
+        Dgl5.ReadOnly = True
+        Dgl5.ColumnHeadersDefaultCellStyle.BackColor = Color.SteelBlue
+        Dgl5.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        Dgl5.ColumnHeadersDefaultCellStyle.Font = New Font(Dgl5.ColumnHeadersDefaultCellStyle.Font, FontStyle.Bold)
+        Dgl5.ColumnHeadersHeight = 25
+
+        AgCL.GridSetiingShowXml(Me.Text & Dgl1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, Dgl1, False)
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As System.Data.SqlClient.SqlConnection, ByVal Cmd As System.Data.SqlClient.SqlCommand) Handles Me.BaseEvent_Save_InTrans
+        Dim I As Integer, mSr As Integer
+        Dim bSelectionQry$ = ""
+
+        If AgL.Dman_Execute("Select count(*) from CostCenterMast With (NoLock) Where Code ='" & mSearchCode & "'", AgL.GcnRead).ExecuteScalar = 0 Then
+            mQry = "INSERT INTO CostCenterMast(Code,Name,Subcode, Status, Div_Code, Site_Code, U_Name, U_EntDt, U_AE) " & _
+                    " Values (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(TxtManualRefNo.Text) & ", " & _
+                    " " & AgL.Chk_Text(TxtJobWorker.Tag) & ", " & _
+                    " " & AgL.Chk_Text(AgTemplate.ClsMain.EntryStatus.Active) & ", " & _
+                    " " & AgL.Chk_Text(AgL.PubDivCode) & ", " & _
+                    " " & AgL.Chk_Text(AgL.PubSiteCode) & ", " & _
+                    " " & AgL.Chk_Text(AgL.PubUserName) & ", " & _
+                    " " & AgL.Chk_Text(AgL.PubLoginDate) & ", 'A') "
+        Else
+            mQry = "Update CostCenterMast Set " & _
+                    " Name = " & AgL.Chk_Text(TxtManualRefNo.Text) & ", " & _
+                    " SubCode = " & AgL.Chk_Text(TxtJobWorker.Tag) & " " & _
+                    " Where Code = " & AgL.Chk_Text(mSearchCode) & ""
+        End If
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = "UPDATE JobOrder " & _
+                " SET " & _
+                " ManualRefNo = " & AgL.Chk_Text(TxtManualRefNo.Text) & ", " & _
+                " Process = " & AgL.Chk_Text(TxtProcess.AgSelectedValue) & ", " & _
+                " JobWorker = " & AgL.Chk_Text(TxtJobWorker.AgSelectedValue) & ", " & _
+                " OrderBy = " & AgL.Chk_Text(TxtOrderBy.AgSelectedValue) & ", " & _
+                " BillingType = " & AgL.Chk_Text(TxtBillingType.Text) & ", " & _
+                " DueDate = " & AgL.ConvertDate(TxtDueDate.Text) & ", " & _
+                " TotalQty = " & Val(LblTotalQty.Text) & ", " & _
+                " Rate = " & Val(TxtRate.Text) & ", " & _
+                " TotalAmount = " & Val(LblTotalAmount.Text) & ", " & _
+                " RoundOff = " & Val(Dgl5.Item(Col5Amount, Row5RoundOff).Value) & ", " & _
+                " NetAmount = " & Val(Dgl5.Item(Col5Amount, Row5NetAmount).Value) & ", " & _
+                " TotalMeasure = " & Val(LblTotalMeasure.Text) & ", " & _
+                " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " & _
+                " CostCenter = " & AgL.Chk_Text(mSearchCode) & ", " & _
+                " TermsAndConditions = " & AgL.Chk_Text(TxtTermsAndConditions.Text) & ", " & _
+                " InsideOutside = " & AgL.Chk_Text(TxtInsideOutside.Text) & ",  " & _
+                " JobWithMaterialYN = " & IIf(AgL.StrCmp(TxtWithMaterialYN.Text, "Yes"), 1, 0) & ", " & _
+                " Godown = " & AgL.Chk_Text(TxtGodown.AgSelectedValue) & " " & _
+                " Where DocId = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = "Delete From JobOrderDetail Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = "Delete From JobOrderQCInstruction Where DocId = '" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        'Never Try to Serialise Sr in Line Items 
+        'As Some other Entry points may updating values to this Search code and Sr
+        With Dgl1
+            For I = 0 To .RowCount - 1
+                If .Item(Col1Item, I).Value <> "" Then
+                    mSr += 1
+                    If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
+                    bSelectionQry += " Select " & AgL.Chk_Text(mSearchCode) & ", 	" & _
+                            " " & mSr & ", " & AgL.Chk_Text(.Item(Col1Item_Uid, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1Item, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1Dimension1, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1Dimension2, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1LotNo, I).Value) & "," & _
+                            " " & AgL.Chk_Text(.Item(Col1FromProcess, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1ProdOrder, I).Tag) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1ProdOrderSr, I).Value) & ", " & _
+                            " " & Val(.Item(Col1Qty, I).Value) & ", " & AgL.Chk_Text(.Item(Col1Unit, I).Value) & ",	" & _
+                            " " & Val(.Item(Col1MeasurePerPcs, I).Value) & ", " & Val(.Item(Col1TotalMeasure, I).Value) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1MeasureUnit, I).Value) & ", " & _
+                            " " & Val(.Item(Col1Rate, I).Value) & ",	" & _
+                            " " & Val(.Item(Col1Amount, I).Value) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1V_Nature, I).Value) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col1Remark, I).Value) & ", " & _
+                            " " & AgL.Chk_Text(mSearchCode) & ", " & _
+                            " " & mSr & " "
+                End If
+            Next
+        End With
+
+        If bSelectionQry <> "" Then
+            mQry = "  INSERT INTO JobOrderDetail(DocId, Sr, " & _
+                    " Item_Uid, Item, Dimension1, Dimension2, LotNo, FromProcess, ProdOrder, ProdOrderSr, Qty, Unit, MeasurePerPcs, TotalMeasure, " & _
+                    " MeasureUnit, Rate, Amount, V_Nature, Remark, JobOrder, JobOrderSr) " & bSelectionQry
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+        mSr = 0
+        bSelectionQry = ""
+        With Dgl3
+            For I = 0 To .RowCount - 1
+                If .Item(Col3Parameter, I).Value <> "" Then
+                    mSr += 1
+                    If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
+                    bSelectionQry += " Select '" & mSearchCode & "', " & Val(mSr) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col3Parameter, I).Value) & ", " & _
+                            " " & AgL.Chk_Text(.Item(Col3StdValue, I).Value) & " "
+                End If
+            Next
+        End With
+
+        If bSelectionQry <> "" Then
+            mQry = " INSERT INTO JobOrderQCInstruction(DocId, " & _
+                    " Sr, Parameter, StdValue) " & bSelectionQry
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+        FPostInStockProcess(mSearchCode, Conn, Cmd)
+        FPostInJobIssRecUID(mSearchCode, Conn, Cmd)
+
+        If ImportMode = True Then
+            mQry = " UPDATE JobOrder Set EntryStatus = '" & AgTemplate.ClsMain.LogStatus.LogImport & "' Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+        If AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName) Or AgL.StrCmp(AgL.PubUserName, "Sa") Then
+            AgCL.GridSetiingWriteXml(Me.Text & Dgl1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, Dgl1)
+        End If
+
+        mLastOrderBy = TxtOrderBy.AgSelectedValue
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
+        Dim I As Integer
+        Dim DrTemp As DataRow() = Nothing
+        Dim DsTemp As DataSet
+        Dim DtItem As DataTable = Nothing
+
+        mQry = "Select P.*, Sg.DispName As JobWorkerName, Sg1.DispName As OrderByName, " & _
+                " G.Description As GodownDesc, Pr.Description As ProcessDesc " & _
+                " From JobOrder P With (NoLock) " & _
+                " LEFT JOIN SubGroup Sg With (NoLock) On P.JobWorker = Sg.SubCode " & _
+                " LEFT JOIN SubGroup Sg1 With (NoLock) On P.OrderBy = Sg1.SubCode " & _
+                " LEFT JOIN Godown G With (NoLock) On P.Godown = G.Code " & _
+                " LEFT JOIN Process Pr With (NoLock) On P.Process = Pr.NCat " & _
+                " Where P.DocID = '" & SearchCode & "'"
+        DsTemp = AgL.FillData(mQry, AgL.GCn)
+
+        With DsTemp.Tables(0)
+            If .Rows.Count > 0 Then
+                IniGrid()
+                TxtManualRefNo.Text = AgL.XNull(.Rows(0)("ManualRefNo"))
+
+                TxtJobWorker.Tag = AgL.XNull(.Rows(0)("JobWorker"))
+                TxtJobWorker.Text = AgL.XNull(.Rows(0)("JobWorkerName"))
+
+                TxtOrderBy.Tag = AgL.XNull(.Rows(0)("OrderBy"))
+                TxtOrderBy.Text = AgL.XNull(.Rows(0)("OrderByName"))
+
+                TxtProcess.Tag = AgL.XNull(.Rows(0)("Process"))
+                TxtProcess.Text = AgL.XNull(.Rows(0)("ProcessDesc"))
+
+                TxtDueDate.Text = AgL.XNull(.Rows(0)("DueDate"))
+                TxtRemarks.Text = AgL.XNull(.Rows(0)("Remarks"))
+                TxtTermsAndConditions.Text = AgL.XNull(.Rows(0)("TermsAndConditions"))
+                TxtBillingType.Text = AgL.XNull(.Rows(0)("BillingType"))
+                TxtInsideOutside.Text = AgL.XNull(.Rows(0)("InsideOutside"))
+                LblTotalQty.Text = AgL.VNull(.Rows(0)("TotalQty"))
+                TxtRate.Text = AgL.VNull(.Rows(0)("Rate"))
+                LblTotalAmount.Text = AgL.VNull(.Rows(0)("TotalAmount"))
+                LblTotalMeasure.Text = AgL.VNull(.Rows(0)("TotalMeasure"))
+
+                TxtGodown.Tag = AgL.XNull(.Rows(0)("Godown"))
+                TxtGodown.Text = AgL.XNull(AgL.Dman_Execute(" SELECT Description FROM Godown WHERE Code =  '" & AgL.XNull(.Rows(0)("Godown")) & "' ", AgL.GCn).ExecuteScalar)
+
+                TxtWithMaterialYN.Text = IIf(AgL.VNull(.Rows(0)("JobWithMaterialYN")) = 0, "No", "Yes")
+
+                Dgl5.Item(Col5Amount, Row5GrossAmount).Value = AgL.VNull(.Rows(0)("TotalAmount"))
+                Dgl5.Item(Col5Amount, Row5RoundOff).Value = AgL.VNull(.Rows(0)("RoundOff"))
+                Dgl5.Item(Col5Amount, Row5NetAmount).Value = AgL.VNull(.Rows(0)("NetAmount"))
+
+                ChkShowOnlyImportedRecords.Visible = True
+                If AgL.StrCmp(AgL.XNull(.Rows(0)("EntryStatus")), AgTemplate.ClsMain.LogStatus.LogImport) Then
+                    BtnImprtFromText.Text = ImportAction_ClearImport
+                Else
+                    BtnImprtFromText.Text = ImportAction_NewImport
+                End If
+
+                isRecordLocked = False
+                '-------------------------------------------------------------
+                'Line Records are showing in First Grid
+                '-------------------------------------------------------------
+                Dim strQryJobReceived$ = "SELECT L.JobOrder, L.JobOrderSr, Sum(L.Qty) AS Qty " & _
+                                         "FROM JobReceiveDetail L With (NoLock) " & _
+                                         "Where L.JobOrder = '" & SearchCode & "' " & _
+                                         "GROUP BY L.JobOrder, L.JobOrderSr  "
+
+                Dim strQryJobAmended$ = "SELECT L.JobOrder, L.JobOrderSr, Sum(L.Qty) AS Qty " & _
+                                        "FROM JobOrderDetail L With (NoLock) " & _
+                                        "Where L.JobOrder = '" & SearchCode & "' And L.JobOrder <> L.DocID  " & _
+                                        "GROUP BY L.JobOrder, L.JobOrderSr  "
+
+
+                mQry = "Select L.*, IU.Item_UID as Item_UID_Desc, I.Description As ItemDesc, " & _
+                        " U.DecimalPlaces as QtyDecimalPlaces, MU.DecimalPlaces as MeasureDecimalPlaces, " & _
+                        " P.Description As FromProcessDesc, Po.ManualRefNo As ProdOrderNo, IG.Description AS ItemGroupDesc, " & _
+                        " D1.Description As Dimension1Desc, D2.Description As Dimension2Desc, " & _
+                        " (Case When IsNull(JobRec.Qty,0) > 0 Or IsNull(JobAmd.Qty,0) > 0 Then 1 Else 0 End) as RowLocked " & _
+                        " From JobOrderDetail L With (Nolock)  " & _
+                        " LEFT JOIN Item I With (Nolock)  On L.Item = I.Code " & _
+                        " LEFT JOIN ItemGroup IG On Ig.Code = I.ItemGroup" & _
+                        " LEFT JOIN Item_UID IU With (Nolock)  On L.Item_UID = IU.Code " & _
+                        " LEFT JOIN Process P With (Nolock)  On L.FromProcess = P.NCat " & _
+                        " LEFT JOIN ProdOrder Po With (Nolock)  On L.ProdOrder = Po.DocId " & _
+                        " Left Join Unit U With (Nolock)  On L.Unit = U.Code " & _
+                        " Left Join Unit MU With (Nolock)  On L.MeasureUnit = MU.Code " & _
+                        " Left Join Dimension1 D1 With (Nolock)  On L.Dimension1 = D1.Code " & _
+                        " Left Join Dimension2 D2 With (Nolock)  On L.Dimension2 = D2.Code " & _
+                        " Left Join (" & strQryJobReceived & ") as JobRec On L.DocID + Convert(VarChar,L.Sr) = JobRec.JobOrder + Convert(VarChar,JobRec.JobOrderSr) " & _
+                        " Left Join (" & strQryJobAmended & ") as JobAmd On L.DocID + Convert(VarChar,L.Sr) = JobAmd.JobOrder + Convert(VarChar,JobAmd.JobOrderSr) " & _
+                        " Where L.DocId = '" & SearchCode & "' Order By Sr"
+
+                DsTemp = AgL.FillData(mQry, AgL.GCn)
+
+                With DsTemp.Tables(0)
+                    Dgl1.RowCount = 1
+                    Dgl1.Rows.Clear()
+                    If .Rows.Count > 0 Then
+                        For I = 0 To DsTemp.Tables(0).Rows.Count - 1
+                            Dgl1.Rows.Add()
+                            Dgl1.Item(ColSNo, I).Value = Dgl1.Rows.Count - 1
+
+                            Dgl1.Item(Col1Item_Uid, I).Tag = AgL.XNull(.Rows(I)("Item_Uid"))
+                            Dgl1.Item(Col1Item_Uid, I).Value = AgL.XNull(.Rows(I)("Item_Uid_Desc"))
+                            'Dgl1.Item(Col1Item_Uid, I).Value = AgL.XNull(AgL.Dman_Execute("Select Item_Uid From Item_Uid Where Code = '" & AgL.XNull(.Rows(I)("Item_Uid")) & "' ", AgL.GCn).ExecuteScalar)
+
+                            Dgl1.Item(Col1Item, I).Tag = AgL.XNull(.Rows(I)("Item"))
+                            Dgl1.Item(Col1Item, I).Value = AgL.XNull(.Rows(I)("ItemDesc"))
+
+                            Dgl1.Item(Col1Dimension1, I).Tag = AgL.XNull(.Rows(I)("Dimension1"))
+                            Dgl1.Item(Col1Dimension1, I).Value = AgL.XNull(.Rows(I)("Dimension1Desc"))
+                            Dgl1.Item(Col1Dimension2, I).Tag = AgL.XNull(.Rows(I)("Dimension2"))
+                            Dgl1.Item(Col1Dimension2, I).Value = AgL.XNull(.Rows(I)("Dimension2Desc"))
+
+
+
+                            Dgl1.Item(Col1ItemGroup, I).Value = AgL.XNull(.Rows(I)("ItemGroupDesc"))
+                            Dgl1.Item(Col1LotNo, I).Value = AgL.XNull(.Rows(I)("LotNo"))
+
+                            Dgl1.Item(Col1FromProcess, I).Tag = AgL.XNull(.Rows(I)("FromProcess"))
+                            Dgl1.Item(Col1FromProcess, I).Value = AgL.XNull(.Rows(I)("FromProcessDesc"))
+
+                            Dgl1.Item(Col1ProdOrder, I).Tag = AgL.XNull(.Rows(I)("ProdOrder"))
+                            Dgl1.Item(Col1ProdOrder, I).Value = AgL.XNull(.Rows(I)("ProdOrderNo"))
+                            Dgl1.Item(Col1ProdOrderSr, I).Value = AgL.XNull(.Rows(I)("ProdOrderSr"))
+
+                            mQry = "Select ProcessSequence, (Select Count(*) from ProcessSequenceDetail With (Nolock) Where Code = H.ProcessSequence And Process = '" & TxtProcess.Tag & "') as IterationsAllowed from Item H With (NoLock) Where Code = '" & Dgl1.Item(Col1Item, I).Tag & "' "
+                            DtItem = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+                            If DtItem.Rows.Count > 0 Then
+                                Dgl1.Item(Col1ProcessSequence, I).Value = AgL.XNull(DtItem.Rows(0)("ProcessSequence"))
+                                Dgl1.Item(Col1ProcessIterationsAllowed, I).Value = AgL.VNull(DtItem.Rows(0)("IterationsAllowed"))
+                            End If
+
+                            Dgl1.Item(Col1Qty, I).Value = Format(AgL.VNull(.Rows(I)("Qty")), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
+                            Dgl1.Item(Col1Unit, I).Value = AgL.XNull(.Rows(I)("Unit"))
+
+                            Dgl1.Item(Col1QtyDecimalPlaces, I).Value = AgL.VNull(.Rows(I)("QtyDecimalPlaces"))
+
+                            Dgl1.Item(Col1MeasurePerPcs, I).Value = Format(AgL.VNull(.Rows(I)("MeasurePerPcs")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
+                            Dgl1.Item(Col1TotalMeasure, I).Value = Format(AgL.VNull(.Rows(I)("TotalMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
+                            Dgl1.Item(Col1MeasureUnit, I).Value = AgL.XNull(.Rows(I)("MeasureUnit"))
+
+                            Dgl1.Item(Col1MeasureDecimalPlaces, I).Value = AgL.VNull(.Rows(I)("MeasureDecimalPlaces"))
+
+                            Dgl1.Item(Col1Rate, I).Value = AgL.VNull(.Rows(I)("Rate"))
+                            Dgl1.Item(Col1Amount, I).Value = AgL.VNull(.Rows(I)("Amount"))
+
+                            Dgl1.Item(Col1V_Nature, I).Value = AgL.XNull(.Rows(I)("V_Nature"))
+                            Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
+
+                            If .Rows(I)("RowLocked") > 0 Then
+                                Dgl1.Rows(I).DefaultCellStyle.BackColor = AgTemplate.ClsMain.Colours.GridRow_Locked : Dgl1.Rows(I).ReadOnly = True
+                                If isRecordLocked = False Then isRecordLocked = True
+                            End If
+
+
+                        Next I
+                    End If
+                End With
+
+                '-------------------------------------------------------------
+                'Line Records are showing in First Grid
+                '-------------------------------------------------------------
+
+                mQry = "Select * from JobOrderQCInstruction  With (NoLock) Where DocId = '" & SearchCode & "' Order By Sr"
+                DsTemp = AgL.FillData(mQry, AgL.GCn)
+                With DsTemp.Tables(0)
+                    Dgl3.RowCount = 1
+                    Dgl3.Rows.Clear()
+                    If .Rows.Count > 0 Then
+                        For I = 0 To .Rows.Count - 1
+                            Dgl3.Rows.Add()
+                            Dgl3.Item(ColSNo, I).Value = Dgl3.Rows.Count
+                            Dgl3.Item(Col3Parameter, I).Value = AgL.XNull(.Rows(I)("Parameter"))
+                            Dgl3.Item(Col3StdValue, I).Value = AgL.XNull(.Rows(I)("StdValue"))
+                        Next I
+                    End If
+                End With
+
+                'Calculation()
+                '-------------------------------------------------------------
+            End If
+        End With
+    End Sub
+
+    Private Sub FrmProductionOrder_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Topctrl1.ChangeAgGridState(Dgl1, False)
+        Topctrl1.ChangeAgGridState(Dgl3, False)
+        'If AgL.VNull(AgL.PubDtEnviro.Rows(0)("PrintToPrinter")) <> 0 Then RbtAllItems.Checked = True Else RbtForStock.Checked = True
+        RbtAllItems.Checked = True
+        AgL.WinSetting(Me, 660, 992, 0, 0)
+    End Sub
+
+    Private Sub DGL1_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.KeyDown
+        If e.Control And e.KeyCode = Keys.D Then
+            sender.CurrentRow.Selected = True
+        End If
+        If e.Control Or e.Shift Or e.Alt Then Exit Sub
+    End Sub
+
+    Private Sub Dgl1_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgl1.CellEnter
+        Try
+            If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
+            If Dgl1.CurrentCell Is Nothing Then Exit Sub
+            Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
+                Case Col1Qty
+                    CType(Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex), AgControls.AgTextColumn).AgNumberRightPlaces = Val(Dgl1.Item(Col1QtyDecimalPlaces, Dgl1.CurrentCell.RowIndex).Value)
+
+                Case Col1MeasurePerPcs, Col1TotalMeasure
+                    CType(Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex), AgControls.AgTextColumn).AgNumberRightPlaces = Val(Dgl1.Item(Col1MeasureDecimalPlaces, Dgl1.CurrentCell.RowIndex).Value)
+
+                Case Col1Dimension1, Col1Dimension2
+                    If Dgl1.Item(Col1ProdOrder, Dgl1.CurrentCell.RowIndex).Value <> "" Then
+                        Dgl1.Columns(Col1Dimension1).ReadOnly = True
+                        Dgl1.Columns(Col1Dimension2).ReadOnly = True
+                    Else
+                        Dgl1.Columns(Col1Dimension1).ReadOnly = False
+                        Dgl1.Columns(Col1Dimension2).ReadOnly = False
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub DGL1_RowsAdded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles Dgl1.RowsAdded
+        sender(ColSNo, sender.Rows.Count - 1).Value = Trim(sender.Rows.Count)
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseFunction_Calculation() Handles Me.BaseFunction_Calculation
+        Dim I As Integer
+
+        LblTotalQty.Text = 0 : LblTotalMeasure.Text = 0 : LblTotalAmount.Text = 0
+
+        For I = 0 To Dgl1.RowCount - 1
+            If Dgl1.Item(Col1Item, I).Value <> "" Then
+                Dgl1.Item(Col1TotalMeasure, I).Value = Format(Val(Dgl1.Item(Col1Qty, I).Value) * Val(Dgl1.Item(Col1MeasurePerPcs, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1TotalMeasure), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+
+                If AgL.StrCmp(TxtBillingType.Text, "Qty") Or TxtBillingType.Text = "" Then
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1Qty, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                ElseIf AgL.StrCmp(TxtBillingType.Text, "Measure") Then
+                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1TotalMeasure, I).Value) * Val(Dgl1.Item(Col1Rate, I).Value), "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                End If
+
+                'Footer Calculation
+                LblTotalQty.Text = Val(LblTotalQty.Text) + Val(Dgl1.Item(Col1Qty, I).Value)
+                LblTotalAmount.Text = Val(LblTotalAmount.Text) + Val(Dgl1.Item(Col1Amount, I).Value)
+                LblTotalMeasure.Text = Val(LblTotalMeasure.Text) + Val(Dgl1.Item(Col1TotalMeasure, I).Value)
+            End If
+        Next
+        Dgl5.Item(Col5Amount, Row5GrossAmount).Value = LblTotalAmount.Text
+        Dgl5.Item(Col5Amount, Row5RoundOff).Value = Math.Round(Val(Dgl5.Item(Col5Amount, Row5GrossAmount).Value) - Math.Round(Val(Dgl5.Item(Col5Amount, Row5GrossAmount).Value)), 2)
+        Dgl5.Item(Col5Amount, Row5NetAmount).Value = Math.Round(Val(Dgl5.Item(Col5Amount, Row5GrossAmount).Value))
+    End Sub
+
+    Private Sub FrmProductionOrder_BaseEvent_Data_Validation(ByRef passed As Boolean) Handles Me.BaseEvent_Data_Validation
+        Dim I As Integer = 0
+        Dim DtTemp As DataTable = Nothing
+        Dim mCurrStock As Double
+        Dim StrMessage As String = ""
+        Dim mSelectionQry$ = ""
+
+        passed = FCheckDuplicateRefNo()
+
+        If AgL.RequiredField(TxtJobWorker, LblJobWorker.Text) Then passed = False : Exit Sub
+        If AgL.RequiredField(TxtDueDate, LblDueDate.Text) Then passed = False : Exit Sub
+        If AgCL.AgIsBlankGrid(Dgl1, Dgl1.Columns(Col1Item).Index) Then passed = False : Exit Sub
+        If AgCL.AgIsDuplicate(Dgl1, "" + Dgl1.Columns(Col1Item_Uid).Index.ToString + "," + Dgl1.Columns(Col1Item).Index.ToString + "," + Dgl1.Columns(Col1ProdOrder).Index.ToString + "," + Dgl1.Columns(Col1LotNo).Index.ToString + "") Then passed = False : Exit Sub
+
+        With Dgl1
+            For I = 0 To .Rows.Count - 1
+                If .Item(Col1Item, I).Value <> "" Then
+                    mQry = " SELECT isnull(IsRequired_LotNo,0) AS IsRequired_LotNo FROM ItemSiteDetail " & _
+                            " WHERE Code = '" & .Item(Col1Item, I).Tag & "' " & _
+                            " AND Div_Code = '" & AgL.PubDivCode & "' AND Site_Code = '" & AgL.PubSiteCode & "' "
+                    If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) <> 0 And .Item(Col1LotNo, I).Value = "" Then
+                        MsgBox("Lot No is Required For Item : " & .Item(Col1Item, I).Value & " At Row No. " & I + 1 & "", MsgBoxStyle.Information)
+                        .CurrentCell = .Item(Col1LotNo, I) : Dgl1.Focus()
+                        passed = False : Exit Sub
+                    End If
+                End If
+            Next
+        End With
+
+        Dim mTampQry = "  Declare @TmpTable as Table " & _
+                  " ( " & _
+                  " Item nVarchar(100), " & _
+                  " Process nVarchar(100), " & _
+                  " Qty Float " & _
+                  " )"
+
+        With Dgl1
+            For I = 0 To .Rows.Count - 1
+                If .Item(Col1Item, I).Value <> "" Then
+                    StrMessage = ""
+                    If Val(.Item(Col1Qty, I).Value) = 0 Then
+                        If StrMessage <> "" Then StrMessage += vbCrLf
+                        StrMessage += "Qty Is 0 At Row No " & Dgl1.Item(ColSNo, I).Value & ""
+                    End If
+                    If StrMessage <> "" Then
+                        MsgBox(StrMessage)
+                        passed = False : Exit Sub
+                    End If
+
+
+                    'If CType(IsNull(DtV_TypeSettings.Rows(0)("IsMandatory_Rate"), "1"), Boolean) Then
+                    '    If Val(.Item(Col1Rate, I).Value) = 0 Then
+                    '        If StrMessage <> "" Then StrMessage += vbCrLf
+                    '        StrMessage += "Rate Is 0 At Row No " & Dgl1.Item(ColSNo, I).Value & ""
+                    '    End If
+                    'End If
+
+                    If StrMessage <> "" Then
+                        MsgBox(StrMessage)
+                        passed = False : Exit Sub
+                    End If
+
+                    StrMessage = ""
+                    If AgL.PubDtEnviro.Rows(0)("IsNegetiveStockAllowed") Then
+                        mCurrStock = AgTemplate.ClsMain.FunRetStock(.AgSelectedValue(Col1Item, I), mSearchCode, , TxtGodown.AgSelectedValue, , AgTemplate.ClsMain.StockStatus.Standard, TxtV_Date.Text)
+                        If mCurrStock < Val(.Item(Col1Qty, I).Value) Then
+                            If StrMessage <> "" Then StrMessage += vbCrLf
+                            StrMessage += "Qty of " & .Item(Col1Item, I).Value & " In " & TxtGodown.Text & " is less than " & Dgl1.Item(Col1Qty, I).Value & vbCrLf & " Current Stock Is : " & mCurrStock & "."
+                        End If
+                    End If
+
+                    If StrMessage <> "" Then
+                        If MsgBox(StrMessage & vbCrLf & "Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                            passed = False : Exit Sub
+                        End If
+                    End If
+
+                    If Dgl1.Item(Col1FromProcess, I).Value <> "" Then
+                        mTampQry += "Insert Into @TmpTable (Item, Process, Qty) " & _
+                                   " Values (" & AgL.Chk_Text(Dgl1.Item(Col1Item, I).Tag) & ", " & _
+                                   " " & AgL.Chk_Text(Dgl1.Item(Col1FromProcess, I).Tag) & ", " & _
+                                   " " & Val(Dgl1.Item(Col1Qty, I).Value) & ")"
+                    End If
+
+                    If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsPostedInStock")), Boolean) Then
+                        If mSelectionQry <> "" Then mSelectionQry += " UNION ALL "
+                        mSelectionQry += "Select " & AgL.Chk_Text(Dgl1.Item(Col1Item, I).Tag) & ", " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " & Val(Dgl1.Item(Col1Qty, I).Value) & " "
+                    End If
+                End If
+            Next
+        End With
+
+
+        If AgL.VNull(AgL.Dman_Execute("Select IsNull(RestrictNegetiveStock,0) From Godown Where Code = '" & TxtGodown.Tag & "'", AgL.GcnRead).ExecuteScalar) <> 0 Then
+            mTampQry += " Select L.Item, L.Process, Sum(L.Qty) As Qty, Max(I.Description) As ItemDesc " & _
+                        " From @TmpTable L " & _
+                        " LEFT JOIN Item I On L.Item = I.Code " & _
+                        " Group By Item, Process "
+            DtTemp = AgL.FillData(mTampQry, AgL.GCn).tables(0)
+
+            If DtTemp.Rows.Count > 0 Then
+                For I = 0 To DtTemp.Rows.Count - 1
+                    mQry = " Select IsNull(Sum(Qty_Rec),0) - IsNull(Sum(Qty_Iss),0) As Qty From Stock Where Item = '" & DtTemp.Rows(I)("Item") & "' And Process = '" & DtTemp.Rows(I)("Process") & "' And DocId <> '" & mSearchCode & "'"
+                    If AgL.VNull(DtTemp.Rows(I)("Qty")) > AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar) Then
+                        MsgBox("Current Stock Of Item " & DtTemp.Rows(I)("ItemDesc") & " In Process " & DtTemp.Rows(I)("Process") & " Is Less Then " & AgL.VNull(DtTemp.Rows(I)("Qty")) & "", MsgBoxStyle.Information)
+                        passed = False : Exit Sub
+                    End If
+                Next
+            End If
+        End If
+
+        If StrMessage <> "" Then
+            MsgBox(StrMessage)
+            passed = False : Exit Sub
+        End If
+
+        Dim StrMsg1$ = ""
+        StrMsg1 = FDataValidation_Item_UID()
+
+        If StrMsg1 <> "" Then
+            If ImportMode = True Then
+                ImportMessegeStr += StrMsg1
+            Else
+                MsgBox(StrMsg1)
+            End If
+            passed = False : Exit Sub
+        End If
+
+        If mSelectionQry <> "" Then
+            'Selection Qry Contains Loop Genearted Selecion Qry String For Item, LotNo And Its Quantity
+            'For Example Select " & AgL.Chk_Text(Dgl1.Item(Col1Item, I).Tag) & ", " & Val(Dgl1.Item(Col1Qty, I).Value) & " 
+            passed = AgTemplate.ClsMain.FIsNegativeStock(mSelectionQry, mSearchCode, TxtGodown.Tag, TxtV_Date.Text)
+        End If
+
+    End Sub
+
+    Private Function FCheckDuplicateRefNo() As Boolean
+        FCheckDuplicateRefNo = True
+        If Topctrl1.Mode = "Add" Then
+            mQry = " SELECT COUNT(*) FROM JobOrder  With (NoLock) " & _
+                    " WHERE ManualRefNo = '" & TxtManualRefNo.Text & "'   " & _
+                    " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  " & _
+                    " And Div_Code = '" & TxtDivision.AgSelectedValue & "' " & _
+                    " And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'  " & _
+                    " And EntryStatus <> '" & AgTemplate.ClsMain.LogStatus.LogDiscard & "' "
+            If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then TxtManualRefNo.Text = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "JobOrder", TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, AgTemplate.ClsMain.ManualRefType.Max) : MsgBox("Reference No. Already Exists New Reference No. Alloted : " & TxtManualRefNo.Text)
+        Else
+            mQry = " SELECT COUNT(*) FROM JobOrder With (NoLock) " & _
+                    " WHERE ManualRefNo = '" & TxtManualRefNo.Text & "'   " & _
+                    " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  " & _
+                    " And Div_Code = '" & TxtDivision.AgSelectedValue & "' " & _
+                    " And Site_Code = '" & TxtSite_Code.AgSelectedValue & "' " & _
+                    " AND DocID <>'" & mSearchCode & "' " & _
+                    " And EntryStatus <> '" & AgTemplate.ClsMain.LogStatus.LogDiscard & "' "
+            If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Reference No. Already Exists") : TxtManualRefNo.Focus()
+        End If
+    End Function
+
+    Private Sub FrmProductionOrder_BaseFunction_BlankText() Handles Me.BaseFunction_BlankText
+        Dgl1.RowCount = 1 : Dgl1.Rows.Clear()
+        Dgl3.RowCount = 1 : Dgl3.Rows.Clear()
+
+        LblTotalMeasure.Text = 0 : LblTotalQty.Text = 0 : LblTotalAmount.Text = 0
+
+        Dgl5.Item(Col5Amount, Row5GrossAmount).Value = 0
+        Dgl5.Item(Col5Amount, Row5RoundOff).Value = 0
+        Dgl5.Item(Col5Amount, Row5NetAmount).Value = 0
+    End Sub
+
+    Private Sub Txt_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtV_Type.Validating, TxtManualRefNo.Validating, TxtV_Date.Validating, TxtJobWorker.Validating, TxtRate.Validating
+        Dim DrTemp As DataRow() = Nothing
+        Dim DtTemp As DataTable = Nothing
+        Dim I As Integer = 0
+        Try
+            Select Case sender.name
+                Case TxtV_Date.Name
+                    If TxtV_Date.Text <> "" And TxtDueDate.Text = "" And AgL.PubDtEnviro.Rows.Count > 0 Then
+                        TxtDueDate.Text = DateAdd(DateInterval.Day, AgL.VNull(AgL.PubDtEnviro.Rows(0)("DefaultDueDays")), CDate(TxtV_Date.Text))
+                    End If
+                    If Topctrl1.Mode = "Add" Then
+                        TxtManualRefNo.Text = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "JobOrder", TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, AgTemplate.ClsMain.ManualRefType.Max)
+                    End If
+                    If Dgl1.AgHelpDataSet(Col1Item) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1Item).Dispose() : Dgl1.AgHelpDataSet(Col1Item) = Nothing
+                    If TxtJobWorker.AgHelpDataSet IsNot Nothing Then TxtJobWorker.AgHelpDataSet.Dispose() : TxtJobWorker.AgHelpDataSet = Nothing
+                    If AgL.StrCmp(Topctrl1.Mode, "Add") Then Call ProcFillJobValues()
+
+                Case TxtV_Type.Name
+                    TxtTermsAndConditions.Text = AgTemplate.ClsMain.FRetTermsCondition(TxtV_Type.AgSelectedValue)
+                    If Topctrl1.Mode = "Add" Then
+                        TxtManualRefNo.Text = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "JobOrder", TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, AgTemplate.ClsMain.ManualRefType.Max)
+                    End If
+                    IniGrid()
+                    FAsignProcess()
+
+                Case TxtManualRefNo.Name
+                    e.Cancel = Not FCheckDuplicateRefNo()
+
+                Case TxtJobWorker.Name
+                    If TxtJobWorker.AgSelectedValue <> "" Then
+                        mQry = "Select IsNull(H.JobWithMaterialYN,0) As JobWithMaterialYN, H.InsideOutside " & _
+                                " From JobWorker H  With (NoLock) " & _
+                                " Where H.SubCode = '" & TxtJobWorker.AgSelectedValue & "' "
+                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                        With DtTemp
+                            If .Rows.Count > 0 Then
+                                If AgL.XNull(.Rows(0)("InsideOutside")) <> "" And TxtInsideOutside.Text = "" Then TxtInsideOutside.Text = AgL.XNull(.Rows(0)("InsideOutside"))
+                                TxtWithMaterialYN.Text = IIf(AgL.VNull(.Rows(0)("JobWithMaterialYN")) = 0, "No", "Yes")
+                            End If
+                        End With
+                    End If
+
+                Case TxtRate.Name
+                    For I = 0 To Dgl1.Rows.Count - 1
+                        If Val(Dgl1.Item(Col1Item, I).Value) = "0" Then
+                            Dgl1.Item(Col1Rate, I).Value = Val(TxtRate.Text)
+                        End If
+                    Next
+                    Calculation()
+
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Validating_Item(ByVal Code As String, ByVal mRow As Integer)
+        Dim DrTemp As DataRow() = Nothing
+        Dim DtTemp As DataTable = Nothing
+        Dim sqlConn As SqlClient.SqlConnection = Nothing
+        Dim sqlDA As SqlClient.SqlDataAdapter = Nothing
+
+        sqlConn = New SqlClient.SqlConnection
+        sqlConn.ConnectionString = AgL.Gcn_ConnectionString
+        sqlConn.Open()
+
+        Try
+            If Dgl1.Item(Col1Item, mRow).Value.ToString.Trim = "" Or Dgl1.AgSelectedValue(Col1Item, mRow).ToString.Trim = "" Then
+                Dgl1.Item(Col1Qty, mRow).Value = 0
+                Dgl1.Item(Col1Unit, mRow).Value = ""
+                Dgl1.Item(Col1MeasurePerPcs, mRow).Value = 0
+                Dgl1.Item(Col1MeasureUnit, mRow).Value = ""
+            Else
+                If Dgl1.AgDataRow IsNot Nothing Then
+                    Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("Unit").Value)
+                    Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("QtyDecimalPlaces").Value)
+                    Dgl1.Item(Col1MeasurePerPcs, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("MeasurePerPcs").Value)
+                    Dgl1.Item(Col1MeasureUnit, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("MeasureUnit").Value)
+                    Dgl1.Item(Col1ItemGroup, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("ItemGroupDesc").Value)
+                    Dgl1.Item(Col1MeasureDecimalPlaces, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("MeasureDecimalPlaces").Value)
+
+                    Dgl1.Item(Col1Qty, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("Qty").Value)
+                    Dgl1.Item(Col1FromProcess, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("Process").Value)
+                    Dgl1.Item(Col1FromProcess, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("ProcessCode").Value)
+
+
+                    Dgl1.Item(Col1Dimension1, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("Dimension1").Value)
+                    Dgl1.Item(Col1Dimension1, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("" & ClsMain.FGetDimension1Caption() & "").Value)
+
+                    Dgl1.Item(Col1Dimension2, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("Dimension2").Value)
+                    Dgl1.Item(Col1Dimension2, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("" & ClsMain.FGetDimension2Caption() & "").Value)
+                   
+
+
+                    If RbtForStock.Checked Then
+                        Dgl1.Item(Col1V_Nature, mRow).Value = RbtForStock.Text
+                    ElseIf RbtForPrevProcessStock.Checked Then
+                        Dgl1.Item(Col1V_Nature, mRow).Value = RbtForPrevProcessStock.Text
+                    ElseIf RbtForProdOrder.Checked Then
+                        Dgl1.Item(Col1V_Nature, mRow).Value = RbtForProdOrder.Text
+                    Else
+                        Dgl1.Item(Col1V_Nature, mRow).Value = RbtAllItems.Text
+                    End If
+
+                    Dgl1.Item(Col1Rate, mRow).Value = FGetJobRate(TxtProcess.Tag, TxtJobWorker.Tag, Dgl1.Item(Col1Item, mRow).Tag)
+
+                    mQry = "Select ProcessSequence, (Select Count(*) from ProcessSequenceDetail Where Code = H.ProcessSequence And Process = '" & LblV_Type.Tag & "') as IterationsAllowed from Item H Where Code = '" & Dgl1.Item(Col1Item, mRow).Tag & "' "
+                    DtTemp = AgL.FillData(mQry, AgL.GcnRead).tables(0)
+                    If DtTemp.Rows.Count > 0 Then
+                        Dgl1.Item(Col1ProcessSequence, mRow).Value = AgL.XNull(DtTemp.Rows(0)("ProcessSequence"))
+                        Dgl1.Item(Col1ProcessIterationsAllowed, mRow).Value = AgL.VNull(DtTemp.Rows(0)("IterationsAllowed"))
+                    End If
+
+                    'Code Writtern For Retreiving Pervious Process
+                    If Dgl1.Item(Col1FromProcess, mRow).Value = "" Then
+                        mQry = " SELECT Top 1 Psd.Process As ProcessCode, P.Description As ProcessDesc " & _
+                                " FROM Item I  " & _
+                                " LEFT JOIN ProcessSequenceDetail Psd ON I.ProcessSequence = Psd.Code " & _
+                                " LEFT JOIN Process P ON Psd.Process = P.NCat " & _
+                                " WHERE I.Code = '" & Dgl1.Item(Col1Item, mRow).Tag & "' " & _
+                                " AND Psd.Sequence < (Select Sequence From ProcessSequenceDetail " & _
+                                "                     Where Code = '" & Dgl1.Item(Col1ProcessSequence, mRow).Value & "'  " & _
+                                "                     And Process = '" & TxtProcess.Tag & "')  " & _
+                                " Order By Psd.Sequence Desc "
+                        Dim DtProcess As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                        If DtProcess.Rows.Count > 0 Then
+                            Dgl1.Item(Col1FromProcess, mRow).Tag = AgL.XNull(DtProcess.Rows(0)("ProcessCode"))
+                            Dgl1.Item(Col1FromProcess, mRow).Value = AgL.XNull(DtProcess.Rows(0)("ProcessDesc"))
+                        End If
+                    End If
+
+                    Dgl1.Item(Col1ProdOrder, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("ProdOrder").Value)
+                    Dgl1.Item(Col1ProdOrder, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("ProdOrderNo").Value)
+                    Dgl1.Item(Col1ProdOrderSr, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("ProdOrderSr").Value)
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message & " On Validating_Item Function ")
+        Finally
+            If sqlConn IsNot Nothing Then sqlConn.Dispose()
+            If sqlDA IsNot Nothing Then sqlDA.Dispose()
+        End Try
+    End Sub
+
+    Private Sub Dgl1_EditingControl_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles Dgl1.EditingControl_Validating
+        If Topctrl1.Mode = "Browse" Then Exit Sub
+        Dim mRowIndex As Integer, mColumnIndex As Integer
+        Dim DrTemp As DataRow() = Nothing
+        Dim ErrMsgStr$ = ""
+        Try
+            mRowIndex = Dgl1.CurrentCell.RowIndex
+            mColumnIndex = Dgl1.CurrentCell.ColumnIndex
+            If Dgl1.Item(mColumnIndex, mRowIndex).Value Is Nothing Then Dgl1.Item(mColumnIndex, mRowIndex).Value = ""
+            Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
+                Case Col1Item
+                    Validating_Item(Dgl1.AgSelectedValue(Col1Item, mRowIndex), mRowIndex)
+
+                Case Col1Item_Uid
+                    ErrMsgStr = FCheck_Item_UID(Dgl1.Item(Col1Item_Uid, mRowIndex).Value)
+                    If ErrMsgStr <> "" Then
+                        MsgBox(ErrMsgStr)
+                        Dgl1.Item(Col1Item_Uid, Dgl1.CurrentCell.RowIndex).Value = ""
+                        Dgl1.Item(Col1Item_Uid, Dgl1.CurrentCell.RowIndex).Tag = ""
+                        Exit Sub
+                    End If
+                    Validating_Item_Uid(Dgl1.Item(Col1Item_Uid, mRowIndex).Value, mRowIndex)
+            End Select
+            Call Calculation()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FPostInStockProcess(ByVal SearchCode As String, ByVal Conn As System.Data.SqlClient.SqlConnection, ByVal Cmd As System.Data.SqlClient.SqlCommand)
+        Dim Stock As AgTemplate.ClsMain.StructStock = Nothing, StockProcess As AgTemplate.ClsMain.StructStock = Nothing
+
+
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsPostedInStock")), Boolean) Then
+            mQry = "Delete From Stock Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+
+            mQry = "INSERT INTO Stock(DocID, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, " & _
+                    " SubCode, Item, Godown, Qty_Iss, Unit, MeasurePerPcs, Measure_Iss, MeasureUnit, " & _
+                    " Remarks, Process, CostCenter) " & _
+                    " Select L.DocID, row_number() OVER (ORDER BY L.Item),Max(H.V_Type), " & _
+                    " Max(H.V_Prefix), Max(H.V_Date), Max(H.V_No), Max(H.ManualRefNo), Max(H.Div_Code), Max(H.Site_Code),   " & _
+                    " Max(H.JobWorker), L.Item, Max(H.Godown), Sum(L.Qty), Max(L.Unit), Max(L.MeasurePerPcs), " & _
+                    " Sum(L.TotalMeasure), Max(L.MeasureUnit),   " & _
+                    " Max(Remark), L.FromProcess, Max(H.CostCenter) " & _
+                    " From (Select * From JobOrder Where DocId = '" & mSearchCode & "') H   " & _
+                    " LEFT JOIN JobOrderDetail L On H.DocId = L.DocId   " & _
+                    " Group By L.DocId, L.Item, L.FromProcess "
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsPostedInStockProcess")), Boolean) Then
+            mQry = "Delete From StockProcess Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+            mQry = "INSERT INTO StockProcess(DocID, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, " & _
+                     " SubCode, Item, Godown, Qty_Rec, Unit, MeasurePerPcs, Measure_Rec, MeasureUnit, " & _
+                     " Remarks, Process, CostCenter) " & _
+                     " Select L.DocID, row_number() OVER (ORDER BY L.Item),Max(H.V_Type), " & _
+                     " Max(H.V_Prefix), Max(H.V_Date), Max(H.V_No), Max(H.ManualRefNo), Max(H.Div_Code), Max(H.Site_Code),   " & _
+                     " Max(H.JobWorker), L.Item, Max(H.Godown), Sum(L.Qty), Max(L.Unit), Max(L.MeasurePerPcs), " & _
+                     " Sum(L.TotalMeasure), Max(L.MeasureUnit),   " & _
+                     " Max(L.Remark), L.FromProcess, Max(H.CostCenter) As CostCenter " & _
+                     " From (Select * From JobOrder Where DocId = '" & mSearchCode & "') H   " & _
+                     " LEFT JOIN JobOrderDetail L On H.DocId = L.DocId   " & _
+                     " Group By L.DocId, L.Item, L.FromProcess "
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsPostedInStockVirtual")), Boolean) = True Then
+            mQry = "Delete From StockVirtual Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+            mQry = "INSERT INTO StockVirtual(DocID, Sr, V_Type, V_Prefix, V_Date, V_No, RecID, Div_Code, Site_Code, " & _
+                     " SubCode, Item, Godown, Qty_Rec, Unit, MeasurePerPcs, Measure_Rec, MeasureUnit, " & _
+                     " Remarks, Process, CostCenter) " & _
+                     " Select L.DocID, row_number() OVER (ORDER BY L.Item),Max(H.V_Type), " & _
+                     " Max(H.V_Prefix), Max(H.V_Date), Max(H.V_No), Max(H.ManualRefNo), Max(H.Div_Code), Max(H.Site_Code),   " & _
+                     " Max(H.JobWorker), L.Item, Max(H.Godown), Sum(L.Qty), Max(L.Unit), Max(L.MeasurePerPcs), " & _
+                     " Sum(L.TotalMeasure), Max(L.MeasureUnit),   " & _
+                     " Max(L.Remark), L.FromProcess, Max(H.CostCenter) As CostCenter " & _
+                     " From (Select * From JobOrder Where DocId = '" & mSearchCode & "') H   " & _
+                     " LEFT JOIN JobOrderDetail L On H.DocId = L.DocId   " & _
+                     " Group By L.DocId, L.Item, L.FromProcess  "
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+
+
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsPostConsumption")), Boolean) Then
+            mQry = "Delete From JobOrderBOM Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+            mQry = "INSERT INTO JobOrderBOM(DocId, TSr, Sr, JobOrder, JobOrderSr, JobOrderBomSr, " & _
+                    " Item, Qty, Unit, ConsumptionPerMeasure, MeasurePerPcs, TotalMeasure, MeasureUnit) " & _
+                    " SELECT L.DocId, L.Sr AS TSr, row_NUMBER() OVER (ORDER BY L.Sr) AS Sr, " & _
+                    " L.JobOrder, L.JobOrderSr, row_NUMBER() OVER (ORDER BY L.Sr) As JobOrderBomSr, " & _
+                    " Bd.Item, Bd.Qty * L.Qty AS BomQty, BomItem.Unit, " & _
+                    " Bd.Qty AS ConsumptionPerMeasure, BomItem.Measure, " & _
+                    " Bd.Qty * L.Qty As TotalMeasure, BomItem.MeasureUnit  " & _
+                    " FROM (Select * From JobOrderDetail Where DocId = '" & mSearchCode & "') As L  " & _
+                    " LEFT JOIN Item I On L.Item = I.Code " & _
+                    " LEFT JOIN BomDetail Bd ON I.Code = Bd.BaseItem " & _
+                    " LEFT JOIN Item BomItem ON Bd.Item = BomItem.Code " & _
+                    " Where Bd.Process = '" & TxtProcess.Tag & "'"
+            AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+        End If
+    End Sub
+
+    Private Sub TempJobOrder_BaseEvent_Topctrl_tbAdd() Handles Me.BaseEvent_Topctrl_tbAdd
+        TxtManualRefNo.Text = AgTemplate.ClsMain.FGetManualRefNo("ManualRefNo", "JobOrder", TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, AgTemplate.ClsMain.ManualRefType.Max)
+        TxtTermsAndConditions.Text = AgTemplate.ClsMain.FRetTermsCondition(TxtV_Type.AgSelectedValue)
+        TxtOrderBy.Tag = mLastOrderBy
+        TxtOrderBy.Text = AgL.Dman_Execute(" SELECT DispName FROM SubGroup WHERE SubCode = '" & mLastOrderBy & "'", AgL.GCn).ExecuteScalar
+        FAsignProcess()
+        BtnImprtFromText.Text = ImportAction_NewImport
+    End Sub
+
+    Private Sub FAsignProcess()
+        Dim DtTemp As DataTable = Nothing
+        TxtProcess.Enabled = False
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Process")), Boolean) Then
+            If InStr(",", AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Process"))) <= 0 Then
+                mQry = "Select NCat, Description from Process Where NCat= '" & Replace(AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Process")), "|", "") & "'  "
+                DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                If DtTemp.Rows.Count > 0 Then
+                    TxtProcess.Tag = AgL.XNull(DtTemp.Rows(0)("NCat"))
+                    TxtProcess.Text = AgL.XNull(DtTemp.Rows(0)("Description"))
+                    TxtProcess.Enabled = False
+                End If
+            Else
+                TxtProcess.Enabled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub ProcFillJobValues()
+        Dim I As Integer
+        Dim DtTemp As DataTable = Nothing
+        Try
+            mQry = " SELECT L.Parameter, L.StdValue  " & _
+                    " FROM QcGroupDetail L  With (NoLock)  " & _
+                    " LEFT JOIN QcGroup H  With (NoLock) ON L.Code = H.Code " & _
+                    " Where L.Code = (SELECT P.QcGroup FROM Process P  With (NoLock) WHERE P.NCat = '" & TxtProcess.Tag & "') " & _
+                    " And H.Div_Code = '" & AgL.PubDivCode & "' "
+            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            With DtTemp
+                Dgl3.RowCount = 1
+                Dgl3.Rows.Clear()
+                If .Rows.Count > 0 Then
+                    For I = 0 To .Rows.Count - 1
+                        Dgl3.Rows.Add()
+                        Dgl3.Item(ColSNo, I).Value = Dgl3.Rows.Count
+                        Dgl3.Item(Col3Parameter, I).Value = AgL.XNull(.Rows(I)("Parameter"))
+                        Dgl3.Item(Col3StdValue, I).Value = AgL.XNull(.Rows(I)("StdValue"))
+                    Next
+                End If
+            End With
+
+            mQry = " SELECT H.InsideOutside,  H.DefaultJobOrderFor, H.DefaultBillingType " & _
+                    " FROM Process H  With (NoLock) " & _
+                    " WHERE H.NCat = '" & TxtProcess.Tag & "' "
+            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            With DtTemp
+                If .Rows.Count > 0 Then
+                    TxtInsideOutside.Text = AgL.XNull(.Rows(0)("InsideOutside"))
+                    TxtBillingType.Text = AgL.XNull(.Rows(0)("DefaultBillingType"))
+                End If
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ProcCheckForDefaultProperties()
+        Dim bMsgStr$ = ""
+        Try
+            If TxtInsideOutside.Text = "" Then
+                bMsgStr &= "Set the Default value for ""Inside/Outside"" In Process Master." & vbCrLf
+            End If
+            If TxtBillingType.Text = "" Then
+                bMsgStr &= "Set the Default value for ""Billing Type"" In Process Master."
+            End If
+            If bMsgStr <> "" Then
+                MsgBox(bMsgStr, MsgBoxStyle.Exclamation)
+                Topctrl1.FButtonClick(14, True)
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FCheckDuplicate(ByVal mRow As Integer)
+        Dim I As Integer = 0
+        Try
+            With Dgl1
+                For I = 0 To .Rows.Count - 1
+                    If .Item(Col1Item, I).Value <> "" Then
+                        If mRow <> I Then
+                            If AgL.StrCmp(.Item(Col1Item, I).Value, .Item(Col1Item, mRow).Value) Then
+                                MsgBox("Item " & .Item(Col1Item, I).Value & " Is Already Feeded At Row No " & .Item(ColSNo, I).Value & ".", MsgBoxStyle.Information)
+                                .CurrentCell = .Item(Col1Item, I) : Dgl1.Focus()
+                                .Rows.Remove(.Rows(mRow)) : Exit Sub
+                            End If
+                        End If
+                    End If
+                Next
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub TempJobOrder_BaseEvent_Topctrl_tbRef() Handles Me.BaseEvent_Topctrl_tbRef
+        Try
+            If Dgl1.AgHelpDataSet(Col1Item) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1Item).Dispose() : Dgl1.AgHelpDataSet(Col1Item) = Nothing
+            If TxtJobWorker.AgHelpDataSet IsNot Nothing Then TxtJobWorker.AgHelpDataSet.Dispose() : TxtJobWorker.AgHelpDataSet = Nothing
+            If TxtGodown.AgHelpDataSet IsNot Nothing Then TxtGodown.AgHelpDataSet.Dispose() : TxtGodown.AgHelpDataSet = Nothing
+            If TxtOrderBy.AgHelpDataSet IsNot Nothing Then TxtOrderBy.AgHelpDataSet.Dispose() : TxtOrderBy.AgHelpDataSet = Nothing
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub TxtOrderBy_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtOrderBy.KeyDown, TxtGodown.KeyDown, TxtBillingType.KeyDown, TxtInsideOutside.KeyDown, TxtJobWorker.KeyDown, TxtProcess.KeyDown, TxtItemDivision.KeyDown
+        Try
+            Select Case sender.name
+                Case TxtItemDivision.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = "SELECT Div_Code, Div_Name  FROM Division "
+                            sender.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtGodown.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = " SELECT H.Code, H.Description AS Godown, " & _
+                                    " H.Div_Code, IsNull(H.IsDeleted,0) As IsDeleted, " & _
+                                    " IsNull(H.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') As Status, " & _
+                                    " H.Site_Code " & _
+                                    " FROM Godown H   With (NoLock)  " & _
+                                    " Where IsNull(H.IsDeleted,0) = 0 " & _
+                                    " And IsNull(H.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & _
+                                    " And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'"
+                            sender.AgHelpDataSet(4, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtOrderBy.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = " SELECT L.SubCode AS Code, L.DispName AS OrderBy " & _
+                                    " FROM SubGroup L  With (NoLock) " & _
+                                    " Where IsNull(L.IsDeleted,0) = 0 AND MasterType = '" & AgTemplate.ClsMain.SubgroupType.Employee & "'" & _
+                                    " And IsNull(L.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' "
+                            sender.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtBillingType.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            sender.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(AgTemplate.ClsMain.HelpQueries.BillingType, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtInsideOutside.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = " Select '" & AgTemplate.ClsMain.JobType.Inside & "' As Code, '" & AgTemplate.ClsMain.JobType.Inside & "' As JobType   " & _
+                                    " UNION ALL " & _
+                                    " Select '" & AgTemplate.ClsMain.JobType.Outside & "' As Code, '" & AgTemplate.ClsMain.JobType.Outside & "' As JobType   "
+                            sender.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtJobWorker.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = " SELECT Sg.SubCode AS Code, Sg.Name AS JobWorker, H.Process, " & _
+                                     " IsNull(Sg.IsDeleted,0) AS IsDeleted,  SG.Div_Code, " & _
+                                     " IsNull(Sg.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') As Status " & _
+                                     " FROM SubGroup Sg With (NoLock) " & _
+                                     " LEFT JOIN JobWorkerProcess H  With (NoLock) On Sg.SubCode = H.SubCode  " & _
+                                     " Where IsNull(Sg.IsDeleted,0) = 0 " & _
+                                     " And Sg.Status = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & _
+                                     " And CharIndex('|' + '" & TxtDivision.Tag & "' + '|', IsNull(Sg.DivisionList,'|' + '" & TxtDivision.Tag & "' + '|')) > 0 " & _
+                                     " And H.Process = '" & TxtProcess.Tag & "' "
+                            sender.AgHelpDataSet(4, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+
+                Case TxtProcess.Name
+                    If e.KeyCode <> Keys.Enter Then
+                        If sender.AgHelpDataSet Is Nothing Then
+                            mQry = " SELECT H.NCat AS Code, H.Description AS Process FROM Process H "
+                            sender.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Dgl1_EditingControl_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Dgl1.EditingControl_KeyDown
+        Try
+            If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
+            Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
+                Case Col1Item
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1Item) Is Nothing Then
+                            FCreateHelpItem()
+                        End If
+                    End If
+
+                Case Col1FromProcess
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1FromProcess) Is Nothing Then
+                            mQry = " SELECT P.NCat AS Code, P.Description FROM Process P  "
+                            Dgl1.AgHelpDataSet(Col1FromProcess) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+                Case Col1Dimension1
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1Dimension1) Is Nothing Then
+                            mQry = " SELECT Code, Description  FROM Dimension1  "
+                            Dgl1.AgHelpDataSet(Col1Dimension1) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+
+                Case Col1Dimension2
+                    If e.KeyCode <> Keys.Enter Then
+                        If Dgl1.AgHelpDataSet(Col1Dimension2) Is Nothing Then
+                            mQry = " SELECT Code, Description  FROM Dimension2  "
+                            Dgl1.AgHelpDataSet(Col1Dimension2) = AgL.FillData(mQry, AgL.GCn)
+                        End If
+                    End If
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FCreateHelpItem()
+        Dim strCond As String = ""
+
+        If DtV_TypeSettings.Rows.Count > 0 Then
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) <> "" Then
+                strCond += " And CharIndex('|' + I.ItemType + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') > 0 "
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) <> "" Then
+                strCond += " And CharIndex('|' + I.ItemGroup + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemGroup")) & "') > 0 "
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_ItemGroup")) <> "" Then
+                strCond += " And CharIndex('|' + I.ItemGroup + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_ItemGroup")) & "') <= 0 "
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) <> "" Then
+                strCond += " And CharIndex('|' + I.Code + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_Item")) & "') > 0 "
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_Item")) <> "" Then
+                strCond += " And CharIndex('|' + I.Code + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_Item")) & "') <= 0 "
+            End If
+
+            If TxtItemDivision.Text <> "" Then
+                strCond += " And  I.Div_Code = '" & TxtItemDivision.Tag & "' "
+            Else
+                If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) <> "" Then
+                    strCond += " And CharIndex('|' + I.Div_Code + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) & "') > 0 "
+                End If
+            End If
+
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) <> "" Then
+                strCond += " And CharIndex('|' + I.Site_Code + '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) & "') > 0 "
+            End If
+        End If
+
+        If RbtAllItems.Checked Then
+            mQry = "SELECT I.Code, I.Description, I.Unit, IG.Description AS ItemGroupDesc, I.ItemType, I.SalesTaxPostingGroup , " & _
+                    " I.Finishing_Measure As MeasurePerPcs,  I.MeasureUnit, " & _
+                    " I.ItemGroup, I.ItemCategory, " & _
+                    " U.DecimalPlaces as QtyDecimalPlaces, U1.DecimalPlaces as MeasureDecimalPlaces, " & _
+                    " '' As Qty, '' As Process, '' As ProcessCode, '' As ProdOrder, '' As ProdOrderNo, '' As ProdOrderSr, " & _
+                    " Null As Dimension1, Null As " & ClsMain.FGetDimension1Caption() & ", Null As Dimension2, Null As " & ClsMain.FGetDimension2Caption() & " " & _
+                    " FROM Item I With (NoLock) " & _
+                    " LEFT JOIN ItemGroup IG On Ig.Code = I.ItemGroup" & _
+                    " LEFT JOIN Unit U On I.Unit = U.Code " & _
+                    " LEFT JOIN Unit U1 On I.MeasureUnit = U1.Code " & _
+                    " Where IsNull(I.IsDeleted,0) = 0 " & _
+                    " And IsNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') <= '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+            Dgl1.AgHelpDataSet(Col1Item, 14) = AgL.FillData(mQry, AgL.GCn)
+        ElseIf RbtForStock.Checked Then
+            mQry = " SELECT L.Item As Code, Max(I.Description) As Item, Max(P.Description) As Process, " & _
+                    " IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) AS Qty, Max(I.Unit) As Unit, " & _
+                    " Max(IG.Description) AS ItemGroupDesc, Max(I.SalesTaxPostingGroup) As SalesTaxPostingGroup,  " & _
+                    " Max(I.Finishing_Measure) As MeasurePerPcs,  Max(I.MeasureUnit) As MeasureUnit,  " & _
+                    " Max(U.DecimalPlaces) as QtyDecimalPlaces, Max(U1.DecimalPlaces) as MeasureDecimalPlaces, " & _
+                    " L.Process As ProcessCode, '' As ProdOrder, '' As ProdOrderNo, '' As ProdOrderSr, " & _
+                    " Null As Dimension1, Null As " & ClsMain.FGetDimension1Caption() & ", Null As Dimension2, Null As " & ClsMain.FGetDimension2Caption() & " " & _
+                    " FROM StockProcess L " & _
+                    " LEFT JOIN Item I ON L.Item = I.Code " & _
+                    " LEFT JOIN ItemGroup IG On Ig.Code = I.ItemGroup" & _
+                    " LEFT JOIN Process P On L.Process = P.NCat " & _
+                    " LEFT JOIN ProcessSequenceDetail Psd ON I.ProcessSequence = Psd.Code AND L.process = Psd.Process " & _
+                    " LEFT JOIN Unit U On I.Unit = U.Code " & _
+                    " LEFT JOIN Unit U1 On I.MeasureUnit = U1.Code " & _
+                    " Where IsNull(I.IsDeleted,0) = 0 " & _
+                    " And IsNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') <= '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond & _
+                    " Group By L.Item, L.Process " & _
+                    " Having IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) > 0 " & _
+                    " Order By Max(I.Description), Max(Psd.Sequence) Desc "
+            Dgl1.AgHelpDataSet(Col1Item, 11) = AgL.FillData(mQry, AgL.GCn)
+        ElseIf RbtForPrevProcessStock.Checked Then
+            mQry = " SELECT L.Item As Code, Max(I.Description) As Item, Max(P.Description) As Process, " & _
+                    " IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) AS Qty, Max(I.Unit) As Unit, " & _
+                    " Max(IG.Description) AS ItemGroupDesc, Max(I.SalesTaxPostingGroup) As SalesTaxPostingGroup,  " & _
+                    " Max(I.Finishing_Measure) As MeasurePerPcs,  Max(I.MeasureUnit) As MeasureUnit,  " & _
+                    " Max(U.DecimalPlaces) as QtyDecimalPlaces, Max(U1.DecimalPlaces) as MeasureDecimalPlaces, L.Process As ProcessCode, '' As ProdOrder, '' As ProdOrderNo, '' As ProdOrderSr, " & _
+                    " Null As Dimension1, Null As " & ClsMain.FGetDimension1Caption() & ", Null As Dimension2, Null As " & ClsMain.FGetDimension2Caption() & " " & _
+                    " FROM StockProcess L " & _
+                    " LEFT JOIN Item I ON L.Item = I.Code " & _
+                    " LEFT JOIN ItemGroup IG On Ig.Code = I.ItemGroup" & _
+                    " LEFT JOIN Process P On L.Process = P.NCat " & _
+                    " LEFT JOIN ProcessSequenceDetail Psd ON I.ProcessSequence = Psd.Code AND L.process = Psd.Process " & _
+                    " LEFT JOIN (SELECT Code, Sequence  FROM ProcessSequenceDetail WHERE Process = '" & TxtProcess.Tag & "') Psd1 On I.ProcessSequence = Psd1.Code " & _
+                    " LEFT JOIN Unit U On I.Unit = U.Code " & _
+                    " LEFT JOIN Unit U1 On I.MeasureUnit = U1.Code " & _
+                    " Where IsNull(I.IsDeleted,0) = 0 " & _
+                    " And IsNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') <= '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond & _
+                    " Group By L.Item, L.Process " & _
+                    " Having IsNull(Sum(L.Qty_Rec),0) - IsNull(Sum(L.Qty_Iss),0) > 0 " & _
+                    " And Max(Psd.Sequence) < Max(Psd1.Sequence) " & _
+                    " Order By Max(I.Description), Max(Psd.Sequence) Desc "
+            Dgl1.AgHelpDataSet(Col1Item, 5) = AgL.FillData(mQry, AgL.GCn)
+        Else
+            mQry = " SELECT Max(L.Item) As Code, Max(I.Description) AS ItemDesc, " & _
+                    " Max(H.V_Type + '-' + H.ManualRefNo) As ProdOrderNo,   " & _
+                    " Max(D1.Description) As " & ClsMain.FGetDimension1Caption() & ", " & _
+                    " Max(D2.Description) As " & ClsMain.FGetDimension2Caption() & ", " & _
+                    " IsNull(Sum(L.Qty),0) - IsNull(Max(Cd.JobOrderQty), 0) As Qty, Max(L.Unit) As Unit, " & _
+                    " Max(L.MeasurePerPcs) As MeasurePerPcs, Max(IG.Description) AS ItemGroupDesc, " & _
+                    " Max(L.MeasureUnit) As MeasureUnit, " & _
+                    " Max(U.DecimalPlaces) as QtyDecimalPlaces, Max(MU.DecimalPlaces) as MeasureDecimalPlaces, " & _
+                    " L.ProdOrder, L.ProdOrderSr, Null As Process, Null As ProcessCode, " & _
+                    " Max(L.Dimension1) As Dimension1, Max(L.Dimension2) As Dimension2 " & _
+                    " FROM (        " & _
+                    "    SELECT DocID, V_Type, ManualRefNo , V_Date         " & _
+                    "    FROM ProdOrder With (NoLock)   " & _
+                    "    Where V_Date <= '" & TxtV_Date.Text & "'  " & _
+                    "    And Div_Code = '" & TxtDivision.Tag & "' And Site_Code = '" & TxtSite_Code.Tag & "'   " & _
+                    " ) H         " & _
+                    " LEFT JOIN ProdOrderDetail L With (nolock) ON H.DocID = L.ProdOrder     " & _
+                    " Left Join (         " & _
+                    "    SELECT L.ProdOrder, L.ProdOrderSr, Sum(L.Qty) AS JobOrderQty,     " & _
+                    "    Sum(L.TotalMeasure) As JobOrderMeasure       " & _
+                    "    FROM JobOrderDetail  L With (Nolock)     " & _
+                    "    LEFT JOIN JobOrder H ON L.DocId = H.DocID " & _
+                    "    WHERE L.DocId <> '" & mSearchCode & "'   " & _
+                    "    AND H.Process = '" & TxtProcess.Tag & "' " & _
+                    "    GROUP BY L.ProdOrder, L.ProdOrderSr       " & _
+                    " ) AS CD ON L.DocId = Cd.ProdOrder AND L.Sr = Cd.ProdOrderSr   " & _
+                    " LEFT JOIN Item I On L.Item = I.Code     " & _
+                    " LEFT JOIN ItemGroup IG On Ig.Code = I.ItemGroup" & _
+                    " Left Join Unit U On L.Unit = U.Code     " & _
+                    " Left Join Unit MU On L.MeasureUnit = MU.Code " & _
+                    " Left Join Dimension1 D1 On L.Dimension1 = D1.Code " & _
+                    " Left Join Dimension2 D2 On L.Dimension2 = D2.Code " & _
+                    " Where L.Process = '" & TxtProcess.Tag & "' " & _
+                    " GROUP BY L.ProdOrder, L.ProdOrderSr     " & _
+                    " HAVING IsNull(Sum(L.Qty),0) - IsNull(Max(Cd.JobOrderQty), 0) > 0 "
+            Dgl1.AgHelpDataSet(Col1Item, 10) = AgL.FillData(mQry, AgL.GCn)
+        End If
+    End Sub
+
+    Private Sub Form_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+        AgL.FPaintForm(Me, e, Topctrl1.Height)
+    End Sub
+
+    Private Sub Validating_Item_Uid(ByVal Item_Uid As String, ByVal mRow As Integer)
+        Dim DsTemp As DataSet = Nothing
+        Dim DtTemp As DataTable = Nothing
+        Dim ErrMsgStr$ = ""
+
+        Try
+            mQry = "  SELECT Iu.Code As Item_UidCode, Iu.Item_UID , Iu.Item AS ItemCode, I.Description AS Item, " & _
+                    " I.Unit, Iu.ProdOrder, Po.ManualRefNo As ProdOrderNo, IG.Description AS ItemGroupDesc, " & _
+                    " I.MeasureUnit, U.DecimalPlaces as QtyDecimalPlaces, MU.DecimalPlaces as MeasureDecimalPlaces, " & _
+                    " Iu.ProdOrder, Po.ManualRefNo As ProdOrderNo, " & _
+                    " I.Finishing_Measure As MeasurePerPcs " & _
+                    " FROM Item_UID Iu  " & _
+                    " LEFT JOIN Item I ON I.Code = Iu.Item   " & _
+                    " LEFT JOIN ItemGroup IG ON IG.Code = I.ItemGroup " & _
+                    " LEFT JOIN ProdOrder PO ON PO.DocID = Iu.ProdOrder " & _
+                    " Left Join Unit U With (NoLock) On I.Unit = U.Code " & _
+                    " Left Join Unit MU With (NoLock) On I.MeasureUnit = MU.Code " & _
+                    " WHERE Iu.Item_UID = '" & Item_Uid & "' "
+            DsTemp = AgL.FillData(mQry, AgL.GCn)
+            With DsTemp.Tables(0)
+                If .Rows.Count > 0 Then
+                    Dgl1.Item(Col1Item_Uid, mRow).Tag = AgL.XNull(.Rows(0)("Item_UidCode"))
+
+                    Dgl1.Item(Col1Item, mRow).Tag = AgL.XNull(.Rows(0)("ItemCode"))
+                    Dgl1.Item(Col1Item, mRow).Value = AgL.XNull(.Rows(0)("Item"))
+                    Dgl1.Item(Col1ItemGroup, mRow).Value = AgL.XNull(.Rows(0)("ItemGroupDesc"))
+                    Dgl1.Item(Col1ProdOrder, mRow).Tag = AgL.XNull(.Rows(0)("ProdOrder"))
+                    Dgl1.Item(Col1ProdOrder, mRow).Value = AgL.XNull(.Rows(0)("ProdOrderNo"))
+
+                    Dgl1.Item(Col1Qty, mRow).Value = 1
+                    Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(.Rows(0)("Unit"))
+
+                    Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(.Rows(0)("QtyDecimalPlaces"))
+
+                    Dgl1.Item(Col1MeasurePerPcs, mRow).Value = AgL.VNull(.Rows(0)("MeasurePerPcs"))
+
+                    Dgl1.Item(Col1MeasureUnit, mRow).Value = AgL.XNull(.Rows(0)("MeasureUnit"))
+                    Dgl1.Item(Col1MeasureDecimalPlaces, mRow).Value = AgL.VNull(.Rows(0)("MeasureDecimalPlaces"))
+
+                    Dgl1.Item(Col1Rate, mRow).Value = FGetJobRate(TxtProcess.Tag, TxtJobWorker.Tag, Dgl1.Item(Col1Item, mRow).Tag)
+
+                    mQry = " SELECT TOP 1 P.NCat As ProcessCode, P.Description As ProcessDesc " & _
+                            " FROM JobIssRecUID L  " & _
+                            " LEFT JOIN JobIssRec H ON L.DocID = H.DocID " & _
+                            " LEFT JOIN Process P ON L.Process = P.NCat " & _
+                            " WHERE Item_UID = '" & Dgl1.Item(Col1Item_Uid, mRow).Tag & "' " & _
+                            " ORDER BY H.V_Date DESC, P.Sr DESC "
+                    Dim DtProcess As DataTable = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtProcess.Rows.Count > 0 Then
+                        Dgl1.Item(Col1FromProcess, mRow).Tag = AgL.XNull(DtProcess.Rows(0)("ProcessCode"))
+                        Dgl1.Item(Col1FromProcess, mRow).Value = AgL.XNull(DtProcess.Rows(0)("ProcessDesc"))
+                    End If
+
+                    'mQry = " SELECT TOP 1 L.Process FROM StockProcess L WHERE L.Item_UID = '" & Dgl1.Item(Col1Item_Uid, mRow).Tag & "' And DocId <> '" & mSearchCode & "' And IsNull(L.Qty_Iss,0) > 0 ORDER BY L.V_Date DESC "
+                    'Dgl1.Item(Col1FromProcess, mRow).Value = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar)
+
+                    Dgl1.Item(Col1V_Nature, mRow).Value = RbtForStock.Text
+                Else
+                    MsgBox("Invalid Item UID !")
+                    Dgl1.Item(Col1Item_Uid, mRow).Value = ""
+                End If
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Public Function FCheck_Item_UID(ByVal Item_UID As String) As String
+        Dim Item_UidCode$ = "", ErrMsgStr$ = ""
+        Dim DtTemp As DataTable = Nothing
+        Dim mProcessSequence$ = ""
+        Dim mProcessIterationsAllowed As Integer = 0
+
+        mQry = " SELECT Code FROM Item_UID With (NoLock) WHERE Item_UID = '" & Item_UID & "'"
+        Item_UidCode = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar)
+        If Item_UidCode = "" Then
+            FCheck_Item_UID = "Carpet Id Is Not Valid."
+            Exit Function
+        Else
+            FCheck_Item_UID = ""
+        End If
+
+        mQry = "Select ProcessSequence, " & _
+                "       (Select Count(*) from ProcessSequenceDetail " & _
+                "        Where Code = H.ProcessSequence And Process = '" & TxtProcess.Tag & "') As IterationsAllowed " & _
+                " From Item H Where Code = (Select Item From Item_Uid Where Code = '" & Item_UidCode & "') "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            mProcessSequence = AgL.XNull(DtTemp.Rows(0)("ProcessSequence"))
+            mProcessIterationsAllowed = AgL.VNull(DtTemp.Rows(0)("IterationsAllowed"))
+        End If
+
+
+        If mProcessSequence <> "" Then
+            If Val(mProcessIterationsAllowed) > 0 Then
+                mQry = "Select IsNull(Count(*),0) from JobIssRecUID " & _
+                        " Where IssRec='I' And Process = '" & TxtProcess.Tag & "' " & _
+                        " And Item_UID = '" & Item_UidCode & "' " & _
+                        " And DocID <> '" & mSearchCode & "'  "
+                If AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar + 1 > Val(mProcessIterationsAllowed) Then
+                    If MsgBox("Carpet Id " & Item_UID & " has already completed this process.Do you want to issue it again", MsgBoxStyle.YesNo + MsgBoxStyle.Question + MsgBoxStyle.DefaultButton2) = MsgBoxResult.No Then
+                        FCheck_Item_UID = "Carpet Id " & Item_UID & " has already completed this process"
+                        Exit Function
+                    Else
+                        FCheck_Item_UID = ""
+                    End If
+                End If
+            End If
+        End If
+
+        mQry = " Select Iu.Item_Uid From Item_Uid Iu LEFT JOIN Item I ON Iu.Item = I.Code Where Iu.Code = '" & Item_UidCode & "' And I.Div_Code <> '" & IIf(TxtItemDivision.Text <> "", TxtItemDivision.Tag, AgL.PubDivCode) & "'"
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            FCheck_Item_UID = "Carpet Id " & AgL.XNull(DtTemp.Rows(0)("Item_Uid")) & " Does Not Belong To " & IIf(TxtItemDivision.Text <> "", TxtItemDivision.Text, AgL.PubDivName) & "."
+            Exit Function
+        Else
+            FCheck_Item_UID = ""
+        End If
+
+
+        mQry = " Select RecDocID From Item_Uid With (NoLock) Where Code = '" & Item_UidCode & "' "
+        If AgL.XNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar) = "" Then
+            FCheck_Item_UID = "Carpet Id " & Item_UID & " Is Not Received From Weaving Process."
+            Exit Function
+        Else
+            FCheck_Item_UID = ""
+        End If
+
+        mQry = "SELECT Count(I.DocID) " & _
+               " FROM (SELECT DocID, Item_UID FROM JobIssRecUID WITH (NoLock) " & _
+               " WHERE Item_UID ='" & Item_UidCode & "' And IssRec= 'I') I " & _
+               " LEFT JOIN JobIssRecUID R WITH (NoLock) ON I.DocID = R.JobRecDocID AND I.Item_UID = R.Item_UID  " & _
+               " WHERE R.DocID IS NULL AND I.DocID <> '" & mSearchCode & "'"
+        If AgL.VNull(AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar) > 0 Then
+            mQry = "SELECT TOP 1 Sg.Name, H.ManualRefNo, H.V_Date, Vc.NCatDescription AS ProcessDesc " & _
+                    " FROM (SELECT DocID, Item_UID FROM JobIssRecUID WITH (NoLock) " & _
+                    " WHERE Item_UID ='" & Item_UidCode & "' And IssRec='I') I " & _
+                    " LEFT JOIN JobIssRecUID R WITH (NoLock) ON I.DocID = R.JobRecDocID AND I.Item_UID = R.Item_UID  " & _
+                    " LEFT JOIN JobOrder H WITH (NoLock) ON I.DocID = H.DocID " & _
+                    " LEFT JOIN SubGroup Sg WITH (NoLock) ON H.JobWorker = Sg.SubCode " & _
+                    " LEFT JOIN VoucherCat Vc WITH (NoLock) ON H.Process = Vc.NCat " & _
+                    " WHERE R.DocID IS NULL AND I.DocID <> '" & mSearchCode & "' " & _
+                    " ORDER BY H.V_Date Desc "
+            DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+            FCheck_Item_UID = "Carpet Id " & Item_UID & " Is Already Issued To " & AgL.XNull(DtTemp.Rows(0)("Name")) & " For " & AgL.XNull(DtTemp.Rows(0)("ProcessDesc")) & " On Date " & AgL.XNull(DtTemp.Rows(0)("V_Date")) & " Against Ref No " & AgL.XNull(DtTemp.Rows(0)("ManualRefNo")) & "."
+            Exit Function
+        Else
+            FCheck_Item_UID = ""
+        End If
+    End Function
+
+    Private Sub RbtAllItems_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles RbtAllItems.Click, RbtForPrevProcessStock.Click, RbtForStock.Click, RbtForProdOrder.Click
+        Dgl1.AgHelpDataSet(Col1Item) = Nothing
+    End Sub
+
+    Private Sub TxtProcess_Validating(ByVal sender As Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles TxtProcess.Validating
+        If Dgl1.AgHelpDataSet(Col1Item) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1Item).Dispose() : Dgl1.AgHelpDataSet(Col1Item) = Nothing
+        If TxtJobWorker.AgHelpDataSet IsNot Nothing Then TxtJobWorker.AgHelpDataSet.Dispose() : TxtJobWorker.AgHelpDataSet = Nothing
+        If AgL.StrCmp(Topctrl1.Mode, "Add") Then Call ProcFillJobValues()
+    End Sub
+
+    Private Sub BtnImprtFromText_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles BtnImprtFromText.Click
+        If AgL.StrCmp(BtnImprtFromText.Text, ImportAction_NewImport) Then
+            FImportFromTextFile()
+            ChkShowOnlyImportedRecords.Checked = True
+            ChkShowOnlyImportedRecords.Visible = True
+        Else
+            mQry = " UPDATE JobOrder Set EntryStatus = '" & AgTemplate.ClsMain.LogStatus.LogImportClear & "' Where DocId = '" & mSearchCode & "'"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+            FIniMaster(1)
+            MoveRec()
+        End If
+    End Sub
+
+    Private Sub FImportFromTextFile()
+        Dim Sr As StreamReader
+        Dim Opn As New OpenFileDialog
+        Dim mItemDivisionCode$ = ""
+        Dim mItemDivisionText$ = ""
+
+        Dim Line$ = "", mDateTime$ = "", mMachine$ = "", mProcess$ = "", mJobRecBy$ = "", mBarcode$ = "", mSKU$ = ""
+        Dim mDefaultGodown$ = "", mJobType$ = "", mJobWorker$ = "", mIssRec$ = "", StrQry$ = ""
+        Dim mMeasurePerPcs As Double = 0
+        Dim ErrorLog$ = "", StrMessage$ = ""
+        Dim mItem_UidDesc$ = ""
+
+        Dim I As Integer, J As Integer = 0, bBarCodeQty As Integer = 0
+        Dim DtTemp As DataTable, DtLineRec As DataTable
+        Dim strArr() As String
+
+        DtTemp = AgL.FillData("Select Godown from EnviroDefaultGodown Where Div_Code = '" & AgL.PubDivCode & "' and Site_Code = '" & AgL.PubSiteCode & "' and ItemType ='" & ClsMain.ItemType.CarpetSKU & "' ", AgL.GCn).Tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            mDefaultGodown = DtTemp.Rows(0)("Godown")
+        End If
+
+
+        If Topctrl1.Mode <> "Add" Then
+            MsgBox("Import can be done only on Add mode")
+            Exit Sub
+            If TxtProcess.Text = "" Then
+                MsgBox("Process is mandatory to import records")
+                Exit Sub
+            End If
+        End If
+
+        ImportMessegeStr = ""
+        ImportMode = True
+
+        Opn.ShowDialog()
+
+        If Opn.FileName = "" Then Exit Sub
+
+        mItemDivisionCode = TxtItemDivision.Tag
+        mItemDivisionText = TxtItemDivision.Text
+
+        Sr = New StreamReader(Opn.FileName)
+
+        StrMessage = ""
+
+        StrQry = "  Declare @TmpTable as Table " & _
+                    " ( " & _
+                    " Process nVarchar(10), " & _
+                    " IssRec nVarchar(10), " & _
+                    " JobWorker nVarchar(10), " & _
+                    " OrderBy nVarchar(10), " & _
+                    " BarCode nVarchar(10), " & _
+                    " Sku nVarchar(10), " & _
+                    " MeasurePerPcs Float " & _
+                    " ) "
+
+        Do
+            I += 1
+            Line = Sr.ReadLine()
+            If Line IsNot Nothing Then
+                strArr = Split(Line, ",")
+
+                If strArr.Length <> 14 Then
+                    MsgBox("Invalid records in file")
+                    Exit Sub
+                End If
+
+                mDateTime = strArr(1)
+                mMachine = strArr(3)
+                mIssRec = strArr(5)
+                mProcess = strArr(7)
+                mJobWorker = strArr(9)
+                mJobRecBy = strArr(11)
+                mBarcode = strArr(13)
+
+                mSKU = ""
+                mItem_UidDesc = strArr(13)
+
+
+
+                If mIssRec <> "I" Then MsgBox("IssRec Is Not Equal To ""I"".Can't Proceed.") : Exit Sub
+
+                DtTemp = AgL.FillData("Select Process From ProcessCode Where Code = '" & mProcess & "' and Div_Code = '" & AgL.PubDivCode & "' ", AgL.GcnRead).Tables(0)
+                If DtTemp.Rows.Count > 0 Then
+                    mProcess = DtTemp.Rows(0)("Process")
+                Else
+                    If StrMessage <> "" Then StrMessage += vbCrLf
+                    StrMessage += "Invalid Value Found in Process Field at Row No. " & I
+                End If
+
+                If mProcess <> TxtProcess.Tag Then
+                    MsgBox("Process In Text File Is Not Equal To " & TxtProcess.Text & "", MsgBoxStyle.Information)
+                    Exit Sub
+                End If
+
+                DtTemp = AgL.FillData("Select SubCode From SubGroup WITH (NoLock) Where ManualCode = '" & mJobWorker & "'  And CharIndex('|' + '" & AgL.PubDivCode & "' + '|', DivisionList) > 0  and Site_Code = '" & AgL.PubSiteCode & "'", AgL.GcnRead).Tables(0)
+                If DtTemp.Rows.Count > 0 Then
+                    mJobWorker = DtTemp.Rows(0)("SubCode")
+                Else
+                    If StrMessage <> "" Then StrMessage += vbCrLf
+                    StrMessage += "Invalid Value Found in JobWorker Field at Row No. " & I
+                End If
+
+                'and Div_Code = '" & AgL.PubDivCode & "'
+                DtTemp = AgL.FillData("Select SubCode From SubGroup WITH (NoLock) Where ManualCode = '" & mJobRecBy & "'  and Site_Code = '" & AgL.PubSiteCode & "'", AgL.GcnRead).Tables(0)
+                If DtTemp.Rows.Count > 0 Then
+                    mJobRecBy = DtTemp.Rows(0)("SubCode")
+                Else
+                    If StrMessage <> "" Then StrMessage += vbCrLf
+                    StrMessage += "Invalid Value Found in JobRecBy Field at Row No. " & I
+                End If
+
+                If mBarcode.Trim = "" Then
+                    If StrMessage <> "" Then StrMessage += vbCrLf
+                    StrMessage += "No value defined in Barcode Field at Row No. " & I
+                End If
+
+                If mBarcode.Trim <> "" Then
+                    DtTemp = AgL.FillData("Select Item_Uid.Code, Item_Uid.Item, Item.Measure From Item_UID LEFT JOIN Item On Item_Uid.Item = Item.Code Where Item_Uid.Item_UID = '" & mBarcode & "' ", AgL.GCn).Tables(0)
+                    If DtTemp.Rows.Count > 0 Then
+                        mBarcode = DtTemp.Rows(0)("Code")
+                        mSKU = DtTemp.Rows(0)("Item")
+                        mMeasurePerPcs = AgL.VNull(DtTemp.Rows(0)("Measure"))
+                    Else
+                        If StrMessage <> "" Then StrMessage += vbCrLf
+                        MsgBox("Invalid Value Found in Barcode Field at Row No. " & I)
+                    End If
+                End If
+
+                If StrMessage <> "" Then
+                    MsgBox(StrMessage)
+                    Exit Sub
+                End If
+
+                Dim Item_UidError$ = ""
+                Item_UidError = FCheck_Item_UID(mItem_UidDesc)
+                If Item_UidError = "" Then
+                    StrQry += " Insert Into @TmpTable (Process, IssRec, JobWorker, OrderBy, Barcode, Sku, MeasurePerPcs) "
+                    StrQry += " Values (" & AgL.Chk_Text(mProcess) & ", " & AgL.Chk_Text(mIssRec) & ", " & _
+                                " " & AgL.Chk_Text(mJobWorker) & ", " & AgL.Chk_Text(mJobRecBy) & ", " & _
+                                " " & AgL.Chk_Text(mBarcode) & ", " & AgL.Chk_Text(mSKU) & ", " & AgL.Chk_Text(mMeasurePerPcs) & ") "
+                Else
+                    ImportMessegeStr += Item_UidError & vbCrLf
+                End If
+
+            End If
+        Loop Until Line Is Nothing
+        Sr.Close()
+
+
+        mQry = StrQry & " Select Process, IssRec, JobWorker, OrderBy " & _
+                " From @TmpTable " & _
+                " Where Process = '" & mProcess & "' And IssRec = 'I' " & _
+                " Group by Process, IssRec, JobWorker, OrderBy "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).tables(0)
+
+        For I = 0 To DtTemp.Rows.Count - 1
+            If I > 0 Then Topctrl1.FButtonClick(0)
+
+            Dgl1.Focus()
+
+            TxtProcess.Tag = mProcess
+            TxtProcess.Text = AgL.XNull(AgL.Dman_Execute("Select Description From Process Where NCat = '" & TxtProcess.Tag & "' ", AgL.GCn).ExecuteScalar)
+
+            TxtOrderBy.Tag = DtTemp.Rows(I)("OrderBy")
+            TxtOrderBy.Text = AgL.XNull(AgL.Dman_Execute("Select Name From SubGroup Sg Where SubCode = '" & TxtOrderBy.Tag & "'", AgL.GCn).ExecuteScalar)
+
+            TxtJobWorker.Tag = DtTemp.Rows(I)("JobWorker")
+            TxtJobWorker.Text = AgL.XNull(AgL.Dman_Execute("Select Name From SubGroup Sg Where SubCode = '" & TxtJobWorker.Tag & "'", AgL.GCn).ExecuteScalar)
+
+            TxtGodown.Tag = mDefaultGodown
+            TxtGodown.Text = AgL.XNull(AgL.Dman_Execute("Select Description From Godown Where Code = '" & TxtGodown.Tag & "'", AgL.GCn).ExecuteScalar)
+
+            If TxtV_Date.Text <> "" And TxtDueDate.Text = "" And AgL.PubDtEnviro.Rows.Count > 0 Then
+                TxtDueDate.Text = DateAdd(DateInterval.Day, AgL.VNull(AgL.PubDtEnviro.Rows(0)("DefaultDueDays")), CDate(TxtV_Date.Text))
+            End If
+
+            If mItemDivisionCode <> "" Then TxtItemDivision.Tag = mItemDivisionCode
+            If mItemDivisionText <> "" Then TxtItemDivision.Text = mItemDivisionText
+
+            ProcFillJobValues()
+
+            TxtInsideOutside.Text = AgL.XNull(AgL.Dman_Execute("Select InsideOutside From JobWorker Where SubCode = '" & TxtJobWorker.Tag & "'", AgL.GCn).ExecuteScalar)
+
+            mQry = StrQry & " Select Process, Sku, BarCode, Max(MeasurePerPcs) As MeasurePerPcs From @TmpTable " & _
+                    " Where Process = '" & TxtProcess.Tag & "' And Jobworker = '" & TxtJobWorker.Tag & "' " & _
+                    " Group By Process, Sku, BarCode " & _
+                    " Order By MeasurePerPcs, Sku "
+            DtLineRec = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+            For J = 0 To DtLineRec.Rows.Count - 1
+                Dgl1.Rows.Add()
+                Dgl1.Item(ColSNo, Dgl1.Rows.Count - 2).Value = Dgl1.Rows.Count - 1
+                Dgl1.Item(Col1Item_Uid, Dgl1.Rows.Count - 2).Tag = DtLineRec.Rows(J)("BarCode")
+                Dgl1.Item(Col1Item_Uid, Dgl1.Rows.Count - 2).Value = AgL.XNull(AgL.Dman_Execute("Select Item_Uid From Item_Uid Where Code = '" & DtLineRec.Rows(J)("BarCode") & "'", AgL.GCn).ExecuteScalar)
+
+                'ImportMessegeStr = FCheck_Item_UID(Dgl1.Item(Col1Item_Uid, Dgl1.Rows.Count - 2).Tag, Dgl1.Rows.Count - 2)
+                Validating_Item_Uid(Dgl1.Item(Col1Item_Uid, Dgl1.Rows.Count - 2).Value, Dgl1.Rows.Count - 2)
+            Next
+
+            Calculation()
+
+
+            Topctrl1.FButtonClick(13)
+
+        Next
+
+        If ImportMessegeStr <> "" Then
+            If File.Exists(My.Application.Info.DirectoryPath + "\Error Log\" + AgL.PubUserName + "ErrorLog.txt") Then
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\Error Log\" + AgL.PubUserName + "ErrorLog.txt", ImportMessegeStr, False)
+            Else
+                File.Create(My.Application.Info.DirectoryPath + "\Error Log\" + AgL.PubUserName + "ErrorLog.txt").Dispose()
+                My.Computer.FileSystem.WriteAllText(My.Application.Info.DirectoryPath + "\Error Log\" + AgL.PubUserName + "ErrorLog.txt", ImportMessegeStr, False)
+            End If
+            System.Diagnostics.Process.Start("notepad.exe", My.Application.Info.DirectoryPath + "\Error Log\" + AgL.PubUserName + "ErrorLog.txt")
+            Exit Sub
+        End If
+
+        ImportMode = False
+    End Sub
+
+    Private Sub FPostInJobIssRecUID(ByVal SearchCode As String, ByVal Conn As System.Data.SqlClient.SqlConnection, ByVal Cmd As System.Data.SqlClient.SqlCommand)
+        Dim I As Integer = 0, bSr As Integer = 0
+
+        mQry = "Delete from JobIssRecUID Where DocId ='" & SearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        mQry = " INSERT INTO JobIssRecUID(DocID, TSr, Sr, IssRec, Process, Item, Item_UID) " & _
+                 " Select L.DocId, L.Sr As TSr, L.Sr, 'I', " & _
+                 " H.Process, L.Item, L.Item_Uid " & _
+                 " From (Select * From JobOrderDetail With (NoLock) Where DocId = '" & mSearchCode & "' And Item_Uid Is Not Null) As L " & _
+                 " LEFT JOIN JobOrder H With (NoLock) On L.DocId = H.DocId "
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+    End Sub
+
+    Private Sub Dgl1_CellContentClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgl1.CellContentClick
+        Dim Mdi As MDIMain = New MDIMain
+        Try
+            Select Case Dgl1.Columns(e.ColumnIndex).Name
+                'Case Col1ProdOrder
+                '    Call ClsMain.ProcOpenLinkForm(Mdi.MnuSaleOrderEntry, Dgl1.Item(Col1ProdOrder, e.RowIndex).Tag, Me.MdiParent)
+            End Select
+        Catch ex As Exception
+        End Try
+    End Sub
+
+    Private Sub ChkShowOnlyImportedRecords_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ChkShowOnlyImportedRecords.Click
+        FIniMaster(1)
+        Topctrl1.SetDisp(True)
+        MoveRec()
+    End Sub
+
+    Private Sub FrmFinishingOrder_BaseFunction_DispText() Handles Me.BaseFunction_DispText
+        If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
+            ChkShowOnlyImportedRecords.Visible = True
+        Else
+            ChkShowOnlyImportedRecords.Visible = False
+        End If
+    End Sub
+
+    Private Sub FrmFinishingOrder_BaseEvent_Topctrl_tbPrn(ByVal SearchCode As String) Handles Me.BaseEvent_Topctrl_tbPrn
+        mQry = " SELECT H.V_Date, H.V_Type + '-' + H.ManualRefNo As ManualRefNo, H.DueDate, H.Remarks, " & _
+                " H.JobInstructions, H.TermsAndConditions,   H.EntryBy, H.EntryDate, H.ApproveBy, H.ApproveDate, H.InsideOutside, " & _
+                " L.Qty, L.Unit, L.MeasurePerPcs, L.TotalMeasure, L.MeasureUnit, L.Rate, L.LotNo, L.Amount, L.PerimeterPerPcs, L.TotalPerimeter,   L.Perimeter,  " & _
+                " L.Remark As LineRemark,   L.Item_Uid, Sg.Name AS JobWorkerName,  Sg.Add1, Sg.Add2, Sg.Add3, Sg.Mobile, Sg.PAN, " & _
+                " Sg1.Name AS OrderByName, G.Description AS GodownDesc,  I.Description AS ItemDesc, U.DecimalPlaces, " & _
+                " D1.Description AS D1Desc, D2.Description AS D2Desc, E.Caption_Dimension1, E.Caption_Dimension2, " & _
+                " Iu.Item_Uid As Item_UidDesc, Div.Div_Name, H.InsideOutside, Ig.Description As ItemGroupDesc   " & _
+                " FROM JobOrder H  " & _
+                " LEFT JOIN JobOrderDetail L ON H.DocID = L.DocId   " & _
+                " LEFT JOIN SubGroup Sg ON H.JobWorker = Sg.SubCode  " & _
+                " LEFT JOIN SubGroup Sg1 ON H.OrderBy = Sg1.SubCode  " & _
+                " LEFT JOIN Godown G ON H.Godown = G.Code  " & _
+                " LEFT JOIN Item I ON L.Item = I.Code  " & _
+                " LEFT JOIN Item_Uid Iu ON L.Item_Uid = Iu.Code   " & _
+                " LEFT JOIN ItemGroup Ig ON I.ItemGroup = Ig.Code  " & _
+                " LEFT JOIN Division Div On H.Div_Code = Div.Div_Code   " & _
+                " LEFT JOIN Enviro E ON E.Site_Code = H.Site_Code AND E.Div_Code = H.Div_Code " & _
+                " LEFT JOIN Dimension1 D1 ON D1.Code = L.Dimension1 " & _
+                " LEFT JOIN Dimension2 D2 ON D2.Code = L.Dimension2 " & _
+                " LEFT JOIN Unit U ON L.Unit = U.Code  " & _
+                " WHERE H.DocID =  '" & mSearchCode & "'  Order By L.Sr "
+        ClsMain.FPrintThisDocument(Me, TxtV_Type.Tag, mQry, "Trade_JobOrderPrint", "Job Order For " & TxtProcess.Text)
+    End Sub
+
+    Public Function FDataValidation_Item_UID() As String
+        Dim DtTemp As DataTable = Nothing
+        Dim DtTemp1 As DataTable = Nothing
+        Dim I As Integer = 0
+        Dim mItem_UidStr$ = ""
+        Dim MsgStr$ = ""
+
+        For I = 0 To Dgl1.Rows.Count - 1
+            If Dgl1.Item(Col1Item_Uid, I).Tag <> "" Then
+                If mItem_UidStr = "" Then
+                    mItem_UidStr = AgL.Chk_Text(Dgl1.Item(Col1Item_Uid, I).Tag)
+                Else
+                    mItem_UidStr += "," & AgL.Chk_Text(Dgl1.Item(Col1Item_Uid, I).Tag)
+                End If
+            End If
+        Next
+
+        If mItem_UidStr = "" Then FDataValidation_Item_UID = "" : Exit Function
+
+        mQry = " Select Iu.Item_Uid From Item_Uid Iu LEFT JOIN Item I ON Iu.Item = I.Code Where Iu.Code In (" & mItem_UidStr & ") And I.Div_Code <> '" & IIf(TxtItemDivision.Text <> "", TxtItemDivision.Tag, AgL.PubDivCode) & "'"
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+        If DtTemp.Rows.Count > 0 Then
+            For I = 0 To DtTemp.Rows.Count - 1
+                MsgStr += "Carpet Id " & AgL.XNull(DtTemp.Rows(I)("Item_Uid")) & " Does Not Belong To " & IIf(TxtItemDivision.Text <> "", TxtItemDivision.Text, AgL.PubDivName) & "."
+            Next
+        End If
+
+        'mQry = " Select Iu.Item_Uid " & _
+        '            " From StockProcess L " & _
+        '            " LEFT JOIN Item_Uid Iu On L.Item_Uid = Iu.Code " & _
+        '            " Where IsNull(L.Qty_Iss,0) > 0 And L.Process = '" & TxtProcess.Tag & "' " & _
+        '            " And L.Item_UID In (" & mItem_UidStr & ") " & _
+        '            " And L.DocID <> '" & mSearchCode & "'  " & _
+        '            " Group By Iu.Item_Uid " & _
+        '            " Having IsNull(Count(*),0) > 0 "
+        'DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+        'If DtTemp.Rows.Count > 0 Then
+        '    For I = 0 To DtTemp.Rows.Count - 1
+        '        MsgStr += "Carpet Id " & AgL.XNull(DtTemp.Rows(I)("Item_Uid")) & " has already completed this process"
+        '    Next
+        'End If
+
+        mQry = " Select Item_Uid From Item_Uid With (NoLock) " & _
+                " Where Code In (" & mItem_UidStr & ") " & _
+                " And RecDocId Is Null "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+        If DtTemp.Rows.Count > 0 Then
+            For I = 0 To DtTemp.Rows.Count - 1
+                MsgStr += "Carpet Id " & AgL.XNull(DtTemp.Rows(I)("Item_Uid")) & " Is Not Received From Weaving Process."
+            Next
+        End If
+
+        mQry = "SELECT I.Item_UID " & _
+               " FROM (SELECT DocID, Item_UID " & _
+               "       FROM JobIssRecUID WITH (NoLock) " & _
+               "       WHERE Item_UID In (" & mItem_UidStr & ") And IssRec= 'I') I " & _
+               " LEFT JOIN JobIssRecUID R WITH (NoLock) ON I.DocID = R.JobRecDocID AND I.Item_UID = R.Item_UID  " & _
+               " WHERE R.DocID IS NULL AND I.DocID <> '" & mSearchCode & "' " & _
+               " Group By I.Item_UID " & _
+               " Having Count(I.DocId) > 0 "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            For I = 0 To DtTemp.Rows.Count - 1
+                mQry = "SELECT TOP 1 Sg.Name, H.ManualRefNo, H.V_Date, Vc.NCatDescription AS ProcessDesc, " & _
+                            " Iu.Item_Uid As Item_UidDesc " & _
+                            " FROM (SELECT DocID, Item_UID FROM JobIssRecUID WITH (NoLock) " & _
+                            "       WHERE Item_UID = '" & DtTemp.Rows(0)("Item_Uid") & "' And IssRec='I') I " & _
+                            " LEFT JOIN JobIssRecUID R WITH (NoLock) ON I.DocID = R.JobRecDocID AND I.Item_UID = R.Item_UID  " & _
+                            " LEFT JOIN JobOrder H WITH (NoLock) ON I.DocID = H.DocID " & _
+                            " LEFT JOIN Item_Uid Iu On I.Item_Uid = Iu.Code " & _
+                            " LEFT JOIN SubGroup Sg WITH (NoLock) ON H.JobWorker = Sg.SubCode " & _
+                            " LEFT JOIN VoucherCat Vc WITH (NoLock) ON H.Process = Vc.NCat " & _
+                            " WHERE R.DocID IS NULL AND I.DocID <> '" & mSearchCode & "' " & _
+                            " ORDER BY H.V_Date Desc "
+                DtTemp1 = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+                If DtTemp1.Rows.Count > 0 Then
+                    MsgStr += "Carpet Id " & DtTemp1.Rows(0)("Item_UidDesc") & " Is Already Issued To " & AgL.XNull(DtTemp1.Rows(0)("Name")) & " For " & AgL.XNull(DtTemp1.Rows(0)("ProcessDesc")) & " On Date " & AgL.XNull(DtTemp1.Rows(0)("V_Date")) & " Against Ref No " & AgL.XNull(DtTemp1.Rows(0)("ManualRefNo")) & "."
+                End If
+            Next
+        End If
+        FDataValidation_Item_UID = MsgStr
+        Dgl1.Focus()
+    End Function
+
+    Private Sub FrmRugFinishingOrder_BaseEvent_Topctrl_tbEdit(ByRef Passed As Boolean) Handles Me.BaseEvent_Topctrl_tbEdit
+        If isRecordLocked Then
+            If AgL.PubUserName.ToUpper = "SA" Or AgL.PubUserName.ToUpper = AgLibrary.ClsConstant.PubSuperUserName Then
+                If MsgBox("Referential data exist. Do you want to modify record?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+                    Passed = False
+                    Exit Sub
+                Else
+                    TxtJobWorker.Enabled = False
+                End If
+            Else
+                MsgBox("Referential data exist. Can't modify record.")
+                Passed = False
+                Exit Sub
+            End If
+            End If
+
+            Passed = Not ClsMain.FLockOldEntryInNewEntryPoint(TxtProcess.Tag, TxtV_Date.Text)
+            FAsignProcess()
+    End Sub
+
+    Private Function FGetJobRate(ByVal mProcess As String, ByVal mParty As String, ByVal mItem As String) As Double
+        If Val(TxtRate.Text) > 0 Then
+            FGetJobRate = Val(TxtRate.Text)
+        Else
+            mQry = " Select Rate From RateListDetail L  " & _
+                    " Where IsNull(SubCode,'') = (SELECT CASE WHEN  Count(*) > 0 THEN Max(PartyRateGroup) ELSE '' END From SubGroup Where SubCode = '" & mParty & "') " & _
+                    " And IsNull(Item,'') = (SELECT CASE WHEN Count(*) > 0 THEN Max(ItemRateGroup)  ELSE '' END  From ItemProcessDetail Where Code = '" & mItem & "' And Process = '" & mProcess & "') " & _
+                    " And Process ='" & mProcess & "'"
+            FGetJobRate = AgL.VNull(AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar)
+        End If
+    End Function
+
+    Private Sub FrmJobOrder_BaseEvent_Topctrl_tbDel(ByRef Passed As Boolean) Handles Me.BaseEvent_Topctrl_tbDel
+        If isRecordLocked Then
+            MsgBox("Referential data exist. Can't delete record.")
+            Passed = False
+        End If
+    End Sub
+
+   
+End Class

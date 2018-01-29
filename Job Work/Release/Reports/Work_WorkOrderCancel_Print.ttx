@@ -1,0 +1,60 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	W1 WOCNL 2013       1	
+VoucherNo	string	255	1	
+V_Type	string	255	WOCNL	
+V_Prefix	string	255	2013	
+V_Date	datetime	15/Feb/2014 12:00:00 AM	
+V_No	long	1	
+Div_Code	string	255	W	
+Site_Code	string	255	1	
+Party	string	255	W100000032	
+PartyName	string	255	Surya Carpet Pvt. Ltd.	
+PartyAdd1	string	255	UGAPUR, AURAI, S.R.N.	
+PartyAdd2	string	255		
+PartyCity	string	255	M10153	
+PartyCityName	string	255	BHADOHI (U.P.)	
+PartyState	string	255		
+SalesTaxGroupParty	string	255	LOCAL	
+Mobile	string	255		
+EMail	string	255		
+Status	string	255		
+Currency	string	255		
+TermsAndConditions	string	255		
+Remarks	string	255		
+EntryBy	string	255	SA	
+EntryDate	datetime	15/Feb/2014 1:28:00 PM	
+EntryType	string	255	Add	
+EntryStatus	string	255	Add	
+ApproveBy	string	255		
+ApproveDate	datetime		
+MoveToLog	string	255		
+MoveToLogDate	datetime		
+UID	string	255		
+SR	number	1	
+IsDeleted	boolean		
+Item	string	255	W10232	
+Qty	number	440	
+Unit	string	255	KG	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+LineTotalMeasure	number	0	
+Rate	number	28	
+Amount	number	12320	
+ItemDesc	string	255	20 C 2 PLY YELLOW	
+SiteName	string	255	Chandra Woollens	
+Specification	string	255		
+ChallanQty	number	0	
+WorkToPartyTinNo	string	255		
+WorkOrderManualNo	string	255	WOCNL - 13-0018	
+ReferenceNo	string	255	13-0001	
+Caption_Dimension1	string	255	D1	
+Caption_Dimension2	string	255	D2	
+D1	string	255		
+D2	string	255		
+H_Gross_Amount	number	129162.7	
+H_Addition_Per	number	0	
+H_Addition	number	0	
+H_Deduction_Per	number	0	
+H_Deduction	number	0	
+H_Round_Off	number	0.3	
+H_Net_Amount	number	129163	

@@ -1,0 +1,178 @@
+E:\Arpit\Active Project\Production\Release\Production.exe.config
+E:\Arpit\Active Project\Production\Release\Production.exe
+E:\Arpit\Active Project\Production\Release\Production.pdb
+E:\Arpit\Active Project\Production\Release\Production.xml
+E:\Arpit\Active Project\Production\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.MDIMain.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.Resources.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.exe
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.xml
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.pdb
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+F:\ACTIVE PROJECT\Production\Release\Production.exe.config
+F:\ACTIVE PROJECT\Production\Release\Production.exe
+F:\ACTIVE PROJECT\Production\Release\Production.pdb
+F:\ACTIVE PROJECT\Production\Release\Production.xml
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.MDIMain.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.Resources.resources
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.exe
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.xml
+F:\ACTIVE PROJECT\Production\Project\obj\Debug\Production.pdb
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobReceiveNew.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+E:\Arpit\Active Project\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+E:\Active Projects\Production\Release\Production.exe.config
+E:\Active Projects\Production\Release\Production.exe
+E:\Active Projects\Production\Release\Production.pdb
+E:\Active Projects\Production\Release\Production.xml
+E:\Active Projects\Production\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.MDIMain.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.Resources.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+E:\Active Projects\Production\Project\obj\Debug\Production.exe
+E:\Active Projects\Production\Project\obj\Debug\Production.xml
+E:\Active Projects\Production\Project\obj\Debug\Production.pdb
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderMaterialIssue.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+E:\Active Projects\Production\Project\obj\Debug\Production.FrmJobQC.resources
+E:\Satyam\Production\Release\Production.exe.config
+E:\Satyam\Production\Release\Production.exe
+E:\Satyam\Production\Release\Production.pdb
+E:\Satyam\Production\Release\Production.xml
+E:\Satyam\Production\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobOrderMaterialIssue.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobQC.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+E:\Satyam\Production\Project\obj\Debug\Production.MDIMain.resources
+E:\Satyam\Production\Project\obj\Debug\Production.Resources.resources
+E:\Satyam\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+E:\Satyam\Production\Project\obj\Debug\Production.exe
+E:\Satyam\Production\Project\obj\Debug\Production.xml
+E:\Satyam\Production\Project\obj\Debug\Production.pdb
+E:\Akash\Production\Release\Production.exe.config
+E:\Akash\Production\Release\Production.exe
+E:\Akash\Production\Release\Production.pdb
+E:\Akash\Production\Release\Production.xml
+E:\Akash\Production\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobOrderMaterialIssue.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobQC.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+E:\Akash\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+E:\Akash\Production\Project\obj\Debug\Production.MDIMain.resources
+E:\Akash\Production\Project\obj\Debug\Production.Resources.resources
+E:\Akash\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+E:\Akash\Production\Project\obj\Debug\Production.exe
+E:\Akash\Production\Project\obj\Debug\Production.xml
+E:\Akash\Production\Project\obj\Debug\Production.pdb
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobOrderCancelMaterialReceive.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobLoss.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobPayment.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobTDS.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobPaymentAdjustment.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobDebitCreaditNote.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobQC_New.resources
+E:\Satyam\Production\Project\obj\Debug\Production.FrmJobDebitCreditNote.resources
+D:\Active Projects\Production\Release\Production.exe.config
+D:\Active Projects\Production\Project\obj\Debug\Production.exe
+D:\Active Projects\Production\Project\obj\Debug\Production.xml
+D:\Active Projects\Production\Project\obj\Debug\Production.pdb
+D:\Active Projects\Production\Release\Production.exe
+D:\Active Projects\Production\Release\Production.pdb
+D:\Active Projects\Production\Release\Production.xml
+D:\Active Projects\Production\Project\obj\Debug\Production.vbprojResolveAssemblyReference.cache
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobQC_New.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobDebitCreaditNote.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobTDS.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobLoss.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderCancelMaterialReceive.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderMaterialIssue.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobQC.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobPayment.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobPaymentAdjustment.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.FrmJobDebitCreditNote.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.MDIMain.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.Resources.resources
+D:\Active Projects\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.xml
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.pdb
+D:\Satyam\Active Projects\Production\Release\Production.pdb
+D:\Satyam\Active Projects\Production\Release\Production.xml
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobQC_New.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobDebitCreaditNote.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobTDS.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobLoss.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderCancelMaterialReceive.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderMaterialIssue.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoiceAmendment.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobQC.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceive.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobConsumption.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobWorker.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmMaterialCostConversion.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobInvoice.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrder.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderAmendment.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobOrderCancel.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobReceiveBom.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobPayment.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobPaymentAdjustment.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.FrmJobDebitCreditNote.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.MDIMain.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.Resources.resources
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\Production\Release\Production.dll.config
+D:\Satyam\Active Projects\Production\Release\Production.dll
+D:\Satyam\Active Projects\Production\Project\obj\Debug\Production.dll

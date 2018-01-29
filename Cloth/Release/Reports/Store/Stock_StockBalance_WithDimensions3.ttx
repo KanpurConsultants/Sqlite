@@ -1,0 +1,24 @@
+; Field definition file for table: ADORecordset
+Item	string	255	HC0660	
+Site_Code	string	255	C	
+Godown	string	255	HC0001	
+Process	string	255		
+LotNo	string	255	50"	
+Dimension1	string	255		
+Dimension2	string	255		
+BalUnit1	number	100	
+Site_Name	string	255	SURYA CARPET PVT. LTD.	
+GodownDesc	string	255	Main Godown	
+ProcessDesc	string	255		
+ItemDesc	string	255	COTTON CANVAS	
+Unit1Head	string	255	Qty	
+Unit1DecimalPlace	number	3	
+Unit1	string	255	METER	
+GroupOn1Head	string	255	None	
+GroupOnValue1	string	255		
+mShowForHead1	string	255	Design	
+mShowForHead2	string	255	Colour	
+mShowForHead3	string	255	Lot No	
+mShowForValue1	string	255		
+mShowForValue2	string	255		
+mShowForValue3	string	255	50"	

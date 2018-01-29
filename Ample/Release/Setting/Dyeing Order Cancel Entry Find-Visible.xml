@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>SearchCode</Name>
+    <Index>2</Index>
+    <Width>127</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>ORDER Type</Name>
+    <Index>0</Index>
+    <Width>104</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Prefix</Name>
+    <Index>1</Index>
+    <Width>61</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>ORDER Date</Name>
+    <Index>3</Index>
+    <Width>104</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>ORDER No</Name>
+    <Index>4</Index>
+    <Width>94</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Manual No</Name>
+    <Index>5</Index>
+    <Width>90</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Due Date</Name>
+    <Index>6</Index>
+    <Width>83</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Qty</Name>
+    <Index>7</Index>
+    <Width>78</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Measure</Name>
+    <Index>8</Index>
+    <Width>109</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Bom Qty</Name>
+    <Index>9</Index>
+    <Width>107</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Bom Measure</Name>
+    <Index>10</Index>
+    <Width>138</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remarks</Name>
+    <Index>11</Index>
+    <Width>82</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Job Instructions</Name>
+    <Index>12</Index>
+    <Width>118</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Terms And Conditions</Name>
+    <Index>13</Index>
+    <Width>154</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>LAST Issue Date</Name>
+    <Index>14</Index>
+    <Width>123</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>LAST Receive Date</Name>
+    <Index>15</Index>
+    <Width>136</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry By</Name>
+    <Index>16</Index>
+    <Width>74</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Date</Name>
+    <Index>17</Index>
+    <Width>125</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Type</Name>
+    <Index>18</Index>
+    <Width>87</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Entry Status</Name>
+    <Index>19</Index>
+    <Width>96</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Approve By</Name>
+    <Index>20</Index>
+    <Width>91</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Approve Date</Name>
+    <Index>21</Index>
+    <Width>125</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Move To Log</Name>
+    <Index>22</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Move To Log Date</Name>
+    <Index>23</Index>
+    <Width>129</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Status</Name>
+    <Index>24</Index>
+    <Width>66</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Job Order For</Name>
+    <Index>25</Index>
+    <Width>106</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>total Amount</Name>
+    <Index>26</Index>
+    <Width>99</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Structure</Name>
+    <Index>27</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Inside/Outside</Name>
+    <Index>28</Index>
+    <Width>111</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Job With Material</Name>
+    <Index>29</Index>
+    <Width>105</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Billing Type</Name>
+    <Index>30</Index>
+    <Width>94</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Purja No</Name>
+    <Index>31</Index>
+    <Width>79</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Cloth Weight</Name>
+    <Index>32</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Division</Name>
+    <Index>33</Index>
+    <Width>75</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Site Name</Name>
+    <Index>34</Index>
+    <Width>107</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Job Worker Name</Name>
+    <Index>35</Index>
+    <Width>167</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>ORDER BY</Name>
+    <Index>36</Index>
+    <Width>93</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Job ORDER Manual No</Name>
+    <Index>37</Index>
+    <Width>160</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Godown</Name>
+    <Index>38</Index>
+    <Width>77</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>UID</Name>
+    <Index>39</Index>
+    <Width>52</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>DocID</Name>
+    <Index>40</Index>
+    <Width>127</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Gross Amount</Name>
+    <Index>41</Index>
+    <Width>132</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Incentive</Name>
+    <Index>42</Index>
+    <Width>101</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Incentive_Per</Name>
+    <Index>43</Index>
+    <Width>127</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Net Amount</Name>
+    <Index>44</Index>
+    <Width>117</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Penalty</Name>
+    <Index>45</Index>
+    <Width>93</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_Penalty_Per</Name>
+    <Index>46</Index>
+    <Width>119</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>SF_RecordCount</Name>
+    <Index>47</Index>
+    <Width>126</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

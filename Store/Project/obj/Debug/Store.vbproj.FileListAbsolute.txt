@@ -1,0 +1,353 @@
+D:\Active Project\Release\Store.exe
+D:\Active Project\Release\Store.pdb
+D:\Active Project\Release\Store.xml
+D:\Active Project\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Project\Store\Project\obj\Debug\Store.FrmCity.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmEnviro.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmItem.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmParty.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+D:\Active Project\Store\Project\obj\Debug\Store.MDIMain.resources
+D:\Active Project\Store\Project\obj\Debug\Store.Resources.resources
+D:\Active Project\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+D:\Active Project\Store\Project\obj\Debug\Store.exe
+D:\Active Project\Store\Project\obj\Debug\Store.xml
+D:\Active Project\Store\Project\obj\Debug\Store.pdb
+D:\Active Project\Store\Project\obj\Debug\Store.FrmGodown.resources
+D:\Active Project\Store\Project\obj\Debug\Store.FrmStockTransferEntry.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.exe
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.xml
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.pdb
+E:\Arpit\Active Project\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmCity.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmEnviro.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmParty.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.MDIMain.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmGodown.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.Resources.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Release\Store.exe
+E:\Arpit\Active Project\Release\Store.pdb
+E:\Arpit\Active Project\Release\Store.xml
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmRequisition.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+E:\Arpit\Active Project\Store\Release\Store.exe
+E:\Arpit\Active Project\Store\Release\Store.pdb
+E:\Arpit\Active Project\Store\Release\Store.xml
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmRateList.resources
+G:\Project\Store\Release\Store.exe
+G:\Project\Store\Release\Store.pdb
+G:\Project\Store\Release\Store.xml
+G:\Project\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+G:\Project\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmRateList.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmCity.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmEnviro.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmParty.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmRequisition.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+G:\Project\Store\Project\obj\Debug\Store.MDIMain.resources
+G:\Project\Store\Project\obj\Debug\Store.FrmGodown.resources
+G:\Project\Store\Project\obj\Debug\Store.Resources.resources
+G:\Project\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+G:\Project\Store\Project\obj\Debug\Store.exe
+G:\Project\Store\Project\obj\Debug\Store.xml
+G:\Project\Store\Project\obj\Debug\Store.pdb
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmBom.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+E:\Arpit\Active Project\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.exe
+E:\Active Projects\Store\Project\obj\Debug\Store.xml
+E:\Active Projects\Store\Project\obj\Debug\Store.pdb
+E:\Active Projects\Store\Release\Store.exe
+E:\Active Projects\Store\Release\Store.pdb
+E:\Active Projects\Store\Release\Store.xml
+E:\Active Projects\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmBom.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmRateList.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmCity.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmEnviro.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmParty.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmRequisition.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.MDIMain.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmGodown.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.Resources.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmDimension1.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmDimension2.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+E:\Active Projects\Store\Project\obj\Debug\Store.FrmComputer.resources
+E:\Akash\Store\Project\obj\Debug\Store.exe
+E:\Akash\Store\Project\obj\Debug\Store.xml
+E:\Akash\Store\Project\obj\Debug\Store.pdb
+E:\Akash\Store\Release\Store.exe
+E:\Akash\Store\Release\Store.pdb
+E:\Akash\Store\Release\Store.xml
+E:\Akash\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Akash\Store\Project\obj\Debug\Store.FrmComputer.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmDimension1.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmDimension2.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmBom.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmRateList.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmCity.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmEnviro.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmParty.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmRequisition.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+E:\Akash\Store\Project\obj\Debug\Store.MDIMain.resources
+E:\Akash\Store\Project\obj\Debug\Store.FrmGodown.resources
+E:\Akash\Store\Project\obj\Debug\Store.Resources.resources
+E:\Akash\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+E:\Satyam\Store\Release\Store.exe
+E:\Satyam\Store\Release\Store.pdb
+E:\Satyam\Store\Release\Store.xml
+E:\Satyam\Store\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Satyam\Store\Project\obj\Debug\Store.FrmComputer.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmDimension1.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmDimension2.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmBom.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmRateList.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmCity.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmEnviro.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmParty.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmRequisition.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+E:\Satyam\Store\Project\obj\Debug\Store.MDIMain.resources
+E:\Satyam\Store\Project\obj\Debug\Store.FrmGodown.resources
+E:\Satyam\Store\Project\obj\Debug\Store.Resources.resources
+E:\Satyam\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+E:\Satyam\Store\Project\obj\Debug\Store.exe
+E:\Satyam\Store\Project\obj\Debug\Store.xml
+E:\Satyam\Store\Project\obj\Debug\Store.pdb
+D:\Active Projects\Store\Project\obj\Debug\Store.exe
+D:\Active Projects\Store\Project\obj\Debug\Store.xml
+D:\Active Projects\Store\Project\obj\Debug\Store.pdb
+D:\Active Projects\Store\Release\Store.exe
+D:\Active Projects\Store\Release\Store.pdb
+D:\Active Projects\Store\Release\Store.xml
+D:\Active Projects\Store\Project\obj\Debug\Store.vbprojResolveAssemblyReference.cache
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmReasonMaster.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmComputer.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmGatePass.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmDimension1.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmDimension2.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmBom.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmRateList.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmCity.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmEnviro.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmParty.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmRequisition.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.MDIMain.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.FrmGodown.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.Resources.resources
+D:\Active Projects\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\Store\Release\Store.exe
+D:\Satyam\Active Projects\Store\Release\Store.pdb
+D:\Satyam\Active Projects\Store\Release\Store.xml
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmReasonMaster.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmComputer.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmGatePass.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmDimension1.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmDimension2.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmBom.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmRateList.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmCity.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmEnviro.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmParty.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmRequisition.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.MDIMain.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.FrmGodown.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.Resources.resources
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.exe
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.xml
+D:\Satyam\Active Projects\Store\Project\obj\Debug\Store.pdb
+D:\Satyam\Active Projects\SqLite\Store\Release\Store.exe.config
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.exe
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.xml
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.pdb
+D:\Satyam\Active Projects\SqLite\Store\Release\Store.exe
+D:\Satyam\Active Projects\SqLite\Store\Release\Store.pdb
+D:\Satyam\Active Projects\SqLite\Store\Release\Store.xml
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmReasonMaster.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmComputer.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmGatePass.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmShiftMaster.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmDimension1.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmDimension2.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemMasterBOMDetail.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemMasterUnitConversion.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmBom.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmInternalProcess.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemInvoiceGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemRateGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmImportFromExcel.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemMaster.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemReportingGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmPartyRateGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmPhysicalStockAdjustmentEntry.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmPhysicalStockEntry.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmQCGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmRateList.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmStockTransfer.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmCity.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmEnviro.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemCategory.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmItemGroup.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmParty.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmRequisition.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmRequisitionApproval.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmStoreIssue.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmStoreReceive.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmTariffHead.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmTermCondition.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmUnitConversion.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmVatCommodityCode.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.FrmGodown.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.Resources.resources
+D:\Satyam\Active Projects\SqLite\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache

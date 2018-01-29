@@ -1,0 +1,11 @@
+; Field definition file for table: ADORecordset
+DistributerId	string	255	51200002	
+DistributerName	string	255	 UNNATI HERBAL {51200002}	
+ParentID	string	255	51200001	
+PrevCumPv	number	142381.708600001	
+SelfPV	number	0	
+GroupPV	number	14	
+TotalPV	number	14	
+PVPer	number	21	
+CUMPV	number	142395.708600001	
+TotalBV	number	14	

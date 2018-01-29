@@ -1,0 +1,36 @@
+; Field definition file for table: ADORecordset
+JobOrder	string	255	D1  PACK 2013     389	
+JobOrderSr	number	134	
+DueDate	datetime	03/Feb/2014 12:00:00 AM	
+Unit	string	255	Pcs	
+MeasureUnit	string	255	Sq.Yard	
+ProcessSr	number	90	
+ManualRefNo	string	255	13-0234	
+VDate	datetime	25/Jan/2014 12:00:00 AM	
+JobWorkerName	string	255	Packing Center	
+ProcessDesc	string	255	Packing	
+ItemDesc	string	255	VIV800-8RD	
+IsMultiProcess	number	1	
+OrdQty	number	1	
+OrdMeasure	number	5.4375	
+RecQty	number	0	
+RecMeasure	number	0	
+GroupOn	string	255	Construction	
+GroupOnValue	string	255	SHAG	
+BalUnit1	number	1	
+Unit1DecimalPlace	number	0	
+Unit1	string	255	Pcs	
+Unit1Head	string	255	Qty	
+BalUnit2	number	5.4375	
+Unit2DecimalPlace	number	4	
+Unit2	string	255	Sq.Yard	
+Unit2Head	string	255	Measure	
+mShowForHead1	string	255		
+mShowForValue1	string	255		
+Unit1Desc	string	255	Unit	
+mShowForHead2	string	255		
+mShowForValue2	string	255		
+Unit2Desc	string	255	Unit	
+mShowForHead3	string	255		
+mShowForValue3	string	255		
+Ageing	number	421	

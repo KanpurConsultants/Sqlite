@@ -1,0 +1,86 @@
+ALTER TABLE SiteMast ADD SisterConcernYn NVARCHAR (1)
+
+
+INSERT INTO dbo.SiteMast (Code, Name, HO_YN, Add1, Add2, Add3, City_Code, Phone, Mobile, PinNo, U_Name, U_EntDt, U_AE, Edit_Date, ModifiedBy, ManualCode, UpLoadDate, Active, AcCode, SqlServer, DataPath, DataPathMain, SqlUser, SqlPassword, CreditLimit, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, Photo, LastNarration, IEC, Director, TIN, ExciseDivision, SisterConcernYn)
+VALUES ('3', 'SURYA CARPET PVT. LTD. (CHAKSARI)', 'N', 'BRANCH CHAKSARI (PURJAGIR)', NULL, NULL, 'M10103', '9984602960', NULL, NULL, 'Sa', '2012-08-16', 'E', '2013-04-30', 'sa', 'CHAKSARI', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1')
+GO
+
+INSERT INTO dbo.SiteMast (Code, Name, HO_YN, Add1, Add2, Add3, City_Code, Phone, Mobile, PinNo, U_Name, U_EntDt, U_AE, Edit_Date, ModifiedBy, ManualCode, UpLoadDate, Active, AcCode, SqlServer, DataPath, DataPathMain, SqlUser, SqlPassword, CreditLimit, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, Photo, LastNarration, IEC, Director, TIN, ExciseDivision, SisterConcernYn)
+VALUES ('4', 'SURYA CARPET PVT. LTD. (SARVATKHANI)', 'N', 'BRANCH SARVATKHANI', NULL, NULL, 'M10153', '9935110947', NULL, NULL, 'Sa', '2012-08-16', 'E', '2013-04-30', 'sa', 'SARVATKHANI', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1')
+GO
+
+
+INSERT INTO dbo.SiteMast (Code, Name, HO_YN, Add1, Add2, Add3, City_Code, Phone, Mobile, PinNo, U_Name, U_EntDt, U_AE, Edit_Date, ModifiedBy, ManualCode, UpLoadDate, Active, AcCode, SqlServer, DataPath, DataPathMain, SqlUser, SqlPassword, CreditLimit, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, Photo, LastNarration, IEC, Director, TIN, ExciseDivision, SisterConcernYn)
+VALUES ('B', 'SURYA CARPET PVT. LTD. (THATRA)', 'N', 'BRANCH THATRA', NULL, NULL, 'M10103', '9984602946', NULL, NULL, 'Sa', '2012-08-16', 'E', '2013-04-30', 'sa', 'THATRA', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1')
+GO
+
+
+INSERT INTO dbo.SiteMast (Code, Name, HO_YN, Add1, Add2, Add3, City_Code, Phone, Mobile, PinNo, U_Name, U_EntDt, U_AE, Edit_Date, ModifiedBy, ManualCode, UpLoadDate, Active, AcCode, SqlServer, DataPath, DataPathMain, SqlUser, SqlPassword, CreditLimit, ApprovedBy, ApprovedDate, GPX1, GPX2, GPN1, GPN2, Photo, LastNarration, IEC, Director, TIN, ExciseDivision, SisterConcernYn)
+VALUES ('F', 'SURYA CARPET PVT. LTD.(FATTUPUR)', 'N', 'BRANCH FATTUPUR', NULL, NULL, 'M10153', NULL, '9984602960', '221401', 'SUJIT', '2013-05-25', 'E', '2013-05-25', 'SUJIT', 'FATTUPUR', NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1')
+GO
+
+
+UPDATE SubGroup SET MasterType = 'Customer' WHERE Nature = 'Customer'
+UPDATE SubGroup SET MasterType = 'Supplier' WHERE Nature = 'Supplier'
+
+
+
+
+
+
+
+INSERT INTO dbo.Godown (Code, Description, Site_Code, Div_Code, IsDeleted, EntryBy, EntryDate, EntryType, EntryStatus, ApproveBy, ApproveDate, MoveToLog, MoveToLogDate, Status, Uid, Address, City, ContactPerson, Mobile, OwnerName, RentedYN, RestrictNegetiveStock, AlertOnNegetiveStock)
+VALUES ('D30001', 'CHAKSARI', '3', 'D', NULL, 'SA', '2012-08-16 12:43:00', 'Add', 'Open', 'SA', '2012-08-16 12:44:00', NULL, NULL, 'Active', '16BB838C-49D0-4136-893F-F5CD559B7306', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+
+INSERT INTO dbo.Godown (Code, Description, Site_Code, Div_Code, IsDeleted, EntryBy, EntryDate, EntryType, EntryStatus, ApproveBy, ApproveDate, MoveToLog, MoveToLogDate, Status, Uid, Address, City, ContactPerson, Mobile, OwnerName, RentedYN, RestrictNegetiveStock, AlertOnNegetiveStock)
+VALUES ('DF0001', 'FATTUPUR', 'F', 'D', NULL, 'sa', '2013-05-29 13:54:00', 'Add', 'Open', 'sa', '2013-05-29 13:54:00', NULL, NULL, 'Active', 'EFD42CF6-9FB1-4D1B-A012-9F3D52E7C03F', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+
+
+INSERT INTO dbo.Godown (Code, Description, Site_Code, Div_Code, IsDeleted, EntryBy, EntryDate, EntryType, EntryStatus, ApproveBy, ApproveDate, MoveToLog, MoveToLogDate, Status, Uid, Address, City, ContactPerson, Mobile, OwnerName, RentedYN, RestrictNegetiveStock, AlertOnNegetiveStock)
+VALUES ('D40001', 'SARVATKHANI', '4', 'D', NULL, 'SA', '2012-08-16 12:49:00', 'Add', 'Open', 'SA', '2012-08-16 12:49:00', NULL, NULL, 'Active', '7D16162B-07EF-4B31-A5B3-E1A40133AC3C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+
+INSERT INTO dbo.Godown (Code, Description, Site_Code, Div_Code, IsDeleted, EntryBy, EntryDate, EntryType, EntryStatus, ApproveBy, ApproveDate, MoveToLog, MoveToLogDate, Status, Uid, Address, City, ContactPerson, Mobile, OwnerName, RentedYN, RestrictNegetiveStock, AlertOnNegetiveStock)
+VALUES ('DB0001', 'THATRA', 'B', 'D', NULL, 'SA', '2012-08-16 12:47:00', 'Add', 'Open', 'SA', '2012-08-16 12:47:00', NULL, NULL, 'Active', '05FD6325-7668-481D-84AD-DBF5F77D9F59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+
+
+UPDATE Godown SET Div_Code='D'
+
+UPDATE PurchInvoice SET Godown = 'D10001'
+UPDATE PurchChallan  SET Godown = 'D10001'
+
+UPDATE SaleInvoice SET Godown = 'D10001'
+UPDATE SaleChallan SET Godown = 'D10001'
+
+UPDATE Stock SET Godown = 'D10001'
+
+
+
+
+ALTER TABLE PurchInvoice ADD Round_Off_Per FLOAT 
+ALTER TABLE PurchInvoice_Log  ADD Round_Off_Per FLOAT 
+ALTER TABLE PurchInvoiceDetail  ADD Round_Off_Per FLOAT 
+ALTER TABLE PurchInvoiceDetail_Log  ADD Round_Off_Per FLOAT 
+ALTER TABLE Item ADD IsSystemDefine BIT 
+ALTER TABLE Item_Log  ADD IsSystemDefine BIT 
+ALTER TABLE Item ADD IsRestricted_InTransaction BIT 
+ALTER TABLE Item_Log  ADD IsRestricted_InTransaction BIT 
+ALTER TABLE ItemSiteDetail ADD IsMandatory_UnitConversion BIT 
+ALTER TABLE ItemSiteDetail_Log  ADD IsMandatory_UnitConversion BIT 
+
+
+
+
+
+UPDATE SubGroup SET COMMONAC = 0 WHERE MasterType IN ('Customer','Suplier') 
+
+
+
+
+
+
+
+

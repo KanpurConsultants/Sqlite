@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GridSave>
+  <Column>
+    <Name>S.No.</Name>
+    <Index>0</Index>
+    <Width>40</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Import Status</Name>
+    <Index>1</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>V_Nature</Name>
+    <Index>2</Index>
+    <Width>70</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item_UID</Name>
+    <Index>3</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Code</Name>
+    <Index>4</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item</Name>
+    <Index>5</Index>
+    <Width>130</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Item Invoiced</Name>
+    <Index>6</Index>
+    <Width>130</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Specification</Name>
+    <Index>7</Index>
+    <Width>130</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order</Name>
+    <Index>8</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Sr</Name>
+    <Index>9</Index>
+    <Width>40</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Rate Per Qty</Name>
+    <Index>10</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Order Rate Per Measure</Name>
+    <Index>11</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sales Tax Group Item</Name>
+    <Index>12</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Billing Type</Name>
+    <Index>13</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Rate Type</Name>
+    <Index>14</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Bale No</Name>
+    <Index>15</Index>
+    <Width>60</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Lot No</Name>
+    <Index>16</Index>
+    <Width>60</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty Decimal Places</Name>
+    <Index>17</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Doc Qty</Name>
+    <Index>18</Index>
+    <Width>70</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Free Qty</Name>
+    <Index>19</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Qty</Name>
+    <Index>20</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Unit</Name>
+    <Index>21</Index>
+    <Width>50</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Rate</Name>
+    <Index>22</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Rate Per Qty</Name>
+    <Index>23</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Rate Per Measure</Name>
+    <Index>24</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Amount</Name>
+    <Index>25</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>MRP</Name>
+    <Index>26</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Expiry Date</Name>
+    <Index>27</Index>
+    <Width>90</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Per Pcs</Name>
+    <Index>28</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Doc Measure</Name>
+    <Index>29</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Free Measure</Name>
+    <Index>30</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Measure</Name>
+    <Index>31</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Unit</Name>
+    <Index>32</Index>
+    <Width>60</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Measure Decimal Places</Name>
+    <Index>33</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Delivery Measure Multiplier</Name>
+    <Index>34</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Delivery Measure Per Qty</Name>
+    <Index>35</Index>
+    <Width>110</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Doc Delivery Measure</Name>
+    <Index>36</Index>
+    <Width>120</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Free Delivery Measure</Name>
+    <Index>37</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Total Delivery Measure</Name>
+    <Index>38</Index>
+    <Width>85</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Delivery Measure</Name>
+    <Index>39</Index>
+    <Width>70</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Delivery Measure Decimal Places</Name>
+    <Index>40</Index>
+    <Width>50</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Remark</Name>
+    <Index>41</Index>
+    <Width>150</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Purchase No</Name>
+    <Index>42</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Reference DocId Sr</Name>
+    <Index>43</Index>
+    <Width>40</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Purchase Rate</Name>
+    <Index>44</Index>
+    <Width>150</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Challan</Name>
+    <Index>45</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Challan Sr</Name>
+    <Index>46</Index>
+    <Width>40</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Invoice</Name>
+    <Index>47</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sale Invoice Sr</Name>
+    <Index>48</Index>
+    <Width>40</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Gross Amount</Name>
+    <Index>49</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Gross Amount PostAc</Name>
+    <Index>50</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount Pre Tax @</Name>
+    <Index>64</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount Pre Tax</Name>
+    <Index>65</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount Pre Tax PostAc</Name>
+    <Index>66</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Additions Pre Tax @</Name>
+    <Index>67</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Additions Pre Tax</Name>
+    <Index>68</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Additions Pre Tax PostAc</Name>
+    <Index>69</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sales Tax Taxable Amt</Name>
+    <Index>70</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sales Tax Taxable Amt PostAc</Name>
+    <Index>71</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vat @</Name>
+    <Index>72</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vat</Name>
+    <Index>73</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Vat PostAc</Name>
+    <Index>74</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sat @</Name>
+    <Index>75</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sat</Name>
+    <Index>76</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Sat PostAc</Name>
+    <Index>77</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount @</Name>
+    <Index>51</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount</Name>
+    <Index>52</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Discount PostAc</Name>
+    <Index>53</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Charges @</Name>
+    <Index>54</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Charges</Name>
+    <Index>55</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Other Charges PostAc</Name>
+    <Index>56</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Round Off</Name>
+    <Index>57</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Round Off PostAc</Name>
+    <Index>58</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Net Amount</Name>
+    <Index>59</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Net Amount PostAc</Name>
+    <Index>60</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Landed Value</Name>
+    <Index>61</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Landed Value PostAc</Name>
+    <Index>62</Index>
+    <Width>100</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Is Database Value</Name>
+    <Index>63</Index>
+    <Width>80</Width>
+    <Visible>False</Visible>
+    <AggregateFunction />
+  </Column>
+</GridSave>

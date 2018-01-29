@@ -1,0 +1,49 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	M1 CWORD 2014     133	
+V_Type	string	255	CWORD	
+V_Date	datetime	22/Feb/2015 12:00:00 AM	
+ManualRefNo	string	255	14-0124	
+JobWorkerName	string	255	Rajesh Kumar	
+DueDate	datetime	02/Mar/2015 12:00:00 AM	
+Remarks	string	255		
+Sr	number	1	
+ProcessDesc	string	255	Third Backing Cloth Weaving	
+ProcessSr	number	511	
+Item	string	255	M183530	
+LineRemark	string	255		
+ItemDesc	string	255	8.0 White Cloth	
+VoucherTypeDesc	string	255	Third Backing Cloth Weaving Order	
+TotalLossPer	number	0	
+Ageing	number	-8	
+TotalOrdUnit1	number	244.6	
+TotalOrdUnit2	string	255		
+TotalReceiveUnit1	number	374.8	
+TotalReceiveUnit2	string	255		
+TotalLossUnit1	number	0	
+TotalLossUnit2	string	255		
+TotalBalUnit1	number	0	
+TotalBalUnit2	number	0	
+Unit1Desc	string	255	Unit	
+Unit2Desc	string	255		
+Unit1Head	string	255	Qty	
+Unit1	string	255	METER	
+Unit1DecimalPlace	number	3	
+Unit2Head	string	255		
+Unit2	string	255		
+Unit2DecimalPlace	string	255		
+OrdUnit1	number	244.6	
+CancelUnit1	number	0	
+AmdUnit1	number	0	
+OrdUnit2	string	255		
+CancelUnit2	string	255		
+AmdUnit2	string	255		
+mShowForHead1	string	255		
+mShowForValue1	string	255		
+mShowForHead2	string	255		
+mShowForValue2	string	255		
+mShowForHead3	string	255		
+mShowForValue3	string	255		
+GroupOn	string	255		
+GroupOnHead	string	255		
+IsMultiProcess	number	1	
+IsProcessinNewPage	number	0	

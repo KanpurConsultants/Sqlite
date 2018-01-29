@@ -1,0 +1,30 @@
+; Field definition file for table: ADORecordset
+GrpField	string	255	Otto {Otto}	
+GrpFieldDesc	string	255	Otto {Otto},Perrysburg	
+GrpFieldHead	string	255	Party Name	
+Currency	string	255	EURO	
+DocID	string	255	M1    SI 2013       3	
+V_Type	string	255	SI	
+V_Date	date	03/Apr/2013 12:00:00 AM	
+ReferenceNo	string	255	SCP-4513/13	
+SaleToPartyName	string	255	Otto, Perrysburg	
+AgentName	string	255		
+Sr	number	1	
+SaleChallan	string	255	D1 SCHLN 2012     224	
+Item	string	255	D117425	
+Qty	number	1	
+Unit	string	255	Pcs	
+QtyDecimalplace	number	0	
+MeasurePerPcs	number	0.625	
+MeasureUnit	string	255	Sq.Yard	
+TotalMeasure	number	0.069444444375	
+Rate	number	1	
+SaleChallanSr	number		
+Amount	number	1	
+AmountTitle	string	255	Amount	
+NetAmtRate	number	1	
+ItemDesc	string	255	OTPMT1006-23	
+VoucherTypeDesc	string	255	Sale Invoice	
+ChallanNo	string	255	SCHLN- SCP-3939 BY AIR	
+H_Remarks	string	255	.	
+LineRemarks	string	255		

@@ -1,0 +1,37 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	M1    SO 2013     125	
+V_Type	string	255	SO	
+V_Date	date	01/Apr/2013 12:00:00 AM	
+ReferenceNo	string	255	13-0120	
+Currency	string	255	EURO	
+DecimalPlaces	number	0	
+MeasureDecimalPlace	number	4	
+PartyDeliveryDate	date	25/Apr/2013 12:00:00 AM	
+SaleToPartyName	string	255	Surya  Carpet  Inc, CALHOUN, GA-30701	
+PartyOrderNo	string	255	CUS0931	
+PartyOrderDate	date	01/Apr/2013 12:00:00 AM	
+Remarks	string	255		
+Sr	number	1	
+OrderNo	number	0	
+Item	string	255	D144024	
+Qty	number	1	
+Unit	string	255	Pcs	
+MeasurePerPcs	number	14.1875	
+MeasureUnit	string	255	Sq.Yard	
+TotalMeasure	number	14.1875	
+Rate	number	108	
+Amount	number	14040	
+LineRemark	string	255		
+RateType	string	255		
+ItemDesc	string	255	DNE3503-1013	
+VoucherTypeDesc	string	255	Sale Order	
+ChallanNo	string	255	SAMPLE-539	
+ChallanDate	date	22/Apr/2013 12:00:00 AM	
+ChallanQty	number	1	
+ChallanMeasure	number	14.1875	
+Ageing	number	-3	
+TotalOrdQty	number	1	
+TotalOrdMeasure	number	14.1875	
+OrderOn	date	01/Apr/2013 12:00:00 AM	
+TotalBalQty	number	0	
+TotalBalMeasure	number	0	

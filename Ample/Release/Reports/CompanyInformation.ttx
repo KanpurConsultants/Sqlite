@@ -1,0 +1,12 @@
+; Field definition file for table: ADORecordset
+CompanyName	string	255	Ambrozia Naturals Pvt. Ltd.	
+Add1	string	255	13/152 Parmat	
+Add2	string	255	Kanpur	
+Add3	string	255		
+City	string	255	KANPUR	
+Phone	string	255	9336069944	
+Fax	string	255	-	
+Pin	string	255	208001	
+Email	string	255	Info@AmbroziaNaturals.com	
+CSTNo	string	255	-	
+TIN	string	255	09AAOCA7097G1Z3	

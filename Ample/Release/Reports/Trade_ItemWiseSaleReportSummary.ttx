@@ -1,0 +1,49 @@
+; Field definition file for table: ADORecordset
+DocId	string	255	D1    SI 2017       1	
+Sr	number	1	
+SaleOrder	string	255		
+SaleOrderSr	number	0	
+SaleChallan	string	255	D1    SI 2017       1	
+SaleChallanSr	number	1	
+BaleNo	string	255		
+Item	string	255	D10103	
+ItemManualCode	string	255	AH0001	
+SalesTaxGroupItem	string	255	HEALTH CARE	
+DocQty	number		
+Qty	number	1	
+FreeQty	number	0	
+Unit	string	255	Pcs	
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+TotalDocMeasure	number		
+TotalMeasure	number	0	
+Rate	number	120	
+Amount	number	120	
+ReferenceDocId	string	255		
+LotNo	string	255		
+UID	string	255		
+Specification	string	255		
+Gross_Amount	number	120	
+Sales_Tax_Taxable_Amt	number	114.29	
+Vat_Per	number	5	
+Vat	number	5.71	
+Sat_Per	number		
+Sat	number		
+Cst_Per	number	0	
+Cst	number	0	
+Total_Price	number	120	
+Discount_Per	number	0	
+Discount	number	0	
+Other_Charges_Per	number	0	
+Other_Charges	number	0	
+Round_Off	number	0	
+Net_Amount	number	120	
+ItemDesc	string	255	AMBROZIA  SPIRULINA 	
+V_Date	datetime	01/Apr/2017 12:00:00 AM	
+ReferenceNo	string	255	17-0001	
+SaleToPartyName	string	255	UNNATI HERBAL {51200002}	
+Remark	string	255		
+GodownName	string	255		
+PointValue	number	7	
+BusinessVolume	number	84	
+StockPointName	string	255		

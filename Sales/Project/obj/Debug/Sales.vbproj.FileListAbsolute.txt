@@ -1,0 +1,133 @@
+E:\Arpit\Active Project\Sales\Release\Sales.exe.config
+E:\Arpit\Active Project\Sales\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.MDIMain.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.Resources.resources
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Sales\Release\Sales.exe
+E:\Arpit\Active Project\Sales\Release\Sales.pdb
+E:\Arpit\Active Project\Sales\Release\Sales.xml
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.exe
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.xml
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.pdb
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+\\arpit-pc\Active Project\Sales\Release\Sales.exe.config
+\\arpit-pc\Active Project\Sales\Release\Sales.exe
+\\arpit-pc\Active Project\Sales\Release\Sales.pdb
+\\arpit-pc\Active Project\Sales\Release\Sales.xml
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\ResolveAssemblyReference.cache
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.MDIMain.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.Resources.resources
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.exe
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.xml
+\\arpit-pc\Active Project\Sales\Project\obj\Debug\Sales.pdb
+F:\Project\Sales200813\Sales\Release\Sales.exe.config
+F:\Project\Sales200813\Sales\Release\Sales.exe
+F:\Project\Sales200813\Sales\Release\Sales.pdb
+F:\Project\Sales200813\Sales\Release\Sales.xml
+F:\Project\Sales200813\Sales\Project\obj\Debug\ResolveAssemblyReference.cache
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.MDIMain.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.Resources.resources
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.exe
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.xml
+F:\Project\Sales200813\Sales\Project\obj\Debug\Sales.pdb
+E:\Arpit\Active Project\Sales03092013\Sales\Release\Sales.exe.config
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.exe
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.xml
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.pdb
+E:\Arpit\Active Project\Sales03092013\Sales\Release\Sales.exe
+E:\Arpit\Active Project\Sales03092013\Sales\Release\Sales.pdb
+E:\Arpit\Active Project\Sales03092013\Sales\Release\Sales.xml
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.MDIMain.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.Resources.resources
+E:\Arpit\Active Project\Sales03092013\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Sales\Project\obj\Debug\Sales.FrmSaleInvoiceNew.resources
+D:\Active Projects\Sales\Release\Sales.exe.config
+D:\Active Projects\Sales\Project\obj\Debug\Sales.exe
+D:\Active Projects\Sales\Project\obj\Debug\Sales.xml
+D:\Active Projects\Sales\Project\obj\Debug\Sales.pdb
+D:\Active Projects\Sales\Release\Sales.exe
+D:\Active Projects\Sales\Release\Sales.pdb
+D:\Active Projects\Sales\Release\Sales.xml
+D:\Active Projects\Sales\Project\obj\Debug\ResolveAssemblyReference.cache
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleInvoiceNew.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.MDIMain.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.Resources.resources
+D:\Active Projects\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\Sales\Release\Sales.exe.config
+D:\Satyam\Active Projects\Sales\Project\obj\Debug\Sales.exe
+D:\Satyam\Active Projects\Sales\Project\obj\Debug\Sales.xml
+D:\Satyam\Active Projects\Sales\Project\obj\Debug\Sales.pdb
+D:\Satyam\Active Projects\SqLite\Sales\Release\Sales.exe.config
+D:\Satyam\Active Projects\SqLite\Sales\Release\Sales.exe
+D:\Satyam\Active Projects\SqLite\Sales\Release\Sales.pdb
+D:\Satyam\Active Projects\SqLite\Sales\Release\Sales.xml
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.vbprojResolveAssemblyReference.cache
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmImportSaleOrderFromExcel.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmPurchChallanForSingleItem.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleChallan.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleInvoice.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleInvoiceNew.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleInvoicePartyDetail.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleOrder.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleOrderAmendment.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleOrderCancel.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleOrderDelivery.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.FrmSaleReturn.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.MDIMain.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.Resources.resources
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.exe
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.xml
+D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.pdb

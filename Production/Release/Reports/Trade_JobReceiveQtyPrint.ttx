@@ -1,0 +1,48 @@
+; Field definition file for table: ADORecordset
+V_Date	datetime	14/Apr/2015 12:00:00 AM	
+ManualRefNo	string	255	SPREC-15-0005	
+Remarks	string	255	
+	
+JobWorkerDocNo	string	255	14	
+EntryBy	string	255	SHIVAM	
+EntryDate	datetime	14/Apr/2015 4:26:00 PM	
+ApproveBy	string	255		
+ApproveDate	datetime		
+MachineName	string	255		
+RoundOff	number		
+NetAmount	number	91329	
+Qty	number	1342.4	
+Unit	string	255	KG	
+MeasurePerPcs	number	0	
+LotNo	string	255	14-4142	
+TotalMeasure	number	0	
+MeasureUnit	string	255		
+Rate	number	30	
+Amount	number	40272	
+PerimeterPerPcs	number		
+TotalPerimeter	number		
+LineRemark	string	255		
+DecimalPlaces	number	3	
+ItemSpecification	string	255		
+Item_Uid	string	255		
+JobWorkerName	string	255	CHANDRA WOOLLEN P LTD {CWPL}	
+LossPer	number	0	
+LossQty	number	0	
+RetQty	number	0	
+Freight	number		
+D1Desc	string	255		
+D2Desc	string	255		
+Caption_Dimension1	string	255	Colour	
+Caption_Dimension2	string	255		
+Add1	string	255	BHADOHI	
+Add2	string	255		
+Add3	string	255		
+Mobile	string	255		
+PAN	string	255	X	
+JobRecByName	string	255	S.R.Mehta	
+GodownDesc	string	255	MAIN-GODOWN	
+ItemDesc	string	255	60 C TUSSA L	
+StockItemDesc	string	255		
+Item_UidDesc	string	255		
+ItemGroupDesc	string	255	Woolen Yarn	
+GatePassTitle	string	255	Item Receive From Spinning Order	
