@@ -1,0 +1,18 @@
+E:\Arpit\Active Project\Time Office\Release\Time Office.exe.config
+E:\Arpit\Active Project\Time Office\Release\Time Office.exe
+E:\Arpit\Active Project\Time Office\Release\Time Office.pdb
+E:\Arpit\Active Project\Time Office\Release\Time Office.xml
+E:\Arpit\Active Project\Time Office\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Time Office\Project\obj\Release\TimeOffice.FrmDepartment.resources
+E:\Arpit\Active Project\Time Office\Project\obj\Release\TimeOffice.FrmDesignation.resources
+E:\Arpit\Active Project\Time Office\Project\obj\Release\TimeOffice.FrmEmployee.resources
+E:\Arpit\Active Project\Time Office\Project\obj\Release\TimeOffice.MDIMain.resources
+E:\Arpit\Active Project\Time Office\Project\obj\Release\TimeOffice.Resources.resources
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Time Office.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Time Office.exe
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Time Office.xml
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Time Office.pdb
+D:\KC\Source\Sqlite\Time Office\Release\Time Office.exe.config
+D:\KC\Source\Sqlite\Time Office\Project\obj\Release\Time Office.exe
+D:\KC\Source\Sqlite\Time Office\Project\obj\Release\Time Office.xml
+D:\KC\Source\Sqlite\Time Office\Project\obj\Release\Time Office.pdb

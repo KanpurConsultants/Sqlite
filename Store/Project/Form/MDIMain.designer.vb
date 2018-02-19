@@ -20,56 +20,60 @@ Partial Class MDIMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIMain))
-        Me.MnuMain = New System.Windows.Forms.MenuStrip
-        Me.MnuInventory = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStoreMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemGroup = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemCategory = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuGodown = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemReportingGroup = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemInvoiceGroup = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemRateGroup = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPartyRateGroup = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuQCGroupMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuUnitConversion = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuCustomerMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSupplierMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuAgentMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuVatCommodityCode = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuTariffHeading = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuTermCondition = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuRateList = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuDimension1Master = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuDimension2Master = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuShiftMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuComputerMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuReasonMaster = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStoreTransactions = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemRequisition = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemRequisitionApproval = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemIssueFromStore = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemReceiveInStore = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuInternalProcess = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockTransfer = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPhysicalStockEntry = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPhysicalStockAdjustmentEntry = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuGatePassEntry = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStoreReports = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuRequisitionReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuRequisitionStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemIssueReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuItemReceiveReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockTransferReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.PhysicalStockReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockInHand = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockInProcess = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockBalance = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuMaterialIssueSummary = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuMaterialReceiveSummary = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockTransferSummary = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockBalanceValuation = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStockBalanceWitAverageRate = New System.Windows.Forms.ToolStripMenuItem
+        Me.MnuMain = New System.Windows.Forms.MenuStrip()
+        Me.MnuInventory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStoreMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemMasterCloth = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemCategory = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuGodown = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemReportingGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemInvoiceGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemRateGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPartyRateGroup = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuQCGroupMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuUnitConversion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuCustomerMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSupplierMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuAgentMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuVatCommodityCode = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuTariffHeading = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuTermCondition = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuRateList = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDimension1Master = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDimension2Master = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShiftMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuComputerMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuReasonMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuRateTypeMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStoreTransactions = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemRequisition = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemRequisitionApproval = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemIssueFromStore = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemReceiveInStore = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuInternalProcess = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockTransfer = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPhysicalStockEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPhysicalStockAdjustmentEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuGatePassEntry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStoreReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuRequisitionReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuRequisitionStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemIssueReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuItemReceiveReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockTransferReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PhysicalStockReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockInHand = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockInProcess = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockBalance = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuMaterialIssueSummary = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuMaterialReceiveSummary = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockTransferSummary = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockBalanceValuation = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStockBalanceWitAverageRate = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuUpdateTableStructure = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDepartment = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -84,16 +88,16 @@ Partial Class MDIMain
         '
         'MnuInventory
         '
-        Me.MnuInventory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuStoreMaster, Me.MnuStoreTransactions, Me.MnuStoreReports})
+        Me.MnuInventory.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuStoreMaster, Me.MnuStoreTransactions, Me.MnuStoreReports, Me.MnuUpdateTableStructure})
         Me.MnuInventory.Name = "MnuInventory"
         Me.MnuInventory.Size = New System.Drawing.Size(46, 20)
         Me.MnuInventory.Text = "Store"
         '
         'MnuStoreMaster
         '
-        Me.MnuStoreMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemGroup, Me.MnuItemCategory, Me.MnuGodown, Me.MnuItemReportingGroup, Me.MnuItemInvoiceGroup, Me.MnuItemRateGroup, Me.MnuPartyRateGroup, Me.MnuQCGroupMaster, Me.MnuUnitConversion, Me.MnuCustomerMaster, Me.MnuSupplierMaster, Me.MnuAgentMaster, Me.MnuVatCommodityCode, Me.MnuTariffHeading, Me.MnuTermCondition, Me.MnuRateList, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuShiftMaster, Me.MnuComputerMaster, Me.MnuReasonMaster})
+        Me.MnuStoreMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemMasterCloth, Me.MnuItemGroup, Me.MnuItemCategory, Me.MnuGodown, Me.MnuItemReportingGroup, Me.MnuItemInvoiceGroup, Me.MnuItemRateGroup, Me.MnuPartyRateGroup, Me.MnuQCGroupMaster, Me.MnuUnitConversion, Me.MnuCustomerMaster, Me.MnuSupplierMaster, Me.MnuAgentMaster, Me.MnuVatCommodityCode, Me.MnuTariffHeading, Me.MnuTermCondition, Me.MnuRateList, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuShiftMaster, Me.MnuComputerMaster, Me.MnuReasonMaster, Me.MnuRateTypeMaster, Me.MnuDepartment})
         Me.MnuStoreMaster.Name = "MnuStoreMaster"
-        Me.MnuStoreMaster.Size = New System.Drawing.Size(152, 22)
+        Me.MnuStoreMaster.Size = New System.Drawing.Size(195, 22)
         Me.MnuStoreMaster.Text = "Master"
         '
         'MnuItemMaster
@@ -101,6 +105,12 @@ Partial Class MDIMain
         Me.MnuItemMaster.Name = "MnuItemMaster"
         Me.MnuItemMaster.Size = New System.Drawing.Size(210, 22)
         Me.MnuItemMaster.Text = "Item Master"
+        '
+        'MnuItemMasterCloth
+        '
+        Me.MnuItemMasterCloth.Name = "MnuItemMasterCloth"
+        Me.MnuItemMasterCloth.Size = New System.Drawing.Size(210, 22)
+        Me.MnuItemMasterCloth.Text = "Item Master (Cloth)"
         '
         'MnuItemGroup
         '
@@ -228,11 +238,17 @@ Partial Class MDIMain
         Me.MnuReasonMaster.Size = New System.Drawing.Size(210, 22)
         Me.MnuReasonMaster.Text = "Reason Master"
         '
+        'MnuRateTypeMaster
+        '
+        Me.MnuRateTypeMaster.Name = "MnuRateTypeMaster"
+        Me.MnuRateTypeMaster.Size = New System.Drawing.Size(210, 22)
+        Me.MnuRateTypeMaster.Text = "Rate Type Master"
+        '
         'MnuStoreTransactions
         '
         Me.MnuStoreTransactions.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemRequisition, Me.MnuItemRequisitionApproval, Me.MnuItemIssueFromStore, Me.MnuItemReceiveInStore, Me.MnuInternalProcess, Me.MnuStockTransfer, Me.MnuPhysicalStockEntry, Me.MnuPhysicalStockAdjustmentEntry, Me.MnuGatePassEntry})
         Me.MnuStoreTransactions.Name = "MnuStoreTransactions"
-        Me.MnuStoreTransactions.Size = New System.Drawing.Size(152, 22)
+        Me.MnuStoreTransactions.Size = New System.Drawing.Size(195, 22)
         Me.MnuStoreTransactions.Text = "Transactions"
         '
         'MnuItemRequisition
@@ -293,7 +309,7 @@ Partial Class MDIMain
         '
         Me.MnuStoreReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuRequisitionReport, Me.MnuRequisitionStatus, Me.MnuItemIssueReport, Me.MnuItemReceiveReport, Me.MnuStockTransferReport, Me.PhysicalStockReportToolStripMenuItem, Me.MnuStockInHand, Me.MnuStockInProcess, Me.MnuStockBalance, Me.MnuMaterialIssueSummary, Me.MnuMaterialReceiveSummary, Me.MnuStockTransferSummary, Me.MnuStockBalanceValuation, Me.MnuStockBalanceWitAverageRate})
         Me.MnuStoreReports.Name = "MnuStoreReports"
-        Me.MnuStoreReports.Size = New System.Drawing.Size(152, 22)
+        Me.MnuStoreReports.Size = New System.Drawing.Size(195, 22)
         Me.MnuStoreReports.Tag = ""
         Me.MnuStoreReports.Text = "Reports"
         '
@@ -395,6 +411,18 @@ Partial Class MDIMain
         Me.MnuStockBalanceWitAverageRate.Tag = "Report"
         Me.MnuStockBalanceWitAverageRate.Text = "Stock Balance With Average Rate"
         '
+        'MnuUpdateTableStructure
+        '
+        Me.MnuUpdateTableStructure.Name = "MnuUpdateTableStructure"
+        Me.MnuUpdateTableStructure.Size = New System.Drawing.Size(195, 22)
+        Me.MnuUpdateTableStructure.Text = "Update Table Structure"
+        '
+        'MnuDepartment
+        '
+        Me.MnuDepartment.Name = "MnuDepartment"
+        Me.MnuDepartment.Size = New System.Drawing.Size(210, 22)
+        Me.MnuDepartment.Text = "Department"
+        '
         'MDIMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -466,5 +494,8 @@ Partial Class MDIMain
     Friend WithEvents MnuReasonMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuStockTransferSummary As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuStockBalanceWitAverageRate As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents MnuUpdateTableStructure As ToolStripMenuItem
+    Friend WithEvents MnuRateTypeMaster As ToolStripMenuItem
+    Friend WithEvents MnuItemMasterCloth As ToolStripMenuItem
+    Friend WithEvents MnuDepartment As ToolStripMenuItem
 End Class

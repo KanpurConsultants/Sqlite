@@ -935,8 +935,8 @@ Public Class FrmDisplayHierarchy
             LblDisplay.Tag = StrForCode
             LblDisplayDate.Text = "Date : " & DHSMain.StrFromDate & " To " & DHSMain.StrToDate
             LblDisplaySite.Text = DHSMain.StrSiteName
-            StrConditionOP = " Where LG.V_Date < '" & CDate(DHSMain.StrFromDate).ToString("u") & "' And LG.Site_Code In (" & DHSMain.StrSiteCode & ")   Group By 1 "
-            StrConditionOP += " And LG.V_Date >= (Case When Ag.GroupNature in ('R','E') Then '" & CDate(AgL.PubStartDate).ToString("u") & "' Else '1900/Jan/01' End) "
+            StrConditionOP = " Where LG.V_Date < '" & CDate(DHSMain.StrFromDate).ToString("u") & "' And LG.Site_Code In (" & DHSMain.StrSiteCode & ")   "
+            StrConditionOP += " And LG.V_Date >= (Case When Ag.GroupNature in ('R','E') Then '" & CDate(AgL.PubStartDate).ToString("u") & "' Else '1900/Jan/01' End)  "
             StrCondition1 = " Where (LG.V_Date Between  '" & CDate(DHSMain.StrFromDate).ToString("u") & "' And '" & CDate(DHSMain.StrToDate).ToString("u") & "') And LG.Site_Code In (" & DHSMain.StrSiteCode & ") "
 
             '========== For Detail Section =======
@@ -951,7 +951,7 @@ Public Class FrmDisplayHierarchy
             StrSQLQuery = StrSQLQuery + "Left Join Subgroup SG On Sg.SubCode = LG.SubCode "
             StrSQLQuery = StrSQLQuery + "Left Join AcGroup AG On Ag.GroupCode = Sg.GroupCode "
             StrSQLQuery = StrSQLQuery + StrConditionOP
-            StrSQLQuery = StrSQLQuery + "And LG.SubCode='" & StrForCode & "' "
+            StrSQLQuery = StrSQLQuery + "And LG.SubCode='" & StrForCode & "' Group By 1 "
             StrSQLQuery = StrSQLQuery + "Having (IfNull(Sum(AmtDr),0)-IfNull(Sum(LG.AmtCr),0))<>0 "
 
             StrSQLQuery = StrSQLQuery + "Union All "    
@@ -1311,9 +1311,9 @@ Public Class FrmDisplayHierarchy
             For I = 0 To RptReg.DataDefinition.FormulaFields.Count - 1
                 Select Case CStr(UCase(RptReg.DataDefinition.FormulaFields.Item(I).Name))
                     Case "FDATE"
-                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & Agl.ConvertDate(DHSMain.StrFromDate) & " "
+                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.Chk_Text(CDate(DHSMain.StrFromDate).ToString("u")) & " "
                     Case "TDATE"
-                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & Agl.ConvertDate(DHSMain.StrToDate) & " "
+                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.Chk_Text(CDate(DHSMain.StrToDate).ToString("u")) & " "
                 End Select
             Next
             CMain.FShowReport(RptReg, Me.MdiParent, Me.Text)

@@ -40,7 +40,6 @@ Public Class ClsMain
 
 #Region " Structure Update Code "
     Public Sub UpdateTableStructure()
-
         AgL.AddFieldSqlite("Voucher_Type_Settings", "IsVisible_Specification", "bit", "0")
         AgL.AddFieldSqlite("Voucher_Type_Settings", "IsVisible_BillingType", "bit", "0")
         AgL.AddFieldSqlite("Voucher_Type_Settings", "IsVisible_RateType", "bit", "0")

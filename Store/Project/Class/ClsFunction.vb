@@ -26,6 +26,9 @@ Public Class ClsFunction
                 Case MDI.MnuComputerMaster.Name
                     FrmObj = New FrmComputer(StrUserPermission, DTUP)
 
+                Case MDI.MnuDepartment.Name
+                    FrmObj = New FrmDepartment(StrUserPermission, DTUP)
+
                 Case MDI.MnuItemCategory.Name
                     FrmObj = New FrmItemCategory(StrUserPermission, DTUP)
 
@@ -34,6 +37,9 @@ Public Class ClsFunction
 
                 Case MDI.MnuItemMaster.Name
                     FrmObj = New FrmItemMaster(StrUserPermission, DTUP)
+
+                Case MDI.MnuItemMasterCloth.Name
+                    FrmObj = New FrmItemMaster_Cloth(StrUserPermission, DTUP)
 
                 Case MDI.MnuDimension1Master.Name
                     FrmObj = New FrmDimension1(StrUserPermission, DTUP)
@@ -113,6 +119,9 @@ Public Class ClsFunction
 
                 Case MDI.MnuGatePassEntry.Name
                     'FrmObj = New FrmGatePass(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.GatePass)
+
+                Case MDI.MnuRateTypeMaster.Name
+                    FrmObj = New FrmRateType(StrUserPermission, DTUP)
 
                 Case Else
                     FrmObj = Nothing

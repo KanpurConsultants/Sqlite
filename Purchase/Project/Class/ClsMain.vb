@@ -570,11 +570,11 @@ Public Class ClsMain
                     mQry = "Insert Into Ledger(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
                          " Narration,V_Type,V_No,V_Prefix,Site_Code,DivCode,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,TDSDesc," &
                          " TDSPer,TDS_Of_V_SNo,System_Generated,FormulaString,ContraText) Values " &
-                         " ('" & mDocID & "','" & mRecID & "'," & mSrl & "," & AgL.ConvertDate(mV_Date) & "," & AgL.Chk_Text(mPostSubCode) & "," & AgL.Chk_Text("") & ", " &
+                         " ('" & mDocID & "','" & mRecID & "'," & mSrl & "," & AgL.Chk_Text(CDate(mV_Date).ToString("u")) & "," & AgL.Chk_Text(mPostSubCode) & "," & AgL.Chk_Text("") & ", " &
                          " " & mDebit & "," & mCredit & ", " &
                          " " & AgL.Chk_Text(mNarr) & ",'" & mV_Type & "','" & mV_No & "','" & mV_Prefix & "'," &
                          " '" & mSite_Code & "','" & mDiv_Code & "','" & AgL.Chk_Text("") & "'," &
-                         " " & AgL.ConvertDate("") & "," & AgL.Chk_Text("") & "," &
+                         " Null," & AgL.Chk_Text("") & "," &
                          " " & Val("") & "," & AgL.Chk_Text("") & "," & Val("") & "," & 0 & ",'Y','" & "" & "','" & StrContraTextJV & "')"
                     AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
                 End If

@@ -115,7 +115,7 @@ Public Class FrmSmartFinder
         Color_A = Color.Khaki
         Color_B = Color.Cornsilk
 
-        StrCondition = "Where (TBL.V_Date Between " & Agl.ConvertDate(TxtFromDate.Text) & " And " & Agl.ConvertDate(TxtToDate.Text) & ") "
+        StrCondition = "Where (TBL.V_Date Between " & AgL.Chk_Text(CDate(TxtFromDate.Text).ToString("u")) & " And " & AgL.Chk_Text(CDate(TxtToDate.Text).ToString("u")) & ") "
         If TxtVoucherType.Tag <> "" Then
             StrCondition += " And TBL.V_Type In (" & TxtVoucherType.Tag & ") "
         Else

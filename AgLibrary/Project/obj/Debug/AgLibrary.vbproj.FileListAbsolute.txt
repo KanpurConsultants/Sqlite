@@ -90,3 +90,22 @@ D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Debug\AgLibrary.dll
 D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Debug\AgLibrary.xml
 D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Debug\AgLibrary.pdb
 D:\Satyam\Active Projects\SqLite\AgLibrary\Project\obj\Debug\AgLibrary.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\AgLibrary\Release\AgLibrary.dll.config
+D:\KC\Source\Sqlite\AgLibrary\Release\AgLibrary.dll
+D:\KC\Source\Sqlite\AgLibrary\Release\AgLibrary.pdb
+D:\KC\Source\Sqlite\AgLibrary\Release\AgLibrary.xml
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmAgZip.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmBackupDatase.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmCommonMaster1.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmCommonMaster2.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmPaymentDetail.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.frmFind.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.FrmProgressBar.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.MDIMain.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.RepFormGlobal.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.RepView.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.Resources.resources
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.dll
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.xml
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.pdb

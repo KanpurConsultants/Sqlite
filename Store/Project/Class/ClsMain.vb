@@ -79,40 +79,21 @@ Public Class ClsMain
 #End Region
 
 #Region " Structure Update Code "
-    Public Sub UpdateTableStructure(ByRef MdlTable() As AgLibrary.ClsMain.LITable)
-        FBomDetail(MdlTable, "BOMDetail", EntryPointType.Main)
-        FBomDetail(MdlTable, "BOMDetail_Log", EntryPointType.Log)
-
-        FSaleInvoice(MdlTable, "SaleInvoice", EntryPointType.Main)
-        FSaleInvoice(MdlTable, "SaleInvoice_Log", EntryPointType.Log)
-
-        FPurchInvoice(MdlTable, "PurchInvoice", EntryPointType.Main)
-        FPurchInvoice(MdlTable, "PurchInvoice_Log", EntryPointType.Log)
-
-        FPurchInvoiceDetail(MdlTable, "PurchInvoiceDetail", EntryPointType.Main)
-        FPurchInvoiceDetail(MdlTable, "PurchInvoiceDetail_Log", EntryPointType.Log)
-
-        FItemType(MdlTable, "ItemType", EntryPointType.Main)
-
-        FItemCategory(MdlTable, "ItemCategory", EntryPointType.Main)
-        FItemCategory(MdlTable, "ItemCategory_Log", EntryPointType.Log)
-
-        FItemGroup(MdlTable, "ItemGroup", EntryPointType.Main)
-        FItemGroup(MdlTable, "ItemGroup_Log", EntryPointType.Log)
-
-        FItem(MdlTable, "Item", EntryPointType.Main)
-        FItem(MdlTable, "Item_Log", EntryPointType.Log)
-
-        FSubGroup(MdlTable, "SubGroup", EntryPointType.Main)
-        FSubGroup(MdlTable, "SubGroup_Log", EntryPointType.Log)
-
-        FCurrency(MdlTable, "Currency", EntryPointType.Main)
-
-        FVoucher_Type(MdlTable, "Voucher_Type")
-
-        FEnviro(MdlTable, "Enviro")
-
-        FDuesEnviro(MdlTable, "DuesPaymentEnviro")
+    Public Sub UpdateTableStructure()
+        AgL.AddFieldSqlite("Item", "Gross_Weight", "Float", "0")
+        AgL.AddFieldSqlite("Item", "IsSystemDefine", "bit", "0")
+        AgL.AddFieldSqlite("Item", "IsRestricted_InTransaction", "bit", "0")
+        AgL.AddFieldSqlite("ItemSiteDetail", "IsMandatory_UnitConversion", "bit", "0")
+        AgL.AddFieldSqlite("ItemGroup", "IsSystemDefine", "bit", "0")
+        AgL.AddFieldSqlite("ItemCategory", "IsSystemDefine", "bit", "0")
+        AgL.AddFieldSqlite("ItemCategory", "IsSystemDefine", "bit", "0")
+        AgL.AddFieldSqlite("ItemCategory", "SalesTaxGroup", "nVarchar(20)", "", True, " references PostingGroupSalesTaxItem(Description) ")
+        AgL.AddFieldSqlite("ItemCategory", "Unit", "nVarchar(10)", "", True, " references Unit(code) ")
+        AgL.AddFieldSqlite("ItemCategory", "Department", "nVarchar(10)", "", True, " references Department(code) ")
+        AgL.AddFieldSqlite("Item", "HSN", "nVarchar(8)", "")
+        AgL.AddFieldSqlite("ItemCategory", "HSN", "nVarchar(8)", "")
+        AgL.AddFieldSqlite("RateType", "Margin", "Float", "0")
+        AgL.AddFieldSqlite("RateType", "Sr", "Int", "0")
     End Sub
 
     Public Sub UpdateTableInitialiser()

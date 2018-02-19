@@ -611,7 +611,7 @@ Public Class FrmReportLayout
         If Not FIsValid(1) Then Exit Sub
 
 
-        StrCondition = " And (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
+        StrCondition = " And (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
 
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition = StrCondition & " And TC.Code In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -650,8 +650,8 @@ Public Class FrmReportLayout
         Dim StrCnd As String = ""
 
 
-        StrCondition1 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " And IfNull(LG.AmtDr,0)>0) And AG.Nature='Customer'  "
-        StrCondition2 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & ") And IfNull(LG.AmtCr,0)>0 And IfNull(LG.AmtCr,0)-IfNull(T.AMOUNT,0)<>0 And AG.Nature='Customer'  "
+        StrCondition1 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And IfNull(LG.AmtDr,0)>0) And AG.Nature='Customer'  "
+        StrCondition2 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & ") And IfNull(LG.AmtCr,0)>0 And IfNull(LG.AmtCr,0)-IfNull(T.AMOUNT,0)<>0 And AG.Nature='Customer'  "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition2 = StrCondition2 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
@@ -677,7 +677,7 @@ Public Class FrmReportLayout
             StrCondition2 = StrCondition2 & " And  LG.Site_Code IN (" & FGMain(GFilterCode, 7).Value & ") "
         End If
 
-        STRDATE = AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
+        STRDATE = AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
 
 
         StrSQLQuery = "Select LG.Docid,Max(LG.V_Date) AS V_Date,Max(LG.V_Type) AS V_Type,Cast(Max(LG.V_No) as Varchar) AS Recid,Max(SG.Name) As Party,Max(SG.SubCode) As PartySCode,IfNull(Max(C.CityName),'')  As CityName,Max(AG.GroupName) As AGGroup,Max(AG.GroupCode) As AGCode,Max(SG.DueDays) AS CrDays,"
@@ -761,9 +761,9 @@ Public Class FrmReportLayout
         If Not FIsValid(1) Then Exit Sub
         If Not FIsValid(4) Then Exit Sub
 
-        StrCndBill = " And LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString) & " "
-        StrCndPmt = " And LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
-        StrCndPmt1 = " And (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCndBill = " And LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " "
+        StrCndPmt = " And LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
+        StrCndPmt1 = " And (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
 
         StrCndParty = ""
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCndParty = " And Max(Tmp.SubCode) In (" & FGMain(GFilterCode, 2).Value & ") "
@@ -783,8 +783,8 @@ Public Class FrmReportLayout
         StrSQLQuery += "MT.V_Type, Cast(MT.V_No as Varchar) as V_No, "
         StrSQLQuery += "MT.V_Date,MT.AmtDr,MT.DueDays,LGAT.Vr_DocId, LGAT.Vr_Type, LGAT.Vr_RecId, "
         StrSQLQuery += "LGAT.Vr_V_Date, IfNull(LGAT.Amount,0) As Amount, "
-        StrSQLQuery += "" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " As FromDate , "
-        StrSQLQuery += "" & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString) & " As UpToDate , "
+        StrSQLQuery += "" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " As FromDate , "
+        StrSQLQuery += "" & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " As UpToDate , "
         StrSQLQuery += "" & Val(FGMain(GFilter, 4).Value.ToString) & " As InterestRate "
         StrSQLQuery += "From ( "
         StrSQLQuery += "Select	Max(Adj_DocId) As Adj_DocId,Max(Adj_V_SNo) As Adj_V_SNo, "
@@ -887,7 +887,7 @@ Public Class FrmReportLayout
 
         If Not FIsValid(0) Then Exit Sub
 
-        StrCondition1 = " Where LG.V_Date < = " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & "  "
+        StrCondition1 = " Where LG.V_Date < = " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & "  "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And SG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
 
@@ -1016,8 +1016,8 @@ Public Class FrmReportLayout
         If Not FIsValid(6) Then Exit Sub
         If Not FIsValid(7) Then Exit Sub
 
-        StrCondition = " Where (ST.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where ST.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition = " Where (ST.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where ST.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition += " And IM.ItemType In (" & FGMain(GFilterCode, 2).Value & ") "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrConditionOP += " And IM.ItemType In (" & FGMain(GFilterCode, 2).Value & ") "
@@ -1132,8 +1132,8 @@ Public Class FrmReportLayout
         If Not FIsValid(4) Then Exit Sub
         If Not FIsValid(5) Then Exit Sub
 
-        StrCondition = " Where (St.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOp = " Where St.V_Date <  " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition = " Where (St.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOp = " Where St.V_Date <  " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition = StrCondition & " And ST.Consignor In (" & FGMain(GFilterCode, 2).Value & ")"
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrConditionOp = StrConditionOp & " And ST.Consignor In (" & FGMain(GFilterCode, 2).Value & ")"
 
@@ -1150,9 +1150,9 @@ Public Class FrmReportLayout
 
         If UCase(Trim(FGMain(GFilterCode, 4).Value)) <> "N" Then
 
-            StrSQLQuery = "SELECT  " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " as V_Date,'' AS Consignor,'' AS Consignee,'' as VehicleNo, "
+            StrSQLQuery = "SELECT  " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " as V_Date,'' AS Consignor,'' AS Consignee,'' as VehicleNo, "
             StrSQLQuery += "'Opening' as  Description,''  AS FrPlace,'' AS ToPlace,'' as ConsignorBill,'' as ConsigneeBill,  "
-            StrSQLQuery += "max(ST.EntryType) as EntryType,'' as Remark,datename(MM," & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString) & ")  As Month, "
+            StrSQLQuery += "max(ST.EntryType) as EntryType,'' as Remark,datename(MM," & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ")  As Month, "
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STAXR' then ST.GAmount else (0 - ST.GAmount) end),0) as Gamount, "
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STAXR' then ST.Exempted else (0 - ST.Exempted) end),0 ) as Exempted, "
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STAXR' then ST.TaxableAmt else (0 - ST.TaxableAmt) end),0) TaxableAmt, "
@@ -1165,7 +1165,7 @@ Public Class FrmReportLayout
             StrSQLQuery += "Union All "
             StrSQLQuery += "SELECT ST.V_Date,S.Name AS Consignor,S1.Name AS Consignee,ST.VehicleNo, "
             StrSQLQuery += "ST.Description,C.CityName AS FrPlace,C1.CityName AS ToPlace,ST.ConsignorBill,ST.ConsigneeBill,  "
-            StrSQLQuery += "ST.EntryType,ST.Remark,datename(MM," & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString) & ") As Month, "
+            StrSQLQuery += "ST.EntryType,ST.Remark,datename(MM," & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") As Month, "
             StrSQLQuery += "case when ST.V_Type<>'STAXR' then ST.GAmount else (0 - ST.GAmount) end as Gamount, "
             StrSQLQuery += "case when ST.V_Type<>'STAXR' then ST.Exempted else (0 - ST.Exempted) end as Exempted, "
             StrSQLQuery += "case when ST.V_Type<>'STAXR' then ST.TaxableAmt else (0 - ST.TaxableAmt) end TaxableAmt, "
@@ -1187,7 +1187,7 @@ Public Class FrmReportLayout
             CMain.FShowReport(RptMain, Me.MdiParent, Me.Text)
         Else
 
-            StrSQLQuery = "SELECT " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " as V_Date,'' AS Consignor,'' as STNo,'Opening' as Description,'' as ConsignorBill,'' as Remark,"
+            StrSQLQuery = "SELECT " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " as V_Date,'' AS Consignor,'' as STNo,'Opening' as Description,'' as ConsignorBill,'' as Remark,"
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STXNR' then ST.ServiceTaxAmt else (0 - ST.ServiceTaxAmt) end),0) as ServiceTaxAmt, "
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STXNR' then ST.ECessAmt else (0 - ST.ECessAmt) end ),0) as ECessAmt, "
             StrSQLQuery += "IfNull(sum(case when ST.V_Type<>'STXNR' then ST.SHCessAmt else (0 - ST.SHCessAmt) end),0) as SHCessAmt, "
@@ -1301,8 +1301,8 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString)).ToString("u") & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString)).ToString("u") & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         StrConditionsite = ""
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LGG.Code In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -1368,8 +1368,8 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         StrConditionsite = ""
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
@@ -1454,7 +1454,7 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
         StrConditionsite = ""
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
@@ -1512,7 +1512,7 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
         StrConditionsite = ""
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
@@ -1622,10 +1622,10 @@ Public Class FrmReportLayout
 
         If Not FIsValid(0) Then Exit Sub
 
-        STRDATE = AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
+        STRDATE = AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
 
-        StrCondition1 = " Where LG.V_Date < = " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & "  "
-        StrCondDt = " Where LG.V_Date < = " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & "  "
+        StrCondition1 = " Where LG.V_Date < = " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & "  "
+        StrCondDt = " Where LG.V_Date < = " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & "  "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -1693,10 +1693,10 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        STRDATE = AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
+        STRDATE = AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
 
-        StrCondition1 = " Where LG.V_Date < = " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & "  "
-        StrCondDt = " Where LG.V_Date < = " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & "  "
+        StrCondition1 = " Where LG.V_Date < = " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & "  "
+        StrCondDt = " Where LG.V_Date < = " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & "  "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -1795,9 +1795,9 @@ Public Class FrmReportLayout
         If Not FIsValid(3) Then Exit Sub
         If Not FIsValid(4) Then Exit Sub
 
-        StrConditionMain = " Where (V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrConditionMain = " Where (V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         StrConditionSite = ""
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.SubCode In (" & FGMain(GFilterCode, 3).Value & ")"
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then StrConditionOP = StrConditionOP & " And LG.SubCode In (" & FGMain(GFilterCode, 3).Value & ")"
@@ -1824,7 +1824,7 @@ Public Class FrmReportLayout
         StrSQLQuery += "Union All "
 
         '======= For Opening Balance =========
-        StrSQLQuery += "Select " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " As V_Date, "
+        StrSQLQuery += "Select " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " As V_Date, "
         StrSQLQuery += "0 As AmtDr,0 As AmtCr, "
         StrSQLQuery += "IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0) As OPBal "
         StrSQLQuery += "From Ledger LG "
@@ -1881,8 +1881,8 @@ Public Class FrmReportLayout
         DblFirstYear = Year(AgL.PubStartDate)
         DblSecondYear = Year(AgL.PubEndDate)
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         StrConditionsite = ""
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrConditionOP = StrConditionOP & " And LG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -1965,8 +1965,8 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         StrConditionsite = ""
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
@@ -2164,7 +2164,7 @@ Public Class FrmReportLayout
         If Not FIsValid(3) Then Exit Sub
         If Not FIsValid(3) Then Exit Sub
         StrField = ""
-        StrCondition = " Where (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition = " Where (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
 
         StrField = "," & Val(FGMain(GFilter, 2).Value) & " as IntrateDr"
         StrField += "," & Val(FGMain(GFilter, 3).Value) & " as IntrateCr"
@@ -2337,9 +2337,9 @@ Public Class FrmReportLayout
         If Not FIsValid(1) Then Exit Sub
 
         If Trim(FGMain(GFilter, 3).Value) = "Yes" Then
-            StrCondition = " And (L.V_Date <=" & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString) & " ) "
+            StrCondition = " And (L.V_Date <=" & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
         Else
-            StrCondition = " And (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
+            StrCondition = " And (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
         End If
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition = StrCondition & " And L.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -2385,7 +2385,7 @@ Public Class FrmReportLayout
         If Not FIsValid(1) Then Exit Sub
 
 
-        StrCondition = " And (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
+        StrCondition = " And (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
 
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition = StrCondition & " And SG.SubCode In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -2442,7 +2442,7 @@ Public Class FrmReportLayout
         If Not FIsValid(1) Then Exit Sub
 
 
-        StrCondition = " And (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
+        StrCondition = " And (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " ) "
 
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition = StrCondition & " And TC.Code In (" & FGMain(GFilterCode, 2).Value & ")"
@@ -2898,9 +2898,9 @@ Public Class FrmReportLayout
         DTTemp = CMain.FGetDatTable("SELECT GroupCode FROM AcGroup WHERE GroupName='" & StrReportFor & "'", AgL.GCn)
 
         If DTTemp.Rows.Count > 0 Then StrCnd = AgL.XNull(DTTemp.Rows(0).Item("GroupCode")) : DTTemp.Rows.Clear()
-        STRDATE = AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
-        StrCondition1 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " And IfNull(LG." & StrAmt1 & ",0)>0) And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
-        StrCondition2 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & ") And IfNull(LG." & StrAmt2 & ",0)>0 And IfNull(LG." & StrAmt2 & ",0)-IfNull(T.AMOUNT,0)<>0 And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
+        STRDATE = AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
+        StrCondition1 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And IfNull(LG." & StrAmt1 & ",0)>0) And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
+        StrCondition2 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & ") And IfNull(LG." & StrAmt2 & ",0)>0 And IfNull(LG." & StrAmt2 & ",0)-IfNull(T.AMOUNT,0)<>0 And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition2 = StrCondition2 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
@@ -2952,8 +2952,8 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrConditionOP = StrConditionOP & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 2).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 2).Value & ")) "
@@ -3021,7 +3021,7 @@ Public Class FrmReportLayout
 
         If Not FIsValid(0) Then Exit Sub
 
-        StrCondition1 = " Where LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " and  " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " And VType.Category='JV' "
+        StrCondition1 = " Where LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " and  " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " And VType.Category='JV' "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.V_type In (" & FGMain(GFilterCode, 2).Value & ")"
 
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then
@@ -3053,7 +3053,7 @@ Public Class FrmReportLayout
 
         If Not FIsValid(0) Then Exit Sub
 
-        StrCondition1 = " Where LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " and  " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " "
+        StrCondition1 = " Where LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " and  " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & " "
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrCondition1 = StrCondition1 & " And LG.V_type In (" & FGMain(GFilterCode, 2).Value & ")"
 
@@ -3086,7 +3086,7 @@ Public Class FrmReportLayout
 
         If Not FIsValid(0) Then Exit Sub
 
-        StrCondition1 = " Where LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then
             StrCondition1 += " And LG.Site_Code In (" & FGMain(GFilterCode, 1).Value & ") "
         Else
@@ -3143,7 +3143,7 @@ Public Class FrmReportLayout
         Dim StrConditionZeroBal As String = ""
         Dim DTTemp As DataTable
 
-        StrCondition1 = " And LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " And LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then
             StrCondition1 += " And LG.Site_Code In (" & FGMain(GFilterCode, 1).Value & ") "
         Else
@@ -3230,7 +3230,7 @@ Public Class FrmReportLayout
         Dim StrFieldName As String = "GroupName", StrSpace As String = "   ", StrFieldPrefix As String = ""
         Dim IntMaxHirarchy As Int16 = 10
 
-        StrCondition1 = " Where LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = " Where LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then
             StrCondition1 += " And LG.Site_Code In (" & FGMain(GFilterCode, 1).Value & ") "
         Else
@@ -3303,7 +3303,7 @@ Public Class FrmReportLayout
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = "Where LG.V_Date<=" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition1 = "Where LG.V_Date<=" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then
             StrCondition1 += "And (SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")  "
@@ -3373,11 +3373,10 @@ Public Class FrmReportLayout
         If Not FIsValid(2) Then Exit Sub
         If Not FIsValid(3) Then Exit Sub
 
-        StrCondition = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionSubQuery = " Where (LGS.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        '        StrConditionDayOP = " Where (LG.V_Date Between DateAdd(dd,1," & Agl.ConvertDate(FGMain(GFilter, 0).Value.ToString) & ") And " & Agl.ConvertDate(FGMain(GFilter, 1).Value.ToString) & ") "
-        StrConditionDayOP = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
-        StrConditionOP = " Where LG.V_Date < " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        StrCondition = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionSubQuery = " Where (LGS.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionDayOP = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrConditionOP = " Where LG.V_Date < " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
 
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then StrCondition += " And LG.Subcode <>'" & FGMain(GFilterCode, 3).Value & "' "
         If Trim(FGMain(GFilterCode, 3).Value) <> "" Then StrConditionSubQuery += " And LGS.Subcode ='" & FGMain(GFilterCode, 3).Value & "' "
@@ -3406,7 +3405,7 @@ Public Class FrmReportLayout
         StrSQLQuery += StrConditionDayOP
         StrSQLQuery += "Group By V_Date  "
         StrSQLQuery += "Union All "
-        StrSQLQuery += "Select	" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " As V_Date,Null As DayDR, "
+        StrSQLQuery += "Select	" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " As V_Date,Null As DayDR, "
         StrSQLQuery += "(IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0)) As DayDR_OPN,0 As Opening "
         StrSQLQuery += "From Ledger LG "
         StrSQLQuery += StrConditionOP
@@ -3471,7 +3470,7 @@ Public Class FrmReportLayout
         If Not FIsValid(3) Then Exit Sub
         Pagewise = "N"
         Withnarration = "N"
-        StrCondition1 = " Where (L.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (L.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then
             StrCondition1 = StrCondition1 & " And  L.Site_Code IN (" & FGMain(GFilterCode, 2).Value & ") "
             StrConditionOP = " And  L.Site_Code IN (" & FGMain(GFilterCode, 2).Value & ") "
@@ -3487,7 +3486,7 @@ Public Class FrmReportLayout
         End If
         SQL = "Select (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP From Ledger L "
         SQL = SQL + "Left Join SubGroup SG On L.SubCode=SG.SubCode Where SG.Nature='Cash' "
-        SQL = SQL + "And V_Date<" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        SQL = SQL + "And V_Date<" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         SQL = SQL + "And " & " L.subcode IN ('" & FGMain(GFilterCode, 3).Value & "') " & StrConditionOP
 
         DTTemp = CMain.FGetDatTable(SQL, AgL.GCn)
@@ -3495,8 +3494,8 @@ Public Class FrmReportLayout
         SQL = "DECLARE @tmptb TABLE(code datetime) "
         SQL += "DECLARE @tempfromdt AS DATETIME "
         SQL += "DECLARE @temptodt AS DATETIME "
-        SQL += " SET @tempfromdt=" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
-        SQL += " SET @temptodt=" & AgL.ConvertDate(FGMain(GFilter, 1).Value.ToString)
+        SQL += " SET @tempfromdt=" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
+        SQL += " SET @temptodt=" & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u"))
         SQL += " WHILE @tempfromdt<=@temptodt "
         SQL += " BEGIN "
         SQL += " INSERT INTO @tmptb VALUES (@tempfromdt) "
@@ -3835,7 +3834,7 @@ Public Class FrmReportLayout
             .Add("WithNarration", System.Type.GetType("System.String"))
         End With
         StrMainSubCode = UCase(Trim(FGMain(GFilterCode, 3).Value))
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
 
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then
             StrCondition1 = StrCondition1 & " And LG.Site_Code  IN (" & FGMain(GFilterCode, 2).Value & ") "
@@ -3851,7 +3850,7 @@ Public Class FrmReportLayout
 
         SQL = "Select  (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP,Max(V_Date) As V_Date From Ledger LG "
         SQL = SQL + "Left Join SubGroup SG On LG.SubCode=SG.SubCode  "
-        SQL = SQL + "Where  V_Date<" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        SQL = SQL + "Where  V_Date<" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         SQL = SQL + "And " & "(LG.subcode IN ('" & FGMain(GFilterCode, 3).Value & "')) " & StrConditionOP
 
 
@@ -4062,7 +4061,7 @@ LblForLastRecord:
         End With
 
         StrMainSubCode = UCase(Trim(FGMain(GFilterCode, 3).Value))
-        StrCondition1 = " Where (LG.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " Where (LG.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then
             StrCondition1 = StrCondition1 & " And LG.Site_Code  IN (" & FGMain(GFilterCode, 2).Value & ") "
             StrConditionOP = " And LG.Site_Code  IN (" & FGMain(GFilterCode, 2).Value & ") "
@@ -4077,7 +4076,7 @@ LblForLastRecord:
 
         SQL = "Select  (IfNull(Sum(AmtCr),0)-IfNull(Sum(AmtDr),0)) As OP,Max(V_Date) As V_Date From Ledger LG "
         SQL = SQL + "Left Join SubGroup SG On LG.SubCode=SG.SubCode  "
-        SQL = SQL + "Where  V_Date<" & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        SQL = SQL + "Where  V_Date<" & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         SQL = SQL + "And " & "(LG.subcode IN ('" & FGMain(GFilterCode, 3).Value & "')) " & StrConditionOP
 
 
@@ -4255,8 +4254,8 @@ LblForLastRecord:
         If Val((FGMain(GFilter, 6).Value.ToString)) > Val((FGMain(GFilter, 7).Value.ToString)) Then MsgBox("V Interval Must Be Greater Than IV Interval ") : Exit Sub
         If Val((FGMain(GFilter, 7).Value.ToString)) > Val((FGMain(GFilter, 8).Value.ToString)) Then MsgBox("VI Interval Must Be Greater Than V Interval ") : Exit Sub
         Strconditionsite = ""
-        STRDATE = AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString)
-        StrCondition1 = " LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " "
+        STRDATE = AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u"))
+        StrCondition1 = " LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And ag.nature In ('" & FGMain(GFilterCode, 1).Value & "')"
         If Trim(FGMain(GFilterCode, 2).Value) <> "" Then
             Strconditionsite = Strconditionsite & "  And LG.site_Code In(" & FGMain(GFilterCode, 2).Value & ") "
@@ -4466,8 +4465,8 @@ LblForLastRecord:
         DTTemp = CMain.FGetDatTable("SELECT GroupCode FROM AcGroup WHERE GroupName='" & StrReportFor & "'", AgL.GCn)
 
         If DTTemp.Rows.Count > 0 Then StrCnd = AgL.XNull(DTTemp.Rows(0).Item("GroupCode")) : DTTemp.Rows.Clear()
-        StrCondition1 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & " And IfNull(LG." & StrAmt1 & ",0)>0) And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
-        StrCondition2 = " Where (LG.V_Date <= " & AgL.ConvertDate(FGMain(GFilter, 0).Value.ToString) & ") And IfNull(LG." & StrAmt2 & ",0)>0 And IfNull(LG." & StrAmt2 & ",0)-IfNull(T.AMOUNT,0)<>0 And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
+        StrCondition1 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And IfNull(LG." & StrAmt1 & ",0)>0) And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
+        StrCondition2 = " Where (LG.V_Date <= " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & ") And IfNull(LG." & StrAmt2 & ",0)>0 And IfNull(LG." & StrAmt2 & ",0)-IfNull(T.AMOUNT,0)<>0 And (SG.GroupCode In (SELECT AGP.GroupCode FROM AcGroupPath AGP WHERE AGP.GroupUnder='" & StrCnd & "') Or SG.GroupCode='" & StrCnd & "') "
 
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition1 = StrCondition1 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
         If Trim(FGMain(GFilterCode, 1).Value) <> "" Then StrCondition2 = StrCondition2 & " And (IfNull(SG.GroupCode,'') In (Select IfNull(AGP.GroupCode,'') From AcGroupPath AGP Where AGP.GroupUnder In (" & FGMain(GFilterCode, 1).Value & ")) Or SG.GroupCode In (" & FGMain(GFilterCode, 1).Value & ")) "
@@ -4533,7 +4532,7 @@ LblForLastRecord:
         If Not FIsValid(0) Then Exit Sub
         If Not FIsValid(1) Then Exit Sub
 
-        StrCondition1 = " And (Ledger.V_Date Between " & AgL.ConvertDate(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.ConvertDate(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
+        StrCondition1 = " And (Ledger.V_Date Between " & AgL.Chk_Text(CDate(FGMain(GFilter, 0).Value.ToString).ToString("u")) & " And " & AgL.Chk_Text(CDate(FGMain(GFilter, 1).Value.ToString).ToString("u")) & ") "
 
         StrConditionsite = ""
         'If Trim(FGMain(GFilterCode, 2).Value) <> "" Then StrConditionsite = " And Ledger.site_Code In (" & FGMain(GFilterCode, 2).Value & ") "

@@ -79,14 +79,14 @@ Public Class FrmChequePrinting
         For I = 0 To FGMain.Rows.Count - 1
             GCnCmd.CommandText = "Update Ledger Set "
             GCnCmd.CommandText += "Chq_No=" & AgL.Chk_Text(FGMain(GChequeNo, I).Value) & ", "
-            GCnCmd.CommandText += "Chq_Date=" & AgL.ConvertDate(FGMain(GChequeDt, I).Value.ToString) & " "
+            GCnCmd.CommandText += "Chq_Date=" & AgL.Chk_Qry(CDate(FGMain(GChequeDt, I).Value.ToString).ToString("u")) & " "
             GCnCmd.CommandText += "Where DocId='" & FGMain(GSearchCode, I).Value & "' "
             GCnCmd.CommandText += "And V_SNo=" & Val(FGMain(GV_SNo, I).Value) & " "
             GCnCmd.ExecuteNonQuery()
 
             GCnCmd.CommandText = "Update Ledger_Temp Set "
             GCnCmd.CommandText += "Chq_No=" & AgL.Chk_Text(FGMain(GChequeNo, I).Value) & ", "
-            GCnCmd.CommandText += "Chq_Date=" & AgL.ConvertDate(FGMain(GChequeDt, I).Value.ToString) & " "
+            GCnCmd.CommandText += "Chq_Date=" & AgL.Chk_Qry(CDate(FGMain(GChequeDt, I).Value.ToString).ToString("u")) & " "
             GCnCmd.CommandText += "Where DocId='" & FGMain(GSearchCode, I).Value & "' "
             GCnCmd.CommandText += "And V_SNo=" & Val(FGMain(GV_SNo, I).Value) & " "
             GCnCmd.ExecuteNonQuery()
@@ -99,7 +99,7 @@ Public Class FrmChequePrinting
 
             StrSQL += "Insert Into @TmpTable (Chq_No,Chq_Date,FavourTo,Amount,SNo) Values ( "
             StrSQL += "" & AgL.Chk_Text(FGMain(GChequeNo, I).Value) & ","
-            StrSQL += "" & AgL.ConvertDate(FGMain(GChequeDt, I).Value.ToString) & ","
+            StrSQL += "" & AgL.Chk_Text(CDate(FGMain(GChequeDt, I).Value.ToString).ToString("u")) & ","
             StrSQL += "" & AgL.Chk_Text(FGMain(GPrintName, I).Value) & ","
             StrSQL += "" & DblAmount & "," & I & ")"
         Next

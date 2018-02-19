@@ -131,3 +131,7 @@ D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.vbproj.GenerateRe
 D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.exe
 D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.xml
 D:\Satyam\Active Projects\SqLite\Sales\Project\obj\Debug\Sales.pdb
+D:\KC\Source\Sqlite\Sales\Release\Sales.exe.config
+D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.exe
+D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.xml
+D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.pdb

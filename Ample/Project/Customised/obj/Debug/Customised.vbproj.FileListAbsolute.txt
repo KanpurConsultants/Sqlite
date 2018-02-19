@@ -598,3 +598,7 @@ D:\Satyam\Active Projects\SqLite\Ample\Release\Customised.exe.config
 D:\Satyam\Active Projects\SqLite\Ample\Release\Customised.exe
 D:\Satyam\Active Projects\SqLite\Ample\Release\Customised.pdb
 D:\Satyam\Active Projects\SqLite\Ample\Release\Customised.xml
+D:\KC\Source\Sqlite\Ample\Release\Customised.exe.config
+D:\KC\Source\Sqlite\Ample\Project\Customised\obj\Debug\Customised.exe
+D:\KC\Source\Sqlite\Ample\Project\Customised\obj\Debug\Customised.xml
+D:\KC\Source\Sqlite\Ample\Project\Customised\obj\Debug\Customised.pdb

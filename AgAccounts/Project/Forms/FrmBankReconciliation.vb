@@ -168,7 +168,7 @@ Public Class FrmBankReconciliation
             For I = 0 To FGMain.Rows.Count - 1
                 If Trim(FGMain(GDocId, I).Value) <> "" Then
                     GCnCmd.CommandText = "Update Ledger Set "
-                    GCnCmd.CommandText += "Clg_Date=" & Agl.ConvertDate(Trim(FGMain(GClrDate, I).Value)) & " "
+                    GCnCmd.CommandText += "Clg_Date=" & AgL.Chk_Text(CDate(Trim(FGMain(GClrDate, I).Value)).ToString("u")) & " "
                     GCnCmd.CommandText += "Where DocId='" & FGMain(GDocId, I).Value & "' And V_SNo=" & Val(FGMain(GSNo, I).Value) & " "
                     GCnCmd.ExecuteNonQuery()
                 End If
@@ -405,7 +405,7 @@ Public Class FrmBankReconciliation
             For I = 0 To RptReg.DataDefinition.FormulaFields.Count - 1
                 Select Case CStr(UCase(RptReg.DataDefinition.FormulaFields.Item(I).Name))
                     Case "DATENAME"
-                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.ConvertDate(TxtDate.Text) & " "
+                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.Chk_Text(CDate(TxtDate.Text).ToString("u")) & " "
                     Case "BANKNAME"
                         RptReg.DataDefinition.FormulaFields.Item(I).Text = "'" & TxtBankName.Text & "' "
                     Case "COMPANYBAL"

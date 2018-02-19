@@ -65,7 +65,7 @@ Public Class FrmBudgetAnalysis
         StrSQL = StrSQL & "(IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0)) As Actual "
         StrSQL = StrSQL & "FROM Ledger LG LEFT JOIN  "
         StrSQL = StrSQL & "CostCenterMast CCM ON LG.CostCenter=CCM.Code "
-        StrSQL = StrSQL & "WHERE (LG.V_Date Between " & AgL.ConvertDate(CDate(StrDateFrom).ToString("u")) & " And " & AgL.ConvertDate(CDate(StrDateTo).ToString("u")) & ") And  "
+        StrSQL = StrSQL & "WHERE (LG.V_Date Between " & AgL.Chk_Text(CDate(StrDateFrom).ToString("u")) & " And " & AgL.Chk_Text(CDate(StrDateTo).ToString("u")) & ") And  "
         StrSQL = StrSQL & "LG.Site_Code='" & agl.PubSiteCode & "' And "
         StrSQL = StrSQL & "LG.CostCenter IN (SELECT BMD.CostCenter FROM BudgetDet BMD WHERE BMD.DocId='" & TxtBudget.Tag & "') "
         StrSQL = StrSQL & "GROUP BY LG.CostCenter "

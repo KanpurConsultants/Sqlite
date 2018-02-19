@@ -39,7 +39,7 @@ Module MdlFunction
 
             AgIniVar = New AgLibrary.ClsIniVariables(AgL)
 
-            AgIniVar.FOpenIni(StrUserName, StrPassword)
+            BlnRtn = AgIniVar.FOpenIni(StrUserName, StrPassword)
 
             'AgL.GCnComp = New OleDb.OleDbConnection()
             'AgL.ECompConn = New SqliteConnection()

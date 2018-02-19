@@ -186,18 +186,18 @@ Public Class FrmEnviro
 
 
             If Topctrl1.Mode = "Add" Then
-                mQry = " INSERT INTO Enviro	(Site_Code,	SaleAc, Div_Code, " & _
-                        " PreparedBy,U_EntDt,	U_AE	) " & _
-                        " VALUES (" & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " & AgL.Chk_Text(TxtSaleAc.AgSelectedValue) & ", " & _
-                        " '" & AgL.PubDivCode & "', '" & AgL.PubUserName & "', " & AgL.ConvertDate(AgL.PubLoginDate) & ", 'A' ) "
+                mQry = " INSERT INTO Enviro	(Site_Code,	SaleAc, Div_Code, " &
+                        " PreparedBy,U_EntDt,	U_AE	) " &
+                        " VALUES (" & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " & AgL.Chk_Text(TxtSaleAc.AgSelectedValue) & ", " &
+                        " '" & AgL.PubDivCode & "', '" & AgL.PubUserName & "', " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & ", 'A' ) "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             Else
-                mQry = " UPDATE Enviro " & _
-                        " SET " & _
-                        " SaleAc = " & AgL.Chk_Text(TxtSaleAc.AgSelectedValue) & ", " & _
-                        " U_AE = 'E', " & _
-                        " Edit_Date = " & AgL.ConvertDate(AgL.PubLoginDate) & ", " & _
-                        " ModifiedBy = " & AgL.Chk_Text(AgL.PubUserName) & "  " & _
+                mQry = " UPDATE Enviro " &
+                        " SET " &
+                        " SaleAc = " & AgL.Chk_Text(TxtSaleAc.AgSelectedValue) & ", " &
+                        " U_AE = 'E', " &
+                        " Edit_Date = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & ", " &
+                        " ModifiedBy = " & AgL.Chk_Text(AgL.PubUserName) & "  " &
                         " Where Site_Code = '" & TxtSite_Code.AgSelectedValue & "'"
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If

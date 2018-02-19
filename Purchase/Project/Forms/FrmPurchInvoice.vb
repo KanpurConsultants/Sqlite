@@ -1377,9 +1377,17 @@ Public Class FrmPurchInvoice
 
     Private Sub FrmSaleOrder_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand) Handles Me.BaseEvent_Save_InTrans
         Dim I As Integer, mSr As Integer
+        Dim mVendorDocDate As String
+        Dim mExpiryDate As String
         Dim bSelectionQry$ = ""
 
         If BtnFillPartyDetail.Tag Is Nothing Then BtnFillPartyDetail.Tag = New FrmPurchPartyDetail
+
+        If TxtVendorDocDate.Text <> "" Then
+            mVendorDocDate = CDate(TxtVendorDocDate.Text).ToString("u")
+        Else
+            mVendorDocDate = ""
+        End If
 
         mQry = " Update PurchInvoice " &
                 " SET  " &
@@ -1398,7 +1406,7 @@ Public Class FrmPurchInvoice
                 " Structure = " & AgL.Chk_Text(TxtStructure.AgSelectedValue) & ", " &
                 " CustomFields = " & AgL.Chk_Text(TxtCustomFields.AgSelectedValue) & ", " &
                 " VendorDocNo = " & AgL.Chk_Text(TxtVendorDocNo.Text) & ", " &
-                " VendorDocDate = " & AgL.Chk_Text(TxtVendorDocDate.Text) & ", " &
+                " VendorDocDate = " & AgL.Chk_Text(mVendorDocDate) & ", " &
                 " Process = " & AgL.Chk_Text(TxtProcess.Tag) & ", " &
                 " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " &
                 " TotalQty = " & Val(LblTotalQty.Text) & ", " &
@@ -1416,8 +1424,17 @@ Public Class FrmPurchInvoice
         mSr = AgL.VNull(AgL.Dman_Execute("Select Max(Sr) From PurchInvoiceDetail  Where DocID = '" & mSearchCode & "'", AgL.GcnRead).ExecuteScalar)
         For I = 0 To Dgl1.RowCount - 1
             If Dgl1.Item(Col1Item, I).Value <> "" Then
+
+                If Dgl1.Item(Col1ExpiryDate, I).Value <> "" Then
+                    mExpiryDate = CDate(Dgl1.Item(Col1ExpiryDate, I).Value).ToString("u")
+                Else
+                    mExpiryDate = ""
+                End If
+
                 If Dgl1.Item(ColSNo, I).Tag Is Nothing And Dgl1.Rows(I).Visible = True Then
                     mSr += 1
+
+
                     If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
                     bSelectionQry += " Select " & AgL.Chk_Text(mSearchCode) & ", " & mSr & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1PurchChallan, I).Tag) & ", " &
@@ -1450,7 +1467,7 @@ Public Class FrmPurchInvoice
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Remark, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & ", " &
-                                        " " & AgL.Chk_Text(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
+                                        " " & AgL.Chk_Text(mExpiryDate) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1BillingType, I).Value) & " , " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1DeliveryMeasure, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1DeliveryMeasureMultiplier, I).Value) & ", " &
@@ -1549,10 +1566,10 @@ Public Class FrmPurchInvoice
 
         mIsEntryLocked = False
 
-        mQry = " Select H.*, Sg.Name + (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS  VendorDispName, " &
+        mQry = " Select H.*, Sg.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS  VendorDispName, " &
                 " C1.Description As CurrencyDesc, Sg.Nature, " &
                 " G.Description as GodownDesc, " &
-                " Sg1.Name + (Case When C2.CityName Is Not Null Then ',' || C2.CityName Else '' End) AS  BillToPartyName," &
+                " Sg1.Name || (Case When C2.CityName Is Not Null Then ',' || C2.CityName Else '' End) AS  BillToPartyName," &
                 " Vt.Category as Voucher_Category, " &
                 " P.Description As ProcessDesc " &
                 " From (Select * From PurchInvoice Where DocID='" & SearchCode & "') H " &
@@ -1601,7 +1618,7 @@ Public Class FrmPurchInvoice
                 TxtCurrency.Tag = AgL.XNull(.Rows(0)("Currency"))
                 TxtCurrency.Text = AgL.XNull(.Rows(0)("CurrencyDesc"))
                 TxtVendorDocNo.Text = AgL.XNull(.Rows(0)("VendorDocNo"))
-                TxtVendorDocDate.Text = AgL.XNull(.Rows(0)("VendorDocDate"))
+                TxtVendorDocDate.Text = AgL.RetDate(AgL.XNull(.Rows(0)("VendorDocDate")))
 
                 TxtGodown.Tag = AgL.XNull(.Rows(0)("Godown"))
                 TxtGodown.Text = AgL.XNull(.Rows(0)("GodownDesc"))
@@ -3325,7 +3342,7 @@ Public Class FrmPurchInvoice
 
         strCond += " And H.Nature In ('" & ClsMain.SubGroupNature.Customer & "','" & ClsMain.SubGroupNature.Supplier & "','" & ClsMain.SubGroupNature.Cash & "','" & ClsMain.SubGroupNature.Bank & "')"
 
-        mQry = " SELECT H.SubCode, H.Name + (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS [Party], " &
+        mQry = " SELECT H.SubCode, H.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS [Party], " &
                 " H.Currency, C1.Description As CurrencyDesc, H.Nature, H.SalesTaxPostingGroup " &
                 " FROM SubGroup H  " &
                 " LEFT JOIN City C ON H.CityCode = C.CityCode  " &

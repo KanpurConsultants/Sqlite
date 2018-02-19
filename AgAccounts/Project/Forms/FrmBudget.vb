@@ -226,18 +226,18 @@ Public Class FrmBudget
             GCnCmd.CommandText = "Delete From BudgetDet where DocId='" & StrDocID & "'"
             GCnCmd.ExecuteNonQuery()
             If Topctrl1.Mode = "Add" Then
-                GCnCmd.CommandText = "Insert Into Budget(DocId,V_No,V_Prefix,Recid,V_Date, " & _
-                                     "V_Type,Name,Site_Code," & _
-                                     "PreparedBy,ModifiedBy,U_EntDt,U_AE,DateFrom,DateTo)" & _
-                                     " Values('" & StrDocID & "','" & TxtBudgetID.Text & "','" & TxtBudgetID.Tag & "','" & TxtRecid.Text & "','" & TxtDate.Text & "', " & _
-                                     "" & AgL.Chk_Text(StrV_Type) & "," & AgL.Chk_Text(StrName) & ",'" & AgL.PubSiteCode & "' ," & _
-                                     "'" & AgL.PubUserName & "','" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "','A'," & AgL.ConvertDate(TxtFrom.Text) & "," & AgL.ConvertDate(TxtTo.Text) & ")"
+                GCnCmd.CommandText = "Insert Into Budget(DocId,V_No,V_Prefix,Recid,V_Date, " &
+                                     "V_Type,Name,Site_Code," &
+                                     "PreparedBy,ModifiedBy,U_EntDt,U_AE,DateFrom,DateTo)" &
+                                     " Values('" & StrDocID & "','" & TxtBudgetID.Text & "','" & TxtBudgetID.Tag & "','" & TxtRecid.Text & "','" & TxtDate.Text & "', " &
+                                     "" & AgL.Chk_Text(StrV_Type) & "," & AgL.Chk_Text(StrName) & ",'" & AgL.PubSiteCode & "' ," &
+                                     "'" & AgL.PubUserName & "','" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "','A'," & AgL.Chk_Text(CDate(TxtFrom.Text).ToString("u")) & "," & AgL.Chk_Text(CDate(TxtTo.Text).ToString("u")) & ")"
 
             Else
                 GCnCmd.CommandText = "Update Budget Set Name=" & Trim(AgL.Chk_Text(StrName)) & ""
-                GCnCmd.CommandText = GCnCmd.CommandText + ",V_Date=" & Agl.ConvertDate(TxtDate.Text) & " "
-                GCnCmd.CommandText = GCnCmd.CommandText + ",DateFrom=" & Agl.ConvertDate(TxtFrom.Text) & " "
-                GCnCmd.CommandText = GCnCmd.CommandText + ",DateTo=" & Agl.ConvertDate(TxtTo.Text) & " "
+                GCnCmd.CommandText = GCnCmd.CommandText + ",V_Date=" & AgL.Chk_Text(CDate(TxtDate.Text).ToString("u")) & " "
+                GCnCmd.CommandText = GCnCmd.CommandText + ",DateFrom=" & AgL.Chk_Text(CDate(TxtFrom.Text).ToString("u")) & " "
+                GCnCmd.CommandText = GCnCmd.CommandText + ",DateTo=" & AgL.Chk_Text(CDate(TxtTo.Text).ToString("u")) & " "
                 GCnCmd.CommandText = GCnCmd.CommandText + ",Transfered='N'"
                 GCnCmd.CommandText = GCnCmd.CommandText + ",ModifiedBy='" & Agl.PubUserName & "' "
                 GCnCmd.CommandText = GCnCmd.CommandText + ",U_EntDt='" & Format(Agl.PubLoginDate, "Short Date") & "'"

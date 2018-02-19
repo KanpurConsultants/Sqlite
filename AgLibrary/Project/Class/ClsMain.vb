@@ -551,7 +551,7 @@ Public Class ClsMain
                             mQry = mQry & " Where " & XNull(.Rows(I)("UniqueField")) & " = '" & XNull(.Rows(I)("UniqueKey")) & "' "
                             AgL.Dman_ExecuteNonQry(mQry, mConn, mCmd)
 
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " "
                             Dman_ExecuteNonQry(mQry, AgL.GcnSite)
 
@@ -560,7 +560,7 @@ Public Class ClsMain
                                    "Where " & XNull(.Rows(I)("UniqueField")) & " = '" & XNull(.Rows(I)("UniqueKey")) & "' "
                             Dman_ExecuteNonQry(mQry, mConn, mCmd)
 
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " "
                             Dman_ExecuteNonQry(mQry, AgL.GcnSite)
                         ElseIf UTrim(XNull(.Rows(I)("AED"))) = "A" Then
@@ -595,7 +595,7 @@ Public Class ClsMain
                                 Dman_ExecuteNonQry(mQry, mConn, mCmd)
                             Next K
 
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & AgL.PubSiteCode & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " "
                             Dman_ExecuteNonQry(mQry, AgL.GcnSite)
 
@@ -721,7 +721,7 @@ Public Class ClsMain
                             mQry = mQry & " Where " & XNull(.Rows(I)("UniqueField")) & " = '" & XNull(.Rows(I)("UniqueKey")) & "' "
                             AgL.Dman_ExecuteNonQry(mQry, mConn, mCmd)
 
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " And " &
                                     " charindex( '|" & ClsConstant.SiteCode_Reserve & "|',Site) = 0 "
                             Dman_ExecuteNonQry(mQry, GcnSite, ECmdSite)
@@ -730,7 +730,7 @@ Public Class ClsMain
                                    "Where " & XNull(.Rows(I)("UniqueField")) & " = '" & XNull(.Rows(I)("UniqueKey")) & "' "
                             Dman_ExecuteNonQry(mQry, mConn, mCmd)
 
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " And " &
                                     " charindex( '|" & ClsConstant.SiteCode_Reserve & "|',Site) = 0 "
                             Dman_ExecuteNonQry(mQry, GcnSite, ECmdSite)
@@ -765,7 +765,7 @@ Public Class ClsMain
 
                                 Dman_ExecuteNonQry(mQry, mConn, mCmd)
                             Next K
-                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.ConvertDate(AgL.PubLoginDate) & " " &
+                            mQry = "Update Log_TableRecords Set Site = IfNull(Site,'') || '|" & ClsConstant.SiteCode_Reserve & "|' , UploadDate = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & " " &
                                     " Where RowId = " & VNull(.Rows(I)("RowId")) & " And " &
                                     " charindex( '|" & ClsConstant.SiteCode_Reserve & "|',Site) = 0 "
                             Dman_ExecuteNonQry(mQry, GcnSite, ECmdSite)
@@ -2224,7 +2224,7 @@ err1:
             If IsSiteWise Then CondStr = " And SubStr(" & mPrimaryField & ",1,2) = '" & PubSiteCode & "' "
         End If
 
-        mQry = "SELECT  Max(CASE WHEN IFNULL(CAST( substr(" & mPrimaryField & ",3,length(" & mPrimaryField & ")) AS INTEGER),0) > 0 THEN IFNULL(CAST( substr(" & mPrimaryField & ",3,length(" & mPrimaryField & ")) AS INTEGER),0) ELSE 0 END) +1   FROM " & mTableName & "
+        mQry = "SELECT  IfNull(Max(CASE WHEN IFNULL(CAST( substr(" & mPrimaryField & ",3,length(" & mPrimaryField & ")) AS INTEGER),0) > 0 THEN IFNULL(CAST( substr(" & mPrimaryField & ",3,length(" & mPrimaryField & ")) AS INTEGER),0) ELSE 0 END),0) + 1   FROM " & mTableName & "
                 WHERE ABS(substr(" & mPrimaryField & ",3,length(" & mPrimaryField & ")))>0  " & CondStr
         mCmd = Dman_Execute(mQry, GcnRead)
         GetMaxId = PubDivCode & PubSiteCode & mCmd.ExecuteScalar().ToString.PadLeft(mPad_Len, "0")
@@ -2838,7 +2838,7 @@ err1:
                 For I = 0 To DtTemp.Rows.Count - 1
                     mSite_Code = .Rows(I)("Site_Code")
 
-                    mQry = "If Not Exists (Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Date_From = " & ConvertDate(PubStartDate) & " And Date_To = " & ConvertDate(PubEndDate) & " And Site_Code = '" & mSite_Code & "' " & mCondStr & ") " &
+                    mQry = "If Not Exists (Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Date_From = " & Chk_Text(CDate(PubStartDate).ToString("u")) & " And Date_To = " & Chk_Text(CDate(PubEndDate).ToString("u")) & " And Site_Code = '" & mSite_Code & "' " & mCondStr & ") " &
                             " INSERT INTO Voucher_Prefix	(V_Type,Date_From,Prefix,Start_Srl_No,Date_To,Site_Code,Div_Code,Comp_Code)" &
                             " VALUES ('" & V_Type & " ', '" & PubStartDate & "', '" & Right(PubStartDate, 4) & "',0,'" & PubEndDate & "','" & mSite_Code & "','" & DivCode & "'," & AglObj.Chk_Text(mComp_Code) & ") "
                     Dman_ExecuteNonQry(mQry, mConn)
@@ -2893,7 +2893,7 @@ err1:
             mQry = "If Not Exists (Select * from SubGroupType Where Description= '" & PartyTypeDescription & "') " &
                     " INSERT INTO SubGroupType ( Party_Type, Description, Div_Code, Site_Code, U_Name, U_EntDt, U_AE ) " &
                     " VALUES ( " & PartyTypeCode & ", '" & PartyTypeDescription & "', " & Chk_Text(DivCode) & ", " & SiteCode & ", " &
-                    " " & Chk_Text(U_Name) & ", " & ConvertDate(" & Chk_Text(U_EntDt) & ") & ", 'A' ) "
+                    " " & Chk_Text(U_Name) & ", " & Chk_Text(CDate(U_EntDt).ToString("u")) & ", 'A' ) "
 
             Dman_ExecuteNonQry(mQry, mConn)
         End If
@@ -3722,7 +3722,7 @@ err1:
 
 
         bQry = "Insert Into Sms_Trans(Code,Sr,V_Date,Div_Code,Site_Code,Category,Mobile,Subcode,MsgDate,Msg,Status,PreparedBy,U_EntDt,U_AE) Values(" &
-                    " '" & mSearchCodeSms & "', 1, " & mAglObj.ConvertDate(MesssageDate) & ", " & mAglObj.Chk_Text(mAglObj.PubDivCode) & ", " & mAglObj.Chk_Text(mAglObj.PubSiteCode) & ", " & mAglObj.Chk_Text(mCategory) & "," & mAglObj.Chk_Text(mMobile) & "," & mAglObj.Chk_Text(mSubcode) & "," & mAglObj.ConvertDate(SMS_Date) & "," & mAglObj.Chk_Text(SMS_Message) & ", 'Pending', " & mAglObj.Chk_Text(mAglObj.PubUserName) & ", " & mAglObj.ConvertDate(mAglObj.PubLoginDate) & ", 'A')"
+                    " '" & mSearchCodeSms & "', 1, " & mAglObj.Chk_Text(CDate(MesssageDate).ToString("u")) & ", " & mAglObj.Chk_Text(mAglObj.PubDivCode) & ", " & mAglObj.Chk_Text(mAglObj.PubSiteCode) & ", " & mAglObj.Chk_Text(mCategory) & "," & mAglObj.Chk_Text(mMobile) & "," & mAglObj.Chk_Text(mSubcode) & "," & mAglObj.Chk_Text(CDate(SMS_Date).ToString("u")) & "," & mAglObj.Chk_Text(SMS_Message) & ", 'Pending', " & mAglObj.Chk_Text(mAglObj.PubUserName) & ", " & mAglObj.Chk_Text(CDate(mAglObj.PubLoginDate).ToString("u")) & ", 'A')"
 
         mAglObj.Dman_ExecuteNonQry(bQry, bConn, bCmd)
 

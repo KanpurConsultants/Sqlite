@@ -1,0 +1,30 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	HC SOPLN 2013       2	
+V_Type	string	255	SOPLN	
+V_Date	date	25/Sep/2013 12:00:00 AM	
+DueDate	date		
+Remarks	string	255		
+ProdOrderNo	string	255	SOPLN - 13-0002	
+VtDesc	string	255	Sale Order Plan	
+Sr	number	1	
+Item	string	255	HC0121	
+Qty	number	100	
+Unit	string	255	PCS	
+ItemName	string	255	FB001-2020	
+TotalOrderQty	number	0	
+TotalOrderMeasure	number	0	
+ProcessDesc	string	255		
+ProcessSr	number		
+OrderNo	string	255		
+OrderDate	date		
+OrderQty	number	0	
+OrderMeasure	number	0	
+DecimalPlaces	number	0	
+MeasureDecimalPlace	number		
+BalToOrderQty	number	100	
+BalToOrderMeasure	number	0	
+TotalMeasure	number	0	
+MeasureUnit	string	255		
+Ageing	number		
+IsMultiProcess	number	1	
+IsProcessinNewPage	number	0	

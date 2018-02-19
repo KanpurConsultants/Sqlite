@@ -1,0 +1,22 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	HC SOPLN 2013       2	
+V_Type	string	255	SOPLN	
+V_Date	date	25/Sep/2013 12:00:00 AM	
+DueDate	date		
+TotalQty	number		
+TotalMeasure	number		
+Remarks	string	255		
+ManualRefNo	string	255	13-0002	
+EntryBy	string	255	SA	
+ApproveBy	string	255		
+Sr	number	1	
+Qty	number	100	
+Unit	string	255	PCS	
+MeasurePerPcs	number	0	
+TotalMeasureLine	number	0	
+VtDesc	string	255	Sale Order Plan	
+MeasureUnit	string	255		
+SiteName	string	255	SURYA CARPET PVT. LTD.	
+ItemDesc	string	255	FB001-2020	
+PlanNo	string	255	SOPLN-13-0002	
+MaterialPlanSr	number	1	

@@ -90,4 +90,13 @@ Public Class MDIMain
     Private Sub MnuStockInHand_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MnuStockInHand.Click
 
     End Sub
+
+    Private Sub MnuUpdateTableStructure_Click(sender As Object, e As EventArgs) Handles MnuUpdateTableStructure.Click
+        Dim cm As New ClsMain(AgL)
+        cm.UpdateTableStructure()
+    End Sub
+
+    Private Sub MnuItemMasterCloth_Click(sender As Object, e As EventArgs) Handles MnuItemMasterCloth.Click
+
+    End Sub
 End Class

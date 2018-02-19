@@ -1,0 +1,57 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	HC SOPLN 2013       1	
+V_Type	string	255	SOPLN	
+V_Prefix	string	255	2013	
+V_Date	date	08/Jul/2013 12:00:00 AM	
+V_No	long	1	
+Div_Code	string	255	H	
+Site_Code	string	255	C	
+ProdOrder	string	255		
+DueDate	date		
+TotalQty	number	0	
+TotalMeasure	number	0	
+Remarks	string	255		
+EntryBy	string	255	SUPER	
+EntryDate	date	08/Jul/2013 5:55:00 PM	
+EntryType	string	255	Edit	
+EntryStatus	string	255	Open	
+ApproveBy	string	255		
+ApproveDate	date		
+MoveToLog	string	255		
+MoveToLogDate	date		
+IsDeleted	boolean		
+Status	string	255	Active	
+UID	string	255		
+Sr	number	1	
+Item	string	255	HC0097	
+Qty	number	50	
+Unit	string	255	PCS	
+StkQty_Finished	number	0	
+StkQty_SemiFinished	number	0	
+StkQtyReq_OpenSaleOrder	number	0	
+ExcessQty_Finished	number	0	
+ExcessQty_SemiFinished	number	0	
+ComputerProdPlanQty	number	50	
+PendingPurchaseOrderQty	number	0	
+ComputerProdPlanMeasure	number	0	
+UserPurchPlanQty	number	0	
+UserPurchPlanMeasure	number	0	
+UserProdPlanQty	number	50	
+UserProdPlanMeasure	number	0	
+ExcessQty_Finished1	number	0	
+ExcessQty_SemiFinished1	number	0	
+PendingJobOrderQty	number	0	
+UserProdPlanRemarks	string	255		
+MeasurePerPcs	number	0	
+MeasureUnit	string	255		
+ProdIssQty	number	0	
+ProdIssMeasure	number	0	
+ProdRecQty	number	0	
+ProdRecMeasure	number	0	
+LineUID	string	255		
+TotalMeasure1	number	0	
+ItemDesc	string	255	POUF180-2222	
+PlanType	string	255	Sale Order Plan	
+OrderNo	long		
+OrderType	string	255		
+ProdOrderNo	string	255		

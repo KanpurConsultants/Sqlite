@@ -175,32 +175,31 @@ Public Class FrmAccountDetails
         mQry = "Select Code,[Name] From LedgerGroup Order by [Name]"
         TxtLedgerGroup.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
 
-        mQry = "Declare @TmpTable Table (Code NVarChar(1),Name NVarChar(20)) "
-        mQry += "Insert Into @TmpTable Values('W','With In State') "
-        mQry += "Insert Into @TmpTable Values('O','Out Of State') "
-        mQry += "Insert Into @TmpTable Values('C','Out Of Country') "
-        mQry += "Insert Into @TmpTable Values('N','Not Applicable') "
-        mQry += "Select Code,Name From @TmpTable Order By Name "
+        mQry = "select 'W' as code, 'With In State' as Name
+                Union select 'O' as code, 'Out of State' as Name
+                Union select 'C' as code, 'Out of Country' as Name
+                Union select 'N' as code, 'Not Applicable' as Name
+                Order by Name"
         TxtLocation.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
 
-        mQry = "Declare @TmpTable Table (Code NVarChar(1),Name NVarChar(20)) "
-        mQry += "Insert Into @TmpTable Values('D','With In District') "
-        mQry += "Insert Into @TmpTable Values('O','Out Of District') "
-        mQry += "Select Code,Name From @TmpTable Order By Name "
+        mQry = "select 'D' as code, 'With In District' as Name
+                Union select 'O' as code, 'Out of District' as Name
+                Order by Name "
         TxtPartyCat.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
 
 
-        mQry = "Declare @TmpTable Table (Code NVarChar(1),Name NVarChar(20)) "
-        mQry += "Insert Into @TmpTable Values('R','Registered') "
-        mQry += "Insert Into @TmpTable Values('U','Unregistered') "
-        mQry += "Select Code,Name From @TmpTable Order By Name "
+
+        mQry = "select 'R' as code, 'Registered' as Name
+                Union select 'U' as code, 'Unregistered' as Name
+                Order by Name "
+
         TxtPartyType.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
 
 
-        mQry = "Declare @TmpTable Table (Code NVarChar(1),Name NVarChar(3)) "
-        mQry += "Insert Into @TmpTable Values('Y','Yes') "
-        mQry += "Insert Into @TmpTable Values('N','No') "
-        mQry += "Select Code,Name From @TmpTable Order By Name "
+
+        mQry = "select 'Y' as code, 'Yes' as Name
+                Union select 'N' as code, 'No' as Name
+                Order by Name "
         TxtDuplicateTIN.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
 
 

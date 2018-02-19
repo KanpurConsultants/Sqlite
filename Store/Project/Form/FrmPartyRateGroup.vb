@@ -6,9 +6,9 @@ Public Class FrmPartyRateGroup
 
 #Region "Designer Code"
     Private Sub InitializeComponent()
-        Me.LblDescriptionReq = New System.Windows.Forms.Label
-        Me.TxtDescription = New AgControls.AgTextBox
-        Me.LblDescription = New System.Windows.Forms.Label
+        Me.LblDescriptionReq = New System.Windows.Forms.Label()
+        Me.TxtDescription = New AgControls.AgTextBox()
+        Me.LblDescription = New System.Windows.Forms.Label()
         Me.GrpUP.SuspendLayout()
         Me.GBoxEntryType.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
@@ -90,7 +90,7 @@ Public Class FrmPartyRateGroup
         Me.LblDescriptionReq.AutoSize = True
         Me.LblDescriptionReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.LblDescriptionReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.LblDescriptionReq.Location = New System.Drawing.Point(295, 125)
+        Me.LblDescriptionReq.Location = New System.Drawing.Point(285, 113)
         Me.LblDescriptionReq.Name = "LblDescriptionReq"
         Me.LblDescriptionReq.Size = New System.Drawing.Size(10, 7)
         Me.LblDescriptionReq.TabIndex = 666
@@ -114,7 +114,7 @@ Public Class FrmPartyRateGroup
         Me.TxtDescription.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtDescription.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDescription.Location = New System.Drawing.Point(311, 117)
+        Me.TxtDescription.Location = New System.Drawing.Point(301, 105)
         Me.TxtDescription.MaxLength = 50
         Me.TxtDescription.Name = "TxtDescription"
         Me.TxtDescription.Size = New System.Drawing.Size(385, 18)
@@ -124,7 +124,7 @@ Public Class FrmPartyRateGroup
         '
         Me.LblDescription.AutoSize = True
         Me.LblDescription.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblDescription.Location = New System.Drawing.Point(200, 118)
+        Me.LblDescription.Location = New System.Drawing.Point(190, 106)
         Me.LblDescription.Name = "LblDescription"
         Me.LblDescription.Size = New System.Drawing.Size(73, 16)
         Me.LblDescription.TabIndex = 661
@@ -208,7 +208,7 @@ Public Class FrmPartyRateGroup
         PrimaryField = "SubCode"
     End Sub
 
-    Private Sub FrmYarn_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SqliteConnection, ByVal Cmd As SqliteCommand) Handles Me.BaseEvent_Save_InTrans
+    Private Sub FrmYarn_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand) Handles Me.BaseEvent_Save_InTrans
         mQry = "UPDATE SubGroup " &
                 " SET " &
                 " Name = " & AgL.Chk_Text(TxtDescription.Text) & ", " &

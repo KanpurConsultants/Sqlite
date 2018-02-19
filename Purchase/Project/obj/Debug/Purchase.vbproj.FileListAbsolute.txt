@@ -192,3 +192,30 @@ D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.MDIMain.res
 D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.Resources.resources
 D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
 D:\Satyam\Active Projects\SqLite\Purchase\Project\obj\Debug\Purchase.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\Purchase\Release\Purchase.exe.config
+D:\KC\Source\Sqlite\Purchase\Release\Purchase.exe
+D:\KC\Source\Sqlite\Purchase\Release\Purchase.pdb
+D:\KC\Source\Sqlite\Purchase\Release\Purchase.xml
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanReturn.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentCancel.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmBarCodePrint.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchImportFromExcel.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceAmendment.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderAmendment.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallan.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchChallanGateDetail.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndent.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchIndentNew.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoice.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrder.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderCancel.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchOrderDelivery.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchPartyDetail.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchReturn.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.MDIMain.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.Resources.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.exe
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.xml
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.pdb

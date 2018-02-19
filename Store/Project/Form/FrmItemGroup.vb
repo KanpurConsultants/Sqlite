@@ -6,14 +6,17 @@ Public Class FrmItemGroup
 
 #Region "Designer Code"
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.TxtDescription = New AgControls.AgTextBox
-        Me.LblDescription = New System.Windows.Forms.Label
-        Me.TxtItemType = New AgControls.AgTextBox
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.LblIsSystemDefine = New System.Windows.Forms.Label
-        Me.ChkIsSystemDefine = New System.Windows.Forms.CheckBox
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TxtDescription = New AgControls.AgTextBox()
+        Me.LblDescription = New System.Windows.Forms.Label()
+        Me.TxtItemType = New AgControls.AgTextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.LblIsSystemDefine = New System.Windows.Forms.Label()
+        Me.ChkIsSystemDefine = New System.Windows.Forms.CheckBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtItemCategory = New AgControls.AgTextBox()
         Me.GrpUP.SuspendLayout()
         Me.GBoxEntryType.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
@@ -153,32 +156,35 @@ Public Class FrmItemGroup
         Me.TxtItemType.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtItemType.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtItemType.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtItemType.Location = New System.Drawing.Point(294, 134)
+        Me.TxtItemType.Location = New System.Drawing.Point(294, 156)
         Me.TxtItemType.MaxLength = 20
         Me.TxtItemType.Name = "TxtItemType"
         Me.TxtItemType.Size = New System.Drawing.Size(385, 18)
         Me.TxtItemType.TabIndex = 712
+        Me.TxtItemType.Visible = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(183, 136)
+        Me.Label4.Location = New System.Drawing.Point(183, 158)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(64, 16)
         Me.Label4.TabIndex = 713
         Me.Label4.Text = "Item Type"
+        Me.Label4.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(278, 140)
+        Me.Label2.Location = New System.Drawing.Point(278, 162)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(10, 7)
         Me.Label2.TabIndex = 714
         Me.Label2.Text = "Ä"
+        Me.Label2.Visible = False
         '
         'LblIsSystemDefine
         '
@@ -203,10 +209,58 @@ Public Class FrmItemGroup
         Me.ChkIsSystemDefine.TabIndex = 1060
         Me.ChkIsSystemDefine.UseVisualStyleBackColor = False
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(278, 141)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(10, 7)
+        Me.Label3.TabIndex = 1064
+        Me.Label3.Text = "Ä"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(183, 137)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(89, 16)
+        Me.Label5.TabIndex = 1063
+        Me.Label5.Text = "Item Category"
+        '
+        'TxtItemCategory
+        '
+        Me.TxtItemCategory.AgAllowUserToEnableMasterHelp = False
+        Me.TxtItemCategory.AgLastValueTag = Nothing
+        Me.TxtItemCategory.AgLastValueText = Nothing
+        Me.TxtItemCategory.AgMandatory = False
+        Me.TxtItemCategory.AgMasterHelp = False
+        Me.TxtItemCategory.AgNumberLeftPlaces = 0
+        Me.TxtItemCategory.AgNumberNegetiveAllow = False
+        Me.TxtItemCategory.AgNumberRightPlaces = 0
+        Me.TxtItemCategory.AgPickFromLastValue = False
+        Me.TxtItemCategory.AgRowFilter = ""
+        Me.TxtItemCategory.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtItemCategory.AgSelectedValue = Nothing
+        Me.TxtItemCategory.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtItemCategory.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtItemCategory.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtItemCategory.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtItemCategory.Location = New System.Drawing.Point(294, 135)
+        Me.TxtItemCategory.MaxLength = 20
+        Me.TxtItemCategory.Name = "TxtItemCategory"
+        Me.TxtItemCategory.Size = New System.Drawing.Size(385, 18)
+        Me.TxtItemCategory.TabIndex = 1062
+        '
         'FrmItemGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(862, 267)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.TxtItemCategory)
         Me.Controls.Add(Me.LblIsSystemDefine)
         Me.Controls.Add(Me.ChkIsSystemDefine)
         Me.Controls.Add(Me.Label2)
@@ -233,6 +287,9 @@ Public Class FrmItemGroup
         Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.Controls.SetChildIndex(Me.ChkIsSystemDefine, 0)
         Me.Controls.SetChildIndex(Me.LblIsSystemDefine, 0)
+        Me.Controls.SetChildIndex(Me.TxtItemCategory, 0)
+        Me.Controls.SetChildIndex(Me.Label5, 0)
+        Me.Controls.SetChildIndex(Me.Label3, 0)
         Me.GrpUP.ResumeLayout(False)
         Me.GrpUP.PerformLayout()
         Me.GBoxEntryType.ResumeLayout(False)
@@ -258,6 +315,9 @@ Public Class FrmItemGroup
     Public WithEvents Label2 As System.Windows.Forms.Label
     Public WithEvents LblIsSystemDefine As System.Windows.Forms.Label
     Friend WithEvents ChkIsSystemDefine As System.Windows.Forms.CheckBox
+    Public WithEvents Label3 As Label
+    Public WithEvents Label5 As Label
+    Public WithEvents TxtItemCategory As AgControls.AgTextBox
     Public WithEvents Label1 As System.Windows.Forms.Label
 #End Region
 
@@ -276,9 +336,10 @@ Public Class FrmItemGroup
 
     Public Overridable Sub FrmYarn_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
         Dim mConStr$ = ""
-        AgL.PubFindQry = "SELECT I.Code, I.Description as Item_Group, T.Name AS ItemType  " &
-                        " FROM ItemGroup I  " &
-                        " Left Join ItemType T On I.ItemType = T.Code "
+        AgL.PubFindQry = "SELECT I.Code, I.Description as Item_Group, IC.Description as ItemCategory, T.Name AS ItemType 
+                        FROM ItemGroup I  
+                        Left Join ItemCategory IC On I.ItemCategory = IC.Code
+                        Left Join ItemType T On I.ItemType = T.Code "
         AgL.PubFindQryOrdBy = "[Description]"
     End Sub
 
@@ -289,9 +350,10 @@ Public Class FrmItemGroup
 
     Private Sub FrmYarn_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SqliteConnection, ByVal Cmd As SqliteCommand) Handles Me.BaseEvent_Save_InTrans
         mQry = "UPDATE ItemGroup " &
-                " SET " &
+                " Set " &
                 " Description = " & AgL.Chk_Text(TxtDescription.Text) & ", " &
                 " IsSystemDefine = " & Val(IIf(ChkIsSystemDefine.Checked, 1, 0)) & ", " &
+                " ItemCategory = " & AgL.Chk_Text(TxtItemCategory.AgSelectedValue) & ", " &
                 " ItemType = " & AgL.Chk_Text(TxtItemType.AgSelectedValue) & " " &
                 " Where Code = '" & SearchCode & "' "
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
@@ -305,6 +367,10 @@ Public Class FrmItemGroup
 
         mQry = " Select Code, Name From ItemType "
         TxtItemType.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
+
+        mQry = " Select Code, Description From ItemCategory "
+        TxtItemCategory.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
+
     End Sub
 
     Private Sub FrmQuality1_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
@@ -320,6 +386,7 @@ Public Class FrmItemGroup
             If .Rows.Count > 0 Then
                 mInternalCode = AgL.XNull(.Rows(0)("Code"))
                 TxtDescription.Text = AgL.XNull(.Rows(0)("Description"))
+                TxtItemCategory.AgSelectedValue = AgL.XNull(.Rows(0)("ItemCategory"))
                 TxtItemType.AgSelectedValue = AgL.XNull(.Rows(0)("ItemType"))
 
                 ChkIsSystemDefine.Checked = AgL.VNull(.Rows(0)("IsSystemDefine"))
@@ -376,10 +443,22 @@ Public Class FrmItemGroup
         Dim DrTemp As DataRow() = Nothing
         Try
             Select Case sender.NAME
+                Case TxtItemCategory.Name
+                    If TxtItemCategory.Visible = True Then
+                        If TxtItemCategory.AgSelectedValue <> "" Then
+                            TxtItemType.AgSelectedValue = AgL.FillData("Select ItemType From ItemCategory Where Code = '" & TxtItemCategory.AgSelectedValue & "' ", AgL.GCn).tables(0).rows(0)(0)
+                            If MsgBox("Do you want to save?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton1, "Save") = MsgBoxResult.Yes Then
+                                Topctrl1.FButtonClick(13)
+                            End If
+                        End If
+                    End If
+
                 Case TxtItemType.Name
-                    If TxtItemType.AgSelectedValue <> "" Then
-                        If MsgBox("Do you want to save?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton1, "Save") = MsgBoxResult.Yes Then
-                            Topctrl1.FButtonClick(13)
+                    If TxtItemType.Visible = True Then
+                        If TxtItemType.AgSelectedValue <> "" Then
+                            If MsgBox("Do you want to save?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton1, "Save") = MsgBoxResult.Yes Then
+                                Topctrl1.FButtonClick(13)
+                            End If
                         End If
                     End If
             End Select

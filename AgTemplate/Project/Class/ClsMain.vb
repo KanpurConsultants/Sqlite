@@ -9612,7 +9612,7 @@ Public Class ClsMain
                     " FIFORate, FIFOAmt, AVGRate, AVGAmt, Doc_Qty, ReferenceDocID) " &
                     " VALUES (" & AgL.Chk_Text(.DocID) & ", " & Val(.Sr) & ", " &
                     " " & AgL.Chk_Text(.V_Type) & ", " & AgL.Chk_Text(.V_Prefix) & ", " &
-                    " " & AgL.ConvertDate(.V_Date) & ",	" & Val(.V_No) & ",	" & AgL.Chk_Text(.RecID) & ", " & AgL.Chk_Text(.Div_Code) & ", " &
+                    " " & AgL.Chk_Text(CDate(.V_Date).ToString("u")) & ",	" & Val(.V_No) & ",	" & AgL.Chk_Text(.RecID) & ", " & AgL.Chk_Text(.Div_Code) & ", " &
                     " " & AgL.Chk_Text(.Site_Code) & ",	" & AgL.Chk_Text(.CostCenter) & ",	" & AgL.Chk_Text(.SubCode) & ",	" &
                     " " & AgL.Chk_Text(.Currency) & ", " & AgL.Chk_Text(.SalesTaxGroupParty) & ", " &
                     " " & AgL.Chk_Text(.Structure1) & ", " & AgL.Chk_Text(.BillingType) & ", " &
@@ -9729,11 +9729,11 @@ Public Class ClsMain
                     mQry = "Insert Into Ledger(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
                          " Narration,V_Type,V_No,V_Prefix,Site_Code,DivCode,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,TDSDesc," &
                          " TDSPer,TDS_Of_V_SNo,System_Generated,FormulaString,ContraText, CostCenter) Values " &
-                         " ('" & mDocID & "','" & mRecID & "'," & mSrl & "," & AgL.ConvertDate(mV_Date) & "," & AgL.Chk_Text(mPostSubCode) & "," & AgL.Chk_Text("") & ", " &
+                         " ('" & mDocID & "','" & mRecID & "'," & mSrl & "," & AgL.Chk_Text(CDate(mV_Date).ToString("u")) & "," & AgL.Chk_Text(mPostSubCode) & "," & AgL.Chk_Text("") & ", " &
                          " " & mDebit & "," & mCredit & ", " &
                          " " & AgL.Chk_Text(mNarr) & ",'" & mV_Type & "','" & mV_No & "','" & mV_Prefix & "'," &
                          " '" & mSite_Code & "','" & mDiv_Code & "','" & AgL.Chk_Text("") & "'," &
-                         " " & AgL.ConvertDate("") & "," & AgL.Chk_Text("") & "," &
+                         " " & AgL.Chk_Text("") & "," & AgL.Chk_Text("") & "," &
                          " " & Val("") & "," & AgL.Chk_Text("") & "," & Val("") & "," & 0 & ",'Y','" & "" & "','" & StrContraTextJV & "', " & AgL.Chk_Text(mCostCenter) & ")"
                     AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
                 End If

@@ -168,8 +168,8 @@ Public Class FrmDisplayHierarchy_Stock
             End If
 
             LblDisplayDate.Text = "Date : " & DHSSMain.StrFromDate & " To " & DHSSMain.StrToDate
-            StrConditionOP = "Where V_Date< " & Agl.ConvertDate(DHSSMain.StrFromDate) & ""
-            StrCondition1 = " Where (V_Date Between " & AgL.ConvertDate(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.ConvertDate(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
+            StrConditionOP = "Where V_Date< " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & ""
+            StrCondition1 = " Where (V_Date Between " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.Chk_Text(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
             If UCase(DHSSMain.StrZeroBalace) = "N" Then StrZeroBalance = StrZeroBalance + " HAVING (sum(opvalue)+sum(TAB.RValue)-sum(Tab.ivalue))>0 "
 
             If Trim(DHSSMain.StrItemCategoryCode) <> "" Then
@@ -352,9 +352,9 @@ Public Class FrmDisplayHierarchy_Stock
                 StrValueField = "ST.AVGAmt"
             End If
             LblDisplayDate.Text = "Date : " & DHSSMain.StrFromDate & " To " & DHSSMain.StrToDate
-            StrConditionOP = "Where V_Date< " & Agl.ConvertDate(DHSSMain.StrFromDate) & ""
+            StrConditionOP = "Where V_Date< " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & ""
             LblDisplaySite.Text = DHSSMain.StrSiteName
-            StrCondition1 = " Where (V_Date Between " & AgL.ConvertDate(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.ConvertDate(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
+            StrCondition1 = " Where (V_Date Between " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.Chk_Text(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
             If UCase(DHSSMain.StrZeroBalace) = "N" Then StrZeroBalance = StrZeroBalance + " HAVING (sum(opvalue)+sum(TAB.RValue)-sum(Tab.ivalue))>0 "
 
             If Trim(DHSSMain.StrItemGroupCode) <> "" Then
@@ -467,8 +467,8 @@ Public Class FrmDisplayHierarchy_Stock
             End If
             LblDisplayDate.Text = "Date : " & DHSSMain.StrFromDate & " To " & DHSSMain.StrToDate
             LblDisplaySite.Text = DHSSMain.StrSiteName
-            StrConditionOP = "Where V_Date< " & AgL.ConvertDate(DHSSMain.StrFromDate) & ""
-            StrCondition1 = " Where (V_Date Between " & AgL.ConvertDate(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.ConvertDate(CDate(DHSSMain.StrToDate).ToString("u")) & " )"
+            StrConditionOP = "Where V_Date< " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & ""
+            StrCondition1 = " Where (V_Date Between " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.Chk_Text(CDate(DHSSMain.StrToDate).ToString("u")) & " )"
             If UCase(DHSSMain.StrZeroBalace) = "N" Then StrZeroBalance = StrZeroBalance + " HAVING (Sum(opvalue)+Sum(TAB.RValue)-Sum(Tab.ivalue))>0 "
 
             If Trim(DHSSMain.StrItemNameCode) <> "" Then
@@ -764,9 +764,9 @@ Public Class FrmDisplayHierarchy_Stock
                 StrvalueField = "ST.AVGAmt"
             End If
 
-            StrCondition1 = " Where (V_Date Between " & AgL.ConvertDate(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.ConvertDate(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
+            StrCondition1 = " Where (V_Date Between " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " And " & AgL.Chk_Text(CDate(DHSSMain.StrToDate).ToString("u")) & " ) "
             StrCondition1 = StrCondition1 + " And IM.Code='" & StrForCode & "'"
-            StrConditionOp = " Where ST.V_Date < " & AgL.ConvertDate(DHSSMain.StrFromDate) & " "
+            StrConditionOp = " Where ST.V_Date < " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " "
 
             If Trim(DHSSMain.StrGodownCode) <> "" Then
                 StrConditionOp += " And ST.Godown In (" & DHSSMain.StrGodownCode & ") "
@@ -940,9 +940,9 @@ Public Class FrmDisplayHierarchy_Stock
             For I = 0 To RptReg.DataDefinition.FormulaFields.Count - 1
                 Select Case CStr(UCase(RptReg.DataDefinition.FormulaFields.Item(I).Name))
                     Case "FDATE"
-                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & Agl.ConvertDate(DHSSMain.StrFromDate) & " "
+                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.Chk_Text(CDate(DHSSMain.StrFromDate).ToString("u")) & " "
                     Case "TDATE"
-                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & Agl.ConvertDate(DHSSMain.StrToDate) & " "
+                        RptReg.DataDefinition.FormulaFields.Item(I).Text = " " & AgL.Chk_Text(CDate(DHSSMain.StrToDate).ToString("u")) & " "
                 End Select
             Next
             CMain.FShowReport(RptReg, Me.MdiParent, Me.Text)

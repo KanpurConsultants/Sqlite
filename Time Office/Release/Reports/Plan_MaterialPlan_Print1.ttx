@@ -1,0 +1,7 @@
+; Field definition file for table: ADORecordset
+Sr	number	1	
+ItemDesc	string	255	FB001-2020	
+Qty	number	100	
+Unit	string	255	PCS	
+DecimalPlaces	number	0	
+ProdOrder	string	255	13-0002	

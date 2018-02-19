@@ -130,6 +130,12 @@
     <Compile Include="Class\ClsFunction.vb" />
     <Compile Include="Class\ClsMain.vb" />
     <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Form\FrmItemMaster_Cloth.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmRateType.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmReasonMaster.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     <Compile Include="Form\FrmStoreReceive.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmDepartment.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmTariffHead.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +284,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\FrmItemMaster_Cloth.resx">
+      <DependentUpon>FrmItemMaster_Cloth.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmRateType.resx">
+      <DependentUpon>FrmRateType.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmReasonMaster.resx">
       <DependentUpon>FrmReasonMaster.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -381,6 +398,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmStoreReceive.resx">
       <DependentUpon>FrmStoreReceive.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmDepartment.resx">
+      <DependentUpon>FrmDepartment.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmTariffHead.resx">
       <DependentUpon>FrmTariffHead.vb</DependentUpon>

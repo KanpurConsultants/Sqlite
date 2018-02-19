@@ -645,6 +645,7 @@ Public Class FrmVoucherEntry
             'If Trim(TxtVNo.Text) = "" Then StrDocID = CMain.FGetDoId(TxtVNo, TxtType.Tag, "LedgerM", "V_No", TxtVDate.Text)
             If Trim(TxtVNo.Text) = "" Then
                 StrDocID = AgL.GetDocId(TxtType.Tag, CStr(TxtVNo.Text), CDate(TxtVDate.Text), AgL.GcnRead, AgL.PubDivCode, AgL.PubSiteCode)
+                TxtVNo.Tag = Val(AgL.DeCodeDocID(StrDocID, AgLibrary.ClsMain.DocIdPart.VoucherPrefix))
                 TxtVNo.Text = Val(AgL.DeCodeDocID(StrDocID, AgLibrary.ClsMain.DocIdPart.VoucherNo))
             End If
 
@@ -998,7 +999,7 @@ Public Class FrmVoucherEntry
                                      "Narration,PostedBy,RecId," &
                                      "U_Name,U_EntDt,U_AE,PreparedBy) Values " &
                                      "('" & (StrDocId) & "','" & TxtType.Tag & "','" & TxtVNo.Tag & "','" & AgL.PubSiteCode & "', " &
-                                     "'" & TxtVNo.Text & "'," & AgL.ConvertDate(TxtVDate) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
+                                     "'" & TxtVNo.Text & "'," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
                                      "" & AgL.Chk_Text(TxtNarration.Text) & ",'" & TxtPostedBy.Text & "','" & TxtRecId.Text & "'," &
                                      "'" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "'," &
                                      "'" & Microsoft.VisualBasic.Left(Topctrl1.Mode, 1) & "','" & AgL.PubUserName & "')"
@@ -1009,14 +1010,14 @@ Public Class FrmVoucherEntry
                                                              "Narration,PostedBy,RecId," &
                                                              "U_Name,U_EntDt,U_AE,PreparedBy) Values " &
                                                              "('" & (StrDocId) & "','" & TxtType.Tag & "','" & TxtVNo.Tag & "','" & AgL.PubSiteCode & "', " &
-                                                             "'" & TxtVNo.Text & "'," & AgL.ConvertDate(TxtVDate) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
+                                                             "'" & TxtVNo.Text & "'," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
                                                              "" & AgL.Chk_Text(TxtNarration.Text) & ",'" & TxtPostedBy.Text & "','" & TxtRecId.Text & "'," &
                                                              "'" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "'," &
                                                              "'" & Microsoft.VisualBasic.Left(Topctrl1.Mode, 1) & "','" & AgL.PubUserName & "')"
                 Else
                     GCnCmd.CommandText = "Update " & StrLedgerM & " Set "
                     GCnCmd.CommandText = GCnCmd.CommandText + "Site_Code='" & AgL.PubSiteCode & "', "
-                    GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.ConvertDate(TxtVDate) & ", "
+                    GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & ", "
                     GCnCmd.CommandText = GCnCmd.CommandText + "SubCode=" & AgL.Chk_Text(TxtAcName.Tag) & ", "
                     GCnCmd.CommandText = GCnCmd.CommandText + "Narration=" & AgL.Chk_Text(TxtNarration.Text) & ", "
                     GCnCmd.CommandText = GCnCmd.CommandText + "RecId='" & TxtRecId.Text & "', "
@@ -1059,11 +1060,11 @@ Public Class FrmVoucherEntry
                     IntV_SNo = IntV_SNo + 1
                     GCnCmd.CommandText = "Insert Into " & StrLedger & "(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
                                      "Narration,V_Type,V_No,V_Prefix,Site_Code,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,CostCenter,ContraText,OrignalAmt,TDSDeductFrom) Values " &
-                                     "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.ConvertDate(TxtVDate.Text) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
+                                     "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & "," & AgL.Chk_Text(TxtAcName.Tag) & ", " &
                                      "" & Val(FGMain(GDebit, I).Value) & "," & Val(FGMain(GCredit, I).Value) & ", " &
                                      "" & AgL.Chk_Text(FGMain(GNarration, I).Value) & ",'" & TxtType.Tag & "','" & TxtVNo.Text & "','" & TxtVNo.Tag & "'," &
                                      "'" & AgL.PubSiteCode & "'," & AgL.Chk_Text(FGMain(GChqNo, I).Value) & "," &
-                                     "" & AgL.ConvertDate(Trim(FGMain(GChqDate, I).Value)) & "," & AgL.Chk_Text(FGMain(GTDSCategoryCode, I).Value) & "," &
+                                     "" & AgL.Chk_Text(Trim(FGMain(GChqDate, I).Value)) & "," & AgL.Chk_Text(FGMain(GTDSCategoryCode, I).Value) & "," &
                                      "" & Val(FGMain(GTDSOnAmount, I).Value) & "," & AgL.Chk_Text(FGMain(GCostCenterCode, I).Value) & ",'" & StrContraTextJV & "'," & Val(FGMain(GOrignalAmt, I).Value) & "," & AgL.Chk_Text(FGMain(GTDSDeductFrom, I).Value) & ")"
                     GCnCmd.ExecuteNonQuery()
                     Int_Prv_V_SNo = IntV_SNo
@@ -1099,11 +1100,11 @@ Public Class FrmVoucherEntry
                                 IntV_SNo = IntV_SNo + 1
                                 GCnCmd.CommandText = "Insert Into " & StrLedger & "(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
                                                              "Narration,V_Type,V_No,V_Prefix,Site_Code,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,TDSDesc,TDSPer,TDS_Of_V_SNo,System_Generated,FormulaString,ContraText) Values " &
-                                                             "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.ConvertDate(TxtVDate.Text) & "," & AgL.Chk_Text(SVTMain.TDSVar(J).StrPostingAcCode) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & ", " &
+                                                             "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(SVTMain.TDSVar(J).StrPostingAcCode) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & ", " &
                                                              "" & DblDebit & "," & DblCredit & ", " &
                                                              "" & AgL.Chk_Text(Narration) & " @ " & Trim(SVTMain.TDSVar(J).DblPercentage) & ",'" & TxtType.Tag & "','" & TxtVNo.Text & "','" & TxtVNo.Tag & "'," &
                                                              "'" & AgL.PubSiteCode & "'," & AgL.Chk_Text("") & "," &
-                                                             "" & AgL.ConvertDate("") & "," & AgL.Chk_Text(FGMain(GTDSCategoryCode, I).Value) & "," &
+                                                             "" & AgL.Chk_Text("") & "," & AgL.Chk_Text(FGMain(GTDSCategoryCode, I).Value) & "," &
                                                              "" & Val(FGMain(GTDSOnAmount, I).Value) & "," & AgL.Chk_Text(SVTMain.TDSVar(J).StrDescCode) & "," & SVTMain.TDSVar(J).DblPercentage & "," & Int_Prv_V_SNo & ",'Y','" & SVTMain.TDSVar(J).StrFormula & "','" & StrContraTDS_BF & "')"
                                 GCnCmd.ExecuteNonQuery()
                             End If
@@ -1113,11 +1114,11 @@ Public Class FrmVoucherEntry
                         IntV_SNo = IntV_SNo + 1
                         GCnCmd.CommandText = "Insert Into " & StrLedger & "(DocId,RecId,V_SNo,V_Date,SubCode,AmtDr,AmtCr," &
                                          "Narration,V_Type,V_No,V_Prefix,Site_Code,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,System_Generated,ContraText) Values " &
-                                         "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.ConvertDate(TxtVDate.Text) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & ", " &
+                                         "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(FGMain(GAcCode, I).Value) & ", " &
                                          "" & DblDebit_Total & "," & DblCredit_Total & ", " &
                                          "" & AgL.Chk_Text(Narration) & ",'" & TxtType.Tag & "','" & TxtVNo.Text & "','" & TxtVNo.Tag & "'," &
                                          "'" & AgL.PubSiteCode & "'," & AgL.Chk_Text("") & "," &
-                                         "" & AgL.ConvertDate("") & ",'" & FGMain(GTDSCategoryCode, I).Value & "'," &
+                                         "" & AgL.Chk_Text("") & ",'" & FGMain(GTDSCategoryCode, I).Value & "'," &
                                          "" & Val(FGMain(GTDSOnAmount, I).Value) & ",'Y','" & StrContraTDS & "')"
                         GCnCmd.ExecuteNonQuery()
                     End If
@@ -1152,7 +1153,7 @@ Public Class FrmVoucherEntry
 
                                     If BytFormWorkAs = ClsStructure.EntryType.ForPosting Then
                                         GCnCmd.CommandText = "Insert Into Stock(DocId,V_Type,RecId,V_Date,V_SNo,ItemCode,LandedValue,Remark,EType_IR,Site_Code) Values " &
-                                                         "('" & (StrDocId) & "', '" & TxtType.Tag & "','" & TxtRecId.Text & "'," & AgL.ConvertDate(TxtVDate.Text) & " ," & IntV_SNo_For_Stock & "," & AgL.Chk_Text(SVTMain.LIAdjVar(J).StrItemCode) & ", " &
+                                                         "('" & (StrDocId) & "', '" & TxtType.Tag & "','" & TxtRecId.Text & "'," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & " ," & IntV_SNo_For_Stock & "," & AgL.Chk_Text(SVTMain.LIAdjVar(J).StrItemCode) & ", " &
                                                          "" & IIf(Val(FGMain(GDebit, I).Value) > 0, SVTMain.LIAdjVar(J).DblAmount, 0 - SVTMain.LIAdjVar(J).DblAmount) & ",'" & SVTMain.LIAdjVar(J).StrRemark & "','R','" & AgL.PubSiteCode & "')"
                                         GCnCmd.ExecuteNonQuery()
                                     End If
@@ -1166,13 +1167,14 @@ Public Class FrmVoucherEntry
 
             If UCase(Trim(LblCurrentType.Tag)) <> "JV" Then
                 IntV_SNo = IntV_SNo + 1
+                If StrChequeDt <> "" Then StrChequeDt = CDate(StrChequeDt).ToString("u")
                 GCnCmd.CommandText = "Insert Into " & StrLedger & "(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
                                                      "Narration,V_Type,V_No,V_Prefix,Site_Code,System_Generated,ContraText,Chq_No,Chq_Date) Values " &
-                                                     "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.ConvertDate(TxtVDate.Text) & "," & AgL.Chk_Text(TxtAcName.Tag) & "," & AgL.Chk_Text("") & ", " &
+                                                     "('" & (StrDocId) & "','" & TxtRecId.Text & "'," & IntV_SNo & "," & AgL.Chk_Text(CDate(TxtVDate.Text).ToString("u")) & "," & AgL.Chk_Text(TxtAcName.Tag) & "," & AgL.Chk_Text("") & ", " &
                                                      "" & IIf(FGMain.Columns(GCredit).Visible, Val(LblCrAmt.Text), 0) & "," &
                                                      "" & IIf(FGMain.Columns(GDebit).Visible, Val(LblDrAmt.Text), 0) & ", " &
                                                      "" & AgL.Chk_Text(StrNarrationForHeader) & ",'" & TxtType.Tag & "','" & TxtVNo.Text & "'," &
-                                                     "'" & TxtVNo.Tag & "','" & AgL.PubSiteCode & "','Y','" & StrContraTextOther & "','" & StrChequeNo & "'," & AgL.ConvertDate(StrChequeDt) & ")"
+                                                     "'" & TxtVNo.Tag & "','" & AgL.PubSiteCode & "','Y','" & StrContraTextOther & "','" & StrChequeNo & "'," & AgL.Chk_Text(StrChequeDt) & ")"
                 GCnCmd.ExecuteNonQuery()
             End If
             'End If
@@ -1182,6 +1184,10 @@ Public Class FrmVoucherEntry
             GCnCmd.CommandText = GCnCmd.CommandText + "PostedBy='" & TxtPostedBy.Text & "' "
             GCnCmd.CommandText = GCnCmd.CommandText + "Where DocId='" & (StrDocId) & "' "
             GCnCmd.ExecuteNonQuery()
+
+            GCnCmd.CommandText = "Update voucher_prefix set start_srl_no = " & Val(TxtVNo.Text) & " where v_type = " & AgL.Chk_Text(TxtType.Tag) & " and prefix=" & AgL.Chk_Text(TxtVNo.Tag) & ""
+            GCnCmd.ExecuteNonQuery()
+
             '======================================================================
             GCnCmd.Transaction.Commit()
             BlnTrans = False

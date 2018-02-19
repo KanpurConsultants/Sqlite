@@ -1,0 +1,21 @@
+; Field definition file for table: ADORecordset
+DocID	string	255	HC    MP 2013       1	
+V_Type	string	255	MP	
+V_Date	date	25/Sep/2013 12:00:00 AM	
+V_No	long	1	
+Remarks	string	255		
+EntryBy	string	255	SUPER	
+ApproveBy	string	255		
+ManualRefNo	string	255	13-0001	
+Sr	number	5	
+BomQty	number	60	
+ItemDesc	string	255	Heavy Duck 60"	
+Unit	string	255	METER	
+DecimalPlaces	number	3	
+BomQty1	number	60	
+ComputerMaterialPlanQty	number	60	
+UserMaterialPlanQty	number	75	
+StockQty	number	0	
+Process	string	255	Stock	
+UserPurchPlanQty	number	0	
+UserMaterialPlanRemarks	string	255		

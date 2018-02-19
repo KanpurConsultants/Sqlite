@@ -269,7 +269,7 @@ Public Class FrmEnviro
         If Trim(UCase(TxtArrange.Tag)) = "B" Then
             If AgL.RequiredField(txtFrom, "From") Then Exit Sub
             If AgL.RequiredField(TxtTo, "To") Then Exit Sub
-            StrCondition = " And (V_Date Between " & AgL.ConvertDate(CDate(txtFrom.Text)) & " And " & AgL.ConvertDate(CDate(TxtTo.Text).ToString("u")) & ") "
+            StrCondition = " And (V_Date Between " & AgL.Chk_Text(CDate(txtFrom.Text).ToString("u")) & " And " & AgL.Chk_Text(CDate(TxtTo.Text).ToString("u")) & ") "
         End If
         If MsgBox("Are You Sure.You Want To Serialize Voucher.") = MsgBoxResult.No Then Exit Sub
 

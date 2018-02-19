@@ -223,13 +223,13 @@ Public Class FrmAssetTransaction
                                      "Asset,Amount,Remark, " &
                                      "PreparedBy,ModifiedBy,Site_Code," &
                                      "U_EntDt,U_AE) Values " &
-                                     "('" & (StrDocID) & "','" & TxtType.Tag & "'," & AgL.Chk_Text(TxtID.Text) & "," & AgL.Chk_Text(TxtRecid.Text) & "," & AgL.Chk_Text(TxtID.Tag) & "," & AgL.ConvertDate(TxtDate.Text) & ", " &
+                                     "('" & (StrDocID) & "','" & TxtType.Tag & "'," & AgL.Chk_Text(TxtID.Text) & "," & AgL.Chk_Text(TxtRecid.Text) & "," & AgL.Chk_Text(TxtID.Tag) & "," & AgL.Chk_Text(CDate(TxtDate.Text).ToString("u")) & ", " &
                                      "" & AgL.Chk_Text(TxtAssetName.Tag) & "," & Val(TxtValue.Text) & "," & AgL.Chk_Text(TxtRemark.Text) & ", " &
                                      "'" & AgL.PubUserName & "','" & AgL.PubUserName & "','" & AgL.PubSiteCode & "'," &
                                      "'" & Format(AgL.PubLoginDate, "Short Date") & "','" & Microsoft.VisualBasic.Left(Topctrl1.Mode, 1) & "')"
             Else
                 GCnCmd.CommandText = "Update AssetTransaction Set "
-                GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.ConvertDate(TxtDate.Text) & ", "
+                GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.Chk_Text(CDate(TxtDate.Text).ToString("u")) & ", "
                 GCnCmd.CommandText = GCnCmd.CommandText + "Asset=" & AgL.Chk_Text(TxtAssetName.Tag) & ", "
                 GCnCmd.CommandText = GCnCmd.CommandText + "Amount=" & Val(TxtValue.Text) & ", "
                 GCnCmd.CommandText = GCnCmd.CommandText + "Remark=" & AgL.Chk_Text(TxtRemark.Text) & ", "

@@ -781,3 +781,23 @@ D:\Satyam\Active Projects\SqLite\AgTemplate\Release\AgTemplate.xml
 D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.dll
 D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.xml
 D:\Satyam\Active Projects\SqLite\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll.config
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.xml
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmUpdateStatus.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReminder.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmRemindMe.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempMaster.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempSubGroup.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.TempTransaction.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.Resources.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.MDIMain.resources
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.dll
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.xml
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.pdb

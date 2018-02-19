@@ -19,7 +19,7 @@ Public Class MDIMain
         If AgL Is Nothing Then
             If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                 DtTemp = AgL.FillData("PRAGMA table_info(company);", AgL.GcnMain).Tables(0)
-                AgIniVar.FOpenConnection("5", "1", False)
+                AgIniVar.FOpenConnection("3", "1", False)
             End If
 
             AgL.PubDivCode = "D"

@@ -1,0 +1,22 @@
+E:\Arpit\Active Project\Planning\Release\Planning.exe.config
+E:\Arpit\Active Project\Planning\Release\Planning.exe
+E:\Arpit\Active Project\Planning\Release\Planning.pdb
+E:\Arpit\Active Project\Planning\Release\Planning.xml
+E:\Arpit\Active Project\Planning\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmBom.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmProcess.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.MDIMain.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.Resources.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.exe
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.xml
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.pdb
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmMaterialPlan.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmMaterialPlanAmendment.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmProductionOrder.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmSaleOrderPlan.resources
+E:\Arpit\Active Project\Planning\Project\obj\Release\Planning.FrmSaleOrderPlanAmendment.resources
+E:\Arpit\Active Project\Time Office\Release\Planning.exe.config
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Planning.exe
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Planning.xml
+E:\Arpit\Active Project\Time Office\Project\obj\Release\Planning.pdb

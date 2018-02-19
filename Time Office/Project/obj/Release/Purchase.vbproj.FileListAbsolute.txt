@@ -1,0 +1,78 @@
+D:\Active Project\Purchase\Release\Purchase.exe
+D:\Active Project\Purchase\Release\Purchase.pdb
+D:\Active Project\Purchase\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Release\ResolveAssemblyReference.cache
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPartyDetail.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchaseImportFromExcel.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchChallan.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchChallanGateDetail.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchIndent.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchInvoice.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrder.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderCancel.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderDelivery.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchPartyDetail.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchReturn.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.MDIMain.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.Resources.resources
+D:\Active Project\Purchase\Project\obj\Release\Purchase.vbproj.GenerateResource.Cache
+D:\Active Project\Purchase\Project\obj\Release\Purchase.exe
+D:\Active Project\Purchase\Project\obj\Release\Purchase.xml
+D:\Active Project\Purchase\Project\obj\Release\Purchase.pdb
+D:\Active Project\Purchase\Release\Purchase.exe.config
+E:\Arpit\Active Project\Purchase\Release\Purchase.exe.config
+E:\Arpit\Active Project\Purchase\Release\Purchase.exe
+E:\Arpit\Active Project\Purchase\Release\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Release\Purchase.xml
+E:\Arpit\Active Project\Purchase\Project\obj\Release\ResolveAssemblyReference.cache
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPartyDetail.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchChallan.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchChallanGateDetail.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchIndent.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchInvoice.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrder.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderCancel.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderDelivery.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchPartyDetail.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchReturn.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.MDIMain.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.Resources.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.vbproj.GenerateResource.Cache
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.exe
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.xml
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchIndentNew.resources
+\\arpit-pc\Active Project\Purchase\Release\Purchase.exe.config
+\\arpit-pc\Active Project\Purchase\Project\obj\Release\Purchase.exe
+\\arpit-pc\Active Project\Purchase\Project\obj\Release\Purchase.xml
+\\arpit-pc\Active Project\Purchase\Project\obj\Release\Purchase.pdb
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchImportFromExcel.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchInvoiceAmendment.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmPurchOrderAmendment.resources
+E:\Arpit\Active Project\Purchase\Project\obj\Release\Purchase.FrmQCGroupMaster.resources
+F:\Project\Purchase200813\Purchase\Release\Purchase.exe.config
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.exe
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.xml
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.pdb
+F:\Project\Purchase200813\Purchase\Release\Purchase.exe
+F:\Project\Purchase200813\Purchase\Release\Purchase.pdb
+F:\Project\Purchase200813\Purchase\Release\Purchase.xml
+F:\Project\Purchase200813\Purchase\Project\obj\Release\ResolveAssemblyReference.cache
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPartyDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchImportFromExcel.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchInvoiceAmendment.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchOrderAmendment.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchChallan.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchChallanGateDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchIndent.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchIndentNew.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchInvoice.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchOrder.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchOrderCancel.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchOrderDelivery.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchPartyDetail.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmPurchReturn.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.FrmQCGroupMaster.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.MDIMain.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.Resources.resources
+F:\Project\Purchase200813\Purchase\Project\obj\Release\Purchase.vbproj.GenerateResource.Cache

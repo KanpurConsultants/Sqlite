@@ -249,25 +249,25 @@ Public Class FrmFaOpening
 
 
             If Topctrl1.Mode = "Add" Then
-                mQry = "INSERT INTO dbo.LedgerM	( " & _
-                     " DocId, V_No, V_Type, V_Prefix, V_Date, Narration, " & _
-                     " PreparedBY, PostedBY, Site_Code, U_Name, U_EntDt, U_AE) " & _
-                     " VALUES (" & _
-                     " '" & mSearchCode & "', " & Val(TxtV_No.Text) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & _
-                     " " & AgL.Chk_Text(LblPrefix.Text.ToString) & ", " & AgL.ConvertDate(TxtV_Date.Text) & ", " & AgL.Chk_Text(TxtNarration.Text) & ", " & _
-                     " '" & AgL.PubUserName & "', '" & AgL.PubUserName & "', " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " & _
-                     " '" & AgL.PubUserName & "','" & AgL.PubLoginDate & "','A')"
+                mQry = "INSERT INTO LedgerM	( " &
+                     " DocId, V_No, V_Type, V_Prefix, V_Date, Narration, " &
+                     " PreparedBY, PostedBY, Site_Code, U_Name, U_EntDt, U_AE) " &
+                     " VALUES (" &
+                     " '" & mSearchCode & "', " & Val(TxtV_No.Text) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " &
+                     " " & AgL.Chk_Text(LblPrefix.Text.ToString) & ", " & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " & AgL.Chk_Text(TxtNarration.Text) & ", " &
+                     " '" & AgL.PubUserName & "', '" & AgL.PubUserName & "', " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " &
+                     " '" & AgL.PubUserName & "'," & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & ",'A')"
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             Else
-                mQry = "Update LedgerM " & _
-                        " SET " & _
-                        " V_Date = " & AgL.ConvertDate(TxtV_Date.Text) & ", " & _
-                        " Narration = " & AgL.Chk_Text(TxtNarration.Text) & ", " & _
-                        " PreparedBY = '" & AgL.PubUserName & "', " & _
-                        " PostedBY = '" & AgL.PubUserName & "', " & _
-                        " U_Name = '" & AgL.PubUserName & "', " & _
-                        " U_EntDt = '" & AgL.PubLoginDate & "', " & _
-                        " U_AE = 'E' " & _
+                mQry = "Update LedgerM " &
+                        " SET " &
+                        " V_Date = " & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " &
+                        " Narration = " & AgL.Chk_Text(TxtNarration.Text) & ", " &
+                        " PreparedBY = '" & AgL.PubUserName & "', " &
+                        " PostedBY = '" & AgL.PubUserName & "', " &
+                        " U_Name = '" & AgL.PubUserName & "', " &
+                        " U_EntDt = " & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & ", " &
+                        " U_AE = 'E' " &
                         " WHERE DocId = '" & mSearchCode & "' "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If
@@ -285,14 +285,14 @@ Public Class FrmFaOpening
                         (Val(.Item(Col1_AmtDr, I).Value) > 0 Or Val(.Item(Col1_AmtCr, I).Value) > 0) Then
 
                         mSr = mSr + 1
-                        mQry = "INSERT INTO dbo.Ledger(DocId, V_SNO, V_Type, V_No, v_Prefix, DivCode, Site_Code, V_Date, " & _
-                                " SubCode, AmtDr, AmtCr, GroupCode, GroupNature, U_Name, U_EntDt, U_AE) " & _
-                               " VALUES(" & _
-                               " '" & mSearchCode & "'," & mSr & "," & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & Val(TxtV_No.Text) & ", " & _
-                               " " & AgL.Chk_Text(LblPrefix.Text.ToString) & ", '" & AgL.PubDivCode & "', " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " & _
-                               " " & AgL.ConvertDate(.Item(Col1_Date, I).Value.ToString) & "," & AgL.Chk_Text(.AgSelectedValue(Col1_SubCode, I)) & ", " & _
-                               " " & Val(.Item(Col1_AmtDr, I).Value) & "," & Val(.Item(Col1_AmtCr, I).Value) & ", " & AgL.Chk_Text(.Item(Col1_GroupCode, I).Value) & ", " & _
-                               " " & AgL.Chk_Text(.Item(Col1_GroupNature, I).Value) & ",'" & AgL.PubUserName & "'," & AgL.ConvertDate(AgL.PubLoginDate) & ", " & _
+                        mQry = "INSERT INTO Ledger(DocId, V_SNO, V_Type, V_No, v_Prefix, DivCode, Site_Code, V_Date, " &
+                                " SubCode, AmtDr, AmtCr, GroupCode, GroupNature, U_Name, U_EntDt, U_AE) " &
+                               " VALUES(" &
+                               " '" & mSearchCode & "'," & mSr & "," & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & Val(TxtV_No.Text) & ", " &
+                               " " & AgL.Chk_Text(LblPrefix.Text.ToString) & ", '" & AgL.PubDivCode & "', " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & ", " &
+                               " " & AgL.Chk_Text(CDate(.Item(Col1_Date, I).Value.ToString).ToString("u")) & "," & AgL.Chk_Text(.AgSelectedValue(Col1_SubCode, I)) & ", " &
+                               " " & Val(.Item(Col1_AmtDr, I).Value) & "," & Val(.Item(Col1_AmtCr, I).Value) & ", " & AgL.Chk_Text(.Item(Col1_GroupCode, I).Value) & ", " &
+                               " " & AgL.Chk_Text(.Item(Col1_GroupNature, I).Value) & ",'" & AgL.PubUserName & "'," & AgL.Chk_Text(CDate(AgL.PubLoginDate).ToString("u")) & ", " &
                                " '" & Topctrl1.Mode.Substring(0, 1) & "')"
                         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                     End If

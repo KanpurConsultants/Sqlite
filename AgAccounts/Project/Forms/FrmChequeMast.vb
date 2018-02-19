@@ -346,7 +346,7 @@ Public Class FrmChequeMast
                     StrChequeNo = Trim(TxtChequeSrNo.Text) & IntSNo
                     StrDocID = TxtBankName.Tag & "_" & StrChequeNo
                     GCnCmd.CommandText = "Insert Into ChequeMast(BCode,ChequeNo,V_Date,Status,U_Name,U_EntDt,U_AE)  " &
-                                        " Values(" & AgL.Chk_Text(TxtBankName.Tag) & ",'" & StrChequeNo & "'," & AgL.ConvertDate(TxtV_Date) & ",'Stock', '" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "','" & Microsoft.VisualBasic.Left(Topctrl1.Mode, 1) & "' )"
+                                        " Values(" & AgL.Chk_Text(TxtBankName.Tag) & ",'" & StrChequeNo & "'," & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ",'Stock', '" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "','" & Microsoft.VisualBasic.Left(Topctrl1.Mode, 1) & "' )"
                     GCnCmd.ExecuteNonQuery()
                     IntSNo = IntSNo + 1
                 Next
@@ -355,7 +355,7 @@ Public Class FrmChequeMast
                 StrDocID = TxtBankName.Tag & "_" & TxtChequeSrNo.Text
                 For J = 0 To FGMain.Rows.Count - 1
                     GCnCmd.CommandText = "Update ChequeMast Set "
-                    GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.ConvertDate(TxtV_Date) & ", "
+                    GCnCmd.CommandText = GCnCmd.CommandText + "V_Date=" & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", "
                     GCnCmd.CommandText = GCnCmd.CommandText + "status='" & Trim(TxtChequeStatus.Text) & "', "
                     GCnCmd.CommandText = GCnCmd.CommandText + "Transfered='N', "
                     GCnCmd.CommandText = GCnCmd.CommandText + "U_Name='" & AgL.PubUserName & "', "
