@@ -80,6 +80,7 @@ Public Class ClsMain
 
 #Region " Structure Update Code "
     Public Sub UpdateTableStructure()
+        Dim mQry As String
         AgL.AddFieldSqlite("Item", "Gross_Weight", "Float", "0")
         AgL.AddFieldSqlite("Item", "IsSystemDefine", "bit", "0")
         AgL.AddFieldSqlite("Item", "IsRestricted_InTransaction", "bit", "0")
@@ -94,6 +95,95 @@ Public Class ClsMain
         AgL.AddFieldSqlite("ItemCategory", "HSN", "nVarchar(8)", "")
         AgL.AddFieldSqlite("RateType", "Margin", "Float", "0")
         AgL.AddFieldSqlite("RateType", "Sr", "Int", "0")
+
+        If Not AgL.IsTableExist("State", AgL.GCn) Then
+            mQry = "CREATE TABLE [State] (
+               [Code] nvarchar(10) NOT NULL COLLATE NOCASE,
+               [Description] nvarchar(50) COLLATE NOCASE,
+               [IsDeleted] bit,
+               [EntryBy] nvarchar(10) COLLATE NOCASE,
+               [EntryDate] datetime,
+               [EntryType] nvarchar(10) COLLATE NOCASE,
+               [EntryStatus] nvarchar(10) COLLATE NOCASE,
+               [ApproveBy] nvarchar(10) COLLATE NOCASE,
+               [ApproveDate] datetime,
+               [MoveToLog] nvarchar(10) COLLATE NOCASE,
+               [MoveToLogDate] datetime,
+               [Status] nvarchar(10) COLLATE NOCASE,
+               [Div_Code] nvarchar(1) COLLATE NOCASE,
+               [UID] uniqueidentifier COLLATE NOCASE,
+               [ManualCode] nvarchar(20) COLLATE NOCASE,
+               PRIMARY KEY ([Code])
+            );"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+        End If
+
+
+        If Not AgL.IsTableExist("State_Log", AgL.GCn) Then
+            mQry = "CREATE TABLE [State_Log] (
+               [Code] nvarchar(10) COLLATE NOCASE,
+               [Description] nvarchar(50) COLLATE NOCASE,
+               [IsDeleted] bit,
+               [EntryBy] nvarchar(10) COLLATE NOCASE,
+               [EntryDate] datetime,
+               [EntryType] nvarchar(10) COLLATE NOCASE,
+               [EntryStatus] nvarchar(10) COLLATE NOCASE,
+               [ApproveBy] nvarchar(10) COLLATE NOCASE,
+               [ApproveDate] datetime,
+               [MoveToLog] nvarchar(10) COLLATE NOCASE,
+               [MoveToLogDate] datetime,
+               [Status] nvarchar(10) COLLATE NOCASE,
+               [Div_Code] nvarchar(1) COLLATE NOCASE,
+               [UID] uniqueidentifier NOT NULL COLLATE NOCASE,
+               [ManualCode] nvarchar(20) COLLATE NOCASE,
+               PRIMARY KEY ([UID])
+            );"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+        End If
+
+        If Not AgL.IsTableExist("Area", AgL.GCn) Then
+            mQry = "CREATE TABLE [Area] (
+                   [Code] nvarchar(10) NOT NULL COLLATE NOCASE,
+                   [Description] nvarchar(50) COLLATE NOCASE,
+                   [IsDeleted] bit,
+                   [EntryBy] nvarchar(10) COLLATE NOCASE,
+                   [EntryDate] datetime,
+                   [EntryType] nvarchar(10) COLLATE NOCASE,
+                   [EntryStatus] nvarchar(10) COLLATE NOCASE,
+                   [ApproveBy] nvarchar(10) COLLATE NOCASE,
+                   [ApproveDate] datetime,
+                   [MoveToLog] nvarchar(10) COLLATE NOCASE,
+                   [MoveToLogDate] datetime,
+                   [Status] nvarchar(10) COLLATE NOCASE,
+                   [Div_Code] nvarchar(1) COLLATE NOCASE,
+                   [UID] uniqueidentifier COLLATE NOCASE,   
+                   PRIMARY KEY ([Code])
+                );"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+        End If
+
+        If Not AgL.IsTableExist("Area_Log", AgL.GCn) Then
+            mQry = "CREATE TABLE [Area_Log] (
+                   [Code] nvarchar(10) COLLATE NOCASE,
+                   [Description] nvarchar(50) COLLATE NOCASE,
+                   [IsDeleted] bit,
+                   [EntryBy] nvarchar(10) COLLATE NOCASE,
+                   [EntryDate] datetime,
+                   [EntryType] nvarchar(10) COLLATE NOCASE,
+                   [EntryStatus] nvarchar(10) COLLATE NOCASE,
+                   [ApproveBy] nvarchar(10) COLLATE NOCASE,
+                   [ApproveDate] datetime,
+                   [MoveToLog] nvarchar(10) COLLATE NOCASE,
+                   [MoveToLogDate] datetime,
+                   [Status] nvarchar(10) COLLATE NOCASE,
+                   [Div_Code] nvarchar(1) COLLATE NOCASE,
+                   [UID] uniqueidentifier NOT NULL COLLATE NOCASE,   
+                   PRIMARY KEY ([UID])
+                );"
+            AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)
+        End If
+
+
     End Sub
 
     Public Sub UpdateTableInitialiser()

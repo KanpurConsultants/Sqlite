@@ -47,6 +47,8 @@ Partial Class MDIMain
         Me.MnuComputerMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuReasonMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuRateTypeMaster = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDepartment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuArea = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStoreTransactions = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuItemRequisition = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuItemRequisitionApproval = New System.Windows.Forms.ToolStripMenuItem()
@@ -73,7 +75,8 @@ Partial Class MDIMain
         Me.MnuStockBalanceValuation = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuStockBalanceWitAverageRate = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUpdateTableStructure = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuDepartment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuState = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuCity = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -95,7 +98,7 @@ Partial Class MDIMain
         '
         'MnuStoreMaster
         '
-        Me.MnuStoreMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemMasterCloth, Me.MnuItemGroup, Me.MnuItemCategory, Me.MnuGodown, Me.MnuItemReportingGroup, Me.MnuItemInvoiceGroup, Me.MnuItemRateGroup, Me.MnuPartyRateGroup, Me.MnuQCGroupMaster, Me.MnuUnitConversion, Me.MnuCustomerMaster, Me.MnuSupplierMaster, Me.MnuAgentMaster, Me.MnuVatCommodityCode, Me.MnuTariffHeading, Me.MnuTermCondition, Me.MnuRateList, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuShiftMaster, Me.MnuComputerMaster, Me.MnuReasonMaster, Me.MnuRateTypeMaster, Me.MnuDepartment})
+        Me.MnuStoreMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemMaster, Me.MnuItemMasterCloth, Me.MnuItemGroup, Me.MnuItemCategory, Me.MnuGodown, Me.MnuItemReportingGroup, Me.MnuItemInvoiceGroup, Me.MnuItemRateGroup, Me.MnuPartyRateGroup, Me.MnuQCGroupMaster, Me.MnuUnitConversion, Me.MnuCustomerMaster, Me.MnuSupplierMaster, Me.MnuAgentMaster, Me.MnuVatCommodityCode, Me.MnuTariffHeading, Me.MnuTermCondition, Me.MnuRateList, Me.MnuDimension1Master, Me.MnuDimension2Master, Me.MnuShiftMaster, Me.MnuComputerMaster, Me.MnuReasonMaster, Me.MnuRateTypeMaster, Me.MnuDepartment, Me.MnuArea, Me.MnuState, Me.MnuCity})
         Me.MnuStoreMaster.Name = "MnuStoreMaster"
         Me.MnuStoreMaster.Size = New System.Drawing.Size(195, 22)
         Me.MnuStoreMaster.Text = "Master"
@@ -243,6 +246,18 @@ Partial Class MDIMain
         Me.MnuRateTypeMaster.Name = "MnuRateTypeMaster"
         Me.MnuRateTypeMaster.Size = New System.Drawing.Size(210, 22)
         Me.MnuRateTypeMaster.Text = "Rate Type Master"
+        '
+        'MnuDepartment
+        '
+        Me.MnuDepartment.Name = "MnuDepartment"
+        Me.MnuDepartment.Size = New System.Drawing.Size(210, 22)
+        Me.MnuDepartment.Text = "Department"
+        '
+        'MnuArea
+        '
+        Me.MnuArea.Name = "MnuArea"
+        Me.MnuArea.Size = New System.Drawing.Size(210, 22)
+        Me.MnuArea.Text = "Area"
         '
         'MnuStoreTransactions
         '
@@ -417,11 +432,17 @@ Partial Class MDIMain
         Me.MnuUpdateTableStructure.Size = New System.Drawing.Size(195, 22)
         Me.MnuUpdateTableStructure.Text = "Update Table Structure"
         '
-        'MnuDepartment
+        'MnuState
         '
-        Me.MnuDepartment.Name = "MnuDepartment"
-        Me.MnuDepartment.Size = New System.Drawing.Size(210, 22)
-        Me.MnuDepartment.Text = "Department"
+        Me.MnuState.Name = "MnuState"
+        Me.MnuState.Size = New System.Drawing.Size(210, 22)
+        Me.MnuState.Text = "State"
+        '
+        'MnuCity
+        '
+        Me.MnuCity.Name = "MnuCity"
+        Me.MnuCity.Size = New System.Drawing.Size(210, 22)
+        Me.MnuCity.Text = "City"
         '
         'MDIMain
         '
@@ -498,4 +519,7 @@ Partial Class MDIMain
     Friend WithEvents MnuRateTypeMaster As ToolStripMenuItem
     Friend WithEvents MnuItemMasterCloth As ToolStripMenuItem
     Friend WithEvents MnuDepartment As ToolStripMenuItem
+    Friend WithEvents MnuArea As ToolStripMenuItem
+    Friend WithEvents MnuState As ToolStripMenuItem
+    Friend WithEvents MnuCity As ToolStripMenuItem
 End Class

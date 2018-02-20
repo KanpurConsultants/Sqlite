@@ -130,6 +130,12 @@
     <Compile Include="Class\ClsFunction.vb" />
     <Compile Include="Class\ClsMain.vb" />
     <Compile Include="Class\ClsReportProcedures.vb" />
+    <Compile Include="Form\FrmState.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmArea.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmItemMaster_Cloth.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\FrmState.resx">
+      <DependentUpon>FrmState.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmArea.resx">
+      <DependentUpon>FrmArea.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmItemMaster_Cloth.resx">
       <DependentUpon>FrmItemMaster_Cloth.vb</DependentUpon>
       <SubType>Designer</SubType>

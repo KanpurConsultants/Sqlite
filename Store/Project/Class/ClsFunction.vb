@@ -26,6 +26,15 @@ Public Class ClsFunction
                 Case MDI.MnuComputerMaster.Name
                     FrmObj = New FrmComputer(StrUserPermission, DTUP)
 
+                Case MDI.MnuArea.Name
+                    FrmObj = New FrmArea(StrUserPermission, DTUP)
+
+                Case MDI.MnuState.Name
+                    FrmObj = New FrmState(StrUserPermission, DTUP)
+
+                Case MDI.MnuCity.Name
+                    FrmObj = New FrmCity(StrUserPermission, DTUP)
+
                 Case MDI.MnuDepartment.Name
                     FrmObj = New FrmDepartment(StrUserPermission, DTUP)
 

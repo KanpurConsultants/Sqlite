@@ -69,7 +69,11 @@ Public Class FrmPurchInvoice
     Dim mIsEntryLocked As Boolean = False
     Public WithEvents TxtProcess As AgControls.AgTextBox
     Public WithEvents LblProcess As System.Windows.Forms.Label
-
+    Friend WithEvents TP2 As TabPage
+    Public WithEvents TxtTransporter As AgControls.AgTextBox
+    Public WithEvents LblTransporter As Label
+    Protected WithEvents TxtAgent As AgControls.AgTextBox
+    Protected WithEvents LblAgent As Label
     Dim DGL As New AgControls.AgDataGrid
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
@@ -87,52 +91,57 @@ Public Class FrmPurchInvoice
 
 #Region "Form Designer Code"
     Private Sub InitializeComponent()
-        Me.Dgl1 = New AgControls.AgDataGrid
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.TxtVendor = New AgControls.AgTextBox
-        Me.LblVendor = New System.Windows.Forms.Label
-        Me.Panel1 = New System.Windows.Forms.Panel
-        Me.LblTotalDeliveryMeasure = New System.Windows.Forms.Label
-        Me.LblTotalDeliveryMeasureText = New System.Windows.Forms.Label
-        Me.LblTotalMeasure = New System.Windows.Forms.Label
-        Me.LblTotalMeasureText = New System.Windows.Forms.Label
-        Me.LblTotalQty = New System.Windows.Forms.Label
-        Me.LblTotalAmount = New System.Windows.Forms.Label
-        Me.LblTotalQtyText = New System.Windows.Forms.Label
-        Me.LblTotalAmountText = New System.Windows.Forms.Label
-        Me.Pnl1 = New System.Windows.Forms.Panel
-        Me.TxtStructure = New AgControls.AgTextBox
-        Me.Label25 = New System.Windows.Forms.Label
-        Me.TxtSalesTaxGroupParty = New AgControls.AgTextBox
-        Me.Label27 = New System.Windows.Forms.Label
-        Me.TxtRemarks = New AgControls.AgTextBox
-        Me.Label30 = New System.Windows.Forms.Label
-        Me.TxtReferenceNo = New AgControls.AgTextBox
-        Me.LblReferenceNo = New System.Windows.Forms.Label
-        Me.LblVendorDocNo = New System.Windows.Forms.Label
-        Me.TxtVendorDocNo = New AgControls.AgTextBox
-        Me.LvlVendorDocDate = New System.Windows.Forms.Label
-        Me.TxtVendorDocDate = New AgControls.AgTextBox
-        Me.LblCurrency = New System.Windows.Forms.Label
-        Me.TxtCurrency = New AgControls.AgTextBox
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel
-        Me.PnlCalcGrid = New System.Windows.Forms.Panel
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.RbtInvoiceDirect = New System.Windows.Forms.RadioButton
-        Me.RbtInvoiceForChallan = New System.Windows.Forms.RadioButton
-        Me.GrpDirectInvoice = New System.Windows.Forms.GroupBox
-        Me.BtnFillPurchChallan = New System.Windows.Forms.Button
-        Me.PnlCustomGrid = New System.Windows.Forms.Panel
-        Me.TxtCustomFields = New AgControls.AgTextBox
-        Me.TxtGodown = New AgControls.AgTextBox
-        Me.LblGodown = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.TxtBillToParty = New AgControls.AgTextBox
-        Me.LblPostToAc = New System.Windows.Forms.Label
-        Me.BtnFillPartyDetail = New System.Windows.Forms.Button
-        Me.TxtNature = New AgControls.AgTextBox
-        Me.TxtProcess = New AgControls.AgTextBox
-        Me.LblProcess = New System.Windows.Forms.Label
+        Me.Dgl1 = New AgControls.AgDataGrid()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TxtVendor = New AgControls.AgTextBox()
+        Me.LblVendor = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LblTotalDeliveryMeasure = New System.Windows.Forms.Label()
+        Me.LblTotalDeliveryMeasureText = New System.Windows.Forms.Label()
+        Me.LblTotalMeasure = New System.Windows.Forms.Label()
+        Me.LblTotalMeasureText = New System.Windows.Forms.Label()
+        Me.LblTotalQty = New System.Windows.Forms.Label()
+        Me.LblTotalAmount = New System.Windows.Forms.Label()
+        Me.LblTotalQtyText = New System.Windows.Forms.Label()
+        Me.LblTotalAmountText = New System.Windows.Forms.Label()
+        Me.Pnl1 = New System.Windows.Forms.Panel()
+        Me.TxtStructure = New AgControls.AgTextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.TxtSalesTaxGroupParty = New AgControls.AgTextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.TxtRemarks = New AgControls.AgTextBox()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.TxtReferenceNo = New AgControls.AgTextBox()
+        Me.LblReferenceNo = New System.Windows.Forms.Label()
+        Me.LblVendorDocNo = New System.Windows.Forms.Label()
+        Me.TxtVendorDocNo = New AgControls.AgTextBox()
+        Me.LvlVendorDocDate = New System.Windows.Forms.Label()
+        Me.TxtVendorDocDate = New AgControls.AgTextBox()
+        Me.LblCurrency = New System.Windows.Forms.Label()
+        Me.TxtCurrency = New AgControls.AgTextBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.PnlCalcGrid = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.RbtInvoiceDirect = New System.Windows.Forms.RadioButton()
+        Me.RbtInvoiceForChallan = New System.Windows.Forms.RadioButton()
+        Me.GrpDirectInvoice = New System.Windows.Forms.GroupBox()
+        Me.BtnFillPurchChallan = New System.Windows.Forms.Button()
+        Me.PnlCustomGrid = New System.Windows.Forms.Panel()
+        Me.TxtCustomFields = New AgControls.AgTextBox()
+        Me.TxtGodown = New AgControls.AgTextBox()
+        Me.LblGodown = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TxtBillToParty = New AgControls.AgTextBox()
+        Me.LblPostToAc = New System.Windows.Forms.Label()
+        Me.BtnFillPartyDetail = New System.Windows.Forms.Button()
+        Me.TxtNature = New AgControls.AgTextBox()
+        Me.TxtProcess = New AgControls.AgTextBox()
+        Me.LblProcess = New System.Windows.Forms.Label()
+        Me.TP2 = New System.Windows.Forms.TabPage()
+        Me.TxtTransporter = New AgControls.AgTextBox()
+        Me.LblTransporter = New System.Windows.Forms.Label()
+        Me.TxtAgent = New AgControls.AgTextBox()
+        Me.LblAgent = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -145,6 +154,7 @@ Public Class FrmPurchInvoice
         CType(Me.Dgl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GrpDirectInvoice.SuspendLayout()
+        Me.TP2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -185,7 +195,6 @@ Public Class FrmPurchInvoice
         'TxtApproveBy
         '
         Me.TxtApproveBy.Location = New System.Drawing.Point(29, 19)
-        Me.TxtApproveBy.Size = New System.Drawing.Size(116, 18)
         Me.TxtApproveBy.Tag = ""
         '
         'CmdDiscard
@@ -295,6 +304,8 @@ Public Class FrmPurchInvoice
         '
         'TxtV_Type
         '
+        Me.TxtV_Type.AgLastValueTag = ""
+        Me.TxtV_Type.AgLastValueText = ""
         Me.TxtV_Type.AgSelectedValue = ""
         Me.TxtV_Type.BackColor = System.Drawing.Color.White
         Me.TxtV_Type.Location = New System.Drawing.Point(374, 13)
@@ -336,16 +347,19 @@ Public Class FrmPurchInvoice
         '
         'TabControl1
         '
+        Me.TabControl1.Controls.Add(Me.TP2)
         Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(-4, 17)
-        Me.TabControl1.Size = New System.Drawing.Size(992, 125)
+        Me.TabControl1.Location = New System.Drawing.Point(-4, 40)
+        Me.TabControl1.Size = New System.Drawing.Size(992, 135)
         Me.TabControl1.TabIndex = 0
+        Me.TabControl1.Controls.SetChildIndex(Me.TP2, 0)
+        Me.TabControl1.Controls.SetChildIndex(Me.TP1, 0)
         '
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        Me.TP1.Controls.Add(Me.TxtProcess)
-        Me.TP1.Controls.Add(Me.LblProcess)
+        Me.TP1.Controls.Add(Me.TxtAgent)
+        Me.TP1.Controls.Add(Me.LblAgent)
         Me.TP1.Controls.Add(Me.BtnFillPartyDetail)
         Me.TP1.Controls.Add(Me.TxtSalesTaxGroupParty)
         Me.TP1.Controls.Add(Me.Label27)
@@ -365,7 +379,7 @@ Public Class FrmPurchInvoice
         Me.TP1.Controls.Add(Me.TxtStructure)
         Me.TP1.Controls.Add(Me.LblReferenceNo)
         Me.TP1.Location = New System.Drawing.Point(4, 22)
-        Me.TP1.Size = New System.Drawing.Size(984, 99)
+        Me.TP1.Size = New System.Drawing.Size(984, 109)
         Me.TP1.Text = "Document Detail"
         Me.TP1.Controls.SetChildIndex(Me.LblReferenceNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtStructure, 0)
@@ -399,8 +413,8 @@ Public Class FrmPurchInvoice
         Me.TP1.Controls.SetChildIndex(Me.Label27, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtSalesTaxGroupParty, 0)
         Me.TP1.Controls.SetChildIndex(Me.BtnFillPartyDetail, 0)
-        Me.TP1.Controls.SetChildIndex(Me.LblProcess, 0)
-        Me.TP1.Controls.SetChildIndex(Me.TxtProcess, 0)
+        Me.TP1.Controls.SetChildIndex(Me.LblAgent, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtAgent, 0)
         '
         'Topctrl1
         '
@@ -577,9 +591,9 @@ Public Class FrmPurchInvoice
         '
         'Pnl1
         '
-        Me.Pnl1.Location = New System.Drawing.Point(4, 176)
+        Me.Pnl1.Location = New System.Drawing.Point(4, 202)
         Me.Pnl1.Name = "Pnl1"
-        Me.Pnl1.Size = New System.Drawing.Size(975, 210)
+        Me.Pnl1.Size = New System.Drawing.Size(975, 184)
         Me.Pnl1.TabIndex = 1
         '
         'TxtStructure
@@ -835,7 +849,7 @@ Public Class FrmPurchInvoice
         Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(4, 155)
+        Me.LinkLabel1.Location = New System.Drawing.Point(4, 181)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(230, 20)
         Me.LinkLabel1.TabIndex = 739
@@ -845,9 +859,9 @@ Public Class FrmPurchInvoice
         '
         'PnlCalcGrid
         '
-        Me.PnlCalcGrid.Location = New System.Drawing.Point(670, 415)
+        Me.PnlCalcGrid.Location = New System.Drawing.Point(605, 415)
         Me.PnlCalcGrid.Name = "PnlCalcGrid"
-        Me.PnlCalcGrid.Size = New System.Drawing.Size(310, 160)
+        Me.PnlCalcGrid.Size = New System.Drawing.Size(375, 160)
         Me.PnlCalcGrid.TabIndex = 6
         '
         'Label1
@@ -891,7 +905,7 @@ Public Class FrmPurchInvoice
         Me.GrpDirectInvoice.Controls.Add(Me.RbtInvoiceDirect)
         Me.GrpDirectInvoice.Controls.Add(Me.RbtInvoiceForChallan)
         Me.GrpDirectInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GrpDirectInvoice.Location = New System.Drawing.Point(240, 148)
+        Me.GrpDirectInvoice.Location = New System.Drawing.Point(240, 174)
         Me.GrpDirectInvoice.Name = "GrpDirectInvoice"
         Me.GrpDirectInvoice.Size = New System.Drawing.Size(284, 26)
         Me.GrpDirectInvoice.TabIndex = 1
@@ -902,7 +916,7 @@ Public Class FrmPurchInvoice
         Me.BtnFillPurchChallan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnFillPurchChallan.Font = New System.Drawing.Font("Lucida Console", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFillPurchChallan.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnFillPurchChallan.Location = New System.Drawing.Point(534, 153)
+        Me.BtnFillPurchChallan.Location = New System.Drawing.Point(534, 179)
         Me.BtnFillPurchChallan.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnFillPurchChallan.Name = "BtnFillPurchChallan"
         Me.BtnFillPurchChallan.Size = New System.Drawing.Size(35, 20)
@@ -1057,7 +1071,7 @@ Public Class FrmPurchInvoice
         Me.TxtNature.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtNature.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtNature.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNature.Location = New System.Drawing.Point(658, 154)
+        Me.TxtNature.Location = New System.Drawing.Point(658, 180)
         Me.TxtNature.MaxLength = 20
         Me.TxtNature.Name = "TxtNature"
         Me.TxtNature.Size = New System.Drawing.Size(81, 18)
@@ -1069,7 +1083,7 @@ Public Class FrmPurchInvoice
         '
         Me.TxtProcess.AgAllowUserToEnableMasterHelp = False
         Me.TxtProcess.AgLastValueTag = Nothing
-        Me.TxtProcess.AgLastValueText = Nothing
+        Me.TxtProcess.AgLastValueText = ""
         Me.TxtProcess.AgMandatory = False
         Me.TxtProcess.AgMasterHelp = False
         Me.TxtProcess.AgNumberLeftPlaces = 8
@@ -1083,7 +1097,7 @@ Public Class FrmPurchInvoice
         Me.TxtProcess.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtProcess.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtProcess.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtProcess.Location = New System.Drawing.Point(708, 74)
+        Me.TxtProcess.Location = New System.Drawing.Point(720, 17)
         Me.TxtProcess.MaxLength = 0
         Me.TxtProcess.Name = "TxtProcess"
         Me.TxtProcess.Size = New System.Drawing.Size(188, 18)
@@ -1094,11 +1108,95 @@ Public Class FrmPurchInvoice
         Me.LblProcess.AutoSize = True
         Me.LblProcess.BackColor = System.Drawing.Color.Transparent
         Me.LblProcess.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblProcess.Location = New System.Drawing.Point(586, 74)
+        Me.LblProcess.Location = New System.Drawing.Point(598, 17)
         Me.LblProcess.Name = "LblProcess"
         Me.LblProcess.Size = New System.Drawing.Size(56, 16)
         Me.LblProcess.TabIndex = 3009
         Me.LblProcess.Text = "Process"
+        '
+        'TP2
+        '
+        Me.TP2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP2.Controls.Add(Me.TxtTransporter)
+        Me.TP2.Controls.Add(Me.LblTransporter)
+        Me.TP2.Controls.Add(Me.TxtProcess)
+        Me.TP2.Controls.Add(Me.LblProcess)
+        Me.TP2.Location = New System.Drawing.Point(4, 22)
+        Me.TP2.Name = "TP2"
+        Me.TP2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TP2.Size = New System.Drawing.Size(984, 109)
+        Me.TP2.TabIndex = 1
+        Me.TP2.Text = "TabPage1"
+        '
+        'TxtTransporter
+        '
+        Me.TxtTransporter.AgAllowUserToEnableMasterHelp = False
+        Me.TxtTransporter.AgLastValueTag = Nothing
+        Me.TxtTransporter.AgLastValueText = ""
+        Me.TxtTransporter.AgMandatory = False
+        Me.TxtTransporter.AgMasterHelp = False
+        Me.TxtTransporter.AgNumberLeftPlaces = 8
+        Me.TxtTransporter.AgNumberNegetiveAllow = False
+        Me.TxtTransporter.AgNumberRightPlaces = 2
+        Me.TxtTransporter.AgPickFromLastValue = False
+        Me.TxtTransporter.AgRowFilter = ""
+        Me.TxtTransporter.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtTransporter.AgSelectedValue = Nothing
+        Me.TxtTransporter.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtTransporter.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtTransporter.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtTransporter.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtTransporter.Location = New System.Drawing.Point(120, 17)
+        Me.TxtTransporter.MaxLength = 100
+        Me.TxtTransporter.Name = "TxtTransporter"
+        Me.TxtTransporter.Size = New System.Drawing.Size(228, 18)
+        Me.TxtTransporter.TabIndex = 3010
+        '
+        'LblTransporter
+        '
+        Me.LblTransporter.AutoSize = True
+        Me.LblTransporter.BackColor = System.Drawing.Color.Transparent
+        Me.LblTransporter.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTransporter.Location = New System.Drawing.Point(38, 17)
+        Me.LblTransporter.Name = "LblTransporter"
+        Me.LblTransporter.Size = New System.Drawing.Size(73, 16)
+        Me.LblTransporter.TabIndex = 3011
+        Me.LblTransporter.Text = "Transporter"
+        '
+        'TxtAgent
+        '
+        Me.TxtAgent.AgAllowUserToEnableMasterHelp = False
+        Me.TxtAgent.AgLastValueTag = Nothing
+        Me.TxtAgent.AgLastValueText = Nothing
+        Me.TxtAgent.AgMandatory = False
+        Me.TxtAgent.AgMasterHelp = False
+        Me.TxtAgent.AgNumberLeftPlaces = 8
+        Me.TxtAgent.AgNumberNegetiveAllow = False
+        Me.TxtAgent.AgNumberRightPlaces = 2
+        Me.TxtAgent.AgPickFromLastValue = False
+        Me.TxtAgent.AgRowFilter = ""
+        Me.TxtAgent.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtAgent.AgSelectedValue = Nothing
+        Me.TxtAgent.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtAgent.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtAgent.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtAgent.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtAgent.Location = New System.Drawing.Point(708, 74)
+        Me.TxtAgent.MaxLength = 20
+        Me.TxtAgent.Name = "TxtAgent"
+        Me.TxtAgent.Size = New System.Drawing.Size(188, 18)
+        Me.TxtAgent.TabIndex = 3008
+        '
+        'LblAgent
+        '
+        Me.LblAgent.AutoSize = True
+        Me.LblAgent.BackColor = System.Drawing.Color.Transparent
+        Me.LblAgent.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblAgent.Location = New System.Drawing.Point(586, 74)
+        Me.LblAgent.Name = "LblAgent"
+        Me.LblAgent.Size = New System.Drawing.Size(42, 16)
+        Me.LblAgent.TabIndex = 3009
+        Me.LblAgent.Text = "Agent"
         '
         'FrmPurchInvoice
         '
@@ -1167,6 +1265,8 @@ Public Class FrmPurchInvoice
         Me.Panel1.PerformLayout()
         Me.GrpDirectInvoice.ResumeLayout(False)
         Me.GrpDirectInvoice.PerformLayout()
+        Me.TP2.ResumeLayout(False)
+        Me.TP2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1402,6 +1502,8 @@ Public Class FrmPurchInvoice
                 " BillToParty = " & AgL.Chk_Text(TxtBillToParty.Tag) & ", " &
                 " Currency = " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " &
                 " SalesTaxGroupParty = " & AgL.Chk_Text(TxtSalesTaxGroupParty.Text) & ", " &
+                " Agent = " & AgL.Chk_Text(AgL.XNull(TxtAgent.Tag)) & ", " &
+                " Transporter = " & AgL.Chk_Text(AgL.XNull(TxtTransporter.Tag)) & ", " &
                 " Godown = " & AgL.Chk_Text(AgL.XNull(TxtGodown.Tag)) & ", " &
                 " Structure = " & AgL.Chk_Text(TxtStructure.AgSelectedValue) & ", " &
                 " CustomFields = " & AgL.Chk_Text(TxtCustomFields.AgSelectedValue) & ", " &
@@ -1566,21 +1668,23 @@ Public Class FrmPurchInvoice
 
         mIsEntryLocked = False
 
-        mQry = " Select H.*, Sg.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS  VendorDispName, " &
-                " C1.Description As CurrencyDesc, Sg.Nature, " &
-                " G.Description as GodownDesc, " &
-                " Sg1.Name || (Case When C2.CityName Is Not Null Then ',' || C2.CityName Else '' End) AS  BillToPartyName," &
-                " Vt.Category as Voucher_Category, " &
-                " P.Description As ProcessDesc " &
-                " From (Select * From PurchInvoice Where DocID='" & SearchCode & "') H " &
-                " LEFT JOIN SubGroup Sg ON H.Vendor = Sg.SubCode " &
-                " LEFT JOIN City C ON Sg.CityCode = C.CityCode  " &
-                " Left Join Currency C1  On H.Currency = C1.Code " &
-                " LEFT JOIN SubGroup Sg1 On H.BillToParty = Sg1.SubCode " &
-                " LEFT JOIN City C2 ON Sg1.CityCode = C2.CityCode  " &
-                " Left Join Godown G  On H.Godown = G.Code  " &
-                " Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type " &
-                " LEFT JOIN Process P ON H.Process = P.NCat "
+        mQry = " Select H.*, Sg.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS  VendorDispName, 
+                 C1.Description As CurrencyDesc, Sg.Nature, 
+                 G.Description As GodownDesc, 
+                 Sg1.Name || (Case When C2.CityName Is Not Null Then ',' || C2.CityName Else '' End) AS  BillToPartyName,
+                 Vt.Category As Voucher_Category, 
+                 P.Description As ProcessDesc, Agent.Name As AgentName, Transporter.Name As TransporterName 
+                 From (Select * From PurchInvoice Where DocID='" & SearchCode & "') H 
+                 LEFT JOIN SubGroup Sg ON H.Vendor = Sg.SubCode 
+                 LEFT JOIN City C On Sg.CityCode = C.CityCode  
+                 Left Join Currency C1  On H.Currency = C1.Code 
+                 LEFT JOIN SubGroup Sg1 On H.BillToParty = Sg1.SubCode 
+                 LEFT JOIN City C2 On Sg1.CityCode = C2.CityCode  
+                 Left Join Godown G  On H.Godown = G.Code  
+                 Left Join SubGroup Agent On H.Agent = Agent.Subcode 
+                 Left Join SubGroup Transporter On H.Transporter = Transporter.Subcode 
+                 Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type 
+                 LEFT JOIN Process P On H.Process = P.NCat "
         DsTemp = AgL.FillData(mQry, AgL.GCn)
 
         With DsTemp.Tables(0)
@@ -1622,6 +1726,11 @@ Public Class FrmPurchInvoice
 
                 TxtGodown.Tag = AgL.XNull(.Rows(0)("Godown"))
                 TxtGodown.Text = AgL.XNull(.Rows(0)("GodownDesc"))
+                TxtAgent.Tag = AgL.XNull(.Rows(0)("Agent"))
+                TxtAgent.Text = AgL.XNull(.Rows(0)("AgentName"))
+                TxtTransporter.Tag = AgL.XNull(.Rows(0)("Transporter"))
+                TxtTransporter.Text = AgL.XNull(.Rows(0)("TransporterName"))
+
 
                 Dim FrmObj As New FrmPurchPartyDetail
                 FrmObj.TxtVendorMobile.Text = AgL.XNull(.Rows(0)("VendorMobile"))
@@ -1654,7 +1763,7 @@ Public Class FrmPurchInvoice
                 '-------------------------------------------------------------
                 'Line Records are showing in Grid
                 '-------------------------------------------------------------
-                Dim strQryPurchaseShipped$ = "SELECT L.ReferenceDocId, L.ReferenceDocIdSr, Sum(L.Qty) AS Qty " &
+                Dim strQryPurchaseShipped$ = "Select L.ReferenceDocId, L.ReferenceDocIdSr, Sum(L.Qty) As Qty " &
                                              "FROM SaleChallanDetail L " &
                                              "Where L.ReferenceDocId = '" & mSearchCode & "' " &
                                              "GROUP BY L.ReferenceDocId, L.ReferenceDocIdSr "

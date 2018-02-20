@@ -1717,7 +1717,7 @@ Public Class FrmItemMaster_Cloth
         End Try
     End Sub
     Sub SetProductName()
-        TxtDescription.Text = TxtSpecification.Text + Space(5) + "-" + TxtItemGroup.Text + " | " + TxtItemCategory.Text
+        TxtDescription.Text = TxtSpecification.Text + Space(10) + "[" + TxtItemGroup.Text + " | " + TxtItemCategory.Text + "]"
     End Sub
 
 

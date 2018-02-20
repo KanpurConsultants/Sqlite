@@ -39,9 +39,10 @@ Public Class ClsMain
 #End Region
 
 #Region " Structure Update Code "
-    Public Sub UpdateTableStructure(ByRef MdlTable() As AgLibrary.ClsMain.LITable)
+    Public Sub UpdateTableStructure()
         Try
-            Call CreateDatabase(MdlTable)
+            AgL.AddFieldSqlite("Subgroup", "Agent", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
+            AgL.AddFieldSqlite("Subgroup", "Transporter", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try

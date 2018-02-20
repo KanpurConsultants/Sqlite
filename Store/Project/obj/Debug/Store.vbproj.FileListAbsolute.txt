@@ -400,3 +400,5 @@ D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.vbproj.GenerateResource.Cache
 D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.FrmRateType.resources
 D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.FrmItemMaster_Cloth.resources
 D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.FrmDepartment.resources
+D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.FrmState.resources
+D:\KC\Source\Sqlite\Store\Project\obj\Debug\Store.FrmArea.resources

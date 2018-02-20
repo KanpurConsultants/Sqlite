@@ -7,13 +7,14 @@ Public Class FrmCity
 
 #Region "Designer Code"
     Private Sub InitializeComponent()
-        Me.TxtCountry = New AgControls.AgTextBox
-        Me.LblCountry = New System.Windows.Forms.Label
-        Me.TxtState = New AgControls.AgTextBox
-        Me.LblState = New System.Windows.Forms.Label
-        Me.LblCityNameReq = New System.Windows.Forms.Label
-        Me.TxtCityName = New AgControls.AgTextBox
-        Me.LblCityName = New System.Windows.Forms.Label
+        Me.TxtCountry = New AgControls.AgTextBox()
+        Me.LblCountry = New System.Windows.Forms.Label()
+        Me.TxtState = New AgControls.AgTextBox()
+        Me.LblState = New System.Windows.Forms.Label()
+        Me.LblCityNameReq = New System.Windows.Forms.Label()
+        Me.TxtCityName = New AgControls.AgTextBox()
+        Me.LblCityName = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.GrpUP.SuspendLayout()
         Me.GBoxEntryType.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
@@ -64,9 +65,12 @@ Public Class FrmCity
         'GBoxApprove
         '
         Me.GBoxApprove.Location = New System.Drawing.Point(399, 304)
+        Me.GBoxApprove.Text = "Approved By"
         '
         'TxtApproveBy
         '
+        Me.TxtApproveBy.Location = New System.Drawing.Point(3, 23)
+        Me.TxtApproveBy.Size = New System.Drawing.Size(136, 18)
         Me.TxtApproveBy.Tag = ""
         '
         'GroupBox2
@@ -79,6 +83,9 @@ Public Class FrmCity
         '
         'TxtCountry
         '
+        Me.TxtCountry.AgAllowUserToEnableMasterHelp = False
+        Me.TxtCountry.AgLastValueTag = Nothing
+        Me.TxtCountry.AgLastValueText = Nothing
         Me.TxtCountry.AgMandatory = False
         Me.TxtCountry.AgMasterHelp = True
         Me.TxtCountry.AgNumberLeftPlaces = 0
@@ -92,27 +99,32 @@ Public Class FrmCity
         Me.TxtCountry.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtCountry.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtCountry.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCountry.Location = New System.Drawing.Point(550, 128)
+        Me.TxtCountry.Location = New System.Drawing.Point(330, 171)
         Me.TxtCountry.MaxLength = 50
         Me.TxtCountry.Multiline = True
         Me.TxtCountry.Name = "TxtCountry"
-        Me.TxtCountry.Size = New System.Drawing.Size(129, 20)
+        Me.TxtCountry.Size = New System.Drawing.Size(345, 20)
         Me.TxtCountry.TabIndex = 2
+        Me.TxtCountry.Visible = False
         '
         'LblCountry
         '
         Me.LblCountry.AutoSize = True
         Me.LblCountry.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCountry.Location = New System.Drawing.Point(476, 132)
+        Me.LblCountry.Location = New System.Drawing.Point(213, 175)
         Me.LblCountry.Name = "LblCountry"
         Me.LblCountry.Size = New System.Drawing.Size(53, 16)
         Me.LblCountry.TabIndex = 682
         Me.LblCountry.Text = "Country"
+        Me.LblCountry.Visible = False
         '
         'TxtState
         '
-        Me.TxtState.AgMandatory = False
-        Me.TxtState.AgMasterHelp = True
+        Me.TxtState.AgAllowUserToEnableMasterHelp = False
+        Me.TxtState.AgLastValueTag = Nothing
+        Me.TxtState.AgLastValueText = Nothing
+        Me.TxtState.AgMandatory = True
+        Me.TxtState.AgMasterHelp = False
         Me.TxtState.AgNumberLeftPlaces = 0
         Me.TxtState.AgNumberNegetiveAllow = False
         Me.TxtState.AgNumberRightPlaces = 0
@@ -124,18 +136,18 @@ Public Class FrmCity
         Me.TxtState.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtState.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtState.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtState.Location = New System.Drawing.Point(334, 128)
+        Me.TxtState.Location = New System.Drawing.Point(330, 149)
         Me.TxtState.MaxLength = 50
         Me.TxtState.Multiline = True
         Me.TxtState.Name = "TxtState"
-        Me.TxtState.Size = New System.Drawing.Size(129, 20)
+        Me.TxtState.Size = New System.Drawing.Size(345, 20)
         Me.TxtState.TabIndex = 1
         '
         'LblState
         '
         Me.LblState.AutoSize = True
         Me.LblState.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblState.Location = New System.Drawing.Point(183, 131)
+        Me.LblState.Location = New System.Drawing.Point(214, 152)
         Me.LblState.Name = "LblState"
         Me.LblState.Size = New System.Drawing.Size(39, 16)
         Me.LblState.TabIndex = 681
@@ -146,7 +158,7 @@ Public Class FrmCity
         Me.LblCityNameReq.AutoSize = True
         Me.LblCityNameReq.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.LblCityNameReq.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.LblCityNameReq.Location = New System.Drawing.Point(318, 114)
+        Me.LblCityNameReq.Location = New System.Drawing.Point(314, 135)
         Me.LblCityNameReq.Name = "LblCityNameReq"
         Me.LblCityNameReq.Size = New System.Drawing.Size(10, 7)
         Me.LblCityNameReq.TabIndex = 666
@@ -154,6 +166,9 @@ Public Class FrmCity
         '
         'TxtCityName
         '
+        Me.TxtCityName.AgAllowUserToEnableMasterHelp = False
+        Me.TxtCityName.AgLastValueTag = Nothing
+        Me.TxtCityName.AgLastValueText = Nothing
         Me.TxtCityName.AgMandatory = True
         Me.TxtCityName.AgMasterHelp = True
         Me.TxtCityName.AgNumberLeftPlaces = 0
@@ -167,7 +182,7 @@ Public Class FrmCity
         Me.TxtCityName.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtCityName.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtCityName.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCityName.Location = New System.Drawing.Point(334, 106)
+        Me.TxtCityName.Location = New System.Drawing.Point(330, 127)
         Me.TxtCityName.MaxLength = 50
         Me.TxtCityName.Multiline = True
         Me.TxtCityName.Name = "TxtCityName"
@@ -178,16 +193,28 @@ Public Class FrmCity
         '
         Me.LblCityName.AutoSize = True
         Me.LblCityName.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCityName.Location = New System.Drawing.Point(183, 109)
+        Me.LblCityName.Location = New System.Drawing.Point(214, 130)
         Me.LblCityName.Name = "LblCityName"
         Me.LblCityName.Size = New System.Drawing.Size(69, 16)
         Me.LblCityName.TabIndex = 661
         Me.LblCityName.Text = "City Name"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(313, 156)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(10, 7)
+        Me.Label1.TabIndex = 683
+        Me.Label1.Text = "Ä"
+        '
         'FrmCity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(862, 348)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TxtCountry)
         Me.Controls.Add(Me.LblCountry)
         Me.Controls.Add(Me.TxtState)
@@ -212,6 +239,7 @@ Public Class FrmCity
         Me.Controls.SetChildIndex(Me.TxtState, 0)
         Me.Controls.SetChildIndex(Me.LblCountry, 0)
         Me.Controls.SetChildIndex(Me.TxtCountry, 0)
+        Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.GrpUP.ResumeLayout(False)
         Me.GrpUP.PerformLayout()
         Me.GBoxEntryType.ResumeLayout(False)
@@ -236,6 +264,7 @@ Public Class FrmCity
     Friend WithEvents LblState As System.Windows.Forms.Label
     Friend WithEvents TxtState As AgControls.AgTextBox
     Friend WithEvents LblCountry As System.Windows.Forms.Label
+    Friend WithEvents Label1 As Label
     Friend WithEvents TxtCountry As AgControls.AgTextBox
 
 
@@ -254,7 +283,7 @@ Public Class FrmCity
     End Sub
 
     Private Sub FrmYarn_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
-        AgL.PubFindQry = "SELECT CityCode, CityName , State, Country " &
+        AgL.PubFindQry = "SELECT CityCode, CityName , State " &
                             " FROM City " &
                             " WHERE IfNull(IsDeleted,0)=0 "
         AgL.PubFindQryOrdBy = "[CityName]"
@@ -286,16 +315,15 @@ Public Class FrmCity
             "  Order By CityName "
         TxtCityName.AgHelpDataSet() = AgL.FillData(mQry, AgL.GCn)
 
-        mQry = "Select Distinct State as Code, State, Country  " &
-                " From City  " &
-                " WHERE State Is Not Null " &
-                " Order By State "
+        mQry = "Select  Code, Description as State, Null Country
+                From state                 
+                Order By Description "
         TxtState.AgHelpDataSet(1) = AgL.FillData(mQry, AgL.GCn)
 
-        mQry = "Select Distinct Country as Code, Country " &
-                " From City  " &
-                " WHERE Country Is Not Null " &
-                " Order By Country "
+        mQry = "Select Distinct Country As Code, Country 
+                From City  
+                WHERE Country Is Not Null
+                Order By Country "
         TxtCountry.AgHelpDataSet() = AgL.FillData(mQry, AgL.GCn)
     End Sub
 
@@ -384,7 +412,7 @@ Public Class FrmCity
         AgL.WinSetting(Me, 380, 868)
     End Sub
 
-    Private Sub TxtDescription_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCountry.KeyDown
+    Private Sub TxtDescription_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtState.KeyDown
         If e.KeyCode = Keys.Enter Then
             If MsgBox("Do you want to save?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2, "Save") = MsgBoxResult.Yes Then
                 Topctrl1.FButtonClick(13)
