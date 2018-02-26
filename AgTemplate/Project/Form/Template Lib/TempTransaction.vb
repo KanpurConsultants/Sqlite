@@ -1326,12 +1326,14 @@ Public Class TempTransaction
             If Sender.AgHelpDataSet IsNot Nothing Then
                 DrTemp = Sender.AgHelpDataSet.Tables(0).Select("Code = " & AgL.Chk_Text(Sender.AgSelectedValue) & "")
                 LblV_Type.Tag = AgL.XNull(DrTemp(0)("NCat"))
-                mQry = "Select * from Voucher_Type_Settings  Where V_Type = '" & Sender.tag & "' And Div_Code = '" & TxtDivision.Tag & "' And Site_Code ='" & TxtSite_Code.Tag & "' "
-                DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
-                If DtV_TypeSettings.Rows.Count = 0 Then
-                    MsgBox("Voucher Type Settings are not defined. Can't Continue!")
-                    Topctrl1.FButtonClick(14, True)
-                    Exit Sub
+                If AgL.IsTableExist("Voucher_Type_Settings", AgL.GCn) Then
+                    mQry = "Select * from Voucher_Type_Settings  Where V_Type = '" & Sender.tag & "' And Div_Code = '" & TxtDivision.Tag & "' And Site_Code ='" & TxtSite_Code.Tag & "' "
+                    DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                    If DtV_TypeSettings.Rows.Count = 0 Then
+                        MsgBox("Voucher Type Settings are not defined. Can't Continue!")
+                        Topctrl1.FButtonClick(14, True)
+                        Exit Sub
+                    End If
                 End If
             End If
         End If
@@ -1411,12 +1413,14 @@ Public Class TempTransaction
             TxtV_Type.AgSelectedValue = TxtV_Type.AgHelpDataSet.Tables(0).Rows(0)("Code")
             LblV_Type.Tag = AgL.XNull(TxtV_Type.AgHelpDataSet.Tables(0).Rows(0)("NCat"))
             TxtV_Type.Enabled = False
-            mQry = "Select * from Voucher_Type_Settings  Where V_Type = '" & TxtV_Type.Tag & "' And Div_Code='" & TxtDivision.Tag & "' And Site_Code ='" & TxtSite_Code.Tag & "' "
-            DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            If AgL.IsTableExist("Voucher_Type_Settings", AgL.GCn) Then
+                mQry = "Select * from Voucher_Type_Settings  Where V_Type = '" & TxtV_Type.Tag & "' And Div_Code='" & TxtDivision.Tag & "' And Site_Code ='" & TxtSite_Code.Tag & "' "
+                DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+            End If
 
             TxtV_Date.Focus()
-        Else
-            TxtV_Type.Enabled = True
+            Else
+                TxtV_Type.Enabled = True
             TxtV_Type.Tag = IIf(TxtV_Type.AgLastValueTag Is Nothing, "", TxtV_Type.AgLastValueTag)
             TxtV_Type.Text = IIf(TxtV_Type.AgLastValueText Is Nothing, "", TxtV_Type.AgLastValueText)
 

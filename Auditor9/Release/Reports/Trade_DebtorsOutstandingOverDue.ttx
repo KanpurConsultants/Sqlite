@@ -1,0 +1,6 @@
+; Field definition file for table: ADORecordset
+SubCode	string	255	D100001269	
+PartyName	string	255	Sample Division  {sample}	
+TotalBal	number	156563.25	
+BalAboveDays	number	150562.25	
+OnOfDays	string	255	30	

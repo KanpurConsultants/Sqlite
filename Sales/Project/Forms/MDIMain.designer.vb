@@ -19,41 +19,42 @@ Partial Class MDIMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MnuMain = New System.Windows.Forms.MenuStrip
-        Me.MnuSales = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleEnquiry = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQuotation = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQuotationAmendment = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrder = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrderCancellation = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrderAmendment = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrderDeliveryScheduleChange = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQCRequest = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQC = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuDeliveryOrder = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleChallan = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuShippingBill = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleInvoice = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleSupplimentaryInvoice = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleReturn = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuReports = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleEnquiryReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQuotationReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQCRequestReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQCReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuDeliveryOrderReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleChallanReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuShippingBillReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleInvoiceReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuStatusReports = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleEnquiryStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQuotationStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleOrderStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleQCRequestStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuDeliveryOrderStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleChallanStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuSaleInvoiceNew = New System.Windows.Forms.ToolStripMenuItem
+        Me.MnuMain = New System.Windows.Forms.MenuStrip()
+        Me.MnuSales = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleEnquiry = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQuotation = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQuotationAmendment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrderCancellation = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrderAmendment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrderDeliveryScheduleChange = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQCRequest = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDeliveryOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallan = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShippingBill = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleInvoiceNew = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleSupplimentaryInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleReturn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleEnquiryReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQuotationReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrderReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQCRequestReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQCReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDeliveryOrderReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallanReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuShippingBillReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuStatusReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleEnquiryStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQuotationStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleOrderStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleQCRequestStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuDeliveryOrderStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleChallanStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleInvoiceDirect = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -68,7 +69,7 @@ Partial Class MDIMain
         '
         'MnuSales
         '
-        Me.MnuSales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleEnquiry, Me.MnuSaleQuotation, Me.MnuSaleQuotationAmendment, Me.MnuSaleOrder, Me.MnuSaleOrderCancellation, Me.MnuSaleOrderAmendment, Me.MnuSaleOrderDeliveryScheduleChange, Me.MnuSaleQCRequest, Me.MnuSaleQC, Me.MnuDeliveryOrder, Me.MnuSaleChallan, Me.MnuShippingBill, Me.MnuSaleInvoice, Me.MnuSaleInvoiceNew, Me.MnuSaleSupplimentaryInvoice, Me.MnuSaleReturn, Me.MnuReports, Me.MnuStatusReports})
+        Me.MnuSales.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleEnquiry, Me.MnuSaleQuotation, Me.MnuSaleQuotationAmendment, Me.MnuSaleOrder, Me.MnuSaleOrderCancellation, Me.MnuSaleOrderAmendment, Me.MnuSaleOrderDeliveryScheduleChange, Me.MnuSaleQCRequest, Me.MnuSaleQC, Me.MnuDeliveryOrder, Me.MnuSaleChallan, Me.MnuShippingBill, Me.MnuSaleInvoice, Me.MnuSaleInvoiceNew, Me.MnuSaleInvoiceDirect, Me.MnuSaleSupplimentaryInvoice, Me.MnuSaleReturn, Me.MnuReports, Me.MnuStatusReports})
         Me.MnuSales.Name = "MnuSales"
         Me.MnuSales.Size = New System.Drawing.Size(45, 20)
         Me.MnuSales.Text = "Sales"
@@ -150,6 +151,12 @@ Partial Class MDIMain
         Me.MnuSaleInvoice.Name = "MnuSaleInvoice"
         Me.MnuSaleInvoice.Size = New System.Drawing.Size(268, 22)
         Me.MnuSaleInvoice.Text = "Sale Invoice"
+        '
+        'MnuSaleInvoiceNew
+        '
+        Me.MnuSaleInvoiceNew.Name = "MnuSaleInvoiceNew"
+        Me.MnuSaleInvoiceNew.Size = New System.Drawing.Size(268, 22)
+        Me.MnuSaleInvoiceNew.Text = "Sale Invoice New"
         '
         'MnuSaleSupplimentaryInvoice
         '
@@ -283,11 +290,11 @@ Partial Class MDIMain
         Me.MnuSaleChallanStatus.Tag = "REPORT"
         Me.MnuSaleChallanStatus.Text = "Sale Challan Status"
         '
-        'MnuSaleInvoiceNew
+        'MnuSaleInvoiceDirect
         '
-        Me.MnuSaleInvoiceNew.Name = "MnuSaleInvoiceNew"
-        Me.MnuSaleInvoiceNew.Size = New System.Drawing.Size(268, 22)
-        Me.MnuSaleInvoiceNew.Text = "Sale Invoice New"
+        Me.MnuSaleInvoiceDirect.Name = "MnuSaleInvoiceDirect"
+        Me.MnuSaleInvoiceDirect.Size = New System.Drawing.Size(268, 22)
+        Me.MnuSaleInvoiceDirect.Text = "Sale Invoice Direct"
         '
         'MDIMain
         '
@@ -343,5 +350,5 @@ Partial Class MDIMain
     Friend WithEvents MnuSaleQCReport As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuDeliveryOrderStatus As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuSaleInvoiceNew As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents MnuSaleInvoiceDirect As ToolStripMenuItem
 End Class

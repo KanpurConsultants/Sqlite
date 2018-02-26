@@ -34,8 +34,6 @@ Public Class MDIMain
             'ClsObj_AgTemplate.UpdateTableStructure(AgL.PubMdlTable)
             'ClsObj_AgTemplate.UpdateTableInitialiser()
             'AgL.FExecuteDBScript(AgL.PubMdlTable, AgL.GCn)
-
-
         End If
     End Sub
 
@@ -124,5 +122,10 @@ Public Class MDIMain
             End If
         End If
 
+    End Sub
+
+    Private Sub MnuUpdateTableStructure_Click(sender As Object, e As EventArgs) Handles MnuUpdateTableStructure.Click
+        Dim cm As New ClsMain(AgL)
+        cm.UpdateTableStructure()
     End Sub
 End Class

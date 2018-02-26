@@ -1166,26 +1166,26 @@ Public Class TempMaster
 
             If Topctrl1.Mode = "Add" Then
                 If FrmType = EntryPointType.Main Then
-                    mQry = "INSERT INTO " & MainTableName & " (" & mPrimaryField & ", EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " & _
-                            "VALUES (" & AgL.Chk_Text(mInternalCode) & ", " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ")"
+                    mQry = "INSERT INTO " & MainTableName & " (" & mPrimaryField & ", EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
+                            "VALUES (" & AgL.Chk_Text(mInternalCode) & ", " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Date(DateTime.Now.ToString("u")) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ")"
 
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
                 Else
-                    mQry = "INSERT INTO " & LogTableName & " (UID, " & mPrimaryField & ", EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " & _
-                            "VALUES (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(mInternalCode) & ", " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ")"
+                    mQry = "INSERT INTO " & LogTableName & " (UID, " & mPrimaryField & ", EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status) " &
+                            "VALUES (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(mInternalCode) & ", " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Date(DateTime.Now.ToString("u")) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ")"
 
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
                 End If
             Else
                 If FrmType = EntryPointType.Main Then
-                    mQry = "Update " & MainTableName & " Set EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", EntryStatus=" & AgL.Chk_Text(LogStatus.LogOpen) & ", Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & " " & _
+                    mQry = "Update " & MainTableName & " Set MoveToLog = " & AgL.Chk_Text(AgL.PubUserName) & ", MoveToLogDate = " & AgL.Chk_Date(DateTime.Now.ToString("u")) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", EntryStatus=" & AgL.Chk_Text(LogStatus.LogOpen) & ", Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & " " &
                            " Where " & mPrimaryField & " = " & AgL.Chk_Text(mInternalCode) & "  "
 
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
 
                 Else
-                    mQry = "Update " & LogTableName & " Set EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", EntryStatus=" & AgL.Chk_Text(LogStatus.LogOpen) & ", Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & " " & _
+                    mQry = "Update " & LogTableName & " Set EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Date(AgL.GetDateTime(AgL.GcnRead)) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", EntryStatus=" & AgL.Chk_Text(LogStatus.LogOpen) & ", Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & " " &
                            " Where UID = " & AgL.Chk_Text(mSearchCode) & "  "
 
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)

@@ -20,26 +20,28 @@ Partial Class MDIMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIMain))
-        Me.MnuMain = New System.Windows.Forms.MenuStrip
-        Me.MnuPurchase = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseIndent = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseIndentCancel = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseOrder = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseOrderCancel = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseOrderAmendment = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseChallan = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseInvoice = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseSupplimentaryInvoice = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseReturn = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuReports = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseIndentReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseIndentStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseOrderReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseOrderStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseChallanReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseChallanStatus = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseInvoiceReport = New System.Windows.Forms.ToolStripMenuItem
-        Me.MnuPurchaseChallanReturn = New System.Windows.Forms.ToolStripMenuItem
+        Me.MnuMain = New System.Windows.Forms.MenuStrip()
+        Me.MnuPurchase = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseIndent = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseIndentCancel = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseOrder = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseOrderCancel = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseOrderAmendment = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseChallan = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseChallanReturn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseSupplimentaryInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseReturn = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuReports = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseIndentReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseIndentStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseOrderReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseOrderStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseChallanReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseChallanStatus = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseInvoiceReport = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuUpdateTableStructure = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseInvoiceDirect = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,7 +56,7 @@ Partial Class MDIMain
         '
         'MnuPurchase
         '
-        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseIndent, Me.MnuPurchaseIndentCancel, Me.MnuPurchaseOrder, Me.MnuPurchaseOrderCancel, Me.MnuPurchaseOrderAmendment, Me.MnuPurchaseChallan, Me.MnuPurchaseChallanReturn, Me.MnuPurchaseInvoice, Me.MnuPurchaseSupplimentaryInvoice, Me.MnuPurchaseReturn, Me.MnuReports})
+        Me.MnuPurchase.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuPurchaseIndent, Me.MnuPurchaseIndentCancel, Me.MnuPurchaseOrder, Me.MnuPurchaseOrderCancel, Me.MnuPurchaseOrderAmendment, Me.MnuPurchaseChallan, Me.MnuPurchaseChallanReturn, Me.MnuPurchaseInvoice, Me.MnuPurchaseInvoiceDirect, Me.MnuPurchaseSupplimentaryInvoice, Me.MnuPurchaseReturn, Me.MnuReports, Me.MnuUpdateTableStructure})
         Me.MnuPurchase.Name = "MnuPurchase"
         Me.MnuPurchase.Size = New System.Drawing.Size(67, 20)
         Me.MnuPurchase.Text = "Purchase"
@@ -94,6 +96,12 @@ Partial Class MDIMain
         Me.MnuPurchaseChallan.Name = "MnuPurchaseChallan"
         Me.MnuPurchaseChallan.Size = New System.Drawing.Size(243, 22)
         Me.MnuPurchaseChallan.Text = "Purchase Challan"
+        '
+        'MnuPurchaseChallanReturn
+        '
+        Me.MnuPurchaseChallanReturn.Name = "MnuPurchaseChallanReturn"
+        Me.MnuPurchaseChallanReturn.Size = New System.Drawing.Size(243, 22)
+        Me.MnuPurchaseChallanReturn.Text = "Purchase Challan Return"
         '
         'MnuPurchaseInvoice
         '
@@ -169,11 +177,17 @@ Partial Class MDIMain
         Me.MnuPurchaseInvoiceReport.Tag = "Report"
         Me.MnuPurchaseInvoiceReport.Text = "Purchase Invoice Report"
         '
-        'MnuPurchaseChallanReturn
+        'MnuUpdateTableStructure
         '
-        Me.MnuPurchaseChallanReturn.Name = "MnuPurchaseChallanReturn"
-        Me.MnuPurchaseChallanReturn.Size = New System.Drawing.Size(243, 22)
-        Me.MnuPurchaseChallanReturn.Text = "Purchase Challan Return"
+        Me.MnuUpdateTableStructure.Name = "MnuUpdateTableStructure"
+        Me.MnuUpdateTableStructure.Size = New System.Drawing.Size(243, 22)
+        Me.MnuUpdateTableStructure.Text = "Update Table Structure"
+        '
+        'MnuPurchaseInvoiceDirect
+        '
+        Me.MnuPurchaseInvoiceDirect.Name = "MnuPurchaseInvoiceDirect"
+        Me.MnuPurchaseInvoiceDirect.Size = New System.Drawing.Size(243, 22)
+        Me.MnuPurchaseInvoiceDirect.Text = "Purchase Invoice Direct"
         '
         'MDIMain
         '
@@ -215,5 +229,6 @@ Partial Class MDIMain
     Friend WithEvents MnuPurchaseInvoiceReport As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuPurchaseIndentCancel As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuPurchaseChallanReturn As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents MnuUpdateTableStructure As ToolStripMenuItem
+    Friend WithEvents MnuPurchaseInvoiceDirect As ToolStripMenuItem
 End Class

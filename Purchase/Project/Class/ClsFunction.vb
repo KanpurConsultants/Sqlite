@@ -48,6 +48,9 @@ Public Class ClsFunction
                 Case MDI.MnuPurchaseInvoice.Name
                     FrmObj = New FrmPurchInvoice(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.PurchaseInvoice)
 
+                Case MDI.MnuPurchaseInvoiceDirect.Name
+                    FrmObj = New FrmPurchInvoiceDirect(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.PurchaseInvoice)
+
                 Case MDI.MnuPurchaseSupplimentaryInvoice.Name
                     FrmObj = New FrmPurchInvoiceAmendment(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.PurchaseInvoice)
 

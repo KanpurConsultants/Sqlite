@@ -109,3 +109,4 @@ D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.vbproj.GenerateResourc
 D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.dll
 D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.xml
 D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.pdb
+D:\KC\Source\Sqlite\AgLibrary\Project\obj\Debug\AgLibrary.vbprojResolveAssemblyReference.cache

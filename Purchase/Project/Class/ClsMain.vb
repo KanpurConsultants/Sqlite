@@ -40,9 +40,24 @@ Public Class ClsMain
 
 #Region " Structure Update Code "
     Public Sub UpdateTableStructure()
+        Dim mQry As String
         Try
-            AgL.AddFieldSqlite("Subgroup", "Agent", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
-            AgL.AddFieldSqlite("Subgroup", "Transporter", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
+
+            AgL.AddFieldSqlite("PurchInvoice", "Agent", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
+            AgL.AddFieldSqlite("PurchInvoice", "Transporter", "nVarchar(10)", "", True, " references Subgroup(Subcode) ")
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "LRNo", "nVarchar(50)", "", True)
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "LRDate", "DateTime", "", True)
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "DiscountPer", "Float", "0")
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "DiscountAmount", "Float", "0")
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "AdditionalDiscountPer", "Float", "0")
+            AgL.AddFieldSqlite("PurchInvoiceDetail", "AdditionalDiscountAmount", "Float", "0")
+
+            AgL.Dman_ExecuteNonQry("Drop View IF Exists viewHelpSubGroup;
+                                    
+                                    CREATE VIEW viewHelpSubgroup AS
+                                    Select Subcode As Code, Name || ' [' || ManualCode ||']' as Name, PartyType 
+                                    from SubGroup ", AgL.GCn)
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -69,8 +84,8 @@ Public Class ClsMain
         '' Note Write Each View in Separate <Try---Catch> Section
 
         Try
-            'mQry = "CREATE VIEW dbo.ViewSch_SessionProgramme AS " & _
-            '        " SELECT  SP.*, S.ManualCode AS SessionManualCode, S.Description AS SessionDescription, S.StartDate AS SessionStartDate, S.EndDate AS SessionEndDate, P.Description AS ProgrammeDescription, P.ManualCode AS ProgrammeManualCode, P.ProgrammeDuration, P.Semesters AS ProgrammeSemesters, P.SemesterDuration AS ProgrammeSemesterDuration, P.ProgrammeNature , PN.Description AS ProgrammeNatureDescription  , P.ManualCode  +'/' || S.ManualCode   AS SessionProgramme " & _
+            'mQry = "CREATE VIEW dbo.ViewSch_SessionProgramme As " & _
+            '        " Select  SP.*, S.ManualCode As SessionManualCode, S.Description As SessionDescription, S.StartDate As SessionStartDate, S.EndDate As SessionEndDate, P.Description As ProgrammeDescription, P.ManualCode As ProgrammeManualCode, P.ProgrammeDuration, P.Semesters As ProgrammeSemesters, P.SemesterDuration As ProgrammeSemesterDuration, P.ProgrammeNature, PN.Description As ProgrammeNatureDescription  , P.ManualCode +'/' || S.ManualCode   AS SessionProgramme " & _
             '        " FROM Sch_SessionProgramme SP " & _
             '        " LEFT JOIN Sch_Session S ON sp.Session =S.Code  " & _
             '        " LEFT JOIN Sch_Programme P ON SP.Programme =P.Code " & _

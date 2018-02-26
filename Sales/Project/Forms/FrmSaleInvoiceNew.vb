@@ -1,7 +1,7 @@
 ﻿Imports CrystalDecisions.CrystalReports.Engine
 Imports System.Data.SQLite
 'Imports CrystalDecisions.Shared
-Public Class FrmSaleInvoiceNew
+Public Class FrmSaleInvoiceDirect
     Inherits AgTemplate.TempTransaction
     Dim mQry$
 
@@ -1612,7 +1612,7 @@ Public Class FrmSaleInvoiceNew
 
 #End Region
 
-    Private Sub FrmSaleInvoice_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As SqliteConnection, ByVal Cmd As SqliteCommand) Handles Me.BaseEvent_ApproveDeletion_InTrans
+    Private Sub FrmSaleInvoice_BaseEvent_ApproveDeletion_InTrans(ByVal SearchCode As String, ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand) Handles Me.BaseEvent_ApproveDeletion_InTrans
         Dim DtSaleInvoice As DataTable = Nothing
         Dim I As Integer = 0
 
@@ -1651,13 +1651,13 @@ Public Class FrmSaleInvoiceNew
     Private Sub FrmQuality1_BaseFunction_FIniMast(ByVal BytDel As Byte, ByVal BytRefresh As Byte) Handles Me.BaseFunction_FIniMast
         Dim mCondStr$
 
-        mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) & _
+        mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) &
                         " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "' "
         mCondStr = mCondStr & " And Vt.NCat In ('" & EntryNCat & "')"
 
-        mQry = "Select DocID As SearchCode " & _
-                " From SaleInvoice H " & _
-                " Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type  " & _
+        mQry = "Select DocID As SearchCode " &
+                " From SaleInvoice H " &
+                " Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type  " &
                 " Where 1 = 1  " & mCondStr & "  Order By V_Date Desc "
         Topctrl1.FIniForm(DTMaster, AgL.GCn, mQry, , , , , BytDel, BytRefresh)
     End Sub
@@ -1665,18 +1665,18 @@ Public Class FrmSaleInvoiceNew
     Private Sub FrmSaleOrder_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
         Dim mCondStr$
 
-        mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) & _
+        mCondStr = " " & AgL.CondStrFinancialYear("H.V_Date", AgL.PubStartDate, AgL.PubEndDate) &
                         " And " & AgL.PubSiteCondition("H.Site_Code", AgL.PubSiteCode) & " And H.Div_Code = '" & AgL.PubDivCode & "'"
         mCondStr = mCondStr & " And Vt.NCat In ('" & EntryNCat & "')"
 
-        AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], H.V_Date AS Date, Supplier.Name as Supplier_Name, SGV.Name AS [Party], " & _
-                            " H.ReferenceNo AS [Manual_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], " & _
-                            " H.Remarks, H.TotalQty AS [Total_Qty], H.TotalMeasure AS [Total_Measure], H.TotalAmount AS [Total_Amount],  " & _
-                            " H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date], H.EntryType AS [Entry_Type] " & _
-                            " FROM SaleInvoice H " & _
-                            " LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type " & _
-                            " LEFT JOIN SubGroup Supplier ON Supplier.SubCode  = H.Supplier " & _
-                            " LEFT JOIN SubGroup SGV ON SGV.SubCode  = H.SaleToParty " & _
+        AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], H.V_Date AS Date, Supplier.Name as Supplier_Name, SGV.Name AS [Party], " &
+                            " H.ReferenceNo AS [Manual_No], H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], " &
+                            " H.Remarks, H.TotalQty AS [Total_Qty], H.TotalMeasure AS [Total_Measure], H.TotalAmount AS [Total_Amount],  " &
+                            " H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date], H.EntryType AS [Entry_Type] " &
+                            " FROM SaleInvoice H " &
+                            " LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type " &
+                            " LEFT JOIN SubGroup Supplier ON Supplier.SubCode  = H.Supplier " &
+                            " LEFT JOIN SubGroup SGV ON SGV.SubCode  = H.SaleToParty " &
                             " Where 1=1 " & mCondStr
 
         AgL.PubFindQryOrdBy = "[Entry Date]"
@@ -1775,37 +1775,37 @@ Public Class FrmSaleInvoiceNew
         AgCL.GridSetiingShowXml(Me.Text & AgCustomGrid1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, AgCustomGrid1, False)
     End Sub
 
-    Private Sub FrmSaleOrder_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SqliteConnection, ByVal Cmd As SqliteCommand) Handles Me.BaseEvent_Save_InTrans
+    Private Sub FrmSaleOrder_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand) Handles Me.BaseEvent_Save_InTrans
         Dim I As Integer, mSr As Integer
         Dim bSelectionQry$ = "", bInvoiceType$ = "", bStockSelectionQry$ = ""
 
-        mQry = " Update SaleInvoice " & _
-                " SET  " & _
-                " ReferenceNo = " & AgL.Chk_Text(TxtReferenceNo.Text) & ", " & _
-                " SaleToParty = " & AgL.Chk_Text(TxtSaleToParty.Tag) & ", " & _
-                " SaleToPartyName = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyName.Text & "', " & _
-                " SaleToPartyAdd1 = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyAdd1.Text & "', " & _
-                " SaleToPartyAdd2 = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyAdd2.Text & "', " & _
-                " SaleToPartyCity = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyCity.AgSelectedValue & "', " & _
-                " SaleToPartyMobile = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyMobile.Text & "', " & _
-                " BillToParty = " & AgL.Chk_Text(TxtBillToParty.Tag) & ", " & _
-                " Currency = " & AgL.Chk_Text(TxtCurrency.Tag) & ", " & _
-                " SalesTaxGroupParty = " & AgL.Chk_Text(TxtSalesTaxGroupParty.Text) & ", " & _
-                " Agent = " & AgL.Chk_Text(TxtAgent.Tag) & ", " & _
-                " Structure = " & AgL.Chk_Text(TxtStructure.Tag) & ", " & _
-                " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " & _
-                " CreditDays = " & Val(TxtCreditDays.Text) & ", " & _
-                " CreditLimit = " & Val(TxtCreditLimit.Text) & ", " & _
-                " CustomFields = " & AgL.Chk_Text(TxtCustomFields.Tag) & ", " & _
-                " InvoiceGenType = " & AgL.Chk_Text(bInvoiceType) & ", " & _
-                " Godown = " & AgL.Chk_Text(TxtGodown.Tag) & ", " & _
-                " UpLine = " & AgL.Chk_Text(TxtUpLine.Text) & ", " & _
-                " SaleToPartyTinNo = " & AgL.Chk_Text(TxtSaleToPartyTinNo.Text) & ", " & _
-                " SaleToPartyCstNo = " & AgL.Chk_Text(TxtSaleToPartyCstNo.Text) & ", " & _
-                " SaleToPartyLstNo = " & AgL.Chk_Text(TxtSaleToPartyLstNo.Text) & ", " & _
-                " PaidAmt = " & Val(TxtPaidAmt.Text) & ", " & _
-                " " & AgCalcGrid1.FFooterTableUpdateStr() & " " & _
-                " " & AgCustomGrid1.FFooterTableUpdateStr() & " " & _
+        mQry = " Update SaleInvoice " &
+                " SET  " &
+                " ReferenceNo = " & AgL.Chk_Text(TxtReferenceNo.Text) & ", " &
+                " SaleToParty = " & AgL.Chk_Text(TxtSaleToParty.Tag) & ", " &
+                " SaleToPartyName = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyName.Text & "', " &
+                " SaleToPartyAdd1 = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyAdd1.Text & "', " &
+                " SaleToPartyAdd2 = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyAdd2.Text & "', " &
+                " SaleToPartyCity = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyCity.AgSelectedValue & "', " &
+                " SaleToPartyMobile = '" & BtnFillPartyDetail.Tag.TxtSaleToPartyMobile.Text & "', " &
+                " BillToParty = " & AgL.Chk_Text(TxtBillToParty.Tag) & ", " &
+                " Currency = " & AgL.Chk_Text(TxtCurrency.Tag) & ", " &
+                " SalesTaxGroupParty = " & AgL.Chk_Text(TxtSalesTaxGroupParty.Text) & ", " &
+                " Agent = " & AgL.Chk_Text(TxtAgent.Tag) & ", " &
+                " Structure = " & AgL.Chk_Text(TxtStructure.Tag) & ", " &
+                " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " &
+                " CreditDays = " & Val(TxtCreditDays.Text) & ", " &
+                " CreditLimit = " & Val(TxtCreditLimit.Text) & ", " &
+                " CustomFields = " & AgL.Chk_Text(TxtCustomFields.Tag) & ", " &
+                " InvoiceGenType = " & AgL.Chk_Text(bInvoiceType) & ", " &
+                " Godown = " & AgL.Chk_Text(TxtGodown.Tag) & ", " &
+                " UpLine = " & AgL.Chk_Text(TxtUpLine.Text) & ", " &
+                " SaleToPartyTinNo = " & AgL.Chk_Text(TxtSaleToPartyTinNo.Text) & ", " &
+                " SaleToPartyCstNo = " & AgL.Chk_Text(TxtSaleToPartyCstNo.Text) & ", " &
+                " SaleToPartyLstNo = " & AgL.Chk_Text(TxtSaleToPartyLstNo.Text) & ", " &
+                " PaidAmt = " & Val(TxtPaidAmt.Text) & ", " &
+                " " & AgCalcGrid1.FFooterTableUpdateStr() & " " &
+                " " & AgCustomGrid1.FFooterTableUpdateStr() & " " &
                 " Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 

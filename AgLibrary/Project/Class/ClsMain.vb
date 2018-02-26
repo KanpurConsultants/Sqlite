@@ -2346,6 +2346,19 @@ err1:
         End If
     End Function
 
+    Public Function Chk_Date(ByVal temp As String) As String
+        Chk_Date = temp
+        If IsDBNull(Chk_Date) Or Chk_Date Is Nothing Then
+            Chk_Date = "Null"
+        Else
+            If Chk_Date = "" Then
+                Chk_Date = "Null"
+            Else
+                Chk_Date = "'" & CDate(temp).ToString("u") & "'"
+            End If
+        End If
+    End Function
+
     Public Function Chk_Text(ByVal temp) As String
         If IsDBNull(temp) Or temp Is Nothing Then
             Chk_Text = "Null"
@@ -2838,7 +2851,8 @@ err1:
                 For I = 0 To DtTemp.Rows.Count - 1
                     mSite_Code = .Rows(I)("Site_Code")
 
-                    mQry = "If Not Exists (Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Date_From = " & Chk_Text(CDate(PubStartDate).ToString("u")) & " And Date_To = " & Chk_Text(CDate(PubEndDate).ToString("u")) & " And Site_Code = '" & mSite_Code & "' " & mCondStr & ") " &
+                    mQry = "If Not Exists (Select * from Voucher_Prefix Where V_Type='" & V_Type & "' And Date_From = " &
+                        (CDate(PubStartDate).ToString("u")) & " And Date_To = " & Chk_Text(CDate(PubEndDate).ToString("u")) & " And Site_Code = '" & mSite_Code & "' " & mCondStr & ") " &
                             " INSERT INTO Voucher_Prefix	(V_Type,Date_From,Prefix,Start_Srl_No,Date_To,Site_Code,Div_Code,Comp_Code)" &
                             " VALUES ('" & V_Type & " ', '" & PubStartDate & "', '" & Right(PubStartDate, 4) & "',0,'" & PubEndDate & "','" & mSite_Code & "','" & DivCode & "'," & AglObj.Chk_Text(mComp_Code) & ") "
                     Dman_ExecuteNonQry(mQry, mConn)
@@ -4202,7 +4216,7 @@ err1:
     Public Function IsFieldExist(ByVal tableName As String, ByVal columnName As String) As Boolean
         Dim dtTemp As DataTable
 
-        dtTemp = FillData("PRAGMA table_info(" + tableName + ");", GcnRead).Tables(0)
+        dtTemp = FillData("PRAGMA table_info(" + tableName + ");", GcnMain).Tables(0)
         Dim drTemp() As DataRow = dtTemp.Select("name = '" & columnName & "'")
         If drTemp.Length > 0 Then
             IsFieldExist = True
@@ -4213,13 +4227,13 @@ err1:
         Dim mQry As String
         Try
             If IsFieldExist(tableName, columnName) = False Then
-                mQry = "Alter Table " & tableName & " Add " & columnName & " " & dataType & "  Default  '" & DefaultValue & "' " & IIf(isNullable = False, " Not Null", " " & referentialKey) & " "
-                Dman_ExecuteNonQry(mQry, GCn)
-                mQry = "Update " & tableName & " set " & columnName & " = '" & DefaultValue & "' "
-                Dman_ExecuteNonQry(mQry, GCn)
+                mQry = "Alter Table " & tableName & " Add " & columnName & " " & dataType & "  Default  " & Chk_Text(DefaultValue) & " " & IIf(isNullable = False, " Not Null", " " & referentialKey) & " "
+                Dman_ExecuteNonQry(mQry, GcnMain)
+                mQry = "Update " & tableName & " set " & columnName & " = " & Chk_Text(DefaultValue) & " "
+                Dman_ExecuteNonQry(mQry, GcnMain)
             End If
         Catch ex As Exception
-            LogTableEntry(columnName, tableName, "Add", PubMachineName, PubUserName, PubLoginDate, GCn,, "Following error occured while adding column in table : " & ex.Message)
+            LogTableEntry(columnName, tableName, "Add", PubMachineName, PubUserName, DateTime.Now.ToString("u"), GcnMain,, "Following error occured while adding column in table : " & ex.Message)
         End Try
     End Function
 

@@ -43,6 +43,9 @@ Public Class ClsFunction
                 Case MDI.MnuSaleInvoiceNew.Name
                     FrmObj = New FrmSaleInvoiceNew(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.SaleInvoice)
 
+                Case MDI.MnuSaleInvoiceDirect.Name
+                    FrmObj = New FrmSaleInvoiceDirect(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.SaleInvoice)
+
                 Case MDI.MnuSaleReturn.Name
                     FrmObj = New FrmSaleReturn(StrUserPermission, DTUP, AgTemplate.ClsMain.Temp_NCat.SaleReturn)
 

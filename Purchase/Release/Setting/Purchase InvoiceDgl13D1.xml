@@ -246,6 +246,34 @@
     <AggregateFunction />
   </Column>
   <Column>
+    <Name>Disc. %</Name>
+    <Index>74</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Disc. Amt</Name>
+    <Index>75</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Add. Disc. %</Name>
+    <Index>76</Index>
+    <Width>80</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>Add. Disc. Amt</Name>
+    <Index>77</Index>
+    <Width>100</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
     <Name>Amount</Name>
     <Index>35</Index>
     <Width>100</Width>
@@ -277,6 +305,20 @@
     <Name>Remark</Name>
     <Index>39</Index>
     <Width>200</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>L.R. No.</Name>
+    <Index>78</Index>
+    <Width>200</Width>
+    <Visible>True</Visible>
+    <AggregateFunction />
+  </Column>
+  <Column>
+    <Name>L.R. Date</Name>
+    <Index>79</Index>
+    <Width>90</Width>
     <Visible>True</Visible>
     <AggregateFunction />
   </Column>

@@ -219,3 +219,5 @@ D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.vbproj.GenerateResource.
 D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.exe
 D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.xml
 D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.pdb
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchaseInvoiceHeader.resources
+D:\KC\Source\Sqlite\Purchase\Project\obj\Debug\Purchase.FrmPurchInvoiceDirect.resources

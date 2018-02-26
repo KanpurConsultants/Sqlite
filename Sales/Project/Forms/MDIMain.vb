@@ -19,7 +19,7 @@ Public Class MDIMain
         If AgL Is Nothing Then
 
             If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
-                AgIniVar.FOpenConnection("7", "1", False)
+                AgIniVar.FOpenConnection("3", "1", False)
             End If
             AgL.PubDivCode = "D"
             AgL.PubDivName = AgL.Dman_Execute("Select Div_Name From Division Where Div_Code = '" & AgL.PubDivCode & "'", AgL.GcnRead).ExecuteScalar

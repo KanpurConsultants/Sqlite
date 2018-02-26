@@ -1,0 +1,12 @@
+; Field definition file for table: ADORecordset
+CompanyName	string	255	SURYA CARPET PVT. LTD.	
+Add1	string	255	UGAPUR, AURAI - 221301	
+Add2	string	255	Sant Ravidas Nagar	
+Add3	string	255		
+City	string	255	BHADOHI (U.P.)	
+Phone	string	255	0512-2317191	
+Fax	string	255		
+Pin	string	255	221301	
+Email	string	255	-	
+CSTNo	string	255	-	
+TIN	string	255	-	

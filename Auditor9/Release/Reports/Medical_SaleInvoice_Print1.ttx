@@ -1,0 +1,7 @@
+; Field definition file for table: ADORecordset
+SUBCODE	string	255	D1140	
+CURRBILLAMT	number	110	
+OTHERTODAYSBILL	number	0	
+OLDBALANCE	number	17243	
+TODAYSPAYMENT	number	100	
+NETBALANCE	number	17253	

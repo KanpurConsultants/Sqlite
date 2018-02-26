@@ -47,6 +47,10 @@ Public Class FrmPurchInvoice
     Protected Const Col1TotalDeliveryMeasure As String = "Total Delivery Measure"
     Protected Const Col1DeliveryMeasureDecimalPlaces As String = "Delivery Measure Decimal Places"
     Protected Const Col1Rate As String = "Rate"
+    Protected Const Col1DiscountPer As String = "Disc. %"
+    Protected Const Col1DiscountAmount As String = "Disc. Amt"
+    Protected Const Col1AdditionalDiscountPer As String = "Add. Disc. %"
+    Protected Const Col1AdditionalDiscountAmount As String = "Add. Disc. Amt"
     Protected Const Col1Amount As String = "Amount"
     Protected Const Col1ExpiryDate As String = "Expiry Date"
     Protected Const Col1Remark As String = "Remark"
@@ -57,6 +61,8 @@ Public Class FrmPurchInvoice
     Protected Const Col1PurchIndent As String = "PurchIndent"
     Protected Const Col1PurchIndentSr As String = "Purch Indent Sr"
     Protected Const Col1SaleRate As String = "Sale Rate"
+    Protected Const Col1LRNo As String = "L.R. No."
+    Protected Const Col1LRDate As String = "L.R. Date"
 
     Dim IsSameUnit As Boolean = True
     Dim IsSameMeasureUnit As Boolean = True
@@ -74,6 +80,7 @@ Public Class FrmPurchInvoice
     Public WithEvents LblTransporter As Label
     Protected WithEvents TxtAgent As AgControls.AgTextBox
     Protected WithEvents LblAgent As Label
+    Protected WithEvents BtnHeaderDetail As Button
     Dim DGL As New AgControls.AgDataGrid
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
@@ -142,6 +149,7 @@ Public Class FrmPurchInvoice
         Me.LblTransporter = New System.Windows.Forms.Label()
         Me.TxtAgent = New AgControls.AgTextBox()
         Me.LblAgent = New System.Windows.Forms.Label()
+        Me.BtnHeaderDetail = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -358,6 +366,7 @@ Public Class FrmPurchInvoice
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.TP1.Controls.Add(Me.BtnHeaderDetail)
         Me.TP1.Controls.Add(Me.TxtAgent)
         Me.TP1.Controls.Add(Me.LblAgent)
         Me.TP1.Controls.Add(Me.BtnFillPartyDetail)
@@ -415,6 +424,7 @@ Public Class FrmPurchInvoice
         Me.TP1.Controls.SetChildIndex(Me.BtnFillPartyDetail, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblAgent, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtAgent, 0)
+        Me.TP1.Controls.SetChildIndex(Me.BtnHeaderDetail, 0)
         '
         'Topctrl1
         '
@@ -1184,7 +1194,7 @@ Public Class FrmPurchInvoice
         Me.TxtAgent.Location = New System.Drawing.Point(708, 74)
         Me.TxtAgent.MaxLength = 20
         Me.TxtAgent.Name = "TxtAgent"
-        Me.TxtAgent.Size = New System.Drawing.Size(188, 18)
+        Me.TxtAgent.Size = New System.Drawing.Size(105, 18)
         Me.TxtAgent.TabIndex = 3008
         '
         'LblAgent
@@ -1197,6 +1207,21 @@ Public Class FrmPurchInvoice
         Me.LblAgent.Size = New System.Drawing.Size(42, 16)
         Me.LblAgent.TabIndex = 3009
         Me.LblAgent.Text = "Agent"
+        '
+        'BtnHeaderDetail
+        '
+        Me.BtnHeaderDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnHeaderDetail.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnHeaderDetail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnHeaderDetail.Location = New System.Drawing.Point(816, 74)
+        Me.BtnHeaderDetail.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnHeaderDetail.Name = "BtnHeaderDetail"
+        Me.BtnHeaderDetail.Size = New System.Drawing.Size(80, 24)
+        Me.BtnHeaderDetail.TabIndex = 3010
+        Me.BtnHeaderDetail.TabStop = False
+        Me.BtnHeaderDetail.Text = "Detail"
+        Me.BtnHeaderDetail.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnHeaderDetail.UseVisualStyleBackColor = True
         '
         'FrmPurchInvoice
         '
@@ -1423,7 +1448,6 @@ Public Class FrmPurchInvoice
             .AddAgNumberColumn(Dgl1, Col1Qty, 70, 8, 4, False, Col1Qty, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Qty")), Boolean), True, True)
             .AddAgTextColumn(Dgl1, Col1Unit, 50, 0, Col1Unit, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Unit")), Boolean), True)
             .AddAgTextColumn(Dgl1, Col1QtyDecimalPlaces, 50, 0, Col1QtyDecimalPlaces, False, True, False)
-
             .AddAgNumberColumn(Dgl1, Col1MeasurePerPcs, 70, 8, 3, False, Col1MeasurePerPcs, False, True, True)
             .AddAgNumberColumn(Dgl1, Col1PcsPerMeasure, 70, 8, 3, False, Col1PcsPerMeasure, False, True, True)
             .AddAgNumberColumn(Dgl1, Col1TotalDocMeasure, 70, 8, 3, False, Col1TotalDocMeasure, False, True, True)
@@ -1432,13 +1456,18 @@ Public Class FrmPurchInvoice
             .AddAgNumberColumn(Dgl1, Col1TotalMeasure, 70, 8, 3, False, Col1TotalMeasure, False, True, True)
             .AddAgTextColumn(Dgl1, Col1MeasureUnit, 60, 0, Col1MeasureUnit, False, True)
             .AddAgTextColumn(Dgl1, Col1MeasureDecimalPlaces, 50, 0, Col1MeasureDecimalPlaces, False, True, False)
-
             .AddAgNumberColumn(Dgl1, Col1Rate, 80, 8, 3, False, Col1Rate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1DiscountPer, 80, 2, 3, False, Col1DiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1DiscountAmount, 100, 8, 3, False, Col1DiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountPer, 80, 2, 3, False, Col1AdditionalDiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountAmount, 100, 8, 3, False, Col1AdditionalDiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
             .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Amount")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Amount")), Boolean), True)
             .AddAgNumberColumn(Dgl1, Col1MRP, 80, 8, 2, False, Col1MRP, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_MRP")), Boolean), False, True)
             .AddAgNumberColumn(Dgl1, Col1SaleRate, 80, 8, 2, False, Col1SaleRate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_SaleRate")), Boolean), False, True)
             .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ExpiryDate")), Boolean), False)
             .AddAgTextColumn(Dgl1, Col1Remark, 200, 255, Col1Remark, True, False)
+            .AddAgTextColumn(Dgl1, Col1LRNo, 200, 50, Col1LRNo, True, False)
+            .AddAgDateColumn(Dgl1, Col1LRDate, 90, Col1LRDate, True, False)
             .AddAgTextColumn(Dgl1, Col1SalesTaxGroup, 60, 0, Col1SalesTaxGroup, True, False)
             .AddAgTextColumn(Dgl1, Col1Deal, 70, 255, Col1Deal, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Deal")), Boolean), False)
             .AddAgNumberColumn(Dgl1, Col1ProfitMarginPer, 100, 8, 2, False, Col1ProfitMarginPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ProfitMarginPer")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_ProfitMarginPer")), Boolean), True)
@@ -1477,17 +1506,10 @@ Public Class FrmPurchInvoice
 
     Private Sub FrmSaleOrder_BaseEvent_Save_InTrans(ByVal SearchCode As String, ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand) Handles Me.BaseEvent_Save_InTrans
         Dim I As Integer, mSr As Integer
-        Dim mVendorDocDate As String
-        Dim mExpiryDate As String
         Dim bSelectionQry$ = ""
 
         If BtnFillPartyDetail.Tag Is Nothing Then BtnFillPartyDetail.Tag = New FrmPurchPartyDetail
 
-        If TxtVendorDocDate.Text <> "" Then
-            mVendorDocDate = CDate(TxtVendorDocDate.Text).ToString("u")
-        Else
-            mVendorDocDate = ""
-        End If
 
         mQry = " Update PurchInvoice " &
                 " SET  " &
@@ -1508,7 +1530,7 @@ Public Class FrmPurchInvoice
                 " Structure = " & AgL.Chk_Text(TxtStructure.AgSelectedValue) & ", " &
                 " CustomFields = " & AgL.Chk_Text(TxtCustomFields.AgSelectedValue) & ", " &
                 " VendorDocNo = " & AgL.Chk_Text(TxtVendorDocNo.Text) & ", " &
-                " VendorDocDate = " & AgL.Chk_Text(mVendorDocDate) & ", " &
+                " VendorDocDate = " & AgL.Chk_Date(TxtVendorDocDate.Text) & ", " &
                 " Process = " & AgL.Chk_Text(TxtProcess.Tag) & ", " &
                 " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " &
                 " TotalQty = " & Val(LblTotalQty.Text) & ", " &
@@ -1520,6 +1542,14 @@ Public Class FrmPurchInvoice
                 " Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
+
+        If BtnHeaderDetail.Tag IsNot Nothing Then
+            mQry = "Update PurchInvoice Set 
+                Agent = " & AgL.Chk_Text(BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Tag) & ",
+                Transporter = " & AgL.Chk_Text(BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag) & ", 
+                Where DocId = '" & mSearchCode & "' "
+        End If
+
         'mQry = "Delete From PurchInvoiceDetail Where DocId = '" & SearchCode & "'"
         'AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
@@ -1527,11 +1557,10 @@ Public Class FrmPurchInvoice
         For I = 0 To Dgl1.RowCount - 1
             If Dgl1.Item(Col1Item, I).Value <> "" Then
 
-                If Dgl1.Item(Col1ExpiryDate, I).Value <> "" Then
-                    mExpiryDate = CDate(Dgl1.Item(Col1ExpiryDate, I).Value).ToString("u")
-                Else
-                    mExpiryDate = ""
-                End If
+
+
+
+
 
                 If Dgl1.Item(ColSNo, I).Tag Is Nothing And Dgl1.Rows(I).Visible = True Then
                     mSr += 1
@@ -1563,13 +1592,19 @@ Public Class FrmPurchInvoice
                                         " " & Val(Dgl1.Item(Col1TotalRejMeasure, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1TotalMeasure, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1Rate, I).Value) & ", " &
+                                        " " & Val(Dgl1.Item(Col1DiscountPer, I).Value) & ", " &
+                                        " " & Val(Dgl1.Item(Col1DiscountAmount, I).Value) & ", " &
+                                        " " & Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) & ", " &
+                                        " " & Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1Amount, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1SaleRate, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1MRP, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Remark, I).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1LRNo, I).Value) & ", " &
+                                        " " & AgL.Chk_Date(Dgl1.Item(Col1LRDate, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & ", " &
-                                        " " & AgL.Chk_Text(mExpiryDate) & ", " &
+                                        " " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1BillingType, I).Value) & " , " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1DeliveryMeasure, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1DeliveryMeasureMultiplier, I).Value) & ", " &
@@ -1584,7 +1619,7 @@ Public Class FrmPurchInvoice
                 Else
                     If Dgl1.Rows(I).Visible = True Then
                         'If Dgl1.Rows(I).DefaultCellStyle.BackColor <> AgTemplate.ClsMain.Colours.GridRow_Locked Then
-                        mQry = "Update dbo.PurchInvoiceDetail " &
+                        mQry = "Update PurchInvoiceDetail " &
                                 " SET Item = " & AgL.Chk_Text(Dgl1.Item(Col1Item, I).Tag) & ", " &
                                 " Dimension1 = " & AgL.Chk_Text(Dgl1.Item(Col1Dimension1, I).Tag) & ", " &
                                 " Dimension2 = " & AgL.Chk_Text(Dgl1.Item(Col1Dimension2, I).Tag) & ", " &
@@ -1601,10 +1636,16 @@ Public Class FrmPurchInvoice
                                 " 	TotalDocMeasure = " & Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) & ", " &
                                 " 	TotalMeasure = " & Val(Dgl1.Item(Col1TotalMeasure, I).Value) & ", " &
                                 " 	Rate = " & Val(Dgl1.Item(Col1Rate, I).Value) & ", " &
+                                " 	DiscountPer = " & Val(Dgl1.Item(Col1DiscountPer, I).Value) & ", " &
+                                " 	DiscountAmount = " & Val(Dgl1.Item(Col1DiscountAmount, I).Value) & ", " &
+                                " 	AdditionalDiscountPer = " & Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) & ", " &
+                                " 	AdditionalDiscountAmount = " & Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value) & ", " &
                                 " 	Amount = " & Val(Dgl1.Item(Col1Amount, I).Value) & ", " &
                                 " 	Sale_Rate = " & Val(Dgl1.Item(Col1SaleRate, I).Value) & ", " &
                                 " 	MRP = " & Val(Dgl1.Item(Col1MRP, I).Value) & ", " &
                                 " 	Remark = " & AgL.Chk_Text(Dgl1.Item(Col1Remark, I).Value) & ", " &
+                                " 	LRNo = " & AgL.Chk_Text(Dgl1.Item(Col1LRNo, I).Value) & ", " &
+                                " 	LRDate = " & AgL.Chk_Date(Dgl1.Item(Col1LRDate, I).Value) & ", " &
                                 " 	LotNo = " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " &
                                 " 	PurchIndent = " & AgL.Chk_Text(Dgl1.Item(Col1PurchIndent, I).Tag) & ", " &
                                 " 	PurchIndentSr = " & AgL.Chk_Text(Dgl1.Item(Col1PurchIndentSr, I).Value) & ", " &
@@ -1621,7 +1662,7 @@ Public Class FrmPurchInvoice
                                 " 	TotalDocDeliveryMeasure = " & Val(Dgl1.Item(Col1TotalDocDeliveryMeasure, I).Value) & ", " &
                                 " 	TotalRejDeliveryMeasure = " & Val(Dgl1.Item(Col1TotalRejDeliveryMeasure, I).Value) & ", " &
                                 " 	TotalDeliveryMeasure = " & Val(Dgl1.Item(Col1TotalDeliveryMeasure, I).Value) & ", " &
-                                " 	ExpiryDate = " & AgL.Chk_Text(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
+                                " 	ExpiryDate = " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
                                 " 	TotalFreeMeasure = " & Val(Dgl1.Item(Col1TotalFreeMeasure, I).Value) & ", " &
                                 " 	TotalFreeDeliveryMeasure = " & Val(Dgl1.Item(Col1TotalFreeDeliveryMeasure, I).Value) & ", " &
                                 " 	Deal = " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & ", " &
@@ -1641,7 +1682,7 @@ Public Class FrmPurchInvoice
         mQry = "Insert Into PurchInvoiceDetail(DocId, Sr, PurchChallan, PurchChallanSr, PurchInvoice, PurchInvoiceSr, " &
                 " Item_Uid, Item, Dimension1, Dimension2, Specification, BaleNo, SalesTaxGroupItem, " &
                 " ProfitMarginPer, DocQty, FreeQty, RejQty, Qty, Unit, MeasurePerPcs, PcsPerMeasure, MeasureUnit, TotalDocMeasure, TotalFreeMeasure, TotalRejMeasure, " &
-                " TotalMeasure, Rate, Amount, Sale_Rate, MRP, Remark, LotNo, Deal, ExpiryDate, BillingType, " &
+                " TotalMeasure, Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, AdditionalDiscountAmount, Amount, Sale_Rate, MRP, Remark, LRNo, LRDate, LotNo, Deal, ExpiryDate, BillingType, " &
                 " DeliveryMeasure, DeliveryMeasureMultiplier, DeliveryMeasurePerPcs, TotalDocDeliveryMeasure, TotalFreeDeliveryMeasure, TotalRejDeliveryMeasure, " &
                 " TotalDeliveryMeasure, PurchIndent, " & AgCalcGrid1.FLineTableFieldNameStr() & ") "
         mQry = mQry + bSelectionQry
@@ -1660,6 +1701,10 @@ Public Class FrmPurchInvoice
             AgCL.GridSetiingWriteXml(Me.Text & Dgl1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, Dgl1)
         End If
     End Sub
+
+
+
+
 
     Private Sub FrmSaleOrder_BaseFunction_MoveRec(ByVal SearchCode As String) Handles Me.BaseFunction_MoveRec
         Dim I As Integer
@@ -1833,16 +1878,19 @@ Public Class FrmPurchInvoice
                             Dgl1.Item(Col1TotalRejMeasure, I).Value = Format(AgL.VNull(.Rows(I)("TotalRejMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1TotalMeasure, I).Value = Format(AgL.VNull(.Rows(I)("TotalMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1Rate, I).Value = AgL.VNull(.Rows(I)("Rate"))
+                            Dgl1.Item(Col1DiscountPer, I).Value = AgL.VNull(.Rows(I)("DiscountPer"))
+                            Dgl1.Item(Col1DiscountAmount, I).Value = AgL.VNull(.Rows(I)("DiscountAmount"))
+                            Dgl1.Item(Col1AdditionalDiscountPer, I).Value = AgL.VNull(.Rows(I)("AdditionalDiscountPer"))
+                            Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = AgL.VNull(.Rows(I)("AdditionalDiscountAmount"))
                             Dgl1.Item(Col1Amount, I).Value = Format(AgL.VNull(.Rows(I)("Amount")), "0.00")
                             Dgl1.Item(Col1SaleRate, I).Value = AgL.VNull(.Rows(I)("Sale_Rate"))
                             Dgl1.Item(Col1MRP, I).Value = AgL.VNull(.Rows(I)("MRP"))
                             Dgl1.Item(Col1ExpiryDate, I).Value = AgL.XNull(.Rows(I)("ExpiryDate"))
-
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
+                            Dgl1.Item(Col1LRNo, I).Value = AgL.XNull(.Rows(I)("LRNo"))
+                            Dgl1.Item(Col1LRDate, I).Value = AgL.XNull(.Rows(I)("LRDate"))
                             Dgl1.Item(Col1Deal, I).Value = AgL.XNull(.Rows(I)("Deal"))
-
                             Dgl1.Item(Col1BillingType, I).Value = AgL.XNull(.Rows(I)("BillingType"))
-
                             Dgl1.Item(Col1PurchIndent, I).Value = AgL.XNull(.Rows(I)("PurchIndent"))
 
                             Dgl1.Item(Col1DeliveryMeasure, I).Value = AgL.XNull(.Rows(I)("DeliveryMeasure"))
@@ -2217,12 +2265,22 @@ Public Class FrmPurchInvoice
                     Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
                 End If
 
+                If Val(Dgl1.Item(Col1DiscountPer, I).Value) > 0 Then
+                    Dgl1.Item(Col1DiscountAmount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1DiscountPer, I).Value) / 100
+                End If
+
+                If Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) > 0 Then
+                    Dgl1.Item(Col1AdditionalDiscountAmount, I).Value = Val(Dgl1.Item(Col1DiscountAmount, I).Value) * Val(Dgl1.Item(Col1AdditionalDiscountPer, I).Value) / 100
+                End If
+
+                Dgl1.Item(Col1Amount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) - Val(Dgl1.Item(Col1DiscountAmount, I).Value) - Val(Dgl1.Item(Col1AdditionalDiscountAmount, I).Value)
+
                 'Footer Calculation
                 LblTotalQty.Text = Val(LblTotalQty.Text) + Val(Dgl1.Item(Col1Qty, I).Value)
-                LblTotalMeasure.Text = Val(LblTotalMeasure.Text) + Val(Dgl1.Item(Col1TotalMeasure, I).Value)
-                LblTotalDeliveryMeasure.Text = Val(LblTotalDeliveryMeasure.Text) + Val(Dgl1.Item(Col1TotalDeliveryMeasure, I).Value)
-                LblTotalAmount.Text = Val(LblTotalAmount.Text) + Val(Dgl1.Item(Col1Amount, I).Value)
-            End If
+                    LblTotalMeasure.Text = Val(LblTotalMeasure.Text) + Val(Dgl1.Item(Col1TotalMeasure, I).Value)
+                    LblTotalDeliveryMeasure.Text = Val(LblTotalDeliveryMeasure.Text) + Val(Dgl1.Item(Col1TotalDeliveryMeasure, I).Value)
+                    LblTotalAmount.Text = Val(LblTotalAmount.Text) + Val(Dgl1.Item(Col1Amount, I).Value)
+                End If
         Next
         AgCalcGrid1.AgPostingGroupSalesTaxParty = TxtSalesTaxGroupParty.AgSelectedValue
         AgCalcGrid1.AgVoucherCategory = "PURCH"
@@ -3806,4 +3864,72 @@ Public Class FrmPurchInvoice
             End If
         End If
     End Sub
+
+    Private Sub BtnHeaderDetail_Click(sender As Object, e As EventArgs) Handles BtnHeaderDetail.Click
+        Dim FrmObj As FrmPurchaseInvoiceHeader = Nothing
+        If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
+            FMoveRecPurchaseHeaderDetail(mSearchCode)
+            BtnHeaderDetail.Tag.ShowDialog()
+        Else
+            FillUnitConversionDetail(True)
+        End If
+    End Sub
+
+    Public Sub FMoveRecPurchaseHeaderDetail(ByVal SearchCode As String)
+        Dim DtTemp As DataTable = Nothing
+        Dim I As Integer = 0
+        Try
+            BtnHeaderDetail.Tag = FunRetNewUnitConversionObject()
+            BtnHeaderDetail.Tag.Dgl1.Readonly = IIf(AgL.StrCmp(Topctrl1.Mode, "Browse"), True, False)
+            mQry = " SELECT H.*, 
+                    Agent.Name as AgentName, Transporter.Name as TransporterName
+                    FROM PurchInvoice H 
+                     LEFT JOIN viewHelpSubgroup Agent On H.Agent= Agent.Code  
+                     LEFT JOIN viewHelpSubgroup Transporter On H.Transporter = Transporter.Code 
+                     WHERE H.DocId = '" & SearchCode & "' "
+            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+            With DtTemp
+
+                'BtnHeaderDetail.Tag.Dgl1.RowCount = 1 : BtnHeaderDetail.Tag.Dgl1.Rows.Clear()
+                If DtTemp.Rows.Count > 0 Then
+                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
+                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Value = AgL.XNull(.Rows(0)("AgentName"))
+                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag = AgL.XNull(.Rows(0)("Transporter"))
+                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Value = AgL.XNull(.Rows(0)("TransporterName"))
+
+                    BtnHeaderDetail.Tag.EntryMode = Topctrl1.Mode
+                End If
+            End With
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub FillUnitConversionDetail(ByVal ShowWindow As Boolean)
+        If BtnHeaderDetail.Tag Is Nothing Then
+            FMoveRecPurchaseHeaderDetail(mSearchCode)
+            If BtnHeaderDetail.Tag Is Nothing Then
+                BtnHeaderDetail.Tag = FunRetNewUnitConversionObject()
+            End If
+        End If
+
+        BtnHeaderDetail.Tag.Dgl1.Readonly = IIf(AgL.StrCmp(Topctrl1.Mode, "Browse"), True, False)
+        BtnHeaderDetail.Tag.EntryMode = Topctrl1.Mode
+
+        If ShowWindow = True Then BtnHeaderDetail.Tag.ShowDialog()
+    End Sub
+
+    Private Function FunRetNewUnitConversionObject() As Object
+        Dim FrmObj As FrmPurchaseInvoiceHeader
+        Try
+            FrmObj = New FrmPurchaseInvoiceHeader
+            FrmObj.IniGrid()
+            FunRetNewUnitConversionObject = FrmObj
+        Catch ex As Exception
+            FunRetNewUnitConversionObject = Nothing
+            MsgBox(ex.Message)
+        End Try
+    End Function
 End Class
