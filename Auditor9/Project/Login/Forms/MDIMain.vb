@@ -1,4 +1,3 @@
-Imports System.Windows.Forms
 
 Public Class MDIMain
     Public StrCurrentModule As String
@@ -13,13 +12,10 @@ Public Class MDIMain
 
     Dim Cls_Customised As New Customised.ClsMain(AgL)
     Dim Cls_Accounts As New AgAccounts.ClsMain(AgL)
-    Dim Cls_Purchase As New Purchase.ClsMain(AgL)
-    Dim Cls_Sales As New Sales.ClsMain(AgL)
-    Dim Cls_Store As New Store.ClsMain(AgL)
     Dim Cls_Utility As New Utility.ClsMain(AgL)
     Dim Cls_AgTemplate As New AgTemplate.ClsMain(AgL)
-    Dim Cls_AgStructure As New AgStructure.ClsMain(AgL)
-    Dim Cls_AgCustomFields As New AgCustomFields.ClsMain(AgL)
+    'Dim Cls_AgStructure As New AgStructure.ClsMain(AgL)
+    'Dim Cls_AgCustomFields As New AgCustomFields.ClsMain(AgL)
 
     Dim ClsMF As New AgLibrary.ClsMDIFunctions(AgL)
 
@@ -32,18 +28,6 @@ Public Class MDIMain
                 CFOpen = Nothing
             Case Customised.ClsMain.ModuleName.ToUpper
                 Dim CFOpen As New Customised.ClsFunction
-                FOpenForm = CFOpen.FOpen(StrMnuName, StrMnuText)
-                CFOpen = Nothing
-            Case Sales.ClsMain.ModuleName.ToUpper
-                Dim CFOpen As New Sales.ClsFunction
-                FOpenForm = CFOpen.FOpen(StrMnuName, StrMnuText)
-                CFOpen = Nothing
-            Case Purchase.ClsMain.ModuleName.ToUpper
-                Dim CFOpen As New Purchase.ClsFunction
-                FOpenForm = CFOpen.FOpen(StrMnuName, StrMnuText)
-                CFOpen = Nothing
-            Case Store.ClsMain.ModuleName.ToUpper
-                Dim CFOpen As New Store.ClsFunction
                 FOpenForm = CFOpen.FOpen(StrMnuName, StrMnuText)
                 CFOpen = Nothing
 
@@ -94,26 +78,7 @@ Public Class MDIMain
                         FrmObj = Cls_Utility.CFOpen.FOpen(sender.NAME, sender.TEXT, False)
                     End If
 
-                Case Store.ClsMain.ModuleName.ToUpper
-                    If StrType.Trim = "" Then
-                        FrmObj = Cls_Store.CFOpen.FOpen(sender.NAME, sender.TEXT, True)
-                    ElseIf Not AgL.StrCmp(StrType.Trim, "CWDS") Then
-                        FrmObj = Cls_Store.CFOpen.FOpen(sender.NAME, sender.TEXT, False)
-                    End If
 
-                Case Purchase.ClsMain.ModuleName.ToUpper
-                    If StrType.Trim = "" Then
-                        FrmObj = Cls_Purchase.CFOpen.FOpen(sender.NAME, sender.TEXT, True)
-                    ElseIf Not AgL.StrCmp(StrType.Trim, "CWDS") Then
-                        FrmObj = Cls_Purchase.CFOpen.FOpen(sender.NAME, sender.TEXT, False)
-                    End If
-
-                Case Sales.ClsMain.ModuleName.ToUpper
-                    If StrType.Trim = "" Then
-                        FrmObj = Cls_Sales.CFOpen.FOpen(sender.NAME, sender.TEXT, True)
-                    ElseIf Not AgL.StrCmp(StrType.Trim, "CWDS") Then
-                        FrmObj = Cls_Sales.CFOpen.FOpen(sender.NAME, sender.TEXT, False)
-                    End If
 
 
                 Case Else
@@ -191,7 +156,7 @@ Public Class MDIMain
     End Function
 
     Private Sub FManageMDI()
-        Dim GCnCmd As New SqlClient.SqlCommand
+        Dim GCnCmd As New SQLite.SQLiteCommand
 
         If Not (AgL.StrCmp("SA", AgL.PubUserName) Or AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName)) Then MsgBox("Permission Denied!...") : Exit Sub
 
@@ -209,24 +174,9 @@ Public Class MDIMain
         CustomisedMdi.Visible = True
         FGenerate_UP(CustomisedMdi, Customised.ClsMain.ModuleName, 1, Customised.ClsMain.ModuleName, GCnCmd)
 
-        Dim PurchaseMdi As New Purchase.MDIMain
-        PurchaseMdi.Visible = True
-        PurchaseMdi.FAllowedModules(PurchaseMdi, False, False, False, False, False, False, False, False, False, False, True)
-        FGenerate_UP(PurchaseMdi, Purchase.ClsMain.ModuleName, 2, Purchase.ClsMain.ModuleName, GCnCmd)
-
-        Dim SalesMdi As New Sales.MDIMain
-        SalesMdi.Visible = True
-        SalesMdi.FAllowedModules(SalesMdi, False, False, False, False, False, False, False, False, False, False, False, False, True)
-        FGenerate_UP(SalesMdi, Sales.ClsMain.ModuleName, 3, Sales.ClsMain.ModuleName, GCnCmd)
-
-        Dim StoreMdi As New Store.MDIMain
-        StoreMdi.Visible = True
-        FGenerate_UP(StoreMdi, Store.ClsMain.ModuleName, 4, Store.ClsMain.ModuleName, GCnCmd)
-
         Dim RugUtilityMdi As New Utility.MDIMain
         RugUtilityMdi.Visible = True
         FGenerate_UP(RugUtilityMdi, "Utility", 5, "Utility", GCnCmd)
-
 
         ClsMF.FUpdateUserGroupLevels(AgL.GCn, GCnCmd)
         ClsMF.FManageEntryPointPermission(AgL.GCn, GCnCmd)
@@ -235,7 +185,8 @@ Public Class MDIMain
     End Sub
 
     Private Sub FManageUserControl()
-        Dim GCnCmd As New SqlClient.SqlCommand
+        Dim GCnCmd As New SQLite.SQLiteCommand
+
 
         If Not (AgL.StrCmp("SA", AgL.PubUserName) Or AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName)) Then MsgBox("Permission Denied!...") : Exit Sub
 
@@ -248,9 +199,6 @@ Public Class MDIMain
 
         ClsMF.FGenerate_UP_Control(Cls_Customised, Customised.ClsMain.ModuleName, GCnCmd)
         ClsMF.FGenerate_UP_Control(Cls_Utility, "Utility", GCnCmd)
-        ClsMF.FGenerate_UP_Control(Cls_Store, Store.ClsMain.ModuleName, GCnCmd)
-        ClsMF.FGenerate_UP_Control(Cls_Purchase, Purchase.ClsMain.ModuleName, GCnCmd)
-        ClsMF.FGenerate_UP_Control(Cls_Sales, Sales.ClsMain.ModuleName, GCnCmd)
         ClsMF.FGenerate_UP_Control(Cls_Accounts, "ACCOUNTS", GCnCmd)
         MsgBox("Process Completed.", MsgBoxStyle.Information, AgLibrary.ClsMain.PubMsgTitleInfo)
     End Sub
@@ -348,30 +296,8 @@ Public Class MDIMain
                 End If
 
                 'AgL.PubMdlTable(1) = New AgLibrary.ClsMain.LITable
-                Cls_AgStructure.UpdateTableStructure(AgL.PubMdlTable)
-                Cls_AgCustomFields.UpdateTableStructure(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructure(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructurePurchase(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructure_Production(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructureExport(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructureForm(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructureJob(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructureSales(AgL.PubMdlTable)
-                Cls_Customised.UpdateTableStructure(AgL.PubMdlTable)
-                Cls_Utility.UpdateTableStructure()
-                Cls_Store.UpdateTableStructure(AgL.PubMdlTable)
-                Cls_AgTemplate.UpdateTableStructureFA(AgL.PubMdlTable)                
-                AgL.FExecuteDBScript(AgL.PubMdlTable, AgL.GCn)                
-                Cls_AgTemplate.UpdateTableInitialiser()
-                Cls_Customised.UpdateTableInitialiser()
-                Cls_AgStructure.UpdateTableInitialiser()
-                Cls_AgCustomFields.UpdateTableInitialiser()
-                Cls_Store.UpdateTableInitialiser()
 
-                AgL.PubMdlTable = Nothing
-
-                Cls_AgStructure.UpdateTableStructure(AgL.PubMdlTable)
-                AgL.FExecuteDBScript(AgL.PubMdlTable, AgL.GCn)
+                Cls_Customised.UpdateTableStructure()
 
                 MsgBox("Please Reload the Software!...") : End
 
@@ -556,8 +482,8 @@ Public Class MDIMain
         End If
     End Sub
 
-    Public Sub FGenerate_UP(ByVal ObjFor As Object, ByVal StrParent As String, _
-                ByVal IntSno As Integer, ByVal StrMnuPath As String, ByVal GCnCmd As SqlClient.SqlCommand)
+    Public Sub FGenerate_UP(ByVal ObjFor As Object, ByVal StrParent As String,
+                ByVal IntSno As Integer, ByVal StrMnuPath As String, ByVal GCnCmd As SQLite.SQLiteCommand)
         Dim Mnu As Object
         For Each Mnu In ObjFor.Controls
             If Mnu.GetType.ToString = "System.Windows.Forms.MenuStrip" Then
@@ -566,8 +492,8 @@ Public Class MDIMain
         Next
     End Sub
 
-    Public Function FRotateAllMenuItems(ByRef MnuStrp As MenuStrip, ByVal StrMnuMain As String, ByVal StrModule As String, ByVal StrParent As String, _
-    ByVal IntSno As Integer, ByVal GCnCmd As SqlClient.SqlCommand) As Integer
+    Public Function FRotateAllMenuItems(ByRef MnuStrp As MenuStrip, ByVal StrMnuMain As String, ByVal StrModule As String, ByVal StrParent As String,
+    ByVal IntSno As Integer, ByVal GCnCmd As SQLite.SQLiteCommand) As Integer
         Dim TSI_Main As ToolStripItem
         Dim TSMI_Main As ToolStripMenuItem
         Dim IntRtn As Integer
@@ -606,9 +532,9 @@ Public Class MDIMain
         Return IntSno
     End Function
 
-    Public Function FRotateAllMenuItems(ByRef Menus As ToolStripItemCollection, ByVal StrMnuMain As String, _
-                                        ByVal StrModule As String, ByVal StrParent As String, _
-                                        ByVal IntSno As Integer, ByVal GCnCmd As SqlClient.SqlCommand) As Integer
+    Public Function FRotateAllMenuItems(ByRef Menus As ToolStripItemCollection, ByVal StrMnuMain As String,
+                                        ByVal StrModule As String, ByVal StrParent As String,
+                                        ByVal IntSno As Integer, ByVal GCnCmd As SQLite.SQLiteCommand) As Integer
         Dim TSI_Main As ToolStripItem
         Dim TSMI_Main As ToolStripMenuItem
         Dim ReportFor As String
@@ -638,16 +564,16 @@ Public Class MDIMain
         Return IntSno
     End Function
 
-    Public Sub FInsertUP(ByVal StrParent As String, ByVal StrMnuText As String, ByVal StrMnuName As String, _
-                         ByVal StrMnuModule As String, ByVal IntSNo As Integer, ByVal IntLevel As String, _
+    Public Sub FInsertUP(ByVal StrParent As String, ByVal StrMnuText As String, ByVal StrMnuName As String,
+                         ByVal StrMnuModule As String, ByVal IntSNo As Integer, ByVal IntLevel As String,
                          ByVal ReportFor As String, ByVal ControlPermissionGroups As String)
-        Dim GCnCmd As New SqlClient.SqlCommand
+        Dim GCnCmd As New SQLite.SQLiteCommand
         Static Dim I As Integer
 
         I = I + 1
-        GCnCmd.Connection = Agl.ECompConn
-        GCnCmd.CommandText = "Insert Into User_Permission(UserName,Parent,MnuText,MnuName,Permission,SNo,MnuModule,MnuLevel,ReportFor, ControlPermissionGroups,MainStreamCode, GroupLevel, Active) Values " & _
-                                     "('SA','" & StrParent & "','" & Replace(StrMnuText, "&", "") & "','" & StrMnuName & "','AEDP'," & I & ",'" & StrMnuModule & "'," & IntLevel & "," & Agl.Chk_Text(ReportFor) & ", " & Agl.Chk_Text(ControlPermissionGroups) & ", " & Agl.Chk_Text(MnuMainStreamCode) & ", " & MnuGroupLevel & ", 'Y')"
+        GCnCmd.Connection = AgL.ECompConn
+        GCnCmd.CommandText = "Insert Into User_Permission(UserName,Parent,MnuText,MnuName,Permission,SNo,MnuModule,MnuLevel,ReportFor, ControlPermissionGroups,MainStreamCode, GroupLevel, Active,RowId) Values " &
+                                     "('SA','" & StrParent & "','" & Replace(StrMnuText, "&", "") & "','" & StrMnuName & "','AEDP'," & I & ",'" & StrMnuModule & "'," & IntLevel & "," & AgL.Chk_Text(ReportFor) & ", " & AgL.Chk_Text(ControlPermissionGroups) & ", " & AgL.Chk_Text(MnuMainStreamCode) & ", " & MnuGroupLevel & ", 'Y'," & I & ")"
         GCnCmd.ExecuteNonQuery()
 
         If StrParent <> "" Then

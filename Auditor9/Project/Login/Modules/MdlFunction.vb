@@ -9,7 +9,7 @@ Module MdlFunction
         Dim StrGetPassword As String = ""
         Dim OLECmd As New OleDb.OleDbCommand
         Dim BlnRtn As Boolean
-        Dim ECmd As SqlClient.SqlCommand
+        Dim ECmd As Sqlite.SqliteCommand
 
         BlnRtn = False
         Try
@@ -124,34 +124,34 @@ Module MdlFunction
         Dim TSMIParent As ToolStripMenuItem
 
         Dim mQry$
-        mQry = "SELECT P.MnuModule, P.MnuName, P.MnuText, P.MainStreamCode, P.ReportFor     FROM User_Permission P WHERE P.UserName='" & IIf(AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName), "SA", AgL.PubUserName) & "' And IsNull(P.Active,'Y')='Y' And IsNull(P.Permission,'****') <> '****' ORDER BY P.MainStreamCode "
+        mQry = "SELECT P.MnuModule, P.MnuName, P.MnuText, P.MainStreamCode, P.ReportFor     FROM User_Permission P WHERE P.UserName='" & IIf(AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName), "SA", AgL.PubUserName) & "' And IfNull(P.Active,'Y')='Y' And IfNull(P.Permission,'****') <> '****' ORDER BY P.MainStreamCode "
         DtMenu = AgL.FillData(mQry, AgL.GCn).Tables(0)
 
         FRemoveMenu(MD)
 
 
-        DTTemp = AgL.FillData("Select P.UserName+P.MnuName+P.MnuModule as SearchKey, 	P.UserName,P.MnuModule,P.MnuName,P.MnuText,P.SNo,P.MnuLevel,P.Parent,P.Permission,P.ReportFor,P.Active,P.RowId,P.UpLoadDate,User_Module.MainStreamCode,User_Module.GroupLevel From User_Permission P Left Join (Select MnuName+MnuModule As SearchKey,MainStreamCode, GroupLevel From User_Permission Where UserName='SA') As User_Module On P.MnuName+P.MnuModule=User_Module.SearchKey Where P.UserName='" & IIf(AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName), "SA", AgL.PubUserName) & "' And IsNull(P.Active,'Y')='Y' And IsNull(P.Permission,'****') <> '****' Order By User_Module.MainStreamCode", AgL.ECompConn).Tables(0)
+        DTTemp = AgL.FillData("Select P.UserName||P.MnuName||P.MnuModule as SearchKey, 	P.UserName,P.MnuModule,P.MnuName,P.MnuText,P.SNo,P.MnuLevel,P.Parent,P.Permission,P.ReportFor,P.Active,P.RowId,P.UpLoadDate,User_Module.MainStreamCode,User_Module.GroupLevel From User_Permission P Left Join (Select MnuName||MnuModule As SearchKey,MainStreamCode, GroupLevel From User_Permission Where UserName='SA') As User_Module On P.MnuName||P.MnuModule=User_Module.SearchKey Where P.UserName='" & IIf(AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName), "SA", AgL.PubUserName) & "' And IfNull(P.Active,'Y')='Y' And IfNull(P.Permission,'****') <> '****' Order By User_Module.MainStreamCode", AgL.ECompConn).Tables(0)
 
         Try
             For I = 0 To DTTemp.Rows.Count - 1
-                StrModule = AgL.XNull(DTTemp.Rows(I)("MnuModule"))
-                If StrModule = "Utility" And AgL.XNull(DTTemp.Rows(I).Item("MnuName")) = "MnuStructure" Then
+                StrModule = AgL.XNull(DTTemp.Rows(I)("P.MnuModule"))
+                If StrModule = "Utility" And AgL.XNull(DTTemp.Rows(I).Item("P.MnuName")) = "MnuStructure" Then
                     Exit For
                 End If
-                Select Case Len(AgL.XNull(DTTemp.Rows(I)("MainStreamCode")))
+                Select Case Len(AgL.XNull(DTTemp.Rows(I)("User_Module.MainStreamCode")))
                     Case 3
-                        mParentMenu = AgL.XNull(DTTemp.Rows(I).Item("MnuName"))
-                        MenuStrip1.Items.Add(AgL.XNull(DTTemp.Rows(I).Item("MnuText")))
-                        MenuStrip1.Items(Cnt).Name = AgL.XNull(DTTemp.Rows(I).Item("MnuName"))
-                        MenuStrip1.Items(Cnt).Tag = AgL.XNull(DTTemp.Rows(I).Item("ReportFor"))
+                        mParentMenu = AgL.XNull(DTTemp.Rows(I).Item("P.MnuName"))
+                        MenuStrip1.Items.Add(AgL.XNull(DTTemp.Rows(I).Item("P.MnuText")))
+                        MenuStrip1.Items(Cnt).Name = AgL.XNull(DTTemp.Rows(I).Item("P.MnuName"))
+                        MenuStrip1.Items(Cnt).Tag = AgL.XNull(DTTemp.Rows(I).Item("P.ReportFor"))
                         MenuStrip1.Items(Cnt).ToolTipText = StrModule
                         FAddHandler(MenuStrip1.Items(Cnt), MD)
-                        MD.AgSideBar1.Buttons.Add(AgL.XNull(DTTemp.Rows(I).Item("MnuText")))
-                        MD.AgSideBar1.Buttons(Cnt).Tag = AgL.XNull(DTTemp.Rows(I).Item("MainStreamCode"))
-                        ArrButtonModuleName(Cnt) = AgL.XNull(DTTemp.Rows(I).Item("MnuModule"))
+                        MD.AgSideBar1.Buttons.Add(AgL.XNull(DTTemp.Rows(I).Item("P.MnuText")))
+                        MD.AgSideBar1.Buttons(Cnt).Tag = AgL.XNull(DTTemp.Rows(I).Item("User_Module.MainStreamCode"))
+                        ArrButtonModuleName(Cnt) = AgL.XNull(DTTemp.Rows(I).Item("p.MnuModule"))
                         ReDim Preserve ArrButtonModuleName(UBound(ArrButtonModuleName) + 1)
                         TSMIParent = DirectCast(MenuStrip1.Items(Cnt), ToolStripMenuItem)
-                        FAddChildMenu(TSMIParent, AgL.XNull(DTTemp.Rows(I).Item("MnuName")), DTTemp, StrModule, MD)
+                        FAddChildMenu(TSMIParent, AgL.XNull(DTTemp.Rows(I).Item("p.MnuName")), DTTemp, StrModule, MD)
                         Cnt += 1
                 End Select
             Next
@@ -160,8 +160,8 @@ Module MdlFunction
             If MD.AgSideBar1.Buttons.Count > 0 Then
                 MD.AgSideBar1.Height = MD.AgSideBar1.Buttons(0).Height * MD.AgSideBar1.Buttons.Count + 100
                 If DTTemp.Rows.Count > 0 Then
-                    MD.TreeView1.Tag = AgL.XNull(DTTemp.Rows(0)("MnuModule"))
-                    MD.Fill_PermissionTree(DTTemp.Rows(0)("MnuModule"), MD.AgSideBar1.Buttons(0).Tag)
+                    MD.TreeView1.Tag = AgL.XNull(DTTemp.Rows(0)("P.MnuModule"))
+                    MD.Fill_PermissionTree(DTTemp.Rows(0)("P.MnuModule"), MD.AgSideBar1.Buttons(0).Tag)
                 End If
             End If
         Catch ex As Exception
@@ -194,23 +194,23 @@ Module MdlFunction
             DtSubMenu1.PrimaryKey = PkCol1
 
             DtSubMenu.DefaultView.RowFilter = Nothing
-            DtSubMenu.DefaultView.RowFilter = "[Parent] = '" + ParentName + "' And [MnuModule] = '" & StrModule & "' "
+            DtSubMenu.DefaultView.RowFilter = "[P.Parent] = '" + ParentName + "' And [P.MnuModule] = '" & StrModule & "' "
 
             For I = 0 To DtSubMenu.DefaultView.Count - 1
-                StrTemp = AgL.XNull(DtSubMenu.DefaultView.Item(I)("MnuText"))
+                StrTemp = AgL.XNull(DtSubMenu.DefaultView.Item(I)("P.MnuText"))
                 TSMI_Item = New ToolStripMenuItem(StrTemp)
-                StrTemp = AgL.XNull(DtSubMenu.DefaultView.Item(I)("MnuName"))
+                StrTemp = AgL.XNull(DtSubMenu.DefaultView.Item(I)("P.MnuName"))
                 TSMI_Item.Name = StrTemp
-                TSMI_Item.Tag = AgL.XNull(DtSubMenu.DefaultView.Item(I)("ReportFor"))
+                TSMI_Item.Tag = AgL.XNull(DtSubMenu.DefaultView.Item(I)("P.ReportFor"))
                 TSMI_Item.ToolTipText = StrModule
                 FAddHandler(TSMI_Item, MD)
 
 
                 DtSubMenu1.DefaultView.RowFilter = Nothing
-                DtSubMenu1.DefaultView.RowFilter = "[Parent] = '" + TSMI_Item.Name + "' And [MnuModule] = '" & StrModule & "' "
+                DtSubMenu1.DefaultView.RowFilter = "[P.Parent] = '" + TSMI_Item.Name + "' And [P.MnuModule] = '" & StrModule & "' "
 
                 If DtSubMenu1.DefaultView.Count > 0 Then
-                    FAddChildMenu(TSMI_Item, AgL.XNull(DtSubMenu.DefaultView.Item(I)("MnuName")), DtMenu, StrModule, MD)
+                    FAddChildMenu(TSMI_Item, AgL.XNull(DtSubMenu.DefaultView.Item(I)("P.MnuName")), DtMenu, StrModule, MD)
                 End If
                 TSMI.DropDownItems.Add(TSMI_Item)
             Next
@@ -250,7 +250,7 @@ Module MdlFunction
         Dim TSMI_Item As ToolStripMenuItem
         Dim StrTemp As String
 
-        StrTemp = "Select * From User_Permission Where UserName='" & StrUser & "' And Parent='" & StrParent & "' And MnuModule='" & StrModule & "' And IsNull(Active,'Y')='Y'  And IsNull(Permission,'****') <> '****'  Order By SNo"
+        StrTemp = "Select * From User_Permission Where UserName='" & StrUser & "' And Parent='" & StrParent & "' And MnuModule='" & StrModule & "' And IfNull(Active,'Y')='Y'  And IfNull(Permission,'****') <> '****'  Order By SNo"
         DTTemp = AgL.FillData(StrTemp, AgL.ECompConn).Tables(0)
         For I = 0 To DTTemp.Rows.Count - 1
             Try
@@ -263,7 +263,7 @@ Module MdlFunction
                 FAddHandler(TSMI_Item, MD)
 
                 DTTemp1.Clear()
-                DTTemp1 = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And MnuName='" & AgL.XNull(DTTemp.Rows(I).Item("MnuName")) & "' And MnuModule='" & StrModule & "' And IsNull(Active,'Y')='Y' And IsNull(Permission,'****') <> '****'  Order By SNo", AgL.ECompConn).Tables(0)
+                DTTemp1 = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And MnuName='" & AgL.XNull(DTTemp.Rows(I).Item("MnuName")) & "' And MnuModule='" & StrModule & "' And IfNull(Active,'Y')='Y' And IfNull(Permission,'****') <> '****'  Order By SNo", AgL.ECompConn).Tables(0)
                 'If DTTemp1.Rows.Count > 0 Then
                 'FAddTSMI_DropDown(TSMI_Item, StrUser, AgL.XNull(DTTemp.Rows(I).Item("MnuName")), StrModule, MD)
                 'End If
@@ -277,7 +277,7 @@ Module MdlFunction
         Next
     End Sub
 
-    Private Sub FAddTSMI_DropDown(ByVal TSMI_Var As ToolStripMenuItem, ByVal StrUser As String, _
+    Private Sub FAddTSMI_DropDown(ByVal TSMI_Var As ToolStripMenuItem, ByVal StrUser As String,
         ByVal StrParent As String, ByVal StrModule As String, ByVal MD As MDIMain)
         Dim TSMI_Item As ToolStripMenuItem
         Dim ADTemp As OleDb.OleDbDataAdapter = Nothing
@@ -286,7 +286,7 @@ Module MdlFunction
         Dim StrTemp As String
         Dim DTTemp1 As New DataTable
 
-        DTTemp = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And Parent='" & StrParent & "' And MnuModule='" & StrModule & "' And IsNull(Active,'Y')='Y' And IsNull(Permission,'****') <> '****'  Order By SNo", AgL.ECompConn).Tables(0)
+        DTTemp = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And Parent='" & StrParent & "' And MnuModule='" & StrModule & "' And IfNull(Active,'Y')='Y' And IfNull(Permission,'****') <> '****'  Order By SNo", AgL.ECompConn).Tables(0)
         For I = 0 To DTTemp.Rows.Count - 1
             Try
                 StrTemp = AgL.XNull(DTTemp.Rows(I).Item("MnuText"))
@@ -298,7 +298,7 @@ Module MdlFunction
                 FAddHandler(TSMI_Item, MD)
 
                 DTTemp1.Clear()
-                DTTemp1 = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And MnuName='" & AgL.XNull(DTTemp.Rows(I).Item("MnuName")) & "' And MnuModule='" & StrModule & "' And IsNull(Active,'Y')='Y' Order By SNo", AgL.ECompConn).Tables(0)
+                DTTemp1 = AgL.FillData("Select * From User_Permission Where UserName='" & StrUser & "' And MnuName='" & AgL.XNull(DTTemp.Rows(I).Item("MnuName")) & "' And MnuModule='" & StrModule & "' And IfNull(Active,'Y')='Y' Order By SNo", AgL.ECompConn).Tables(0)
                 If DTTemp1.Rows.Count > 0 Then
                     FAddTSMI_DropDown(TSMI_Item, StrUser, AgL.XNull(DTTemp.Rows(I).Item("MnuName")), StrModule, MD)
                 End If

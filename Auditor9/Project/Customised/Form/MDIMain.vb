@@ -19,7 +19,7 @@ Public Class MDIMain
         If AgL Is Nothing Then
             If FOpenIni(StrPath + IniName, AgLibrary.ClsConstant.PubSuperUserName, AgLibrary.ClsConstant.PubSuperUserPassword) Then
                 'If AgL.FillData("PRAGMA table_info(company);", AgL.GcnMain).Tables(0).rows.count = 0 Then
-                Dim clsf As New ClsFunction
+                Dim clsf As New ClsMain(AgL)
                 clsf.UpdateTableStructure()
                 'End If
                 AgIniVar.FOpenConnection("1", "1", False)
@@ -27,6 +27,7 @@ Public Class MDIMain
 
             AgL.PubDivCode = "D"
             AgL.PubDivName = AgL.Dman_Execute("Select D.Div_Name From Division D Where D.Div_Code = '" & AgL.PubDivCode & "' ", AgL.GCn).ExecuteScalar
+            AgL.PubSiteStateCode = AgL.Dman_Execute("Select C.State From SiteMast S Left Join City C On S.City_Code = C.CityCode Where S.Code = '" & AgL.PubSiteCode & "' ", AgL.GCn).ExecuteScalar
 
             Dim ClsObj As New ClsMain(AgL)
             'ClsObj.UpdateTableStructure()
@@ -46,14 +47,14 @@ Public Class MDIMain
             'ClsObjStructure.UpdateTableInitialiser()
             'ClsObj.UpdateTableInitialiser()
             'ClsObj = Nothing
-            MnuHidden.Visible = True
+
             Call IniDtEnviro()
         End If
     End Sub
 
 
     Private Sub Mnu_DropDownItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles _
-                MnuMaster.DropDownItemClicked, MnuCustomized.DropDownItemClicked, MnnReports.DropDownItemClicked, MnuTools.DropDownItemClicked, MnuHidden.DropDownItemClicked
+                MnuMaster.DropDownItemClicked, MnuCustomized.DropDownItemClicked
 
         Dim FrmObj As Form
         Dim CFOpen As New ClsFunction
@@ -87,7 +88,7 @@ Public Class MDIMain
     End Function
 
     Private Sub MnuUpdateTableStructure_Click(sender As Object, e As EventArgs) Handles MnuUpdateTableStructure.Click
-        Dim cf As New ClsFunction
+        Dim cf As New ClsMain(AgL)
         cf.UpdateTableStructure()
     End Sub
 End Class

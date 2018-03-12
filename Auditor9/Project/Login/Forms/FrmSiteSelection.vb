@@ -61,7 +61,7 @@ Public Class FrmSiteSelection
         mCondStr = " Where 1=1 "
 
         If AgL.IsFieldExist("Active", "SiteMast", AgL.GcnMain) Then
-            mCondStr = mCondStr & " And IsNull(S.Active,0) <> 0 "
+            mCondStr = mCondStr & " And IfNull(S.Active,0) <> 0 "
         End If
 
         If Not (AgL.StrCmp(AgL.PubUserName, "SA") Or AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName)) Then
@@ -70,9 +70,9 @@ Public Class FrmSiteSelection
             mCondStr = mCondStr & " And S.Code In (" & Replace(StrUserSiteList, "|", "'") & ")"
         End If
 
-        mQry = "Select S.Code, S.Name, Case IsNull(S.Ho_Yn,'N') When 'N' Then 'No' Else 'Yes' End As Ho_Yn, " & _
-                " S.ManualCode, S.Add1, S.Add2, S.Add3, C.CityName, S.Phone, S.Mobile, S.PinNo " & _
-                " From SiteMast S " & _
+        mQry = "Select S.Code, S.Name, Case IfNull(S.Ho_Yn,'N') When 'N' Then 'No' Else 'Yes' End As Ho_Yn, " &
+                " S.ManualCode, S.Add1, S.Add2, S.Add3, C.CityName, S.Phone, S.Mobile, S.PinNo " &
+                " From SiteMast S " &
                 " LEFT JOIN City C ON S.City_Code = C.CityCode " & mCondStr
 
         DTTemp = AgL.FillData(mQry, AgL.GcnMain).TABLES(0)

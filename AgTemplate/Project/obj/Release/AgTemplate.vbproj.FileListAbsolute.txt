@@ -785,7 +785,6 @@ D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll.config
 D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.dll
 D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.pdb
 D:\KC\Source\Sqlite\AgTemplate\Release\AgTemplate.xml
-D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmErrorBox.resources
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportFormat.resources
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.FrmReportWindow.resources
@@ -801,3 +800,4 @@ D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbproj.GenerateRes
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.dll
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.xml
 D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.pdb
+D:\KC\Source\Sqlite\AgTemplate\Project\obj\Release\AgTemplate.vbprojResolveAssemblyReference.cache

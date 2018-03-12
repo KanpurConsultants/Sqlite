@@ -593,7 +593,6 @@ Public Class FrmItemMaster_Cloth
         Me.BtnBOMDetail.TabIndex = 20
         Me.BtnBOMDetail.Text = "BOM Detail"
         Me.BtnBOMDetail.UseVisualStyleBackColor = True
-        Me.BtnBOMDetail.Visible = False
         '
         'ChkIsSystemDefine
         '

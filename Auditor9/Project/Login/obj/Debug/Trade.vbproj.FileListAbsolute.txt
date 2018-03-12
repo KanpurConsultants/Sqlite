@@ -25,3 +25,18 @@ D:\Satyam\Active Projects\SqLite\Trade_\Project\Login\obj\Debug\Trade.FrmSiteSel
 D:\Satyam\Active Projects\SqLite\Trade_\Project\Login\obj\Debug\Trade.MDIMain.resources
 D:\Satyam\Active Projects\SqLite\Trade_\Project\Login\obj\Debug\Trade.Resources.resources
 D:\Satyam\Active Projects\SqLite\Trade_\Project\Login\obj\Debug\Trade.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\Auditor9\Release\Trade.exe
+D:\KC\Source\Sqlite\Auditor9\Release\Trade.pdb
+D:\KC\Source\Sqlite\Auditor9\Release\Trade.xml
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.FrmCompany.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.FrmDivisionSelection.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.FrmLogin.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.FrmServerNotFound.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.FrmSiteSelection.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.MDIMain.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.Resources.resources
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.exe
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.xml
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.pdb
+D:\KC\Source\Sqlite\Auditor9\Project\Login\obj\Debug\Trade.vbprojResolveAssemblyReference.cache

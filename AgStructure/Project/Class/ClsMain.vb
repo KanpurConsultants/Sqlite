@@ -51,6 +51,7 @@ Public Class ClsMain
         End Try
     End Function
 
+
     Public Shared Function FUpdateFooterDataFromLineDataStr(ByVal StrStructureCode As String, ByVal StrSearchCode As String, ByVal StrFooterTableName As String, ByVal StrFooterTableSearchField As String, ByVal StrLineTableName As String, ByVal StrLineTableSearchField As String)
         Dim DtTemp As DataTable
         Dim sqlConn As SqliteConnection

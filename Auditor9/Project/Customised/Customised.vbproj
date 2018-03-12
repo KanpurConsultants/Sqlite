@@ -176,6 +176,33 @@
     <Compile Include="Form\FrmItemMaster_Cloth.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\FrmPerson.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceDimension.designer.vb">
+      <DependentUpon>FrmSaleInvoiceDimension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceDimension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmPurchaseInvoiceDimension.designer.vb">
+      <DependentUpon>FrmPurchaseInvoiceDimension.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmPurchaseInvoiceDimension.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceHeader.designer.vb">
+      <DependentUpon>FrmSaleInvoiceHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceParty.designer.vb">
+      <DependentUpon>FrmSaleInvoiceParty.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmSaleInvoiceParty.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\FrmPurchaseInvoiceHeader.designer.vb">
       <DependentUpon>FrmPurchaseInvoiceHeader.vb</DependentUpon>
     </Compile>
@@ -327,6 +354,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmItemMaster_Cloth.resx">
       <DependentUpon>FrmItemMaster_Cloth.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPerson.resx">
+      <DependentUpon>FrmPerson.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceDimension.resx">
+      <DependentUpon>FrmSaleInvoiceDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmPurchaseInvoiceDimension.resx">
+      <DependentUpon>FrmPurchaseInvoiceDimension.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceHeader.resx">
+      <DependentUpon>FrmSaleInvoiceHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmSaleInvoiceParty.resx">
+      <DependentUpon>FrmSaleInvoiceParty.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form\FrmPurchaseInvoiceHeader.resx">
       <DependentUpon>FrmPurchaseInvoiceHeader.vb</DependentUpon>

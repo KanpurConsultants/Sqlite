@@ -11,13 +11,7 @@ Public Class AgCalcGrid
 
 
     Dim DtPostingGroupSalesTax As DataTable
-    Dim DtPostingGroupServiceTax As DataTable
-    Dim DtPostingGroupExcise As DataTable
-    Dim DtPostingGroupEntryTax As DataTable
     Dim DrPostingGroupSalesTax As DataRow()
-    Dim DrPostingGroupServiceTax As DataRow()
-    Dim DrPostingGroupExcise As DataRow()
-    Dim DrPostingGroupEntryTax As DataRow()
 
 
     Dim mReadOnlyColor As System.Drawing.Color = Color.Beige
@@ -83,21 +77,18 @@ Public Class AgCalcGrid
     Dim mStructure As String
     Dim mColumnGross As Integer = -1
     Dim mColumnSalesTaxGroupItem As Integer = -1
-    Dim mColumnExciseGroupItem As Integer = -1
-    Dim mColumnEntryTaxGroupItem As Integer = -1
     Dim mColumnMandatory As Integer = -1
     Dim mIsMaster As Boolean = False
     Dim mSite_Code As String
     Dim mDiv_Code As String
     Dim mSalesTaxGroupItem As String
     Dim mSalesTaxGroupParty As String
-    Dim mExciseGroupParty As String
-    Dim mEntryTaxGroupParty As String
     Dim mPartyAc As String
     Dim mPaidAc As String
     Dim mNarration As String
     Dim mPaidAmount As Double
     Dim mVoucherCategory As String = ""
+    Dim mPlaceOfSupply As String = ""
 
     Dim mNCat As String
 
@@ -359,25 +350,6 @@ Public Class AgCalcGrid
         End Set
     End Property
 
-    Public Property AgLineGridPostingGroupExciseProd() As String
-        Get
-            Return mColumnExciseGroupItem
-        End Get
-
-        Set(ByVal value As String)
-            mColumnExciseGroupItem = value
-        End Set
-    End Property
-
-    Public Property AgLineGridPostingGroupEntryTaxProd() As String
-        Get
-            Return mColumnEntryTaxGroupItem
-        End Get
-
-        Set(ByVal value As String)
-            mColumnEntryTaxGroupItem = value
-        End Set
-    End Property
 
     Public Property AgPostingGroupSalesTaxItem() As String
         Get
@@ -401,25 +373,16 @@ Public Class AgCalcGrid
     End Property
 
 
-    Public Property AgPostingGroupExciseParty() As String
+    Public Property AgPlaceOfSupply() As String
         Get
-            Return mExciseGroupParty
+            Return mPlaceOfSupply
         End Get
 
         Set(ByVal value As String)
-            mExciseGroupParty = value
+            mPlaceOfSupply = value
         End Set
     End Property
 
-    Public Property AgPostingGroupEntryTaxParty() As String
-        Get
-            Return mEntryTaxGroupParty
-        End Get
-
-        Set(ByVal value As String)
-            mEntryTaxGroupParty = value
-        End Set
-    End Property
 
     Public Property AgPostingPartyAc() As String
         Get
@@ -593,25 +556,11 @@ Public Class AgCalcGrid
 
         If Agl IsNot Nothing Then
 
-            mQry = "Select * From PostingGroupServiceTax Where Site_Code = '" & mSite_Code & "' And Div_Code = '" & mDiv_Code & "' "
-            DtPostingGroupServiceTax = Agl.FillData(mQry, Agl.GCn).Tables(0)
 
             If Not mLineGrid Is Nothing Then
                 If mColumnSalesTaxGroupItem >= 0 Then
                     mQry = "Select * From PostingGroupSalesTax Where Site_Code = '" & mSite_Code & "' And Div_Code = '" & mDiv_Code & "' "
                     DtPostingGroupSalesTax = Agl.FillData(mQry, Agl.GCn).Tables(0)
-                End If
-
-
-                If mColumnExciseGroupItem >= 0 Then
-                    mQry = "Select * From PostingGroupExcise Where Site_Code = '" & mSite_Code & "' And Div_Code = '" & mDiv_Code & "' "
-                    DtPostingGroupExcise = Agl.FillData(mQry, Agl.GCn).Tables(0)
-                End If
-
-
-                If mColumnEntryTaxGroupItem >= 0 Then
-                    mQry = "Select * From PostingGroupEntryTax Where Site_Code = '" & mSite_Code & "' And Div_Code = '" & mDiv_Code & "' "
-                    DtPostingGroupEntryTax = Agl.FillData(mQry, Agl.GCn).Tables(0)
                 End If
             End If
         End If
@@ -1040,6 +989,802 @@ Public Class AgCalcGrid
         Next I
     End Sub
 
+    'Public Sub Calculation(Optional ByVal IsReverse As Boolean = False)
+    '    Dim I As Integer
+    '    Dim iL As Integer
+    '    Dim J As Integer
+    '    Dim K As Integer
+    '    Dim StrConvFormula$ = ""
+    '    Dim StrOrgFormula$, StrTemp$
+    '    Dim BlnFlag As Boolean
+    '    Dim StrCode$ = ""
+    '    Dim mTotalGrossAmount As Double
+    '    Dim mTotalTempAmount As Double
+    '    Dim mUsedValue As Double
+    '    Dim mCost As Double
+    '    Dim bBaseColumn As Integer
+    '    Dim bTotalBaseColumnAmt As Integer
+    '    Dim bFirstRowHavingValueInBaseColumn As Integer
+    '    Dim mRowIndex_RoundOff As Integer = -1
+    '    Dim mRowIndex_RoundOff_BaseColumn As String = ""
+
+
+    '    If mStructure = "" Then Exit Sub
+    '    mTotalGrossAmount = 0
+    '    If Not mLineGrid Is Nothing Then
+
+
+
+    '        For J = 0 To mLineGrid.RowCount - 1
+    '            If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                If mColumnSalesTaxGroupItem > -1 Then
+    '                    DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mLineGrid.AgSelectedValue(mColumnSalesTaxGroupItem, J) & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
+    '                    If DrPostingGroupSalesTax.Length <= 0 Then
+    '                        DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
+    '                    End If
+    '                ElseIf mSalesTaxGroupItem <> "" Then
+    '                    DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
+    '                End If
+
+
+    '                For I = 0 To Me.Rows.Count - 1
+    '                    Select Case UCase(Me.Item(Col_Charge_Type, I).Value)
+    '                        Case "SALESTAXASSESSABLEAMT"
+    '                            If mVoucherCategory.ToUpper = "" Then Err.Raise(1, , "Vouhcer category must be defined either purchase or sales, if SalesTax is used in structure.")
+    '                            If mVoucherCategory.ToUpper <> "SALES" And mVoucherCategory.ToUpper <> "PURCH" Then Err.Raise(1, , "Vouhcer category must be either purchase or sales, if SalesTax is used in structure.")
+    '                            If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
+    '                                If DrPostingGroupSalesTax.Length > 0 Then
+    '                                    If Me.Item(Col_LineItem, I).Value Then
+    '                                        If mVoucherCategory.ToUpper = "SALES" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesAc"))
+    '                                        ElseIf mVoucherCategory.ToUpper = "PURCH" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("PurchaseAc"))
+    '                                        End If
+    '                                    End If
+    '                                End If
+    '                            Else
+    '                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
+    '                            End If
+
+    '                        Case "SALESTAX"
+    '                            If mVoucherCategory.ToUpper = "" Then Err.Raise(1, , "Vouhcer category must be defined either purchase or sales, if SalesTax is used in structure.")
+    '                            If mVoucherCategory.ToUpper <> "SALES" And mVoucherCategory.ToUpper <> "PURCH" Then Err.Raise(1, , "Vouhcer category must be either purchase or sales, if SalesTax is used in structure.")
+
+    '                            If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
+    '                                If DrPostingGroupSalesTax.Length > 0 Then
+    '                                    If Me.Item(Col_LineItem, I).Value Then
+    '                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTax"))
+    '                                        If mVoucherCategory.ToUpper = "SALES" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTaxOnSalesAc"))
+    '                                        ElseIf mVoucherCategory.ToUpper = "PURCH" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTaxOnPurchaseAc"))
+    '                                        End If
+    '                                    Else
+    '                                        Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTax"))
+    '                                    End If
+    '                                Else
+    '                                    MsgBox("SalesTax posting groups not defined for SalesTax in selected branch and division.")
+    '                                End If
+    '                            Else
+    '                                mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
+    '                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
+    '                                Me.Item(Col_Percentage, I).Value = ""
+    '                            End If
+
+    '                        Case "SALESADDITIONALTAX"
+    '                            If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
+    '                                If DrPostingGroupSalesTax.Length > 0 Then
+    '                                    If Me.Item(Col_LineItem, I).Value Then
+    '                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTax"))
+    '                                        If mVoucherCategory.ToUpper = "SALES" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTaxOnSalesAc"))
+    '                                        ElseIf mVoucherCategory.ToUpper = "PURCH" Then
+    '                                            mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTaxOnPurchaseAc"))
+    '                                        End If
+    '                                    Else
+    '                                        Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTax"))
+    '                                    End If
+    '                                Else
+    '                                    MsgBox("SalesTax posting groups not defined for Sales Additional Tax in selected branch and division.")
+    '                                End If
+    '                            Else
+    '                                mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
+    '                                Me.Item(Col_Percentage, I).Value = ""
+    '                            End If
+
+    '                    End Select
+    '                Next
+
+    '            End If
+    '        Next
+
+
+
+
+    '        For I = 0 To Me.RowCount - 1
+
+    '            If Me.Item(Col_BaseColumn, I).Value <> "" Then
+
+    '                bBaseColumn = mLineGrid.Columns(Me.Item(Col_BaseColumn, I).Value).Index
+
+
+    '                If UCase(Me.Item(Col_Value_Type, I).Value) = "ROUND_OFF" Then
+    '                    Me.Item(Col_Amount, I).Value = ""
+    '                    mRowIndex_RoundOff = I
+    '                    mRowIndex_RoundOff_BaseColumn = Me.Item(Col_BaseColumn, I).Value
+    '                End If
+
+
+    '                bFirstRowHavingValueInBaseColumn = -1
+    '                bTotalBaseColumnAmt = 0
+    '                mUsedValue = 0
+
+    '                For J = 0 To mLineGrid.RowCount - 1
+    '                    If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                        bTotalBaseColumnAmt += Val(mLineGrid.Item(bBaseColumn, J).Value)
+    '                        If Val(mLineGrid.Item(bBaseColumn, J).Value) > 0 And bFirstRowHavingValueInBaseColumn < 0 Then
+    '                            bFirstRowHavingValueInBaseColumn = J
+    '                        End If
+    '                    End If
+    '                Next
+
+    '                If Not IsReverse Then
+    '                    Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                        Case "FIXEDVALUE", "FIXEDVALUE CHANGEABLE"
+    '                            If Me.Item(Col_LineItem, I).Value = 0 Then
+    '                                For J = mLineGrid.RowCount - 1 To 0 Step -1
+    '                                    If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                        If J = bFirstRowHavingValueInBaseColumn Then
+    '                                            mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) - mUsedValue, "0.00")
+    '                                            mUsedValue = 0
+    '                                        Else
+    '                                            mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) * Val(mLineGrid.Item(bBaseColumn, J).Value) / bTotalBaseColumnAmt, "0.00")
+    '                                            mUsedValue += mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value
+    '                                        End If
+    '                                    End If
+    '                                Next
+    '                            End If
+
+    '                        Case "PERCENTAGE OR AMOUNT"
+    '                            If Me.Item(Col_LineItem, I).Value = 0 Then
+    '                                If Val(Me.Item(Col_Percentage, I).Value) = 0 Then
+    '                                    For J = mLineGrid.RowCount - 1 To 0 Step -1
+    '                                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                            If J = bFirstRowHavingValueInBaseColumn Then
+    '                                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) - mUsedValue, "0.00")
+    '                                                mUsedValue = 0
+    '                                            Else
+    '                                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) * Val(mLineGrid.Item(bBaseColumn, J).Value) / bTotalBaseColumnAmt, "0.00")
+    '                                                mUsedValue += mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value
+    '                                            End If
+    '                                        End If
+    '                                    Next
+    '                                End If
+    '                            End If
+
+    '                    End Select
+    '                End If
+    '            End If
+
+    '            Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                Case "FIXEDVALUE FROM COLUMN"
+    '                    For J = 0 To mLineGrid.RowCount - 1
+    '                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                            mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '                        End If
+    '                    Next
+    '                Case "PERCENTAGE FROM COLUMN"
+    '                    For J = 0 To mLineGrid.RowCount - 1
+    '                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '                        End If
+    '                    Next
+    '                Case "FIXEDVALUE CHANGEABLE", "FIXEDVALUE"
+    '                    'If Val(Me.Item(Col_Amount, I).Value) = 0 And Val(Me.Item(Col_Value, I).Value) > 0 Then
+    '                    '    Me.Item(Col_Amount, I).Value = Val(Me.Item(Col_Value, I).Value)
+    '                    'End If
+    '                Case "PERCENTAGE", "PERCENTAGE CHANGEABLE"
+    '                    If Me.Item(Col_LineItem, I).Value <> 1 Then
+    '                        For J = 0 To mLineGrid.RowCount - 1
+    '                            If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = Val(Me.Item(Col_Percentage, I).Value)
+    '                            End If
+    '                        Next
+    '                    End If
+    '                Case "PERCENTAGE OR AMOUNT"
+    '                    If Me.Item(Col_LineItem, I).Value <> 1 Then
+    '                        For J = 0 To mLineGrid.RowCount - 1
+    '                            If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                If Val(Me.Item(Col_Percentage, I).Value) > 0 Then
+    '                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = Val(Me.Item(Col_Percentage, I).Value)
+    '                                Else
+    '                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = 0
+    '                                End If
+    '                            End If
+    '                        Next
+    '                    End If
+
+    '            End Select
+    '        Next
+
+
+
+    '        Dim mColIndex As Integer = 0
+    '        For I = 0 To Me.RowCount - 1
+    '            StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '            StrConvFormula = ""
+    '            If Not StrOrgFormula = "" Then
+    '                For iL = 0 To mLineGrid.RowCount - 1
+    '                    If UCase(Me.Item(Col_Value_Type, I).Value) = "PERCENTAGE OR AMOUNT" Then
+    '                        If Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), iL).Value) = 0 Then
+    '                            StrOrgFormula = ""
+    '                        Else
+    '                            StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '                        End If
+    '                    ElseIf UCase(Me.Item(Col_Value_Type, I).Value) = "ROUND_OFF" Then
+    '                        StrOrgFormula = ""
+    '                        mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), iL).Value = 0
+    '                    End If
+
+    '                    If Not StrOrgFormula = "" Then
+    '                        For J = 1 To Len(Trim(Me.Item(Col_Calculation, I).Value))
+    '                            StrTemp = UCase(Mid(StrOrgFormula, J, 1))
+    '                            If BlnFlag Then
+    '                                If StrTemp = "}" Then
+    '                                    BlnFlag = False
+    '                                    For K = 0 To Me.RowCount - 1
+    '                                        If Agl.StrCmp(Me.Item(Col_ChargesManualCode, K).Value, Replace(StrCode, "@", "")) Then
+    '                                            mColIndex = K
+    '                                            Exit For
+    '                                        End If
+    '                                    Next
+    '                                    'mColIndex = Val(StrCode) - 1
+    '                                    If I = mColIndex Then
+    '                                        Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                                            Case "PERCENTAGE", "PERCENTAGE CHANGEABLE", "PERCENTAGE FROM COLUMN", "PERCENTAGE OR AMOUNT"
+    '                                                If Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.00") < 0 Then
+    '                                                    StrConvFormula = StrConvFormula + "(" + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000") + ")"
+    '                                                Else
+    '                                                    StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                End If
+    '                                            Case Else
+    '                                                If InStr(StrTemp, "@") > 0 Then
+    '                                                    StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                Else
+    '                                                    StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                End If
+    '                                        End Select
+    '                                    Else
+    '                                        If Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.00") < 0 Then
+    '                                            StrConvFormula = StrConvFormula + "(" + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000") + ")"
+    '                                        Else
+    '                                            If InStr(StrCode, "@") > 0 Then
+    '                                                StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                            Else
+    '                                                StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                            End If
+    '                                        End If
+    '                                    End If
+    '                                    StrCode = ""
+    '                                Else
+    '                                    StrCode = StrCode + StrTemp
+    '                                End If
+    '                            Else
+    '                                If StrTemp = "{" Then
+    '                                    StrCode = ""
+    '                                    BlnFlag = True
+    '                                Else
+    '                                    StrConvFormula = StrConvFormula + StrTemp
+    '                                End If
+    '                            End If
+
+    '                        Next
+    '                    End If
+    '                    If StrConvFormula <> "" Then
+    '                        mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), iL).Value = Format(Agl.FillData(Agl.Chk_Qry("Select " & FilterQuery(StrConvFormula, iL)), Agl.GCn).Tables(0).Rows(0)(0), "0.".PadRight(mAgCalcRounding + 2, "0"))
+    '                        StrConvFormula = ""
+    '                    End If
+    '                Next
+
+    '            End If
+    '        Next
+
+
+
+
+
+    '        If mRowIndex_RoundOff > 0 Then
+    '            mColIndex = 0
+    '            For I = 0 To Me.RowCount - 1
+    '                If I = mRowIndex_RoundOff Then
+    '                    StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '                    StrConvFormula = ""
+    '                    If Not StrOrgFormula = "" Then
+    '                        For J = 1 To Len(Trim(Me.Item(Col_Calculation, I).Value))
+    '                            StrTemp = UCase(Mid(StrOrgFormula, J, 1))
+    '                            If BlnFlag Then
+    '                                If StrTemp = "}" Then
+    '                                    BlnFlag = False
+    '                                    For K = 0 To Me.RowCount - 1
+    '                                        If Agl.StrCmp(Me.Item(Col_ChargesManualCode, K).Value, Replace(StrCode, "@", "")) Then
+    '                                            mColIndex = K
+    '                                            Exit For
+    '                                        End If
+    '                                    Next
+
+    '                                    StrConvFormula = StrConvFormula + CStr(Val(Me.Item(Col_Amount, mColIndex).Value))
+    '                                    StrCode = ""
+    '                                Else
+    '                                    StrCode = StrCode + StrTemp
+    '                                End If
+    '                            Else
+    '                                If StrTemp = "{" Then
+    '                                    StrCode = ""
+    '                                    BlnFlag = True
+    '                                Else
+    '                                    StrConvFormula = StrConvFormula + StrTemp
+    '                                End If
+    '                            End If
+    '                        Next
+
+    '                        If StrConvFormula <> "" Then
+    '                            Me.Item(Col_Amount, I).Value = Agl.FillData(Agl.Chk_Qry("Select " & StrConvFormula), Agl.GCn).Tables(0).Rows(0)(0)
+    '                            StrConvFormula = ""
+    '                        End If
+
+    '                    End If
+    '                End If
+    '            Next
+    '        End If
+
+
+
+
+
+    '        For I = 0 To Me.RowCount - 1
+    '            If Me.Item(Col_BaseColumn, I).Value <> "" Then
+    '                bBaseColumn = mLineGrid.Columns(Me.Item(Col_BaseColumn, I).Value).Index
+
+    '                bFirstRowHavingValueInBaseColumn = -1
+    '                bTotalBaseColumnAmt = 0
+    '                mUsedValue = 0
+    '                For J = 0 To mLineGrid.RowCount - 1
+    '                    If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                        bTotalBaseColumnAmt += Val(mLineGrid.Item(bBaseColumn, J).Value)
+    '                        If Val(mLineGrid.Item(bBaseColumn, J).Value) > 0 And bFirstRowHavingValueInBaseColumn < 0 Then
+    '                            bFirstRowHavingValueInBaseColumn = J
+    '                        End If
+    '                    End If
+    '                Next
+
+
+    '                If Not IsReverse Then
+    '                    Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                        Case "FIXEDVALUE", "FIXEDVALUE CHANGEABLE", "ROUND_OFF"
+    '                            If Me.Item(Col_LineItem, I).Value = 0 Then
+    '                                For J = mLineGrid.RowCount - 1 To 0 Step -1
+    '                                    If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                        If J = bFirstRowHavingValueInBaseColumn Then
+    '                                            mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) - mUsedValue, "0.00")
+    '                                            mUsedValue = 0
+    '                                        Else
+    '                                            mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) * Val(mLineGrid.Item(bBaseColumn, J).Value) / bTotalBaseColumnAmt, "0.00")
+    '                                            mUsedValue += mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value
+    '                                        End If
+    '                                    End If
+    '                                Next
+    '                            End If
+
+    '                        Case "PERCENTAGE OR AMOUNT"
+    '                            If Me.Item(Col_LineItem, I).Value = 0 Then
+    '                                If Val(Me.Item(Col_Amount, I).Value) <= 0 Then
+    '                                    For J = mLineGrid.RowCount - 1 To 0 Step -1
+    '                                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                            If J = bFirstRowHavingValueInBaseColumn Then
+    '                                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) - mUsedValue, "0.00")
+    '                                                mUsedValue = 0
+    '                                            Else
+    '                                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) * Val(mLineGrid.Item(bBaseColumn, J).Value) / bTotalBaseColumnAmt, "0.00")
+    '                                                mUsedValue += mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value
+    '                                            End If
+    '                                        End If
+    '                                    Next
+    '                                Else
+    '                                    For J = 0 To mLineGrid.RowCount - 1
+    '                                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = Val(Me.Item(Col_Percentage, I).Value)
+    '                                        End If
+    '                                    Next
+    '                                End If
+    '                            End If
+
+    '                        Case "FIXEDVALUE FROM COLUMN"
+    '                            For J = 0 To mLineGrid.RowCount - 1
+    '                                If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                    mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '                                End If
+    '                            Next
+    '                        Case "PERCENTAGE FROM COLUMN"
+    '                            For J = 0 To mLineGrid.RowCount - 1
+    '                                If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '                                End If
+    '                            Next
+    '                        Case "PERCENTAGE", "PERCENTAGE CHANGEABLE"
+    '                            If Me.Item(Col_LineItem, I).Value <> 1 Then
+    '                                For J = 0 To mLineGrid.RowCount - 1
+    '                                    If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = Val(Me.Item(Col_Percentage, I).Value)
+    '                                    End If
+    '                                Next
+    '                            End If
+    '                    End Select
+    '                End If
+    '            End If
+    '        Next
+
+
+
+    '        If mRowIndex_RoundOff > 0 Then
+    '            mColIndex = 0
+    '            iL = 0
+    '            For I = 0 To Me.RowCount - 1
+    '                If Me.Item(Col_Charges, I).Value.ToString.ToUpper = mRowIndex_RoundOff_BaseColumn.ToUpper Then
+    '                    StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '                    StrConvFormula = ""
+    '                    If Not StrOrgFormula = "" Then
+    '                        For iL = 0 To mLineGrid.RowCount - 1
+    '                            If UCase(Me.Item(Col_Value_Type, I).Value) = "PERCENTAGE OR AMOUNT" Then
+    '                                If Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), iL).Value) = 0 Then
+    '                                    StrOrgFormula = ""
+    '                                Else
+    '                                    StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '                                End If
+    '                            ElseIf UCase(Me.Item(Col_Value_Type, I).Value) = "ROUND_OFF" Then
+    '                                StrOrgFormula = ""
+    '                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), iL).Value = 0
+    '                            End If
+
+    '                            If Not StrOrgFormula = "" Then
+    '                                For J = 1 To Len(Trim(Me.Item(Col_Calculation, I).Value))
+    '                                    StrTemp = UCase(Mid(StrOrgFormula, J, 1))
+    '                                    If BlnFlag Then
+    '                                        If StrTemp = "}" Then
+    '                                            BlnFlag = False
+    '                                            For K = 0 To Me.RowCount - 1
+    '                                                If Agl.StrCmp(Me.Item(Col_ChargesManualCode, K).Value, Replace(StrCode, "@", "")) Then
+    '                                                    mColIndex = K
+    '                                                    Exit For
+    '                                                End If
+    '                                            Next
+    '                                            'mColIndex = Val(StrCode) - 1
+    '                                            If I = mColIndex Then
+    '                                                Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                                                    Case "PERCENTAGE", "PERCENTAGE CHANGEABLE", "PERCENTAGE FROM COLUMN", "PERCENTAGE OR AMOUNT"
+    '                                                        If Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.00") < 0 Then
+    '                                                            StrConvFormula = StrConvFormula + "(" + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000") + ")"
+    '                                                        Else
+    '                                                            StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                        End If
+    '                                                    Case Else
+    '                                                        If InStr(StrTemp, "@") > 0 Then
+    '                                                            StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                        Else
+    '                                                            StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                        End If
+    '                                                End Select
+    '                                            Else
+    '                                                If Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.00") < 0 Then
+    '                                                    StrConvFormula = StrConvFormula + "(" + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000") + ")"
+    '                                                Else
+    '                                                    If InStr(StrCode, "@") > 0 Then
+    '                                                        StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                    Else
+    '                                                        StrConvFormula = StrConvFormula + Format(Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, mColIndex).Value), iL).Value), "0.000000")
+    '                                                    End If
+    '                                                End If
+    '                                            End If
+    '                                            StrCode = ""
+    '                                        Else
+    '                                            StrCode = StrCode + StrTemp
+    '                                        End If
+    '                                    Else
+    '                                        If StrTemp = "{" Then
+    '                                            StrCode = ""
+    '                                            BlnFlag = True
+    '                                        Else
+    '                                            StrConvFormula = StrConvFormula + StrTemp
+    '                                        End If
+    '                                    End If
+
+    '                                Next
+    '                            End If
+    '                            If StrConvFormula <> "" Then
+    '                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), iL).Value = Format(Agl.FillData(Agl.Chk_Qry("Select " & FilterQuery(StrConvFormula, iL)), Agl.GCn).Tables(0).Rows(0)(0), "0.".PadRight(mAgCalcRounding + 2, "0"))
+    '                                StrConvFormula = ""
+    '                            End If
+    '                        Next
+
+    '                    End If
+    '                End If
+    '            Next
+    '        End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    '        For I = 0 To mLineGrid.Rows.Count - 1
+    '            mCost = 0
+    '            For J = 0 To Me.RowCount - 1
+    '                If Agl.StrCmp(Me.Item(Col_Charge_Type, J).Value, "Cost") Then
+    '                    mLineGrid.Item(GetColName(Me.Item(Col_Charges, J).Value), I).value = Format(mCost, "0.00")
+    '                    Exit For
+    '                End If
+    '                If Me.Item(Col_AffectCost, J).Value = "1" Then
+    '                    mCost += Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, J).Value), I).value)
+    '                ElseIf Me.Item(Col_AffectCost, J).Value = "0" Then
+    '                    mCost -= Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, J).Value), I).value)
+    '                End If
+    '            Next
+    '        Next
+
+
+    '        For I = 0 To Me.RowCount - 1
+    '            mTotalTempAmount = 0
+    '            Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                Case Else
+    '                    For J = 0 To mLineGrid.RowCount - 1
+    '                        If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
+    '                            mTotalTempAmount += Val(mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value)
+    '                        End If
+    '                    Next
+    '                    Me.Item(Col_Amount, I).Value = Format(mTotalTempAmount, "0.00")
+
+    '            End Select
+    '        Next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    '    Else     'if line grid not specified then only footer grid calculation will be called
+
+
+
+    '        If mSalesTaxGroupItem <> "" Then
+    '            DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
+    '        End If
+
+
+    '        For I = 0 To Me.Rows.Count - 1
+    '            Select Case UCase(Me.Item(Col_Charge_Type, I).Value)
+    '                Case "VAT"
+    '                    If mSalesTaxGroupItem <> "" And mSalesTaxGroupParty <> "" Then
+    '                        If DrPostingGroupSalesTax.Length > 0 Then
+    '                            Me.Item(Col_Percentage, I).Value = DrPostingGroupSalesTax(0)("VAT")
+    '                        Else
+    '                            MsgBox("SalesTax posting groups not defined for VAT in selected branch and division.")
+    '                        End If
+    '                    Else
+    '                        Me.Item(Col_Percentage, I).Value = ""
+    '                    End If
+    '                Case "CST"
+    '                    If mSalesTaxGroupItem <> "" And mSalesTaxGroupParty <> "" Then
+    '                        If DrPostingGroupSalesTax.Length > 0 Then
+    '                            Me.Item(Col_Percentage, I).Value = DrPostingGroupSalesTax(0)("CST")
+    '                        Else
+    '                            MsgBox("SalesTax posting groups not defined for CST in selected branch and division.")
+    '                        End If
+    '                    Else
+    '                        Me.Item(Col_Percentage, I).Value = ""
+    '                    End If
+
+    '                Case "SALESTAX"
+    '                    If mSalesTaxGroupItem <> "" And mSalesTaxGroupParty <> "" Then
+    '                        If DrPostingGroupSalesTax.Length > 0 Then
+    '                            Me.Item(Col_Percentage, I).Value = DrPostingGroupSalesTax(0)("SalesTax")
+    '                        Else
+    '                            MsgBox("SalesTax posting groups not defined for SalesTax in selected branch and division.")
+    '                        End If
+    '                    Else
+    '                        Me.Item(Col_Percentage, I).Value = ""
+    '                    End If
+
+    '                Case "SALESADDITIONALTAX"
+    '                    If mSalesTaxGroupItem <> "" And mSalesTaxGroupParty <> "" Then
+    '                        If DrPostingGroupSalesTax.Length > 0 Then
+    '                            Me.Item(Col_Percentage, I).Value = DrPostingGroupSalesTax(0)("AdditionalTax")
+    '                        Else
+    '                            MsgBox("SalesTax posting groups not defined for Sales Additional Tax in selected branch and division.")
+    '                        End If
+    '                    Else
+    '                        Me.Item(Col_Percentage, I).Value = ""
+    '                    End If
+
+    '                Case "SAT"
+    '                    If mSalesTaxGroupItem <> "" And mSalesTaxGroupParty <> "" Then
+    '                        If DrPostingGroupSalesTax.Length > 0 Then
+    '                            Me.Item(Col_Percentage, I).Value = DrPostingGroupSalesTax(0)("AdditionalTax")
+    '                        Else
+    '                            MsgBox("SalesTax posting groups not defined for SAT in selected branch and division.")
+    '                        End If
+    '                    Else
+    '                        Me.Item(Col_Percentage, I).Value = ""
+    '                    End If
+    '            End Select
+    '        Next I
+
+
+
+    '        Dim mColIndex As Integer = 0
+    '        For I = 0 To Me.RowCount - 1
+    '            StrOrgFormula = Trim(Me.Item(Col_Calculation, I).Value)
+    '            If UCase(Me.Item(Col_Value_Type, I).Value) = "PERCENTAGE OR AMOUNT" Then
+    '                If Val((Me.Item(Col_Percentage, I).Value)) <= 0 Then
+    '                    StrOrgFormula = ""
+    '                End If
+    '            End If
+
+    '            StrConvFormula = ""
+    '            If Not StrOrgFormula = "" Then
+    '                For J = 1 To Len(Trim(Me.Item(Col_Calculation, I).Value))
+    '                    StrTemp = UCase(Mid(StrOrgFormula, J, 1))
+    '                    If BlnFlag Then
+    '                        If StrTemp = "}" Then
+    '                            BlnFlag = False
+    '                            For K = 0 To Me.RowCount - 1
+    '                                If Agl.StrCmp(Me.Item(Col_ChargesManualCode, K).Value, Replace(StrCode, "@", "")) Then
+    '                                    mColIndex = K
+    '                                    Exit For
+    '                                End If
+    '                            Next
+
+    '                            If I = mColIndex Then
+    '                                Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '                                    Case "PERCENTAGE", "PERCENTAGE CHANGEABLE", "PERCENTAGE FROM COLUMN"
+    '                                        'StrConvFormula = StrConvFormula + Format(Val(Me.Item(Col_Percentage, mColIndex).Value), "0.00")
+    '                                        StrConvFormula = StrConvFormula + CStr(Val(Me.Item(Col_Percentage, mColIndex).Value))
+    '                                    Case Else
+    '                                        If InStr(StrTemp, "@") > 0 Then
+    '                                            StrConvFormula = StrConvFormula + CStr(Val(Me.Item(Col_Percentage, mColIndex).Value))
+    '                                        Else
+    '                                            StrConvFormula = StrConvFormula + CStr(Val(Me.Item(Col_Amount, mColIndex).Value))
+    '                                        End If
+
+    '                                End Select
+    '                            Else
+    '                                StrConvFormula = StrConvFormula + CStr(Val(Me.Item(Col_Amount, mColIndex).Value))
+    '                            End If
+    '                            StrCode = ""
+    '                        Else
+    '                            StrCode = StrCode + StrTemp
+    '                        End If
+    '                    Else
+    '                        If StrTemp = "{" Then
+    '                            StrCode = ""
+    '                            BlnFlag = True
+    '                        Else
+    '                            StrConvFormula = StrConvFormula + StrTemp
+    '                        End If
+    '                    End If
+
+    '                Next
+
+    '                If StrConvFormula <> "" Then
+    '                    Me.Item(Col_Amount, I).Value = Agl.FillData(Agl.Chk_Qry("Select " & FilterQuery(StrConvFormula, iL)), Agl.GCn).Tables(0).Rows(0)(0)
+    '                    StrConvFormula = ""
+    '                End If
+
+    '            End If
+    '        Next
+
+
+
+
+    '        'For I = 0 To Me.RowCount - 1
+    '        '    If Me.Item(Col_BaseColumn, I).Value <> "" Then
+    '        '        bBaseColumn = mLineGrid.Columns(Me.Item(Col_BaseColumn, I).Value).Index
+
+    '        '        bFirstRowHavingValueInBaseColumn = -1
+    '        '        bTotalBaseColumnAmt = 0
+    '        '        mUsedValue = 0
+    '        '        For J = 0 To mLineGrid.RowCount - 1
+    '        '            If mLineGrid.Item(mColumnMandatory, J).Value <> ""  And mLineGrid.Rows(J).Visible = True Then
+    '        '                bTotalBaseColumnAmt += Val(mLineGrid.Item(bBaseColumn, J).Value)
+    '        '                If Val(mLineGrid.Item(bBaseColumn, J).Value) > 0 And bFirstRowHavingValueInBaseColumn < 0 Then
+    '        '                    bFirstRowHavingValueInBaseColumn = J
+    '        '                End If
+    '        '            End If
+    '        '        Next
+
+
+
+    '        '        Select Case UCase(Me.Item(Col_Value_Type, I).Value)
+    '        '            Case "FIXEDVALUE", "FIXEDVALUE CHANGEABLE"
+    '        '                If Me.Item(Col_LineItem, I).Value = 0 Then
+    '        '                    For J = mLineGrid.RowCount - 1 To 0 Step -1
+    '        '                        If mLineGrid.Item(mColumnMandatory, J).Value <> ""  And mLineGrid.Rows(J).Visible = True Then
+    '        '                            If J = bFirstRowHavingValueInBaseColumn Then
+    '        '                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) - mUsedValue, "0.00")
+    '        '                                mUsedValue = 0
+    '        '                            Else
+    '        '                                mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value = Format(Val(Me.Item(Col_Amount, I).Value) * Val(mLineGrid.Item(bBaseColumn, J).Value) / bTotalBaseColumnAmt, "0.00")
+    '        '                                mUsedValue += mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).value
+    '        '                            End If
+    '        '                        End If
+    '        '                    Next
+    '        '                End If
+    '        '            Case "FIXEDVALUE FROM COLUMN"
+    '        '                For J = 0 To mLineGrid.RowCount - 1
+    '        '                    If mLineGrid.Item(mColumnMandatory, J).Value <> ""  And mLineGrid.Rows(J).Visible = True Then
+    '        '                        mLineGrid.Item(GetColName(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '        '                    End If
+    '        '                Next
+    '        '            Case "PERCENTAGE FROM COLUMN"
+    '        '                For J = 0 To mLineGrid.RowCount - 1
+    '        '                    If mLineGrid.Item(mColumnMandatory, J).Value <> ""  And mLineGrid.Rows(J).Visible = True Then
+    '        '                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = mLineGrid.Item(Me.Item(Col_Value, I).Value, J).VALUE
+    '        '                    End If
+    '        '                Next
+    '        '            Case "PERCENTAGE", "PERCENTAGE CHANGEABLE"
+    '        '                If Me.Item(Col_LineItem, I).Value <> 1 Then
+    '        '                    For J = 0 To mLineGrid.RowCount - 1
+    '        '                        If mLineGrid.Item(mColumnMandatory, J).Value <> ""  And mLineGrid.Rows(J).Visible = True Then
+    '        '                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).VALUE = Val(Me.Item(Col_Percentage, I).Value)
+    '        '                        End If
+    '        '                    Next
+    '        '                End If
+    '        '        End Select
+    '        '    End If
+    '        'Next
+
+
+
+
+    '        mCost = 0
+    '        For J = 0 To Me.RowCount - 1
+    '            If Agl.StrCmp(Me.Item(Col_Charge_Type, J).Value, "Cost") Then
+    '                Me.Item(Col_Amount, J).Value = Format(mCost, "0.00")
+    '                Exit For
+    '            End If
+    '            If Me.Item(Col_AffectCost, J).Value = "1" Then
+    '                mCost += Val(Me.Item(Col_Amount, J).Value)
+    '            ElseIf Me.Item(Col_AffectCost, J).Value = "0" Then
+    '                mCost -= Val(Me.Item(Col_Amount, J).Value)
+    '            End If
+    '        Next
+    '    End If
+
+    '    RaiseEvent Calculated()
+
+    'End Sub
+
     Public Sub Calculation(Optional ByVal IsReverse As Boolean = False)
         Dim I As Integer
         Dim iL As Integer
@@ -1068,268 +1813,29 @@ Public Class AgCalcGrid
 
             For J = 0 To mLineGrid.RowCount - 1
                 If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
-                    If mColumnSalesTaxGroupItem > -1 Then
-                        DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mLineGrid.AgSelectedValue(mColumnSalesTaxGroupItem, J) & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
-                        If DrPostingGroupSalesTax.Length <= 0 Then
-                            DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
-                        End If
-                    ElseIf mSalesTaxGroupItem <> "" Then
-                        DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
-                    End If
-
-                    If mColumnExciseGroupItem > -1 Then
-                        DrPostingGroupExcise = DtPostingGroupExcise.Select("PostingGroupExciseItem='" & mLineGrid.AgSelectedValue(mColumnExciseGroupItem, J) & "' And PostingGroupExciseParty='" & mExciseGroupParty & "' ", "WEF Desc")
-                    End If
-
-                    If mColumnEntryTaxGroupItem > -1 Then
-                        DrPostingGroupEntryTax = DtPostingGroupEntryTax.Select("PostingGroupEntryTaxItem='" & mLineGrid.AgSelectedValue(mColumnEntryTaxGroupItem, J) & "' And PostingGroupEntryTaxParty='" & mEntryTaxGroupParty & "' ", "WEF Desc")
-                    End If
-
-
 
                     For I = 0 To Me.Rows.Count - 1
-                        Select Case UCase(Me.Item(Col_Charge_Type, I).Value)
-                            Case "SALESTAXASSESSABLEAMT"
-                                If mVoucherCategory.ToUpper = "" Then Err.Raise(1, , "Vouhcer category must be defined either purchase or sales, if SalesTax is used in structure.")
-                                If mVoucherCategory.ToUpper <> "SALES" And mVoucherCategory.ToUpper <> "PURCH" Then Err.Raise(1, , "Vouhcer category must be either purchase or sales, if SalesTax is used in structure.")
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            If mVoucherCategory.ToUpper = "SALES" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesAc"))
-                                            ElseIf mVoucherCategory.ToUpper = "PURCH" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("PurchaseAc"))
-                                            End If
-                                        End If
-                                    End If
-                                Else
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
+                        If UCase(Me.Item(Col_Charge_Type, I).Value) <> "" Then
+                            If mColumnSalesTaxGroupItem > -1 Then
+                                DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mLineGrid.AgSelectedValue(mColumnSalesTaxGroupItem, J) & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' And PlaceOfSupply = '" & mPlaceOfSupply & "' And Process = '" & mVoucherCategory & "' And ChargeType='" & UCase(Me.Item(Col_Charge_Type, I).Value) & "'  ", "WEF Desc")
+                                If DrPostingGroupSalesTax.Length <= 0 Then
+                                    DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "'  And PlaceOfSupply = '" & mPlaceOfSupply & "' And Process = '" & mVoucherCategory & "' And ChargeType='" & UCase(Me.Item(Col_Charge_Type, I).Value) & "'  ", "WEF Desc")
                                 End If
+                            ElseIf mSalesTaxGroupItem <> "" Then
+                                DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "'  And PlaceOfSupply = '" & mPlaceOfSupply & "' And Process = '" & mVoucherCategory & "' And ChargeType='" & UCase(Me.Item(Col_Charge_Type, I).Value) & "'  ", "WEF Desc")
+                            End If
 
-                            Case "SALESTAX"
-                                If mVoucherCategory.ToUpper = "" Then Err.Raise(1, , "Vouhcer category must be defined either purchase or sales, if SalesTax is used in structure.")
-                                If mVoucherCategory.ToUpper <> "SALES" And mVoucherCategory.ToUpper <> "PURCH" Then Err.Raise(1, , "Vouhcer category must be either purchase or sales, if SalesTax is used in structure.")
-
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTax"))
-                                            If mVoucherCategory.ToUpper = "SALES" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTaxOnSalesAc"))
-                                            ElseIf mVoucherCategory.ToUpper = "PURCH" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTaxOnPurchaseAc"))
-                                            End If
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("SalesTax"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for SalesTax in selected branch and division.")
+                            If DrPostingGroupSalesTax.Length > 0 Then
+                                If Me.Item(Col_LineItem, I).Value Then
+                                    If Agl.VNull(DrPostingGroupSalesTax(0)("Percentage")) > 0 Then
+                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("Percentage"))
                                     End If
-                                Else
-                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    Me.Item(Col_Percentage, I).Value = ""
-                                End If
-
-                            Case "SALESADDITIONALTAX"
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTax"))
-                                            If mVoucherCategory.ToUpper = "SALES" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTaxOnSalesAc"))
-                                            ElseIf mVoucherCategory.ToUpper = "PURCH" Then
-                                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTaxOnPurchaseAc"))
-                                            End If
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("AdditionalTax"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for Sales Additional Tax in selected branch and division.")
-                                    End If
-                                Else
-                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    Me.Item(Col_Percentage, I).Value = ""
-                                End If
-
-
-                            Case "SERVICETAXASSESSABLEAMT"
-                                If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-                                    If Me.Item(Col_LineItem, I).Value Then
-                                        mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ServiceTaxAssessableAc"))
-                                    End If
-                                Else
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                                End If
-
-
-                            Case "SERVICETAX"
-                                If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-                                    If Me.Item(Col_LineItem, I).Value Then
-                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ServiceTax"))
-                                        mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ServiceTaxAc"))
-                                    Else
-                                        Me.Item(Col_Percentage, I).Value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ServiceTax"))
-                                    End If
-                                Else
-                                    MsgBox("ServiceTax posting groups not defined for ServiceTax in selected branch and division.")
-
-                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    Me.Item(Col_Percentage, I).Value = ""
-                                End If
-
-                            Case "ECESS"
-                                If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-
-                                    If Me.Item(Col_LineItem, I).Value Then
-                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ECESS"))
-                                        mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ECESSAc"))
-                                    Else
-                                        Me.Item(Col_Percentage, I).Value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("ECESS"))
-                                    End If
-                                Else
-                                    MsgBox("ServiceTax posting groups not defined for ECess in selected branch and division.")
-                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    Me.Item(Col_Percentage, I).Value = ""
-                                End If
-
-                            Case "HECESS"
-                                If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-
-                                    If Me.Item(Col_LineItem, I).Value Then
-                                        mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("HECESS"))
-                                        mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("HECESSAc"))
-                                    Else
-                                        Me.Item(Col_Percentage, I).Value = Agl.XNull(DtPostingGroupServiceTax.Rows(0)("HECESS"))
-                                    End If
-                                Else
-                                    MsgBox("ServiceTax posting groups not defined for HECess in selected branch and division.")
-                                    mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = ""
-                                    Me.Item(Col_Percentage, I).Value = ""
-                                End If
-
-                            Case "BASICEXCISEDUTY"
-                                If mColumnExciseGroupItem >= 0 And mExciseGroupParty <> "" Then
-                                    If DrPostingGroupExcise.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupExcise(0)("EXCISE"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupExcise(0)("EXCISE"))
-                                        End If
-                                    Else
-                                        MsgBox("Excise posting groups not defined for ExciseDuty in selected branch and division.")
+                                    If Agl.XNull(DrPostingGroupSalesTax(0)("LedgerAc")) <> "" Then
+                                        mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("LedgerAc"))
                                     End If
                                 End If
-
-                            Case "EXCISECESS"
-                                If mColumnExciseGroupItem >= 0 And mExciseGroupParty <> "" Then
-                                    If DrPostingGroupExcise.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupExcise(0)("CESS"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupExcise(0)("CESS"))
-                                        End If
-                                    Else
-                                        MsgBox("Excise posting groups not defined for Excise Cess in selected branch and division.")
-                                    End If
-                                End If
-
-                            Case "EXCISEEDUCESS"
-                                If mColumnExciseGroupItem >= 0 And mExciseGroupParty <> "" Then
-                                    If DrPostingGroupExcise.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupExcise(0)("ECESS"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupExcise(0)("ECESS"))
-                                        End If
-                                    Else
-                                        MsgBox("Excise posting groups not defined for Excise ECess in selected branch and division.")
-                                    End If
-                                End If
-
-                            Case "EXCISEHEDUCESS"
-                                If mColumnExciseGroupItem >= 0 And mExciseGroupParty <> "" Then
-                                    If DrPostingGroupExcise.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupExcise(0)("HECESS"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupExcise(0)("HECESS"))
-                                        End If
-                                    Else
-                                        MsgBox("Excise posting groups not defined for Excise HECess in selected branch and division.")
-                                    End If
-                                End If
-
-                            Case "CUSTOMDUTY"
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDuty"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDuty"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for CustomDuty in selected branch and division.")
-                                    End If
-                                End If
-
-
-                            Case "CUSTOMDUTYEDUCESS"
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDutyECess"))
-                                        Else
-                                            Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDutyECess"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for CustomDuty ECess in selected branch and division.")
-                                    End If
-                                End If
-
-                            Case "CUSTOMDUTYHEDUCESS"
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDutyHECess"))
-                                        Else
-                                            If DrPostingGroupSalesTax.Length > 0 Then Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomDutyHECess"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for CustomDuty HECess in selected branch and division.")
-                                    End If
-                                End If
-
-                            Case "CUSTOMADDITIONALDUTY"
-                                If mColumnSalesTaxGroupItem >= 0 And mSalesTaxGroupParty <> "" Then
-                                    If DrPostingGroupSalesTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomAdditionalDuty"))
-                                        Else
-                                            If DrPostingGroupSalesTax.Length > 0 Then Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupSalesTax(0)("CustomAdditionalDuty"))
-                                        End If
-                                    Else
-                                        MsgBox("SalesTax posting groups not defined for CustomDuty Additional Duty in selected branch and division.")
-                                    End If
-                                End If
-
-
-                            Case "ENTRYTAX"
-                                If mColumnEntryTaxGroupItem >= 0 And mEntryTaxGroupParty <> "" Then
-                                    If DrPostingGroupEntryTax.Length > 0 Then
-                                        If Me.Item(Col_LineItem, I).Value Then
-                                            mLineGrid.Item(GetColNamePer(Me.Item(Col_Charges, I).Value), J).value = Agl.XNull(DrPostingGroupEntryTax(0)("ENTRYTAX"))
-                                        Else
-                                            If DrPostingGroupEntryTax.Length > 0 Then Me.Item(Col_Percentage, I).Value = Agl.XNull(DrPostingGroupEntryTax(0)("ENTRYTAX"))
-                                        End If
-                                    Else
-                                        MsgBox("EntryTax posting groups not defined for Entrytax in selected branch and division.")
-                                    End If
-                                End If
-
-                        End Select
+                            End If
+                        End If
                     Next
 
                 End If
@@ -2436,7 +2942,7 @@ Public Class AgCalcGrid
     Public Sub MoveRec_TransFooter(ByVal mSearchCode As String)
         Dim mQry$ = "", I%
         Dim DtTemp As DataTable = Nothing
-
+        If mSearchCode = "" Then Exit Sub
         Try
             If FrmType = ClsMain.EntryPointType.Main Then
                 mQry = "Select F.*,C.ManualCode from (Select * From Structure_TransFooter  Where DocID = '" & mSearchCode & "') F Left Join Charges C On F.Charges = C.Code  Order By Sr"
@@ -2499,6 +3005,9 @@ Public Class AgCalcGrid
         Dim mQry$ = "", I%
         'Dim DtTemp As DataTable = Nothing
         Dim DtStructureDetail As DataTable = Nothing
+        If AgStructure = "" Then Exit Sub
+
+
         Try
             'mQry = "Select * From " & mTableName & " Where " & mKeyFieldName & " = '" & mSearchCode & "' "
             'DtTemp = Agl.FillData(mQry, Agl.GCn).tables(0)
@@ -2573,7 +3082,7 @@ Public Class AgCalcGrid
     Public Sub FMoveRecLineTable(ByVal DtTemp As DataTable, ByVal CurrRow As Integer, Optional ByVal MultiplyWithMinus As Boolean = False)
         Dim mQry$ = "", I%
 
-
+        If AgStructure = "" Then Exit Sub
         Try
             For I = 0 To Me.RowCount - 1
                 If Me.Item(Col_Charges, I).Value <> "" Then
@@ -2598,6 +3107,8 @@ Public Class AgCalcGrid
     Public Sub FMoveRecLineLedgerAc()
         Dim J As Integer, I As Integer
 
+        If DtPostingGroupSalesTax Is Nothing Then Exit Sub
+
         For J = 0 To mLineGrid.RowCount - 1
             If mLineGrid.Item(mColumnMandatory, J).Value <> "" And mLineGrid.Rows(J).Visible = True Then
                 If mColumnSalesTaxGroupItem > -1 Then
@@ -2609,13 +3120,6 @@ Public Class AgCalcGrid
                     DrPostingGroupSalesTax = DtPostingGroupSalesTax.Select("PostingGroupSalesTaxItem='" & mSalesTaxGroupItem & "' And PostingGroupSalesTaxParty='" & mSalesTaxGroupParty & "' ", "WEF Desc")
                 End If
 
-                If mColumnExciseGroupItem > -1 Then
-                    DrPostingGroupExcise = DtPostingGroupExcise.Select("PostingGroupExciseItem='" & mLineGrid.AgSelectedValue(mColumnExciseGroupItem, J) & "' And PostingGroupExciseParty='" & mExciseGroupParty & "' ", "WEF Desc")
-                End If
-
-                If mColumnEntryTaxGroupItem > -1 Then
-                    DrPostingGroupEntryTax = DtPostingGroupEntryTax.Select("PostingGroupEntryTaxItem='" & mLineGrid.AgSelectedValue(mColumnEntryTaxGroupItem, J) & "' And PostingGroupEntryTaxParty='" & mEntryTaxGroupParty & "' ", "WEF Desc")
-                End If
 
 
 
@@ -2675,46 +3179,6 @@ Public Class AgCalcGrid
                             End If
 
 
-
-                        Case "SERVICETAXASSESSABLEAMT"
-                            If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-                                If Me.Item(Col_LineItem, I).Value Then
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = DtPostingGroupServiceTax.Rows(0)("ServiceTaxAssessableAc")
-                                End If
-                            Else
-                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                            End If
-
-
-                        Case "SERVICETAX"
-                            If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-                                If Me.Item(Col_LineItem, I).Value Then
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = DtPostingGroupServiceTax.Rows(0)("ServiceTaxAc")
-                                End If
-                            Else
-                                MsgBox("ServiceTax posting groups not defined for ServiceTax in selected branch and division.")
-                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                            End If
-
-                        Case "ECESS"
-                            If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-                                If Me.Item(Col_LineItem, I).Value Then
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = DtPostingGroupServiceTax.Rows(0)("ECESSAc")
-                                End If
-                            Else
-                                MsgBox("ServiceTax posting groups not defined for ECess in selected branch and division.")
-                                mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = ""
-                            End If
-
-                        Case "HECESS"
-                            If DtPostingGroupServiceTax.DefaultView.Count > 0 Then
-
-                                If Me.Item(Col_LineItem, I).Value Then
-                                    mLineGrid.Item(GetColNamePostAc(Me.Item(Col_Charges, I).Value), J).value = DtPostingGroupServiceTax.Rows(0)("HECESSAc")
-                                End If
-                            Else
-                                MsgBox("ServiceTax posting groups not defined for HECess in selected branch and division.")
-                            End If
 
 
                     End Select

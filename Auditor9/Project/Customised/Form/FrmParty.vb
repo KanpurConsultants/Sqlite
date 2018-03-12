@@ -1329,15 +1329,14 @@ Public Class FrmParty
     Private Sub FrmShade_BaseEvent_FindMain() Handles Me.BaseEvent_FindMain
         AgL.PubFindQry = " SELECT H.SubCode AS SearchCode,  H.DispName AS [Display Name], " & _
                         " H.ManualCode AS [Manual Code], H.Add1, H.Add2, H.Add3, C.CityName AS [City Name], " & _
-                        " H.Mobile, H.EMail, Cr.Description AS Currency, " & _
+                        " H.Mobile, H.EMail, " & _
                         " H.EntryBy AS [Entry By], H.EntryDate AS [Entry Date], H.EntryType AS [Entry Type], " & _
                         " H.Status, AG.GroupName AS [GROUP No], D.Div_Name AS Division,SM.Name AS [Site Name] " & _
                         " FROM SubGroup H " & _
                         " LEFT JOIN Division D ON D.Div_Code=H.Div_Code  " & _
                         " LEFT JOIN SiteMast SM ON SM.Code=H.Site_Code " & _
                         " LEFT JOIN AcGroup AG ON AG.GroupCode = H.GroupCode " & _
-                        " LEFT JOIN City C ON C.CityCode = H.CityCode  " & _
-                        " LEFT JOIN Currency Cr ON CR.Code = H.Currency " & _
+                        " LEFT JOIN City C ON C.CityCode = H.CityCode  " & _                        
                         " WHERE MasterType = '" & mMasterType & "' AND H.Site_Code =" & AgL.Chk_Text(AgL.PubSiteCode) & " "
         AgL.PubFindQryOrdBy = "[Name]"
     End Sub
@@ -1505,78 +1504,76 @@ Public Class FrmParty
 
 
             If Topctrl1.Mode = "Add" Then
-                mQry = "INSERT INTO SubGroup(SubCode, SiteList, Site_Code, Name, DispName, " & _
-                        " GroupCode, GroupNature, MasterType,	ManualCode,	Nature,	Add1,	Add2,	CityCode,  " & _
-                        " PIN, Phone, FAX, CSTNo, TINNo, PAN, STRegNo, ContactPerson, CostCenter, Party_Type, " & _
-                        " Mobile, CreditDays, CreditLimit, EMail, Parent, SalesTaxPostingGroup, Currency, Upline, DrugLicenseNo, " & _
-                        " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status, " & _
-                        " U_Name, U_EntDt, U_AE) " & _
-                        " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " & _
-                        " '|" & AgL.PubSiteCode & "|','" & AgL.PubSiteCode & "', " & AgL.Chk_Text(bName) & ",	" & _
-                        " " & AgL.Chk_Text(TxtDispName.Text) & ", " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(mGroupNature) & ", " & AgL.Chk_Text(mMasterType) & ", " & AgL.Chk_Text(TxtManualCode.Text) & ", " & _
-                        " " & AgL.Chk_Text(mNature) & ", " & AgL.Chk_Text(TxtAdd1.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtAdd2.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(TxtPinNo.Text) & ", " & AgL.Chk_Text(TxtPhone.Text) & ", " & AgL.Chk_Text(TxtFax.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtCSTNo.Text) & ", " & AgL.Chk_Text(TxtTinNo.Text) & ", " & AgL.Chk_Text(TxtPanNo.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtStRegNo.Text) & ", " & AgL.Chk_Text(TxtContactPerson.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtCostCenter.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(TxtPartyType.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(TxtMobile.Text) & ", " & _
-                        " " & Val(TxtCreditDays.Text) & ", " & _
-                        " " & Val(TxtCreditLimit.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtEMail.Text) & ", " & _
-                        " " & AgL.Chk_Text(TxtUnderSubCode.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " & _
-                        " " & AgL.Chk_Text(mUpLineStr) & ", " & _
-                        " " & AgL.Chk_Text(TxtDrugLicenseNo.Text) & ", " & _
-                        " " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & _
-                        " " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & _
-                        " " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ", " & _
-                        " '" & AgL.PubUserName & "','" & Format(AgL.PubLoginDate, "Short Date") & "', 'A') "
+                mQry = "INSERT INTO SubGroup(SubCode, SiteList, Site_Code, Name, DispName, " &
+                        " GroupCode, GroupNature, MasterType,	ManualCode,	Nature,	Add1,	Add2,	CityCode,  " &
+                        " PIN, Phone, FAX, CSTNo, TINNo, PAN, STRegNo, ContactPerson, CostCenter, Party_Type, " &
+                        " Mobile, CreditDays, CreditLimit, EMail, Parent, SalesTaxPostingGroup, Currency, Upline, DrugLicenseNo, " &
+                        " EntryBy, EntryDate,  EntryType, EntryStatus, Div_Code, Status, " &
+                        " U_Name, U_EntDt, U_AE) " &
+                        " VALUES(" & AgL.Chk_Text(mSearchCode) & ", " &
+                        " '|" & AgL.PubSiteCode & "|','" & AgL.PubSiteCode & "', " & AgL.Chk_Text(bName) & ",	" &
+                        " " & AgL.Chk_Text(TxtDispName.Text) & ", " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(mGroupNature) & ", " & AgL.Chk_Text(mMasterType) & ", " & AgL.Chk_Text(TxtManualCode.Text) & ", " &
+                        " " & AgL.Chk_Text(mNature) & ", " & AgL.Chk_Text(TxtAdd1.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtAdd2.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtPinNo.Text) & ", " & AgL.Chk_Text(TxtPhone.Text) & ", " & AgL.Chk_Text(TxtFax.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtCSTNo.Text) & ", " & AgL.Chk_Text(TxtTinNo.Text) & ", " & AgL.Chk_Text(TxtPanNo.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtStRegNo.Text) & ", " & AgL.Chk_Text(TxtContactPerson.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtCostCenter.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtPartyType.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtMobile.Text) & ", " &
+                        " " & Val(TxtCreditDays.Text) & ", " &
+                        " " & Val(TxtCreditLimit.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtEMail.Text) & ", " &
+                        " " & AgL.Chk_Text(TxtUnderSubCode.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " &
+                        " " & AgL.Chk_Text(mUpLineStr) & ", " &
+                        " " & AgL.Chk_Text(TxtDrugLicenseNo.Text) & ", " &
+                        " " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
+                        " " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
+                        " " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & AgL.Chk_Text(TxtStatus.Text) & ", " &
+                        " '" & AgL.PubUserName & "'," & AgL.Chk_Date(CDate(AgL.PubLoginDate).ToString("u")) & ", 'A') "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             Else
-                mQry = "UPDATE SubGroup " & _
-                        " SET " & _
-                        " Name = " & AgL.Chk_Text(bName) & ", " & _
-                        " DispName = " & AgL.Chk_Text(TxtDispName.Text) & ", " & _
-                        " GroupCode = " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " & _
-                        " GroupNature = " & AgL.Chk_Text(mGroupNature) & ", " & _
-                        " MasterType = " & AgL.Chk_Text(mMasterType) & ", " & _
-                        " ManualCode = " & AgL.Chk_Text(TxtManualCode.Text) & ", " & _
-                        " Nature = " & AgL.Chk_Text(mNature) & ", " & _
-                        " Add1 = " & AgL.Chk_Text(TxtAdd1.Text) & ", " & _
-                        " Add2 = " & AgL.Chk_Text(TxtAdd2.Text) & ", " & _
-                        " CityCode = " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " & _
-                        " Mobile = " & AgL.Chk_Text(TxtMobile.Text) & ", " & _
-                        " CreditDays = " & Val(TxtCreditDays.Text) & ", " & _
-                        " CreditLimit = " & Val(TxtCreditLimit.Text) & ", " & _
-                        " EMail = " & AgL.Chk_Text(TxtEMail.Text) & ", " & _
-                        " PIN = " & AgL.Chk_Text(TxtPinNo.Text) & ", " & _
-                        " Phone = " & AgL.Chk_Text(TxtPhone.Text) & ", " & _
-                        " FAX = " & AgL.Chk_Text(TxtFax.Text) & ", " & _
-                        " CSTNo = " & AgL.Chk_Text(TxtCSTNo.Text) & ", " & _
-                        " TINNo = " & AgL.Chk_Text(TxtTinNo.Text) & ", " & _
-                        " PAN = " & AgL.Chk_Text(TxtPanNo.Text) & ", " & _
-                        " STRegNo = " & AgL.Chk_Text(TxtStRegNo.Text) & ", " & _
-                        " ContactPerson = " & AgL.Chk_Text(TxtContactPerson.Text) & ", " & _
-                        " CostCenter = " & AgL.Chk_Text(TxtCostCenter.AgSelectedValue) & ", " & _
-                        " Party_Type = " & AgL.Chk_Text(TxtPartyType.AgSelectedValue) & ", " & _
-                        " Parent = " & AgL.Chk_Text(TxtUnderSubCode.AgSelectedValue) & ", " & _
-                        " SalesTaxPostingGroup = " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " & _
-                        " Currency = " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " & _
-                        " Upline = " & AgL.Chk_Text(mUpLineStr) & ", " & _
-                        " DrugLicenseNo = " & AgL.Chk_Text(TxtDrugLicenseNo.Text) & ", " & _
-                        " EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", " & _
-                        " EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & _
-                        " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " & _
-                        " EntryStatus = " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & _
-                        " Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " & _
-                        " U_AE = 'E', " & _
-                        " Edit_Date = '" & Format(AgL.PubLoginDate, "Short Date") & "', " & _
-                        " ModifiedBy = '" & AgL.PubUserName & "' " & _
+                mQry = "UPDATE SubGroup " &
+                        " SET " &
+                        " Name = " & AgL.Chk_Text(bName) & ", " &
+                        " DispName = " & AgL.Chk_Text(TxtDispName.Text) & ", " &
+                        " GroupCode = " & AgL.Chk_Text(TxtAcGroup.AgSelectedValue) & ", " &
+                        " GroupNature = " & AgL.Chk_Text(mGroupNature) & ", " &
+                        " MasterType = " & AgL.Chk_Text(mMasterType) & ", " &
+                        " ManualCode = " & AgL.Chk_Text(TxtManualCode.Text) & ", " &
+                        " Nature = " & AgL.Chk_Text(mNature) & ", " &
+                        " Add1 = " & AgL.Chk_Text(TxtAdd1.Text) & ", " &
+                        " Add2 = " & AgL.Chk_Text(TxtAdd2.Text) & ", " &
+                        " CityCode = " & AgL.Chk_Text(TxtCity.AgSelectedValue) & ", " &
+                        " Mobile = " & AgL.Chk_Text(TxtMobile.Text) & ", " &
+                        " CreditDays = " & Val(TxtCreditDays.Text) & ", " &
+                        " CreditLimit = " & Val(TxtCreditLimit.Text) & ", " &
+                        " EMail = " & AgL.Chk_Text(TxtEMail.Text) & ", " &
+                        " PIN = " & AgL.Chk_Text(TxtPinNo.Text) & ", " &
+                        " Phone = " & AgL.Chk_Text(TxtPhone.Text) & ", " &
+                        " FAX = " & AgL.Chk_Text(TxtFax.Text) & ", " &
+                        " CSTNo = " & AgL.Chk_Text(TxtCSTNo.Text) & ", " &
+                        " TINNo = " & AgL.Chk_Text(TxtTinNo.Text) & ", " &
+                        " PAN = " & AgL.Chk_Text(TxtPanNo.Text) & ", " &
+                        " STRegNo = " & AgL.Chk_Text(TxtStRegNo.Text) & ", " &
+                        " ContactPerson = " & AgL.Chk_Text(TxtContactPerson.Text) & ", " &
+                        " CostCenter = " & AgL.Chk_Text(TxtCostCenter.AgSelectedValue) & ", " &
+                        " Party_Type = " & AgL.Chk_Text(TxtPartyType.AgSelectedValue) & ", " &
+                        " Parent = " & AgL.Chk_Text(TxtUnderSubCode.AgSelectedValue) & ", " &
+                        " SalesTaxPostingGroup = " & AgL.Chk_Text(TxtSalesTaxGroup.AgSelectedValue) & ", " &
+                        " Currency = " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " &
+                        " Upline = " & AgL.Chk_Text(mUpLineStr) & ", " &
+                        " DrugLicenseNo = " & AgL.Chk_Text(TxtDrugLicenseNo.Text) & ", " &
+                        " EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", " &
+                        " EntryStatus = " & AgL.Chk_Text(LogStatus.LogOpen) & ", " &
+                        " Div_Code = " & AgL.Chk_Text(TxtDivision.AgSelectedValue) & ", " &
+                        " U_AE = 'E', " &
+                        " Edit_Date = " & AgL.Chk_Date(CDate(AgL.PubLoginDate).ToString("u")) & ", " &
+                        " ModifiedBy = '" & AgL.PubUserName & "' " &
                         " Where Subcode = " & AgL.Chk_Text(mSearchCode) & "  "
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             End If
@@ -1662,10 +1659,6 @@ Public Class FrmParty
     End Sub
 
     Private Sub FrmParty_BaseEvent_Topctrl_tbAdd() Handles Me.BaseEvent_Topctrl_tbAdd
-        TxtCurrency.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultCurrency"))
-        If TxtCurrency.Tag <> "" Then
-            TxtCurrency.Text = AgL.XNull(AgL.Dman_Execute("Select Description From Currency Where Code = '" & TxtCurrency.Tag & "'  ", AgL.GCn).ExecuteScalar)
-        End If
         TxtSalesTaxGroup.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
         TxtSalesTaxGroup.Text = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
 

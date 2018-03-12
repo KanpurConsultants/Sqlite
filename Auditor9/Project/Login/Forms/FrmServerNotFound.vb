@@ -203,9 +203,9 @@ ByVal lpFileName As String) As Int32
     Public Function ConnectDb(ByVal ServerName As String, ByVal DatabaseName As String, Optional ByVal DatabaseUser As String = "sa", Optional ByVal DatabasePassword As String = "") As String
         Agl.AglObj = Agl
         Agl.PubDBUserSQL = "SA"
-        Agl.GCn = New SqlClient.SqlConnection
-        Agl.GcnRead = New SqlClient.SqlConnection
-        Agl.Gcn_ConnectionString = "Persist Security Info=False;User ID='" & DatabaseUser & "';pwd=" & DatabasePassword & ";Initial Catalog=" & DatabaseName & ";Data Source=" & ServerName
+        AgL.GCn = New SQLite.SQLiteConnection
+        AgL.GcnRead = New SQLite.SQLiteConnection
+        AgL.Gcn_ConnectionString = "Persist Security Info=False;User ID='" & DatabaseUser & "';pwd=" & DatabasePassword & ";Initial Catalog=" & DatabaseName & ";Data Source=" & ServerName
         Agl.GCn.ConnectionString = Agl.Gcn_ConnectionString
         AgL.GcnRead.ConnectionString = AgL.Gcn_ConnectionString
         'AgL.GCnComp.ConnectionString = AgL.Gcn_ConnectionString
@@ -214,8 +214,8 @@ ByVal lpFileName As String) As Int32
 
             Agl.GCn.Open()
             Agl.GcnRead.Open()
-            Agl.ECmd = New SqlClient.SqlCommand
-            Agl.ECmd = Agl.GCn.CreateCommand
+            AgL.ECmd = New SQLite.SQLiteCommand
+            AgL.ECmd = Agl.GCn.CreateCommand
 
         Catch ex As Exception
             ConnectDb = ex.Message

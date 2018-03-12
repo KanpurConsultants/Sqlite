@@ -1971,7 +1971,6 @@ Public Class FrmSaleInvoiceNew
                 '-------------------------------------------------------------
 
                 mQry = "Select L.*, I.Description As ItemDesc, II.Description As ItemInvoicedDesc , I.ManualCode, " &
-                        " O.V_Type || '-' || O.ReferenceNo As OrderRefNo, " &
                         " Si.V_Type || '-' || Si.ReferenceNo As SaleInvoiceNo, " &
                         " Stock.V_Type || '-' || Stock.RecID As PurchaseNo, " &
                         " Sch.V_Type || '-' || Sch.ReferenceNo As SaleChallanNo, " &

@@ -25,8 +25,6 @@ Partial Class MDIMain
         Me.MnuItemGroupMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuItemMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCustomerMaster = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSupplierMaster = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuAgentMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuRateTypeMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuRateList = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuManufacturerMaster = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,31 +35,16 @@ Partial Class MDIMain
         Me.MnuAreaMaster = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuDimension1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuCustomized = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSaleInvoiceDetailEntry = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuOpeningStockEntry = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuAdjustmentIssueEntry = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnnReports = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ItemExpiryReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PurchaseAdviseReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuPurchaseIndentReport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuVATReports = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuPartyOutstandingReport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuBillWiseProfitability = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuDebtorsOutstandingOverDue = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuWeavingOrderRatio = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuCurrentStockReport = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuTools = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuAdjustSaleInvoices = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuHidden = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MnuSaleInvoice = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuPurchaseInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuUpdateTableStructure = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MnuSaleInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnuMain.SuspendLayout()
         Me.SuspendLayout()
         '
         'MnuMain
         '
-        Me.MnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuMaster, Me.MnuCustomized, Me.MnuHidden, Me.MnuUpdateTableStructure})
+        Me.MnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuMaster, Me.MnuCustomized, Me.MnuUpdateTableStructure})
         Me.MnuMain.Location = New System.Drawing.Point(0, 0)
         Me.MnuMain.Name = "MnuMain"
         Me.MnuMain.Size = New System.Drawing.Size(965, 24)
@@ -70,7 +53,7 @@ Partial Class MDIMain
         '
         'MnuMaster
         '
-        Me.MnuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemCategoryMaster, Me.MnuItemGroupMaster, Me.MnuItemMaster, Me.MnuCustomerMaster, Me.MnuSupplierMaster, Me.MnuAgentMaster, Me.MnuRateTypeMaster, Me.MnuRateList, Me.MnuManufacturerMaster, Me.MnuGodownMaster, Me.MnuDepartmentMaster, Me.MnuStateMaster, Me.MnuCityMaster, Me.MnuAreaMaster, Me.MnuDimension1})
+        Me.MnuMaster.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuItemCategoryMaster, Me.MnuItemGroupMaster, Me.MnuItemMaster, Me.MnuCustomerMaster, Me.MnuRateTypeMaster, Me.MnuRateList, Me.MnuManufacturerMaster, Me.MnuGodownMaster, Me.MnuDepartmentMaster, Me.MnuStateMaster, Me.MnuCityMaster, Me.MnuAreaMaster, Me.MnuDimension1})
         Me.MnuMaster.Name = "MnuMaster"
         Me.MnuMaster.Size = New System.Drawing.Size(55, 20)
         Me.MnuMaster.Text = "Master"
@@ -97,19 +80,7 @@ Partial Class MDIMain
         '
         Me.MnuCustomerMaster.Name = "MnuCustomerMaster"
         Me.MnuCustomerMaster.Size = New System.Drawing.Size(188, 22)
-        Me.MnuCustomerMaster.Text = "Customer Master"
-        '
-        'MnuSupplierMaster
-        '
-        Me.MnuSupplierMaster.Name = "MnuSupplierMaster"
-        Me.MnuSupplierMaster.Size = New System.Drawing.Size(188, 22)
-        Me.MnuSupplierMaster.Text = "Supplier Master"
-        '
-        'MnuAgentMaster
-        '
-        Me.MnuAgentMaster.Name = "MnuAgentMaster"
-        Me.MnuAgentMaster.Size = New System.Drawing.Size(188, 22)
-        Me.MnuAgentMaster.Text = "Agent Master"
+        Me.MnuCustomerMaster.Text = "Person Master"
         '
         'MnuRateTypeMaster
         '
@@ -167,137 +138,34 @@ Partial Class MDIMain
         '
         'MnuCustomized
         '
-        Me.MnuCustomized.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoiceDetailEntry, Me.MnuOpeningStockEntry, Me.MnuAdjustmentIssueEntry, Me.MnnReports, Me.MnuTools, Me.ToolStripMenuItem1})
+        Me.MnuCustomized.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuOpeningStockEntry, Me.MnuPurchaseInvoice, Me.MnuSaleInvoice})
         Me.MnuCustomized.Name = "MnuCustomized"
         Me.MnuCustomized.Size = New System.Drawing.Size(82, 20)
         Me.MnuCustomized.Text = "Customized"
         '
-        'MnuSaleInvoiceDetailEntry
-        '
-        Me.MnuSaleInvoiceDetailEntry.Name = "MnuSaleInvoiceDetailEntry"
-        Me.MnuSaleInvoiceDetailEntry.Size = New System.Drawing.Size(199, 22)
-        Me.MnuSaleInvoiceDetailEntry.Text = "Sale Invoice Detail Entry"
-        '
         'MnuOpeningStockEntry
         '
         Me.MnuOpeningStockEntry.Name = "MnuOpeningStockEntry"
-        Me.MnuOpeningStockEntry.Size = New System.Drawing.Size(199, 22)
+        Me.MnuOpeningStockEntry.Size = New System.Drawing.Size(195, 22)
         Me.MnuOpeningStockEntry.Text = "Opening Stock Entry"
         '
-        'MnuAdjustmentIssueEntry
+        'MnuPurchaseInvoice
         '
-        Me.MnuAdjustmentIssueEntry.Name = "MnuAdjustmentIssueEntry"
-        Me.MnuAdjustmentIssueEntry.Size = New System.Drawing.Size(199, 22)
-        Me.MnuAdjustmentIssueEntry.Text = "Adjustment Issue Entry"
-        '
-        'MnnReports
-        '
-        Me.MnnReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemExpiryReportToolStripMenuItem, Me.PurchaseAdviseReportToolStripMenuItem, Me.MnuPurchaseIndentReport, Me.MnuVATReports, Me.MnuPartyOutstandingReport, Me.MnuBillWiseProfitability, Me.MnuDebtorsOutstandingOverDue, Me.MnuWeavingOrderRatio, Me.MnuCurrentStockReport})
-        Me.MnnReports.Name = "MnnReports"
-        Me.MnnReports.Size = New System.Drawing.Size(199, 22)
-        Me.MnnReports.Text = "Reports"
-        '
-        'ItemExpiryReportToolStripMenuItem
-        '
-        Me.ItemExpiryReportToolStripMenuItem.Name = "ItemExpiryReportToolStripMenuItem"
-        Me.ItemExpiryReportToolStripMenuItem.Size = New System.Drawing.Size(236, 22)
-        Me.ItemExpiryReportToolStripMenuItem.Tag = "Report"
-        Me.ItemExpiryReportToolStripMenuItem.Text = "Item Expiry Report"
-        '
-        'PurchaseAdviseReportToolStripMenuItem
-        '
-        Me.PurchaseAdviseReportToolStripMenuItem.Name = "PurchaseAdviseReportToolStripMenuItem"
-        Me.PurchaseAdviseReportToolStripMenuItem.Size = New System.Drawing.Size(236, 22)
-        Me.PurchaseAdviseReportToolStripMenuItem.Tag = "Report"
-        Me.PurchaseAdviseReportToolStripMenuItem.Text = "Purchase Advise Report"
-        '
-        'MnuPurchaseIndentReport
-        '
-        Me.MnuPurchaseIndentReport.Name = "MnuPurchaseIndentReport"
-        Me.MnuPurchaseIndentReport.Size = New System.Drawing.Size(236, 22)
-        Me.MnuPurchaseIndentReport.Tag = "Report"
-        Me.MnuPurchaseIndentReport.Text = "Purchase Indent Report"
-        '
-        'MnuVATReports
-        '
-        Me.MnuVATReports.Name = "MnuVATReports"
-        Me.MnuVATReports.Size = New System.Drawing.Size(236, 22)
-        Me.MnuVATReports.Tag = "Report"
-        Me.MnuVATReports.Text = "VAT Reports"
-        '
-        'MnuPartyOutstandingReport
-        '
-        Me.MnuPartyOutstandingReport.Name = "MnuPartyOutstandingReport"
-        Me.MnuPartyOutstandingReport.Size = New System.Drawing.Size(236, 22)
-        Me.MnuPartyOutstandingReport.Tag = "Report"
-        Me.MnuPartyOutstandingReport.Text = "Party Outstanding Report"
-        '
-        'MnuBillWiseProfitability
-        '
-        Me.MnuBillWiseProfitability.Name = "MnuBillWiseProfitability"
-        Me.MnuBillWiseProfitability.Size = New System.Drawing.Size(236, 22)
-        Me.MnuBillWiseProfitability.Tag = "REPORT"
-        Me.MnuBillWiseProfitability.Text = "Bill Wise Profitability"
-        '
-        'MnuDebtorsOutstandingOverDue
-        '
-        Me.MnuDebtorsOutstandingOverDue.Name = "MnuDebtorsOutstandingOverDue"
-        Me.MnuDebtorsOutstandingOverDue.Size = New System.Drawing.Size(236, 22)
-        Me.MnuDebtorsOutstandingOverDue.Tag = "Report"
-        Me.MnuDebtorsOutstandingOverDue.Text = "Debtors Outstanding Over Due"
-        '
-        'MnuWeavingOrderRatio
-        '
-        Me.MnuWeavingOrderRatio.Name = "MnuWeavingOrderRatio"
-        Me.MnuWeavingOrderRatio.Size = New System.Drawing.Size(236, 22)
-        Me.MnuWeavingOrderRatio.Tag = "Report"
-        Me.MnuWeavingOrderRatio.Text = "Weaving Order Ratio"
-        '
-        'MnuCurrentStockReport
-        '
-        Me.MnuCurrentStockReport.Name = "MnuCurrentStockReport"
-        Me.MnuCurrentStockReport.Size = New System.Drawing.Size(236, 22)
-        Me.MnuCurrentStockReport.Tag = "Report"
-        Me.MnuCurrentStockReport.Text = "Current Stock Report"
-        '
-        'MnuTools
-        '
-        Me.MnuTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuAdjustSaleInvoices})
-        Me.MnuTools.Name = "MnuTools"
-        Me.MnuTools.Size = New System.Drawing.Size(199, 22)
-        Me.MnuTools.Text = "Tools"
-        '
-        'MnuAdjustSaleInvoices
-        '
-        Me.MnuAdjustSaleInvoices.Name = "MnuAdjustSaleInvoices"
-        Me.MnuAdjustSaleInvoices.Size = New System.Drawing.Size(178, 22)
-        Me.MnuAdjustSaleInvoices.Text = "Adjust Sale Invoices"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(199, 22)
-        Me.ToolStripMenuItem1.Text = "Purchase Invoice"
-        '
-        'MnuHidden
-        '
-        Me.MnuHidden.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MnuSaleInvoice})
-        Me.MnuHidden.Name = "MnuHidden"
-        Me.MnuHidden.Size = New System.Drawing.Size(58, 20)
-        Me.MnuHidden.Text = "Hidden"
-        Me.MnuHidden.Visible = False
-        '
-        'MnuSaleInvoice
-        '
-        Me.MnuSaleInvoice.Name = "MnuSaleInvoice"
-        Me.MnuSaleInvoice.Size = New System.Drawing.Size(136, 22)
-        Me.MnuSaleInvoice.Text = "Sale Invoice"
+        Me.MnuPurchaseInvoice.Name = "MnuPurchaseInvoice"
+        Me.MnuPurchaseInvoice.Size = New System.Drawing.Size(195, 22)
+        Me.MnuPurchaseInvoice.Text = "Purchase Invoice"
         '
         'MnuUpdateTableStructure
         '
         Me.MnuUpdateTableStructure.Name = "MnuUpdateTableStructure"
         Me.MnuUpdateTableStructure.Size = New System.Drawing.Size(140, 20)
         Me.MnuUpdateTableStructure.Text = "Update Table Structure"
+        '
+        'MnuSaleInvoice
+        '
+        Me.MnuSaleInvoice.Name = "MnuSaleInvoice"
+        Me.MnuSaleInvoice.Size = New System.Drawing.Size(195, 22)
+        Me.MnuSaleInvoice.Text = "Sale Invoice"
         '
         'MDIMain
         '
@@ -322,8 +190,6 @@ Partial Class MDIMain
     Public WithEvents MnuMain As System.Windows.Forms.MenuStrip
     Friend WithEvents MnuMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuCustomerMaster As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuSupplierMaster As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuAgentMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuRateTypeMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuRateList As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuItemMaster As System.Windows.Forms.ToolStripMenuItem
@@ -332,28 +198,13 @@ Partial Class MDIMain
     Friend WithEvents MnuManufacturerMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuGodownMaster As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuCustomized As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuSaleInvoiceDetailEntry As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuOpeningStockEntry As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnnReports As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ItemExpiryReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents PurchaseAdviseReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuPurchaseIndentReport As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuVATReports As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuPartyOutstandingReport As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuBillWiseProfitability As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuTools As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuAdjustSaleInvoices As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuAdjustmentIssueEntry As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuHidden As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuSaleInvoice As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuDebtorsOutstandingOverDue As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuWeavingOrderRatio As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents MnuCurrentStockReport As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnuDepartmentMaster As ToolStripMenuItem
     Friend WithEvents MnuStateMaster As ToolStripMenuItem
     Friend WithEvents MnuCityMaster As ToolStripMenuItem
     Friend WithEvents MnuAreaMaster As ToolStripMenuItem
     Friend WithEvents MnuUpdateTableStructure As ToolStripMenuItem
     Friend WithEvents MnuDimension1 As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents MnuPurchaseInvoice As ToolStripMenuItem
+    Friend WithEvents MnuSaleInvoice As ToolStripMenuItem
 End Class

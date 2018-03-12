@@ -9659,6 +9659,12 @@ Public Class ClsMain
                         "      When " & AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) & " = 'Cr' Then " & -Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) & " End As Amount "
 
                     End If
+
+                    If Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) <> 0 Then
+                        If AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) Is Nothing Then
+                            Err.Raise(1, , "Error In Ledger Posting. Dr/Cr not defined for any value.")
+                        End If
+                    End If
                 End If
             Next
         Next
@@ -9679,7 +9685,7 @@ Public Class ClsMain
 
 
 
-        mQry = " Select V1.PostAc, IfNull(Sum(V1.Amount),0) As Amount, " &
+        mQry = " Select V1.PostAc, IfNull(Sum(Cast(V1.Amount as Float)),0) As Amount, " &
                 " Case When IfNull(Sum(V1.Amount),0) > 0 Then 'Dr' " &
                 "      When IfNull(Sum(V1.Amount),0) < 0 Then 'Cr' End As DrCr " &
                 " From (" & bSelectionQry & ") As V1 " &
@@ -10063,7 +10069,7 @@ Public Class ClsMain
 
         Select Case RefType
             Case ManualRefType.DayWise
-                mQry = "Select IfNull(Max(Convert(Numeric,Replace(Replace(" & FieldName & ",'-',''),'.',''))),0)+1 From " & TableName & "  WHERE isnumeric(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "' And EntryStatus <> 'Discard' And V_Date = '" & AgL.PubLoginDate & "'  AND IsNumeric(" & FieldName & ") = 0 "
+                mQry = "Select IfNull(Max(Convert(Numeric,Replace(Replace(" & FieldName & ",'-',''),'.',''))),0)+1 From " & TableName & "  WHERE isnumeric(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "'  And V_Date = '" & AgL.PubLoginDate & "'  AND IsNumeric(" & FieldName & ") = 0 "
                 FGetManualRefNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
                 FGetManualRefNo = CDate(AgL.PubLoginDate).ToString("yyMMdd").ToString + "-" + FGetManualRefNo.ToString.PadLeft(4, "0")
 
@@ -10071,7 +10077,7 @@ Public Class ClsMain
                 mRef_Prefix = AgL.XNull(AgL.Dman_Execute("Select Ref_Prefix From Voucher_Prefix Where V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' And Site_Code = '" & Site_Code & "' And Date_From = '" & CDate(mStartDate).ToString("u") & "' And Date_To = '" & CDate(mEndDate).ToString("u") & "'", AgL.GcnRead).ExecuteScalar)
                 If mRef_Prefix = "" Then
                     If CDate(V_Date) >= CDate("01/Apr/2013") And CDate(V_Date) <= CDate("31/Mar/2014") Then
-                        mQry = "Select IfNull(Max(Cast(Replace(Replace(" & FieldName & ",'-',''),'.','') as integer)),0)+1 From " & TableName & "  WHERE  ABS(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "' And EntryStatus <> 'Discard' And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "' "
+                        mQry = "Select IfNull(Max(Cast(Replace(Replace(" & FieldName & ",'-',''),'.','') as integer)),0)+1 From " & TableName & "  WHERE  ABS(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "'  And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "' "
                         FGetManualRefNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
                         If Val(FGetManualRefNo) > 1300000 Then
                             FGetManualRefNo = Val(FGetManualRefNo) - 1300000
@@ -10083,11 +10089,11 @@ Public Class ClsMain
                         FGetManualRefNo = "13-" + FGetManualRefNo.ToString.PadLeft(4, "0")
 
                     Else
-                        mQry = "Select IfNull(Max(Cast(Replace(Replace(" & FieldName & ",'-',''),'.','') as integer)),0)+1 From " & TableName & "  WHERE ABS(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "' And EntryStatus <> 'Discard' And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "'    "
+                        mQry = "Select IfNull(Max(Cast(Replace(Replace(" & FieldName & ",'-',''),'.','') as integer)),0)+1 From " & TableName & "  WHERE ABS(Replace(Replace(" & FieldName & ",'-',''),'.',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "'  And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "'    "
                         FGetManualRefNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
                     End If
                 Else
-                    mQry = "Select IfNull(Max(Cast(Replace(Replace(Replace(" & FieldName & ",'-',''),'.',''),'" & mRef_Prefix & "','') as Integer)),0) + 1 From " & TableName & "  WHERE Abs(Replace(Replace(Replace(" & FieldName & ",'-',''),'.',''),'" & mRef_Prefix & "',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "' And EntryStatus <> 'Discard' And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "'   "
+                    mQry = "Select IfNull(Max(Cast(Replace(Replace(Replace(" & FieldName & ",'-',''),'.',''),'" & mRef_Prefix & "','') as Integer)),0) + 1 From " & TableName & "  WHERE Abs(Replace(Replace(Replace(" & FieldName & ",'-',''),'.',''),'" & mRef_Prefix & "',''))>0 And V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' and Site_Code = '" & Site_Code & "'  And V_Date Between '" & CDate(mStartDate).ToString("u") & "' and  '" & CDate(mEndDate).ToString("u") & "'   "
                     FGetManualRefNo = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
 
                     mRef_PadLength = AgL.VNull(AgL.Dman_Execute("Select Ref_PadLength From Voucher_Prefix Where V_Type = '" & V_Type & "' And Div_Code = '" & Div_Code & "' And Site_Code = '" & Site_Code & "' And Date_From = '" & CDate(mStartDate).ToString("u") & "' And Date_To = '" & CDate(mEndDate).ToString("u") & "'", AgL.GcnRead).ExecuteScalar)
@@ -10133,7 +10139,6 @@ Public Class ClsMain
                     " AND V_Type ='" & V_Type & "'  " &
                     " And Div_Code = '" & Div_Code & "' " &
                     " And Site_Code = '" & Site_Code & "' " &
-                    " And IfNull(IsDeleted,0) = 0  " &
                     " And V_Date Between '" & mStartDate & "' and  '" & mEndDate & "'  "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Reference No. Already Exists")
         Else
@@ -10143,7 +10148,6 @@ Public Class ClsMain
                     " AND V_Type ='" & V_Type & "'  " &
                     " And Div_Code = '" & Div_Code & "' " &
                     " And Site_Code = '" & Site_Code & "' " &
-                    " And IfNull(IsDeleted,0) = 0 " &
                     " AND DocID <>'" & InternalCode & "'  " &
                     " And V_Date Between '" & mStartDate & "' and  '" & mEndDate & "'  "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Reference No. Already Exists")

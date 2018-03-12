@@ -42,7 +42,7 @@ Public Class FrmDivisionSelection
         mCondStr = " WHERE 1=1"
 
         If Not (AgL.StrCmp(AgL.PubUserName, "SA") Or AgL.StrCmp(AgL.PubUserName, AgLibrary.ClsConstant.PubSuperUserName)) Then
-            mQry = "Select IsNull(Divisionlist,'||') From UserSite Where User_Name='" & AgL.PubUserName & "' "
+            mQry = "Select IfNull(Divisionlist,'||') From UserSite Where User_Name='" & AgL.PubUserName & "' "
             StrUserDivisionList = AgL.XNull(AgL.Dman_Execute(mQry, AgL.GcnMain).ExecuteScalar)
             mCondStr = mCondStr & " AND Div_Code In (" & Replace(StrUserDivisionList, "|", "'") & ")"
         End If
@@ -84,7 +84,7 @@ Public Class FrmDivisionSelection
                 If AgL.ECompConn IsNot Nothing Then AgL.ECompConn = Nothing
 
 
-                AgL.ECompConn = New SqlClient.SqlConnection()
+                AgL.ECompConn = New Sqlite.SqliteConnection()
                 If UCase(Trim(AgL.PubChkPasswordSQL)) = "Y" Then
                     AgL.GcnComp_ConnectionString = "Provider=SQLOLEDB;User ID='" & AgL.PubDBUserSQL & "';password=" & AgL.PubDBPasswordSQL & ";Data Source=" & AgL.PubServerName & ";Database=" & AgL.PubDivisionDBName & ""
 
@@ -141,7 +141,7 @@ Public Class FrmDivisionSelection
                 AgL.Dman_ExecuteNonQry(mQry, AgL.ECompConn)
 
 
-                mQry = "Select IsNull(Count(Table_Name),0) As Cnt From INFORMATION_SCHEMA.Tables Where Table_Name='Login_Log' And Table_Type='BASE TABLE'"
+                mQry = "Select IfNull(Count(Table_Name),0) As Cnt From INFORMATION_SCHEMA.Tables Where Table_Name='Login_Log' And Table_Type='BASE TABLE'"
                 AgL.ECmd = AgL.Dman_Execute(mQry, AgL.ECompConn)
                 If AgL.ECmd.ExecuteScalar > 0 Then
                     AgL.Dman_ExecuteNonQry("Delete From Login_Log", AgL.ECompConn)

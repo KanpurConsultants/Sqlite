@@ -13,6 +13,8 @@ Public Class FrmPurchInvoiceDirect
 
     Public WithEvents Dgl1 As New AgControls.AgDataGrid
     Protected Const ColSNo As String = "S.No."
+    Protected Const Col1ItemCategory As String = "Item Category"
+    Protected Const Col1ItemGroup As String = "Item Group"
     Protected Const Col1ItemCode As String = "Item Code"
     Protected Const Col1Item As String = "Item"
     Protected Const Col1Dimension1 As String = "Dimension1"
@@ -41,15 +43,13 @@ Public Class FrmPurchInvoiceDirect
     Protected Const Col1Amount As String = "Amount"
     Protected Const Col1ExpiryDate As String = "Expiry Date"
     Protected Const Col1Remark As String = "Remark"
-    Protected Const Col1BillingType As String = "Billing Type"
     Protected Const Col1MRP As String = "MRP"
     Protected Const Col1Deal As String = "Deal"
     Protected Const Col1ProfitMarginPer As String = "Profit Margin %"
-    Protected Const Col1PurchIndent As String = "PurchIndent"
-    Protected Const Col1PurchIndentSr As String = "Purch Indent Sr"
     Protected Const Col1SaleRate As String = "Sale Rate"
     Protected Const Col1LRNo As String = "L.R. No."
     Protected Const Col1LRDate As String = "L.R. Date"
+
 
     Dim IsSameUnit As Boolean = True
     Dim IsSameMeasureUnit As Boolean = True
@@ -63,11 +63,13 @@ Public Class FrmPurchInvoiceDirect
     Public WithEvents TxtProcess As AgControls.AgTextBox
     Public WithEvents LblProcess As System.Windows.Forms.Label
     Friend WithEvents TP2 As TabPage
-    Public WithEvents TxtTransporter As AgControls.AgTextBox
-    Public WithEvents LblTransporter As Label
-    Protected WithEvents TxtAgent As AgControls.AgTextBox
+    Protected WithEvents TxtPlaceOfSupply As AgControls.AgTextBox
     Protected WithEvents LblAgent As Label
     Protected WithEvents BtnHeaderDetail As Button
+    Protected WithEvents TxtAgent As AgControls.AgTextBox
+    Protected WithEvents Label3 As Label
+    Protected WithEvents Label7 As Label
+    Protected WithEvents Label6 As Label
     Dim DGL As New AgControls.AgDataGrid
 
     Public Sub New(ByVal StrUPVar As String, ByVal DTUP As DataTable, ByVal strNCat As String)
@@ -79,7 +81,7 @@ Public Class FrmPurchInvoiceDirect
 
         EntryNCat = strNCat
 
-        mQry = "Select H.* from Voucher_Type_Settings H Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type  Where Vt.NCat In ('" & EntryNCat & "') And H.Div_Code = '" & AgL.PubDivCode & "' And H.Site_Code ='" & AgL.PubSiteCode & "' "
+        mQry = "Select H.* from PurchaseInvoiceSetting H Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type  Where H.V_Type = '" & EntryNCat & "' "
         DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
     End Sub
 
@@ -111,15 +113,11 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtVendorDocNo = New AgControls.AgTextBox()
         Me.LvlVendorDocDate = New System.Windows.Forms.Label()
         Me.TxtVendorDocDate = New AgControls.AgTextBox()
-        Me.LblCurrency = New System.Windows.Forms.Label()
-        Me.TxtCurrency = New AgControls.AgTextBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.PnlCalcGrid = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlCustomGrid = New System.Windows.Forms.Panel()
         Me.TxtCustomFields = New AgControls.AgTextBox()
-        Me.TxtGodown = New AgControls.AgTextBox()
-        Me.LblGodown = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TxtBillToParty = New AgControls.AgTextBox()
         Me.LblPostToAc = New System.Windows.Forms.Label()
@@ -128,11 +126,13 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtProcess = New AgControls.AgTextBox()
         Me.LblProcess = New System.Windows.Forms.Label()
         Me.TP2 = New System.Windows.Forms.TabPage()
-        Me.TxtTransporter = New AgControls.AgTextBox()
-        Me.LblTransporter = New System.Windows.Forms.Label()
-        Me.TxtAgent = New AgControls.AgTextBox()
+        Me.TxtPlaceOfSupply = New AgControls.AgTextBox()
         Me.LblAgent = New System.Windows.Forms.Label()
         Me.BtnHeaderDetail = New System.Windows.Forms.Button()
+        Me.TxtAgent = New AgControls.AgTextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.GBoxMoveToLog.SuspendLayout()
         Me.GBoxApprove.SuspendLayout()
@@ -261,33 +261,33 @@ Public Class FrmPurchInvoiceDirect
         '
         'Label2
         '
-        Me.Label2.Location = New System.Drawing.Point(141, 39)
+        Me.Label2.Location = New System.Drawing.Point(113, 39)
         Me.Label2.Tag = ""
         '
         'LblV_Date
         '
         Me.LblV_Date.BackColor = System.Drawing.Color.Transparent
-        Me.LblV_Date.Location = New System.Drawing.Point(40, 34)
+        Me.LblV_Date.Location = New System.Drawing.Point(22, 34)
         Me.LblV_Date.Size = New System.Drawing.Size(78, 16)
         Me.LblV_Date.Tag = ""
         Me.LblV_Date.Text = "Invoice Date"
         '
         'LblV_TypeReq
         '
-        Me.LblV_TypeReq.Location = New System.Drawing.Point(356, 19)
+        Me.LblV_TypeReq.Location = New System.Drawing.Point(325, 19)
         Me.LblV_TypeReq.Tag = ""
         '
         'TxtV_Date
         '
         Me.TxtV_Date.AgSelectedValue = ""
         Me.TxtV_Date.BackColor = System.Drawing.Color.White
-        Me.TxtV_Date.Location = New System.Drawing.Point(160, 33)
+        Me.TxtV_Date.Location = New System.Drawing.Point(129, 33)
         Me.TxtV_Date.TabIndex = 2
         Me.TxtV_Date.Tag = ""
         '
         'LblV_Type
         '
-        Me.LblV_Type.Location = New System.Drawing.Point(266, 15)
+        Me.LblV_Type.Location = New System.Drawing.Point(235, 15)
         Me.LblV_Type.Size = New System.Drawing.Size(78, 16)
         Me.LblV_Type.Tag = ""
         Me.LblV_Type.Text = "Invoice Type"
@@ -298,20 +298,20 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtV_Type.AgLastValueText = ""
         Me.TxtV_Type.AgSelectedValue = ""
         Me.TxtV_Type.BackColor = System.Drawing.Color.White
-        Me.TxtV_Type.Location = New System.Drawing.Point(374, 13)
-        Me.TxtV_Type.Size = New System.Drawing.Size(195, 18)
+        Me.TxtV_Type.Location = New System.Drawing.Point(343, 13)
+        Me.TxtV_Type.Size = New System.Drawing.Size(182, 18)
         Me.TxtV_Type.TabIndex = 1
         Me.TxtV_Type.Tag = ""
         '
         'LblSite_CodeReq
         '
-        Me.LblSite_CodeReq.Location = New System.Drawing.Point(141, 19)
+        Me.LblSite_CodeReq.Location = New System.Drawing.Point(113, 19)
         Me.LblSite_CodeReq.Tag = ""
         '
         'LblSite_Code
         '
         Me.LblSite_Code.BackColor = System.Drawing.Color.Transparent
-        Me.LblSite_Code.Location = New System.Drawing.Point(40, 14)
+        Me.LblSite_Code.Location = New System.Drawing.Point(22, 14)
         Me.LblSite_Code.Size = New System.Drawing.Size(87, 16)
         Me.LblSite_Code.Tag = ""
         Me.LblSite_Code.Text = "Branch Name"
@@ -320,7 +320,7 @@ Public Class FrmPurchInvoiceDirect
         '
         Me.TxtSite_Code.AgSelectedValue = ""
         Me.TxtSite_Code.BackColor = System.Drawing.Color.White
-        Me.TxtSite_Code.Location = New System.Drawing.Point(160, 13)
+        Me.TxtSite_Code.Location = New System.Drawing.Point(129, 13)
         Me.TxtSite_Code.Size = New System.Drawing.Size(100, 18)
         Me.TxtSite_Code.TabIndex = 0
         Me.TxtSite_Code.Tag = ""
@@ -339,8 +339,8 @@ Public Class FrmPurchInvoiceDirect
         '
         Me.TabControl1.Controls.Add(Me.TP2)
         Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabControl1.Location = New System.Drawing.Point(-4, 40)
-        Me.TabControl1.Size = New System.Drawing.Size(992, 135)
+        Me.TabControl1.Location = New System.Drawing.Point(-4, 19)
+        Me.TabControl1.Size = New System.Drawing.Size(992, 154)
         Me.TabControl1.TabIndex = 0
         Me.TabControl1.Controls.SetChildIndex(Me.TP2, 0)
         Me.TabControl1.Controls.SetChildIndex(Me.TP1, 0)
@@ -348,8 +348,12 @@ Public Class FrmPurchInvoiceDirect
         'TP1
         '
         Me.TP1.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        Me.TP1.Controls.Add(Me.BtnHeaderDetail)
+        Me.TP1.Controls.Add(Me.Label7)
+        Me.TP1.Controls.Add(Me.Label6)
         Me.TP1.Controls.Add(Me.TxtAgent)
+        Me.TP1.Controls.Add(Me.Label3)
+        Me.TP1.Controls.Add(Me.BtnHeaderDetail)
+        Me.TP1.Controls.Add(Me.TxtPlaceOfSupply)
         Me.TP1.Controls.Add(Me.LblAgent)
         Me.TP1.Controls.Add(Me.BtnFillPartyDetail)
         Me.TP1.Controls.Add(Me.TxtSalesTaxGroupParty)
@@ -370,7 +374,7 @@ Public Class FrmPurchInvoiceDirect
         Me.TP1.Controls.Add(Me.TxtStructure)
         Me.TP1.Controls.Add(Me.LblReferenceNo)
         Me.TP1.Location = New System.Drawing.Point(4, 22)
-        Me.TP1.Size = New System.Drawing.Size(984, 109)
+        Me.TP1.Size = New System.Drawing.Size(984, 128)
         Me.TP1.Text = "Document Detail"
         Me.TP1.Controls.SetChildIndex(Me.LblReferenceNo, 0)
         Me.TP1.Controls.SetChildIndex(Me.TxtStructure, 0)
@@ -405,8 +409,12 @@ Public Class FrmPurchInvoiceDirect
         Me.TP1.Controls.SetChildIndex(Me.TxtSalesTaxGroupParty, 0)
         Me.TP1.Controls.SetChildIndex(Me.BtnFillPartyDetail, 0)
         Me.TP1.Controls.SetChildIndex(Me.LblAgent, 0)
-        Me.TP1.Controls.SetChildIndex(Me.TxtAgent, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtPlaceOfSupply, 0)
         Me.TP1.Controls.SetChildIndex(Me.BtnHeaderDetail, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label3, 0)
+        Me.TP1.Controls.SetChildIndex(Me.TxtAgent, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label6, 0)
+        Me.TP1.Controls.SetChildIndex(Me.Label7, 0)
         '
         'Topctrl1
         '
@@ -433,7 +441,7 @@ Public Class FrmPurchInvoiceDirect
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(141, 60)
+        Me.Label4.Location = New System.Drawing.Point(113, 60)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(10, 7)
         Me.Label4.TabIndex = 694
@@ -457,10 +465,10 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtVendor.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtVendor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtVendor.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtVendor.Location = New System.Drawing.Point(160, 53)
+        Me.TxtVendor.Location = New System.Drawing.Point(129, 53)
         Me.TxtVendor.MaxLength = 0
         Me.TxtVendor.Name = "TxtVendor"
-        Me.TxtVendor.Size = New System.Drawing.Size(380, 18)
+        Me.TxtVendor.Size = New System.Drawing.Size(367, 18)
         Me.TxtVendor.TabIndex = 4
         '
         'LblVendor
@@ -468,7 +476,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LblVendor.AutoSize = True
         Me.LblVendor.BackColor = System.Drawing.Color.Transparent
         Me.LblVendor.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblVendor.Location = New System.Drawing.Point(40, 53)
+        Me.LblVendor.Location = New System.Drawing.Point(22, 53)
         Me.LblVendor.Name = "LblVendor"
         Me.LblVendor.Size = New System.Drawing.Size(55, 16)
         Me.LblVendor.TabIndex = 693
@@ -485,7 +493,7 @@ Public Class FrmPurchInvoiceDirect
         Me.Panel1.Controls.Add(Me.LblTotalAmount)
         Me.Panel1.Controls.Add(Me.LblTotalQtyText)
         Me.Panel1.Controls.Add(Me.LblTotalAmountText)
-        Me.Panel1.Location = New System.Drawing.Point(4, 386)
+        Me.Panel1.Location = New System.Drawing.Point(3, 383)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(975, 23)
         Me.Panel1.TabIndex = 694
@@ -583,10 +591,10 @@ Public Class FrmPurchInvoiceDirect
         '
         'Pnl1
         '
-        Me.Pnl1.Location = New System.Drawing.Point(4, 202)
+        Me.Pnl1.Location = New System.Drawing.Point(3, 198)
         Me.Pnl1.Name = "Pnl1"
         Me.Pnl1.Size = New System.Drawing.Size(975, 184)
-        Me.Pnl1.TabIndex = 1
+        Me.Pnl1.TabIndex = 12
         '
         'TxtStructure
         '
@@ -630,7 +638,7 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtSalesTaxGroupParty.AgAllowUserToEnableMasterHelp = False
         Me.TxtSalesTaxGroupParty.AgLastValueTag = Nothing
         Me.TxtSalesTaxGroupParty.AgLastValueText = Nothing
-        Me.TxtSalesTaxGroupParty.AgMandatory = False
+        Me.TxtSalesTaxGroupParty.AgMandatory = True
         Me.TxtSalesTaxGroupParty.AgMasterHelp = False
         Me.TxtSalesTaxGroupParty.AgNumberLeftPlaces = 8
         Me.TxtSalesTaxGroupParty.AgNumberNegetiveAllow = False
@@ -643,18 +651,18 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtSalesTaxGroupParty.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtSalesTaxGroupParty.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtSalesTaxGroupParty.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtSalesTaxGroupParty.Location = New System.Drawing.Point(708, 54)
+        Me.TxtSalesTaxGroupParty.Location = New System.Drawing.Point(658, 35)
         Me.TxtSalesTaxGroupParty.MaxLength = 20
         Me.TxtSalesTaxGroupParty.Name = "TxtSalesTaxGroupParty"
         Me.TxtSalesTaxGroupParty.Size = New System.Drawing.Size(188, 18)
-        Me.TxtSalesTaxGroupParty.TabIndex = 8
+        Me.TxtSalesTaxGroupParty.TabIndex = 9
         '
         'Label27
         '
         Me.Label27.AutoSize = True
         Me.Label27.BackColor = System.Drawing.Color.Transparent
         Me.Label27.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label27.Location = New System.Drawing.Point(586, 54)
+        Me.Label27.Location = New System.Drawing.Point(543, 35)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(104, 16)
         Me.Label27.TabIndex = 717
@@ -678,17 +686,17 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtRemarks.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtRemarks.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtRemarks.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtRemarks.Location = New System.Drawing.Point(75, 434)
+        Me.TxtRemarks.Location = New System.Drawing.Point(76, 414)
         Me.TxtRemarks.MaxLength = 255
         Me.TxtRemarks.Name = "TxtRemarks"
         Me.TxtRemarks.Size = New System.Drawing.Size(421, 18)
-        Me.TxtRemarks.TabIndex = 4
+        Me.TxtRemarks.TabIndex = 13
         '
         'Label30
         '
         Me.Label30.AutoSize = True
         Me.Label30.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label30.Location = New System.Drawing.Point(2, 435)
+        Me.Label30.Location = New System.Drawing.Point(3, 415)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(60, 16)
         Me.Label30.TabIndex = 723
@@ -712,10 +720,10 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtReferenceNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtReferenceNo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtReferenceNo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtReferenceNo.Location = New System.Drawing.Point(374, 33)
+        Me.TxtReferenceNo.Location = New System.Drawing.Point(343, 33)
         Me.TxtReferenceNo.MaxLength = 20
         Me.TxtReferenceNo.Name = "TxtReferenceNo"
-        Me.TxtReferenceNo.Size = New System.Drawing.Size(195, 18)
+        Me.TxtReferenceNo.Size = New System.Drawing.Size(182, 18)
         Me.TxtReferenceNo.TabIndex = 3
         '
         'LblReferenceNo
@@ -723,7 +731,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LblReferenceNo.AutoSize = True
         Me.LblReferenceNo.BackColor = System.Drawing.Color.Transparent
         Me.LblReferenceNo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblReferenceNo.Location = New System.Drawing.Point(266, 33)
+        Me.LblReferenceNo.Location = New System.Drawing.Point(235, 33)
         Me.LblReferenceNo.Name = "LblReferenceNo"
         Me.LblReferenceNo.Size = New System.Drawing.Size(71, 16)
         Me.LblReferenceNo.TabIndex = 731
@@ -734,7 +742,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LblVendorDocNo.AutoSize = True
         Me.LblVendorDocNo.BackColor = System.Drawing.Color.Transparent
         Me.LblVendorDocNo.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblVendorDocNo.Location = New System.Drawing.Point(586, 14)
+        Me.LblVendorDocNo.Location = New System.Drawing.Point(21, 95)
         Me.LblVendorDocNo.Name = "LblVendorDocNo"
         Me.LblVendorDocNo.Size = New System.Drawing.Size(106, 16)
         Me.LblVendorDocNo.TabIndex = 706
@@ -758,10 +766,10 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtVendorDocNo.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtVendorDocNo.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtVendorDocNo.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtVendorDocNo.Location = New System.Drawing.Point(708, 14)
+        Me.TxtVendorDocNo.Location = New System.Drawing.Point(129, 93)
         Me.TxtVendorDocNo.MaxLength = 20
         Me.TxtVendorDocNo.Name = "TxtVendorDocNo"
-        Me.TxtVendorDocNo.Size = New System.Drawing.Size(188, 18)
+        Me.TxtVendorDocNo.Size = New System.Drawing.Size(145, 18)
         Me.TxtVendorDocNo.TabIndex = 6
         '
         'LvlVendorDocDate
@@ -769,7 +777,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LvlVendorDocDate.AutoSize = True
         Me.LvlVendorDocDate.BackColor = System.Drawing.Color.Transparent
         Me.LvlVendorDocDate.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LvlVendorDocDate.Location = New System.Drawing.Point(586, 34)
+        Me.LvlVendorDocDate.Location = New System.Drawing.Point(280, 95)
         Me.LvlVendorDocDate.Name = "LvlVendorDocDate"
         Me.LvlVendorDocDate.Size = New System.Drawing.Size(103, 16)
         Me.LvlVendorDocDate.TabIndex = 708
@@ -793,46 +801,11 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtVendorDocDate.AgValueType = AgControls.AgTextBox.TxtValueType.Date_Value
         Me.TxtVendorDocDate.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtVendorDocDate.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtVendorDocDate.Location = New System.Drawing.Point(708, 34)
+        Me.TxtVendorDocDate.Location = New System.Drawing.Point(401, 93)
         Me.TxtVendorDocDate.MaxLength = 20
         Me.TxtVendorDocDate.Name = "TxtVendorDocDate"
-        Me.TxtVendorDocDate.Size = New System.Drawing.Size(188, 18)
+        Me.TxtVendorDocDate.Size = New System.Drawing.Size(125, 18)
         Me.TxtVendorDocDate.TabIndex = 7
-        '
-        'LblCurrency
-        '
-        Me.LblCurrency.AutoSize = True
-        Me.LblCurrency.BackColor = System.Drawing.Color.Transparent
-        Me.LblCurrency.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblCurrency.Location = New System.Drawing.Point(312, 414)
-        Me.LblCurrency.Name = "LblCurrency"
-        Me.LblCurrency.Size = New System.Drawing.Size(60, 16)
-        Me.LblCurrency.TabIndex = 735
-        Me.LblCurrency.Text = "Currency"
-        '
-        'TxtCurrency
-        '
-        Me.TxtCurrency.AgAllowUserToEnableMasterHelp = False
-        Me.TxtCurrency.AgLastValueTag = Nothing
-        Me.TxtCurrency.AgLastValueText = Nothing
-        Me.TxtCurrency.AgMandatory = False
-        Me.TxtCurrency.AgMasterHelp = False
-        Me.TxtCurrency.AgNumberLeftPlaces = 8
-        Me.TxtCurrency.AgNumberNegetiveAllow = False
-        Me.TxtCurrency.AgNumberRightPlaces = 2
-        Me.TxtCurrency.AgPickFromLastValue = False
-        Me.TxtCurrency.AgRowFilter = ""
-        Me.TxtCurrency.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtCurrency.AgSelectedValue = Nothing
-        Me.TxtCurrency.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtCurrency.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
-        Me.TxtCurrency.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtCurrency.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtCurrency.Location = New System.Drawing.Point(376, 414)
-        Me.TxtCurrency.MaxLength = 20
-        Me.TxtCurrency.Name = "TxtCurrency"
-        Me.TxtCurrency.Size = New System.Drawing.Size(120, 18)
-        Me.TxtCurrency.TabIndex = 3
         '
         'LinkLabel1
         '
@@ -841,7 +814,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LinkLabel1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.LinkLabel1.LinkColor = System.Drawing.Color.White
-        Me.LinkLabel1.Location = New System.Drawing.Point(4, 181)
+        Me.LinkLabel1.Location = New System.Drawing.Point(3, 177)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(230, 20)
         Me.LinkLabel1.TabIndex = 739
@@ -851,17 +824,17 @@ Public Class FrmPurchInvoiceDirect
         '
         'PnlCalcGrid
         '
-        Me.PnlCalcGrid.Location = New System.Drawing.Point(605, 415)
+        Me.PnlCalcGrid.Location = New System.Drawing.Point(651, 411)
         Me.PnlCalcGrid.Name = "PnlCalcGrid"
-        Me.PnlCalcGrid.Size = New System.Drawing.Size(375, 160)
-        Me.PnlCalcGrid.TabIndex = 6
+        Me.PnlCalcGrid.Size = New System.Drawing.Size(320, 164)
+        Me.PnlCalcGrid.TabIndex = 14
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(356, 39)
+        Me.Label1.Location = New System.Drawing.Point(325, 39)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(10, 7)
         Me.Label1.TabIndex = 737
@@ -869,9 +842,9 @@ Public Class FrmPurchInvoiceDirect
         '
         'PnlCustomGrid
         '
-        Me.PnlCustomGrid.Location = New System.Drawing.Point(4, 455)
+        Me.PnlCustomGrid.Location = New System.Drawing.Point(4, 437)
         Me.PnlCustomGrid.Name = "PnlCustomGrid"
-        Me.PnlCustomGrid.Size = New System.Drawing.Size(492, 120)
+        Me.PnlCustomGrid.Size = New System.Drawing.Size(492, 138)
         Me.PnlCustomGrid.TabIndex = 5
         '
         'TxtCustomFields
@@ -900,47 +873,12 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtCustomFields.Text = "AgTextBox1"
         Me.TxtCustomFields.Visible = False
         '
-        'TxtGodown
-        '
-        Me.TxtGodown.AgAllowUserToEnableMasterHelp = False
-        Me.TxtGodown.AgLastValueTag = Nothing
-        Me.TxtGodown.AgLastValueText = Nothing
-        Me.TxtGodown.AgMandatory = False
-        Me.TxtGodown.AgMasterHelp = False
-        Me.TxtGodown.AgNumberLeftPlaces = 8
-        Me.TxtGodown.AgNumberNegetiveAllow = False
-        Me.TxtGodown.AgNumberRightPlaces = 2
-        Me.TxtGodown.AgPickFromLastValue = False
-        Me.TxtGodown.AgRowFilter = ""
-        Me.TxtGodown.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtGodown.AgSelectedValue = Nothing
-        Me.TxtGodown.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtGodown.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
-        Me.TxtGodown.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtGodown.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtGodown.Location = New System.Drawing.Point(75, 414)
-        Me.TxtGodown.MaxLength = 0
-        Me.TxtGodown.Name = "TxtGodown"
-        Me.TxtGodown.Size = New System.Drawing.Size(229, 18)
-        Me.TxtGodown.TabIndex = 2
-        '
-        'LblGodown
-        '
-        Me.LblGodown.AutoSize = True
-        Me.LblGodown.BackColor = System.Drawing.Color.Transparent
-        Me.LblGodown.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblGodown.Location = New System.Drawing.Point(2, 414)
-        Me.LblGodown.Name = "LblGodown"
-        Me.LblGodown.Size = New System.Drawing.Size(55, 16)
-        Me.LblGodown.TabIndex = 742
-        Me.LblGodown.Text = "Godown"
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(141, 80)
+        Me.Label5.Location = New System.Drawing.Point(113, 80)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(10, 7)
         Me.Label5.TabIndex = 3006
@@ -964,10 +902,10 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtBillToParty.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtBillToParty.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtBillToParty.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtBillToParty.Location = New System.Drawing.Point(160, 73)
+        Me.TxtBillToParty.Location = New System.Drawing.Point(129, 73)
         Me.TxtBillToParty.MaxLength = 0
         Me.TxtBillToParty.Name = "TxtBillToParty"
-        Me.TxtBillToParty.Size = New System.Drawing.Size(409, 18)
+        Me.TxtBillToParty.Size = New System.Drawing.Size(396, 18)
         Me.TxtBillToParty.TabIndex = 5
         '
         'LblPostToAc
@@ -975,7 +913,7 @@ Public Class FrmPurchInvoiceDirect
         Me.LblPostToAc.AutoSize = True
         Me.LblPostToAc.BackColor = System.Drawing.Color.Transparent
         Me.LblPostToAc.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblPostToAc.Location = New System.Drawing.Point(40, 74)
+        Me.LblPostToAc.Location = New System.Drawing.Point(22, 74)
         Me.LblPostToAc.Name = "LblPostToAc"
         Me.LblPostToAc.Size = New System.Drawing.Size(73, 16)
         Me.LblPostToAc.TabIndex = 3005
@@ -986,7 +924,7 @@ Public Class FrmPurchInvoiceDirect
         Me.BtnFillPartyDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnFillPartyDetail.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.BtnFillPartyDetail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnFillPartyDetail.Location = New System.Drawing.Point(543, 53)
+        Me.BtnFillPartyDetail.Location = New System.Drawing.Point(500, 53)
         Me.BtnFillPartyDetail.Margin = New System.Windows.Forms.Padding(0)
         Me.BtnFillPartyDetail.Name = "BtnFillPartyDetail"
         Me.BtnFillPartyDetail.Size = New System.Drawing.Size(26, 20)
@@ -1014,7 +952,7 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtNature.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtNature.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtNature.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNature.Location = New System.Drawing.Point(658, 180)
+        Me.TxtNature.Location = New System.Drawing.Point(896, 179)
         Me.TxtNature.MaxLength = 20
         Me.TxtNature.Name = "TxtNature"
         Me.TxtNature.Size = New System.Drawing.Size(81, 18)
@@ -1060,51 +998,64 @@ Public Class FrmPurchInvoiceDirect
         'TP2
         '
         Me.TP2.BackColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        Me.TP2.Controls.Add(Me.TxtTransporter)
-        Me.TP2.Controls.Add(Me.LblTransporter)
         Me.TP2.Controls.Add(Me.TxtProcess)
         Me.TP2.Controls.Add(Me.LblProcess)
         Me.TP2.Location = New System.Drawing.Point(4, 22)
         Me.TP2.Name = "TP2"
         Me.TP2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TP2.Size = New System.Drawing.Size(984, 109)
+        Me.TP2.Size = New System.Drawing.Size(984, 128)
         Me.TP2.TabIndex = 1
         Me.TP2.Text = "TabPage1"
         '
-        'TxtTransporter
+        'TxtPlaceOfSupply
         '
-        Me.TxtTransporter.AgAllowUserToEnableMasterHelp = False
-        Me.TxtTransporter.AgLastValueTag = Nothing
-        Me.TxtTransporter.AgLastValueText = ""
-        Me.TxtTransporter.AgMandatory = False
-        Me.TxtTransporter.AgMasterHelp = False
-        Me.TxtTransporter.AgNumberLeftPlaces = 8
-        Me.TxtTransporter.AgNumberNegetiveAllow = False
-        Me.TxtTransporter.AgNumberRightPlaces = 2
-        Me.TxtTransporter.AgPickFromLastValue = False
-        Me.TxtTransporter.AgRowFilter = ""
-        Me.TxtTransporter.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
-        Me.TxtTransporter.AgSelectedValue = Nothing
-        Me.TxtTransporter.AgTxtCase = AgControls.AgTextBox.TxtCase.None
-        Me.TxtTransporter.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
-        Me.TxtTransporter.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TxtTransporter.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTransporter.Location = New System.Drawing.Point(120, 17)
-        Me.TxtTransporter.MaxLength = 100
-        Me.TxtTransporter.Name = "TxtTransporter"
-        Me.TxtTransporter.Size = New System.Drawing.Size(228, 18)
-        Me.TxtTransporter.TabIndex = 3010
+        Me.TxtPlaceOfSupply.AgAllowUserToEnableMasterHelp = False
+        Me.TxtPlaceOfSupply.AgLastValueTag = Nothing
+        Me.TxtPlaceOfSupply.AgLastValueText = Nothing
+        Me.TxtPlaceOfSupply.AgMandatory = True
+        Me.TxtPlaceOfSupply.AgMasterHelp = False
+        Me.TxtPlaceOfSupply.AgNumberLeftPlaces = 8
+        Me.TxtPlaceOfSupply.AgNumberNegetiveAllow = False
+        Me.TxtPlaceOfSupply.AgNumberRightPlaces = 2
+        Me.TxtPlaceOfSupply.AgPickFromLastValue = False
+        Me.TxtPlaceOfSupply.AgRowFilter = ""
+        Me.TxtPlaceOfSupply.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtPlaceOfSupply.AgSelectedValue = Nothing
+        Me.TxtPlaceOfSupply.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtPlaceOfSupply.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtPlaceOfSupply.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtPlaceOfSupply.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtPlaceOfSupply.Location = New System.Drawing.Point(658, 55)
+        Me.TxtPlaceOfSupply.MaxLength = 20
+        Me.TxtPlaceOfSupply.Name = "TxtPlaceOfSupply"
+        Me.TxtPlaceOfSupply.Size = New System.Drawing.Size(188, 18)
+        Me.TxtPlaceOfSupply.TabIndex = 10
         '
-        'LblTransporter
+        'LblAgent
         '
-        Me.LblTransporter.AutoSize = True
-        Me.LblTransporter.BackColor = System.Drawing.Color.Transparent
-        Me.LblTransporter.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblTransporter.Location = New System.Drawing.Point(38, 17)
-        Me.LblTransporter.Name = "LblTransporter"
-        Me.LblTransporter.Size = New System.Drawing.Size(73, 16)
-        Me.LblTransporter.TabIndex = 3011
-        Me.LblTransporter.Text = "Transporter"
+        Me.LblAgent.AutoSize = True
+        Me.LblAgent.BackColor = System.Drawing.Color.Transparent
+        Me.LblAgent.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblAgent.Location = New System.Drawing.Point(543, 55)
+        Me.LblAgent.Name = "LblAgent"
+        Me.LblAgent.Size = New System.Drawing.Size(102, 16)
+        Me.LblAgent.TabIndex = 3009
+        Me.LblAgent.Text = "Place Of Supply"
+        '
+        'BtnHeaderDetail
+        '
+        Me.BtnHeaderDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnHeaderDetail.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnHeaderDetail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.BtnHeaderDetail.Location = New System.Drawing.Point(870, 15)
+        Me.BtnHeaderDetail.Margin = New System.Windows.Forms.Padding(0)
+        Me.BtnHeaderDetail.Name = "BtnHeaderDetail"
+        Me.BtnHeaderDetail.Size = New System.Drawing.Size(111, 23)
+        Me.BtnHeaderDetail.TabIndex = 11
+        Me.BtnHeaderDetail.TabStop = False
+        Me.BtnHeaderDetail.Text = "Other Detail"
+        Me.BtnHeaderDetail.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.BtnHeaderDetail.UseVisualStyleBackColor = True
         '
         'TxtAgent
         '
@@ -1124,37 +1075,44 @@ Public Class FrmPurchInvoiceDirect
         Me.TxtAgent.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
         Me.TxtAgent.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtAgent.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtAgent.Location = New System.Drawing.Point(708, 74)
+        Me.TxtAgent.Location = New System.Drawing.Point(657, 15)
         Me.TxtAgent.MaxLength = 20
         Me.TxtAgent.Name = "TxtAgent"
-        Me.TxtAgent.Size = New System.Drawing.Size(105, 18)
-        Me.TxtAgent.TabIndex = 3008
+        Me.TxtAgent.Size = New System.Drawing.Size(189, 18)
+        Me.TxtAgent.TabIndex = 8
         '
-        'LblAgent
+        'Label3
         '
-        Me.LblAgent.AutoSize = True
-        Me.LblAgent.BackColor = System.Drawing.Color.Transparent
-        Me.LblAgent.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblAgent.Location = New System.Drawing.Point(586, 74)
-        Me.LblAgent.Name = "LblAgent"
-        Me.LblAgent.Size = New System.Drawing.Size(42, 16)
-        Me.LblAgent.TabIndex = 3009
-        Me.LblAgent.Text = "Agent"
+        Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(543, 15)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(42, 16)
+        Me.Label3.TabIndex = 3012
+        Me.Label3.Text = "Agent"
         '
-        'BtnHeaderDetail
+        'Label6
         '
-        Me.BtnHeaderDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnHeaderDetail.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnHeaderDetail.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.BtnHeaderDetail.Location = New System.Drawing.Point(816, 74)
-        Me.BtnHeaderDetail.Margin = New System.Windows.Forms.Padding(0)
-        Me.BtnHeaderDetail.Name = "BtnHeaderDetail"
-        Me.BtnHeaderDetail.Size = New System.Drawing.Size(80, 24)
-        Me.BtnHeaderDetail.TabIndex = 3010
-        Me.BtnHeaderDetail.TabStop = False
-        Me.BtnHeaderDetail.Text = "Detail"
-        Me.BtnHeaderDetail.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.BtnHeaderDetail.UseVisualStyleBackColor = True
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label6.Location = New System.Drawing.Point(646, 42)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(10, 7)
+        Me.Label6.TabIndex = 3013
+        Me.Label6.Text = "Ä"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Wingdings 2", 5.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(227, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Label7.Location = New System.Drawing.Point(646, 61)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(10, 7)
+        Me.Label7.TabIndex = 3014
+        Me.Label7.Text = "Ä"
         '
         'FrmPurchInvoiceDirect
         '
@@ -1168,20 +1126,12 @@ Public Class FrmPurchInvoiceDirect
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Pnl1)
-        Me.Controls.Add(Me.TxtGodown)
         Me.Controls.Add(Me.TxtRemarks)
         Me.Controls.Add(Me.Label30)
-        Me.Controls.Add(Me.LblGodown)
-        Me.Controls.Add(Me.TxtCurrency)
-        Me.Controls.Add(Me.LblCurrency)
         Me.Name = "FrmPurchInvoiceDirect"
         Me.Text = "Purchase Invoice"
-        Me.Controls.SetChildIndex(Me.LblCurrency, 0)
-        Me.Controls.SetChildIndex(Me.TxtCurrency, 0)
-        Me.Controls.SetChildIndex(Me.LblGodown, 0)
         Me.Controls.SetChildIndex(Me.Label30, 0)
         Me.Controls.SetChildIndex(Me.TxtRemarks, 0)
-        Me.Controls.SetChildIndex(Me.TxtGodown, 0)
         Me.Controls.SetChildIndex(Me.Pnl1, 0)
         Me.Controls.SetChildIndex(Me.Panel1, 0)
         Me.Controls.SetChildIndex(Me.LinkLabel1, 0)
@@ -1242,8 +1192,6 @@ Public Class FrmPurchInvoiceDirect
     Protected WithEvents LblTotalMeasureText As System.Windows.Forms.Label
     Protected WithEvents TxtReferenceNo As AgControls.AgTextBox
     Protected WithEvents LblReferenceNo As System.Windows.Forms.Label
-    Protected WithEvents TxtCurrency As AgControls.AgTextBox
-    Protected WithEvents LblCurrency As System.Windows.Forms.Label
     Protected WithEvents TxtVendorDocDate As AgControls.AgTextBox
     Protected WithEvents LvlVendorDocDate As System.Windows.Forms.Label
     Protected WithEvents TxtVendorDocNo As AgControls.AgTextBox
@@ -1255,8 +1203,6 @@ Public Class FrmPurchInvoiceDirect
     Protected WithEvents TxtCustomFields As AgControls.AgTextBox
     Protected WithEvents LblTotalDeliveryMeasure As System.Windows.Forms.Label
     Protected WithEvents LblTotalDeliveryMeasureText As System.Windows.Forms.Label
-    Protected WithEvents TxtGodown As AgControls.AgTextBox
-    Protected WithEvents LblGodown As System.Windows.Forms.Label
     Protected WithEvents Label5 As System.Windows.Forms.Label
     Protected WithEvents TxtBillToParty As AgControls.AgTextBox
     Protected WithEvents LblPostToAc As System.Windows.Forms.Label
@@ -1270,6 +1216,13 @@ Public Class FrmPurchInvoiceDirect
 
         mQry = " Delete From Ledger Where DocId = '" & mSearchCode & "'"
         AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mQry = " Delete From PurchInvoiceTransport Where DocId = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
+        mQry = " Delete From PurchInvoiceDimensionDetail Where DocId = '" & mSearchCode & "'"
+        AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
+
     End Sub
 
     Private Sub FrmQuality1_BaseEvent_Form_PreLoad() Handles Me.BaseEvent_Form_PreLoad
@@ -1304,7 +1257,7 @@ Public Class FrmPurchInvoiceDirect
         mQry = "Select DocID As SearchCode " &
                 " From PurchInvoice H " &
                 " Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type  " &
-                " Where IfNull(IsDeleted,0)=0  " & mCondStr & "  Order By V_Date Desc "
+                " Where 1=1  " & mCondStr & "  Order By V_Date Desc "
         Topctrl1.FIniForm(DTMaster, AgL.GCn, mQry, , , , , BytDel, BytRefresh)
     End Sub
 
@@ -1319,15 +1272,14 @@ Public Class FrmPurchInvoiceDirect
             mCondStr = mCondStr & " And H.V_Type In (Select V_Type From User_VType_Permission VP Where VP.UserName = '" & AgL.PubUserName & "' And VP.Div_Code = '" & AgL.PubDivCode & "' And VP.Site_Code = '" & AgL.PubSiteCode & "') "
         End If
 
-        AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], H.V_Date AS Date, " &
-                            " H.ReferenceNo AS [Manual_No], SGV.DispName As Vendor, H.SalesTaxGroupParty AS [Sales_Tax_Group_Party], H.VendorDocNo AS [Vendor_Doc_No],  " &
-                            " H.VendorDocDate AS [Vendor_Doc_Date], H.Remarks, H.TotalQty AS [Total_Qty], " &
-                            " H.TotalMeasure AS [Total_Measure], H.TotalAmount AS [Total_Amount],  " &
-                            " H.EntryBy AS [Entry_By], H.EntryDate AS [Entry_Date], H.EntryType AS [Entry_Type] " &
-                            " FROM PurchInvoice H " &
-                            " LEFT JOIN Voucher_Type Vt ON H.V_Type = Vt.V_Type " &
-                            " LEFT JOIN SubGroup SGV ON SGV.SubCode  = H.Vendor  " &
-                            " Where IfNull(H.IsDeleted,0) = 0  " & mCondStr
+        AgL.PubFindQry = " SELECT H.DocID AS SearchCode, Vt.Description AS [Invoice_Type], H.V_Date AS Date, 
+                             H.ReferenceNo As [Manual_No], SGV.DispName As Vendor, H.SalesTaxGroupParty As [Sales_Tax_Group_Party], H.VendorDocNo As [Vendor_Doc_No],  
+                             H.VendorDocDate As [Vendor_Doc_Date], H.Remarks,
+                             H.EntryBy As [Entry_By], H.EntryDate As [Entry_Date] 
+                             From PurchInvoice H 
+                             LEFT Join Voucher_Type Vt On H.V_Type = Vt.V_Type 
+                             Left Join SubGroup SGV On SGV.SubCode  = H.Vendor  
+                             Where 1 = 1 " & mCondStr
 
         AgL.PubFindQryOrdBy = "[Entry Date]"
     End Sub
@@ -1337,20 +1289,20 @@ Public Class FrmPurchInvoiceDirect
         With AgCL
             .AddAgTextColumn(Dgl1, ColSNo, 40, 5, ColSNo, True, True, False)
 
-            .AddAgTextColumn(Dgl1, Col1ItemCode, 100, 0, Col1ItemCode, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ItemCode")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_ItemCode")), Boolean))
-            .AddAgTextColumn(Dgl1, Col1Item, 200, 0, Col1Item, True, Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_ItemName")), Boolean))
+            .AddAgTextColumn(Dgl1, Col1ItemCategory, 100, 0, Col1ItemCategory, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ItemCategory")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1ItemGroup, 100, 0, Col1ItemGroup, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ItemGroup")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1ItemCode, 100, 0, Col1ItemCode, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ItemCode")), Boolean), False)
+            .AddAgTextColumn(Dgl1, Col1Item, 200, 0, Col1Item, True, False)
             .AddAgTextColumn(Dgl1, Col1Dimension1, 100, 0, ClsMain.FGetDimension1Caption(), CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Dimension1")), Boolean), False)
             .AddAgTextColumn(Dgl1, Col1Dimension2, 100, 0, ClsMain.FGetDimension2Caption(), CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Dimension2")), Boolean), False)
             .AddAgTextColumn(Dgl1, Col1Specification, 100, 255, Col1Specification, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Specification")), Boolean), False, False)
             .AddAgTextColumn(Dgl1, Col1BaleNo, 50, 0, Col1BaleNo, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_BaleNo")), Boolean), False)
             .AddAgTextColumn(Dgl1, Col1LotNo, 50, 0, Col1LotNo, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_LotNo")), Boolean), False)
-            .AddAgTextColumn(Dgl1, Col1BillingType, 50, 255, Col1BillingType, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_BillingType")), Boolean), False)
-
             .AddAgNumberColumn(Dgl1, Col1DocQty, 70, 8, 4, False, Col1DocQty, True, False, True)
             .AddAgNumberColumn(Dgl1, Col1FreeQty, 60, 8, 3, False, Col1FreeQty, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_FreeQty")), Boolean), False, True)
             .AddAgNumberColumn(Dgl1, Col1RejQty, 70, 8, 4, False, Col1RejQty, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_RejQty")), Boolean), False, True)
             .AddAgNumberColumn(Dgl1, Col1Qty, 70, 8, 4, False, Col1Qty, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Qty")), Boolean), True, True)
-            .AddAgTextColumn(Dgl1, Col1Unit, 50, 0, Col1Unit, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Unit")), Boolean), True)
+            .AddAgTextColumn(Dgl1, Col1Unit, 50, 0, Col1Unit, True, True)
             .AddAgTextColumn(Dgl1, Col1QtyDecimalPlaces, 50, 0, Col1QtyDecimalPlaces, False, True, False)
             .AddAgNumberColumn(Dgl1, Col1MeasurePerPcs, 70, 8, 3, False, Col1MeasurePerPcs, False, True, True)
             .AddAgNumberColumn(Dgl1, Col1PcsPerMeasure, 70, 8, 3, False, Col1PcsPerMeasure, False, True, True)
@@ -1362,18 +1314,16 @@ Public Class FrmPurchInvoiceDirect
             .AddAgNumberColumn(Dgl1, Col1DiscountAmount, 100, 8, 3, False, Col1DiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
             .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountPer, 80, 2, 3, False, Col1AdditionalDiscountPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
             .AddAgNumberColumn(Dgl1, Col1AdditionalDiscountAmount, 100, 8, 3, False, Col1AdditionalDiscountAmount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Rate")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Rate")), Boolean), True)
-            .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Amount")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_Amount")), Boolean), True)
+            .AddAgNumberColumn(Dgl1, Col1Amount, 100, 8, 2, False, Col1Amount, True, True, True)
             .AddAgNumberColumn(Dgl1, Col1MRP, 80, 8, 2, False, Col1MRP, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_MRP")), Boolean), False, True)
             .AddAgNumberColumn(Dgl1, Col1SaleRate, 80, 8, 2, False, Col1SaleRate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_SaleRate")), Boolean), False, True)
             .AddAgDateColumn(Dgl1, Col1ExpiryDate, 90, Col1ExpiryDate, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ExpiryDate")), Boolean), False)
             .AddAgTextColumn(Dgl1, Col1Remark, 200, 255, Col1Remark, True, False)
-            .AddAgTextColumn(Dgl1, Col1LRNo, 200, 50, Col1LRNo, True, False)
-            .AddAgDateColumn(Dgl1, Col1LRDate, 90, Col1LRDate, True, False)
+            .AddAgTextColumn(Dgl1, Col1LRNo, 90, 50, Col1LRNo, False, False)
+            .AddAgDateColumn(Dgl1, Col1LRDate, 90, Col1LRDate, False, False)
             .AddAgTextColumn(Dgl1, Col1SalesTaxGroup, 60, 0, Col1SalesTaxGroup, True, False)
             .AddAgTextColumn(Dgl1, Col1Deal, 70, 255, Col1Deal, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Deal")), Boolean), False)
             .AddAgNumberColumn(Dgl1, Col1ProfitMarginPer, 100, 8, 2, False, Col1ProfitMarginPer, CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_ProfitMarginPer")), Boolean), Not CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsEditable_ProfitMarginPer")), Boolean), True)
-            .AddAgTextColumn(Dgl1, Col1PurchIndent, 70, 255, Col1PurchIndent, False, False)
-            .AddAgTextColumn(Dgl1, Col1PurchIndentSr, 40, 5, Col1PurchIndentSr, False, True, False)
         End With
         AgL.AddAgDataGrid(Dgl1, Pnl1)
         Dgl1.EnableHeadersVisualStyles = False
@@ -1383,8 +1333,8 @@ Public Class FrmPurchInvoiceDirect
 
         AgCalcGrid1.AgFixedRows = 6
 
-        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Measure")), Boolean) = False Then LblTotalDeliveryMeasure.Visible = False : LblTotalDeliveryMeasureText.Visible = False
-        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_Measure")), Boolean) = False Then LblTotalMeasure.Visible = False : LblTotalMeasureText.Visible = False
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_DealQty")), Boolean) = False Then LblTotalDeliveryMeasure.Visible = False : LblTotalDeliveryMeasureText.Visible = False
+        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_DealQty")), Boolean) = False Then LblTotalMeasure.Visible = False : LblTotalMeasureText.Visible = False
 
 
         Dgl1.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
@@ -1413,31 +1363,23 @@ Public Class FrmPurchInvoiceDirect
 
 
         mQry = " Update PurchInvoice " &
-                " SET  " &
+                " Set  " &
                 " ReferenceNo = " & AgL.Chk_Text(TxtReferenceNo.Text) & ", " &
-                " Vendor = " & AgL.Chk_Text(TxtVendor.AgSelectedValue) & ", " &
+                " Agent = " & AgL.Chk_Text(TxtAgent.Tag) & ", " &
+                " Vendor = " & AgL.Chk_Text(TxtVendor.Tag) & ", " &
                 " VendorName = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorName.Text) & ", " &
-                " VendorAdd1 = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorAdd1.Text) & ", " &
-                " VendorAdd2 = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorAdd2.Text) & ", " &
+                " VendorAddress = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorAdd1.Text) & ", " &
                 " VendorCity = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorCity.Tag) & ", " &
-                " VendorCityName = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorCity.Text) & ", " &
                 " VendorMobile = " & AgL.Chk_Text(BtnFillPartyDetail.Tag.TxtVendorMobile.Text) & ", " &
                 " BillToParty = " & AgL.Chk_Text(TxtBillToParty.Tag) & ", " &
-                " Currency = " & AgL.Chk_Text(TxtCurrency.AgSelectedValue) & ", " &
                 " SalesTaxGroupParty = " & AgL.Chk_Text(TxtSalesTaxGroupParty.Text) & ", " &
-                " Agent = " & AgL.Chk_Text(AgL.XNull(TxtAgent.Tag)) & ", " &
-                " Transporter = " & AgL.Chk_Text(AgL.XNull(TxtTransporter.Tag)) & ", " &
-                " Godown = " & AgL.Chk_Text(AgL.XNull(TxtGodown.Tag)) & ", " &
-                " Structure = " & AgL.Chk_Text(TxtStructure.AgSelectedValue) & ", " &
-                " CustomFields = " & AgL.Chk_Text(TxtCustomFields.AgSelectedValue) & ", " &
+                " PlaceOfSupply = " & AgL.Chk_Text(AgL.XNull(TxtPlaceOfSupply.Text)) & ", " &
+                " Structure = " & AgL.Chk_Text(TxtStructure.Tag) & ", " &
+                " CustomFields = " & AgL.Chk_Text(TxtCustomFields.Tag) & ", " &
                 " VendorDocNo = " & AgL.Chk_Text(TxtVendorDocNo.Text) & ", " &
                 " VendorDocDate = " & AgL.Chk_Date(TxtVendorDocDate.Text) & ", " &
                 " Process = " & AgL.Chk_Text(TxtProcess.Tag) & ", " &
-                " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & ", " &
-                " TotalQty = " & Val(LblTotalQty.Text) & ", " &
-                " TotalAmount = " & Val(LblTotalAmount.Text) & ", " &
-                " TotalMeasure = " & Val(LblTotalMeasure.Text) & ", " &
-                " TotalDeliveryMeasure = " & Val(LblTotalDeliveryMeasure.Text) & ", " &
+                " Remarks = " & AgL.Chk_Text(TxtRemarks.Text) & IIf(TxtStructure.Tag = "", "", ", ") &
                 " " & AgCalcGrid1.FFooterTableUpdateStr() & " " &
                 " " & AgCustomGrid1.FFooterTableUpdateStr() & " " &
                 " Where DocId = '" & mSearchCode & "'"
@@ -1445,24 +1387,17 @@ Public Class FrmPurchInvoiceDirect
 
 
         If BtnHeaderDetail.Tag IsNot Nothing Then
-            mQry = "Update PurchInvoice Set 
-                Agent = " & AgL.Chk_Text(BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Tag) & ",
-                Transporter = " & AgL.Chk_Text(BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag) & ", 
-                Where DocId = '" & mSearchCode & "' "
+            CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).FSave(mSearchCode, Conn, Cmd)
         End If
 
         'mQry = "Delete From PurchInvoiceDetail Where DocId = '" & SearchCode & "'"
         'AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
+
+
         mSr = AgL.VNull(AgL.Dman_Execute("Select Max(Sr) From PurchInvoiceDetail  Where DocID = '" & mSearchCode & "'", AgL.GcnRead).ExecuteScalar)
         For I = 0 To Dgl1.RowCount - 1
             If Dgl1.Item(Col1Item, I).Value <> "" Then
-
-
-
-
-
-
                 If Dgl1.Item(ColSNo, I).Tag Is Nothing And Dgl1.Rows(I).Visible = True Then
                     mSr += 1
 
@@ -1481,9 +1416,7 @@ Public Class FrmPurchInvoiceDirect
                                         " " & Val(Dgl1.Item(Col1FreeQty, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1RejQty, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1Qty, I).Value) & ", " &
-                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Unit, I).Value) & ", " &
-                                        " " & Val(Dgl1.Item(Col1MeasurePerPcs, I).Value) & ", " &
-                                        " " & Val(Dgl1.Item(Col1PcsPerMeasure, I).Value) & ", " &
+                                        " " & AgL.Chk_Text(Dgl1.Item(Col1Unit, I).Value) & ", " &                                        
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1MeasureUnit, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) & ", " &
                                         " " & Val(Dgl1.Item(Col1Rate, I).Value) & ", " &
@@ -1499,10 +1432,12 @@ Public Class FrmPurchInvoiceDirect
                                         " " & AgL.Chk_Date(Dgl1.Item(Col1LRDate, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " &
                                         " " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & ", " &
-                                        " " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
-                                        " " & AgL.Chk_Text(Dgl1.Item(Col1BillingType, I).Value) & " , " &
-                                        " " & AgCalcGrid1.FLineTableFieldValuesStr(I) & " "
+                                        " " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, I).Value) & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldValuesStr(I) & " "
                     Call FUpdateDeal(I, Conn, Cmd)
+
+                    If Dgl1.Item(Col1DocQty, I).Tag IsNot Nothing Then
+                        CType(Dgl1.Item(Col1DocQty, I).Tag, FrmPurchaseInvoiceDimension).FSave(mSearchCode, mSr, Conn, Cmd)
+                    End If
                 Else
                     If Dgl1.Rows(I).Visible = True Then
                         'If Dgl1.Rows(I).DefaultCellStyle.BackColor <> AgTemplate.ClsMain.Colours.GridRow_Locked Then
@@ -1518,9 +1453,8 @@ Public Class FrmPurchInvoiceDirect
                                 " 	FreeQty = " & Val(Dgl1.Item(Col1FreeQty, I).Value) & ", " &
                                 " 	Qty = " & Val(Dgl1.Item(Col1Qty, I).Value) & ", " &
                                 " 	Unit = " & AgL.Chk_Text(Dgl1.Item(Col1Unit, I).Value) & ", " &
-                                " 	MeasurePerPcs = " & Val(Dgl1.Item(Col1MeasurePerPcs, I).Value) & ", " &
-                                " 	MeasureUnit = " & AgL.Chk_Text(Dgl1.Item(Col1MeasureUnit, I).Value) & ", " &
-                                " 	TotalDocMeasure = " & Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) & ", " &
+                                " 	DealUnit = " & AgL.Chk_Text(Dgl1.Item(Col1MeasureUnit, I).Value) & ", " &
+                                " 	DocDealQty = " & Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) & ", " &
                                 " 	Rate = " & Val(Dgl1.Item(Col1Rate, I).Value) & ", " &
                                 " 	DiscountPer = " & Val(Dgl1.Item(Col1DiscountPer, I).Value) & ", " &
                                 " 	DiscountAmount = " & Val(Dgl1.Item(Col1DiscountAmount, I).Value) & ", " &
@@ -1533,19 +1467,24 @@ Public Class FrmPurchInvoiceDirect
                                 " 	LRNo = " & AgL.Chk_Text(Dgl1.Item(Col1LRNo, I).Value) & ", " &
                                 " 	LRDate = " & AgL.Chk_Date(Dgl1.Item(Col1LRDate, I).Value) & ", " &
                                 " 	LotNo = " & AgL.Chk_Text(Dgl1.Item(Col1LotNo, I).Value) & ", " &
-                                " 	PurchIndent = " & AgL.Chk_Text(Dgl1.Item(Col1PurchIndent, I).Tag) & ", " &
-                                " 	PurchIndentSr = " & AgL.Chk_Text(Dgl1.Item(Col1PurchIndentSr, I).Value) & ", " &
-                                " 	BillingType = " & AgL.Chk_Text(Dgl1.Item(Col1BillingType, I).Value) & ", " &
                                 " 	BaleNo = " & AgL.Chk_Text(Dgl1.Item(Col1BaleNo, I).Value) & ", " &
-                                " 	PcsPerMeasure = " & Val(Dgl1.Item(Col1PcsPerMeasure, I).Value) & ", " &
                                 " 	ExpiryDate = " & AgL.Chk_Date(Dgl1.Item(Col1ExpiryDate, I).Value) & ", " &
-                                " 	Deal = " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & ", " &
+                                " 	Deal = " & AgL.Chk_Text(Dgl1.Item(Col1Deal, I).Value) & IIf(TxtStructure.Tag = "", "", ",") &
                                 " " & AgCalcGrid1.FLineTableUpdateStr(I) & " " &
                                 "   Where DocId = '" & mSearchCode & "' " &
                                 "   And Sr = " & Dgl1.Item(ColSNo, I).Tag & " "
                         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+
+                        If Dgl1.Item(Col1DocQty, I).Tag IsNot Nothing Then
+                            CType(Dgl1.Item(Col1DocQty, I).Tag, FrmPurchaseInvoiceDimension).FSave(mSearchCode, Val(Dgl1.Item(ColSNo, I).Tag), Conn, Cmd)
+                        End If
+
                         'End If
                     Else
+                        mQry = "Delete From PurchInvoiceDimensionDetail Where DocId = '" & SearchCode & "' and Sr =" & Dgl1.Item(ColSNo, I).Tag & ""
+                        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
                         mQry = " Delete From PurchInvoiceDetail Where DocId = '" & mSearchCode & "' And Sr = " & Val(Dgl1.Item(ColSNo, I).Tag) & "  "
                         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
                     End If
@@ -1558,12 +1497,12 @@ Public Class FrmPurchInvoiceDirect
                 Item, Dimension1, Dimension2, Specification, 
                 BaleNo, SalesTaxGroupItem, ProfitMarginPer, DocQty, 
                 FreeQty, RejQty, Qty, Unit, 
-                MeasurePerPcs, PcsPerMeasure, MeasureUnit, TotalDocMeasure, 
+                DealUnit, DocDealQty, 
                 Rate, DiscountPer, DiscountAmount, AdditionalDiscountPer, 
                 AdditionalDiscountAmount, Amount, Sale_Rate, MRP, 
                 Remark, LRNo, LRDate, LotNo, 
-                Deal, ExpiryDate, BillingType, 
-                " & AgCalcGrid1.FLineTableFieldNameStr() & ") "
+                Deal, ExpiryDate " & IIf(TxtStructure.Tag = "", "", ",") & AgCalcGrid1.FLineTableFieldNameStr() & ") "
+
         mQry = mQry + bSelectionQry
         If bSelectionQry <> "" Then
             AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
@@ -1572,7 +1511,7 @@ Public Class FrmPurchInvoiceDirect
 
 
         Dim mNarration As String = "Being goods purchased from " & TxtVendor.Text & " Bill No. " & TxtVendorDocNo.Text & " Dated " & TxtVendorDocDate.Text
-        Call AgTemplate.ClsMain.PostStructureLineToAccounts(AgCalcGrid1, mNarration, mSearchCode, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, TxtDivision.AgSelectedValue,
+        Call PostStructureLineToAccounts(AgCalcGrid1, mNarration, mSearchCode, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, TxtDivision.AgSelectedValue,
                                              TxtV_Type.AgSelectedValue, LblPrefix.Text, TxtV_No.Text, TxtReferenceNo.Text, TxtBillToParty.Tag, TxtV_Date.Text, Conn, Cmd)
 
 
@@ -1580,8 +1519,6 @@ Public Class FrmPurchInvoiceDirect
             AgCL.GridSetiingWriteXml(Me.Text & Dgl1.Name & AgL.PubCompCode & AgL.PubDivCode & AgL.PubSiteCode, Dgl1)
         End If
     End Sub
-
-
 
 
 
@@ -1593,27 +1530,25 @@ Public Class FrmPurchInvoiceDirect
         mIsEntryLocked = False
 
         mQry = " Select H.*, Sg.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS  VendorDispName, 
-                 C1.Description As CurrencyDesc, Sg.Nature, 
-                 G.Description As GodownDesc, 
+                 Sg.Nature,                  
                  Sg1.Name || (Case When C2.CityName Is Not Null Then ',' || C2.CityName Else '' End) AS  BillToPartyName,
-                 Vt.Category As Voucher_Category, 
-                 P.Description As ProcessDesc, Agent.Name As AgentName, Transporter.Name As TransporterName 
+                 Vt.Category As Voucher_Category, VC.CityName as VendorCityName, VC.State as VendorStateCode, VS.Description as VendorStateName,
+                 P.Description As ProcessDesc, Agent.Name As AgentName
                  From (Select * From PurchInvoice Where DocID='" & SearchCode & "') H 
                  LEFT JOIN SubGroup Sg ON H.Vendor = Sg.SubCode 
-                 LEFT JOIN City C On Sg.CityCode = C.CityCode  
-                 Left Join Currency C1  On H.Currency = C1.Code 
+                 LEFT JOIN City C On Sg.CityCode = C.CityCode                   
                  LEFT JOIN SubGroup Sg1 On H.BillToParty = Sg1.SubCode 
-                 LEFT JOIN City C2 On Sg1.CityCode = C2.CityCode  
-                 Left Join Godown G  On H.Godown = G.Code  
-                 Left Join SubGroup Agent On H.Agent = Agent.Subcode 
-                 Left Join SubGroup Transporter On H.Transporter = Transporter.Subcode 
+                 LEFT JOIN City C2 On Sg1.CityCode = C2.CityCode                   
+                 Left Join viewHelpSubgroup Agent On H.Agent = Agent.Code                  
+                 Left Join City VC on H.VendorCity = VC.CityCode
+                 Left Join State VS on VC.State = VS.Code
                  Left Join Voucher_Type Vt On H.V_Type = Vt.V_Type 
                  LEFT JOIN Process P On H.Process = P.NCat "
         DsTemp = AgL.FillData(mQry, AgL.GCn)
 
         With DsTemp.Tables(0)
             If .Rows.Count > 0 Then
-                TxtStructure.AgSelectedValue = AgStructure.ClsMain.FGetStructureFromNCat(LblV_Type.Tag, AgL.GcnRead)
+                'TxtStructure.AgSelectedValue = AgStructure.ClsMain.FGetStructureFromNCat(LblV_Type.Tag, AgL.GcnRead)
 
                 If AgL.XNull(.Rows(0)("Structure")) <> "" Then
                     TxtStructure.Tag = AgL.XNull(.Rows(0)("Structure"))
@@ -1643,26 +1578,24 @@ Public Class FrmPurchInvoiceDirect
                 TxtBillToParty.Tag = AgL.XNull(.Rows(0)("BillToParty"))
                 TxtBillToParty.Text = AgL.XNull(.Rows(0)("BillToPartyName"))
 
-                TxtCurrency.Tag = AgL.XNull(.Rows(0)("Currency"))
-                TxtCurrency.Text = AgL.XNull(.Rows(0)("CurrencyDesc"))
                 TxtVendorDocNo.Text = AgL.XNull(.Rows(0)("VendorDocNo"))
                 TxtVendorDocDate.Text = AgL.RetDate(AgL.XNull(.Rows(0)("VendorDocDate")))
 
-                TxtGodown.Tag = AgL.XNull(.Rows(0)("Godown"))
-                TxtGodown.Text = AgL.XNull(.Rows(0)("GodownDesc"))
+
+                TxtPlaceOfSupply.Text = AgL.XNull(.Rows(0)("PlaceOfSupply"))
+
                 TxtAgent.Tag = AgL.XNull(.Rows(0)("Agent"))
                 TxtAgent.Text = AgL.XNull(.Rows(0)("AgentName"))
-                TxtTransporter.Tag = AgL.XNull(.Rows(0)("Transporter"))
-                TxtTransporter.Text = AgL.XNull(.Rows(0)("TransporterName"))
 
 
                 Dim FrmObj As New FrmPurchPartyDetail
                 FrmObj.TxtVendorMobile.Text = AgL.XNull(.Rows(0)("VendorMobile"))
                 FrmObj.TxtVendorName.Text = AgL.XNull(.Rows(0)("VendorName"))
-                FrmObj.TxtVendorAdd1.Text = AgL.XNull(.Rows(0)("VendorAdd1"))
-                FrmObj.TxtVendorAdd2.Text = AgL.XNull(.Rows(0)("VendorAdd2"))
+                FrmObj.TxtVendorAdd1.Text = AgL.XNull(.Rows(0)("VendorAddress"))
                 FrmObj.TxtVendorCity.Tag = AgL.XNull(.Rows(0)("VendorCity"))
                 FrmObj.TxtVendorCity.Text = AgL.XNull(.Rows(0)("VendorCityName"))
+                FrmObj.TxtState.Tag = AgL.XNull(.Rows(0)("VendorStateCode"))
+                FrmObj.TxtState.Text = AgL.XNull(.Rows(0)("VendorStateName"))
 
                 BtnFillPartyDetail.Tag = FrmObj
 
@@ -1672,6 +1605,7 @@ Public Class FrmPurchInvoiceDirect
                 AgCalcGrid1.AgPostingGroupSalesTaxItem = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupItem"))
 
                 TxtRemarks.Text = AgL.XNull(.Rows(0)("Remarks"))
+                BtnHeaderDetail.Tag = Nothing
 
                 AgCalcGrid1.FMoveRecFooterTable(DsTemp.Tables(0), LblV_Type.Tag, TxtV_Date.Text)
 
@@ -1688,7 +1622,7 @@ Public Class FrmPurchInvoiceDirect
                 'Line Records are showing in Grid
                 '-------------------------------------------------------------
                 Dim strQryPurchaseShipped$ = "Select L.ReferenceDocId, L.ReferenceDocIdSr, Sum(L.Qty) As Qty " &
-                                             "FROM SaleChallanDetail L " &
+                                             "FROM SaleInvoiceDetail L " &
                                              "Where L.ReferenceDocId = '" & mSearchCode & "' " &
                                              "GROUP BY L.ReferenceDocId, L.ReferenceDocIdSr "
 
@@ -1698,21 +1632,22 @@ Public Class FrmPurchInvoiceDirect
                          "GROUP BY L.PurchInvoice, L.PurchInvoiceSr  "
 
 
-                mQry = "Select L.*, I.Description As ItemDesc, I.ManualCode,  " &
-                        " U.DecimalPlaces as QtyDecimalPlaces, MU.DecimalPlaces as MeasureDecimalPlaces, DMU.DecimalPlaces as DeliveryMeasureDecimalPlaces, " &
-                        " D1.Description As Dimension1Desc, D2.Description As Dimension2Desc, IU.Item_UID AS Item_UIDDesc, " &
-                        " (Case When IfNull(PurShipped.Qty,0) <> 0 Or IfNull(PurReturn.Qty,0) <> 0 Then 1 Else 0 End) as RowLocked " &
-                        " From (Select * From PurchInvoiceDetail Where DocId = '" & SearchCode & "') As L " &
-                        " LEFT JOIN Item I ON L.Item = I.Code " &
-                        " Left Join Dimension1 D1   On L.Dimension1 = D1.Code " &
-                        " Left Join Dimension2 D2   On L.Dimension2 = D2.Code " &
-                        " LEFT JOIN Unit U On L.Unit = U.Code " &
-                        " LEFT JOIN Unit MU ON L.MeasureUnit = MU.Code " &
-                        " LEFT JOIN Unit Dmu On L.DeliveryMeasure = Dmu.Code " &
-                        " Left Join Item_UID IU  On L.Item_UID = IU.Code " &
-                        " Left Join (" & strQryPurchaseShipped & ") as PurShipped On L.DocID = PurShipped.ReferenceDocID and L.Sr = PurShipped.ReferenceDocIDSr " &
-                        " Left Join (" & strQryPurchaseReturn & ") as PurReturn On L.DocID = PurReturn.PurchInvoice And L.Sr = PurReturn.PurchInvoiceSr " &
-                        " Order By L.Sr "
+                mQry = "Select L.*, I.Description As ItemDesc, I.ManualCode, I.ItemGroup as ItemGroupCode, IG.Description as ItemGroupName, 
+                        I.ItemCategory as ItemCategoryCode, IC.Description as ItemCategoryName,  
+                         U.DecimalPlaces as QtyDecimalPlaces, U.showdimensiondetailInPurchase, MU.DecimalPlaces as MeasureDecimalPlaces, 
+                         D1.Description As Dimension1Desc, D2.Description As Dimension2Desc, 
+                         (Case When IfNull(PurShipped.Qty,0) <> 0 Or IfNull(PurReturn.Qty,0) <> 0 Then 1 Else 0 End) As RowLocked 
+                         From (Select * From PurchInvoiceDetail Where DocId = '" & SearchCode & "') As L 
+                         Left Join Item I ON L.Item = I.Code 
+                         Left join ItemGroup IG on I.ItemGroup = IG.Code
+                         Left Join ItemCategory IC On I.ItemCategory = IC.Code
+                         Left Join Dimension1 D1   On L.Dimension1 = D1.Code 
+                         Left Join Dimension2 D2   On L.Dimension2 = D2.Code 
+                         LEFT JOIN Unit U On L.Unit = U.Code 
+                         Left Join Unit MU ON L.DealUnit = MU.Code                          
+                         Left Join(" & strQryPurchaseShipped & ") as PurShipped On L.DocID = PurShipped.ReferenceDocID And L.Sr = PurShipped.ReferenceDocIDSr 
+                         Left Join (" & strQryPurchaseReturn & ") as PurReturn On L.DocID = PurReturn.PurchInvoice And L.Sr = PurReturn.PurchInvoiceSr 
+                         Order By L.Sr "
                 DsTemp = AgL.FillData(mQry, AgL.GCn)
                 With DsTemp.Tables(0)
                     Dgl1.RowCount = 1
@@ -1723,6 +1658,11 @@ Public Class FrmPurchInvoiceDirect
                             Dgl1.Item(ColSNo, I).Value = Dgl1.Rows.Count - 1
                             Dgl1.Item(ColSNo, I).Tag = AgL.XNull(.Rows(I)("Sr"))
                             Dgl1.Item(Col1ItemCode, I).Tag = AgL.XNull(.Rows(I)("Item"))
+                            Dgl1.Item(Col1ItemGroup, I).Tag = AgL.XNull(.Rows(I)("ItemGroupCode"))
+                            Dgl1.Item(Col1ItemGroup, I).Value = AgL.XNull(.Rows(I)("ItemGroupName"))
+                            Dgl1.Item(Col1ItemCategory, I).Tag = AgL.XNull(.Rows(I)("ItemCategoryCode"))
+                            Dgl1.Item(Col1ItemCategory, I).Value = AgL.XNull(.Rows(I)("ItemCategoryName"))
+
                             Dgl1.Item(Col1Dimension1, I).Tag = AgL.XNull(.Rows(I)("Dimension1"))
                             Dgl1.Item(Col1Dimension1, I).Value = AgL.XNull(.Rows(I)("Dimension1Desc"))
                             Dgl1.Item(Col1Dimension2, I).Tag = AgL.XNull(.Rows(I)("Dimension2"))
@@ -1741,12 +1681,14 @@ Public Class FrmPurchInvoiceDirect
                             Dgl1.Item(Col1FreeQty, I).Value = Format(AgL.VNull(.Rows(I)("FreeQty")), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1RejQty, I).Value = Format(AgL.VNull(.Rows(I)("RejQty")), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1Qty, I).Value = Format(AgL.VNull(.Rows(I)("Qty")), "0.".PadRight(AgL.VNull(.Rows(I)("QtyDecimalPlaces")) + 2, "0"))
+
                             Dgl1.Item(Col1Unit, I).Value = AgL.XNull(.Rows(I)("Unit"))
+                            Dgl1.Item(Col1Unit, I).Tag = AgL.XNull(.Rows(I)("U.showdimensiondetailInPurchase"))
                             Dgl1.Item(Col1MeasureDecimalPlaces, I).Value = AgL.VNull(.Rows(I)("MeasureDecimalPlaces"))
-                            Dgl1.Item(Col1MeasurePerPcs, I).Value = Format(AgL.VNull(.Rows(I)("MeasurePerPcs")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
-                            Dgl1.Item(Col1PcsPerMeasure, I).Value = Format(AgL.VNull(.Rows(I)("PcsPerMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
-                            Dgl1.Item(Col1MeasureUnit, I).Value = AgL.XNull(.Rows(I)("MeasureUnit"))
-                            Dgl1.Item(Col1TotalDocMeasure, I).Value = Format(AgL.VNull(.Rows(I)("TotalDocMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
+                            'Dgl1.Item(Col1MeasurePerPcs, I).Value = Format(AgL.VNull(.Rows(I)("MeasurePerPcs")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
+                            'Dgl1.Item(Col1PcsPerMeasure, I).Value = Format(AgL.VNull(.Rows(I)("PcsPerMeasure")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
+                            Dgl1.Item(Col1MeasureUnit, I).Value = AgL.XNull(.Rows(I)("DealUnit"))
+                            Dgl1.Item(Col1TotalDocMeasure, I).Value = Format(AgL.VNull(.Rows(I)("DocDealQty")), "0.".PadRight(AgL.VNull(.Rows(I)("MeasureDecimalPlaces")) + 2, "0"))
                             Dgl1.Item(Col1Rate, I).Value = AgL.VNull(.Rows(I)("Rate"))
                             Dgl1.Item(Col1DiscountPer, I).Value = AgL.VNull(.Rows(I)("DiscountPer"))
                             Dgl1.Item(Col1DiscountAmount, I).Value = AgL.VNull(.Rows(I)("DiscountAmount"))
@@ -1755,15 +1697,15 @@ Public Class FrmPurchInvoiceDirect
                             Dgl1.Item(Col1Amount, I).Value = Format(AgL.VNull(.Rows(I)("Amount")), "0.00")
                             Dgl1.Item(Col1SaleRate, I).Value = AgL.VNull(.Rows(I)("Sale_Rate"))
                             Dgl1.Item(Col1MRP, I).Value = AgL.VNull(.Rows(I)("MRP"))
-                            Dgl1.Item(Col1ExpiryDate, I).Value = AgL.XNull(.Rows(I)("ExpiryDate"))
+                            Dgl1.Item(Col1ExpiryDate, I).Value = AgL.RetDate(AgL.XNull(.Rows(I)("ExpiryDate")))
                             Dgl1.Item(Col1Remark, I).Value = AgL.XNull(.Rows(I)("Remark"))
                             Dgl1.Item(Col1LRNo, I).Value = AgL.XNull(.Rows(I)("LRNo"))
-                            Dgl1.Item(Col1LRDate, I).Value = AgL.XNull(.Rows(I)("LRDate"))
+                            Dgl1.Item(Col1LRDate, I).Value = AgL.RetDate(AgL.XNull(.Rows(I)("LRDate")))
                             Dgl1.Item(Col1Deal, I).Value = AgL.XNull(.Rows(I)("Deal"))
-                            Dgl1.Item(Col1BillingType, I).Value = AgL.XNull(.Rows(I)("BillingType"))
-                            Dgl1.Item(Col1PurchIndent, I).Value = AgL.XNull(.Rows(I)("PurchIndent"))
 
-
+                            If Dgl1.Item(Col1Unit, I).Tag Then
+                                Dgl1.Item(Col1DocQty, I).Style.ForeColor = Color.Blue
+                            End If
 
                             'If .Rows(I)("RowLocked") > 0 Then Dgl1.Rows(I).DefaultCellStyle.BackColor = AgTemplate.ClsMain.Colours.GridRow_Locked
 
@@ -1795,8 +1737,6 @@ Public Class FrmPurchInvoiceDirect
         End With
     End Sub
 
-
-
     Private Sub FrmSaleOrder_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Topctrl1.ChangeAgGridState(Dgl1, False)
         AgCalcGrid1.FrmType = Me.FrmType
@@ -1809,7 +1749,10 @@ Public Class FrmPurchInvoiceDirect
         Try
             Select Case sender.NAME
                 Case TxtV_Type.Name
-                    TxtStructure.AgSelectedValue = AgStructure.ClsMain.FGetStructureFromNCat(LblV_Type.Tag, AgL.GcnRead)
+                    mQry = "Select * from PurchaseInvoiceSetting  Where Voucher_Type = '" & TxtV_Type.Tag & "' "
+                    DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+                    TxtStructure.AgSelectedValue = AgL.Dman_Execute("Select IfNull(Max(Structure),'') From Voucher_Type Where V_Type = '" & TxtV_Type.Tag & "'", AgL.GcnRead).ExecuteScalar
                     AgCalcGrid1.AgStructure = TxtStructure.AgSelectedValue
                     AgCalcGrid1.AgNCat = LblV_Type.Tag
 
@@ -1823,7 +1766,6 @@ Public Class FrmPurchInvoiceDirect
                 Case TxtVendor.Name
                     If TxtVendor.Text <> "" Then
                         If sender.AgDataRow IsNot Nothing Then
-                            TxtCurrency.AgSelectedValue = AgL.XNull(sender.AgDataRow.Cells("Currency").Value)
                             TxtSalesTaxGroupParty.Tag = AgL.XNull(sender.AgDataRow.Cells("SalesTaxPostingGroup").Value)
                             TxtSalesTaxGroupParty.Text = AgL.XNull(sender.AgDataRow.Cells("SalesTaxPostingGroup").Value)
                             TxtNature.Text = AgL.XNull(sender.AgDataRow.Cells("Nature").Value)
@@ -1833,21 +1775,19 @@ Public Class FrmPurchInvoiceDirect
                         TxtBillToParty.Text = TxtVendor.Text
 
                         If AgL.StrCmp(TxtNature.Text, "Cash") Then
-                            TxtCurrency.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultCurrency"))
-                            If TxtCurrency.Tag <> "" Then
-                                TxtCurrency.Text = AgL.XNull(AgL.Dman_Execute("Select Description From Currency Where Code = '" & TxtCurrency.Tag & "'  ", AgL.GCn).ExecuteScalar)
-                            End If
                             TxtSalesTaxGroupParty.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
                             TxtSalesTaxGroupParty.Text = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
 
                             FOpenPartyDetail()
+
                         Else
-                            mQry = " Select Mobile , DispName , " &
-                                    " IfNull(Add1,'') Add1, IfNull(Add2,'') Add2, " &
-                                    " Sg.CityCode , C.CityName " &
-                                    " From SubGroup Sg " &
-                                    " LEFT JOIN City C ON Sg.CityCode = C.CityCode " &
-                                    " Where Sg.SubCode = '" & TxtVendor.AgSelectedValue & "'  "
+                            mQry = " Select Mobile , DispName , 
+                                     IfNull(Add1,'') Add1, IfNull(Add2,'') Add2, 
+                                     Sg.CityCode , C.CityName, C.State 
+                                     From SubGroup Sg 
+                                     LEFT JOIN City C On Sg.CityCode = C.CityCode 
+                                     Left JOIN State S On S.Code = C.State 
+                                     Where Sg.SubCode = '" & TxtVendor.AgSelectedValue & "'  "
                             DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                             With DtTemp
                                 FrmObj.TxtVendorMobile.Text = AgL.XNull(.Rows(0)("Mobile"))
@@ -1856,7 +1796,14 @@ Public Class FrmPurchInvoiceDirect
                                 FrmObj.TxtVendorAdd2.Text = AgL.XNull(.Rows(0)("Add2"))
                                 FrmObj.TxtVendorCity.Tag = AgL.XNull(.Rows(0)("CityCode"))
                                 FrmObj.TxtVendorCity.Text = AgL.XNull(.Rows(0)("CityName"))
+
+                                If AgL.PubSiteStateCode <> AgL.XNull(.Rows(0)("State")) Then
+                                    TxtPlaceOfSupply.Text = "Outside State"
+                                Else
+                                    TxtPlaceOfSupply.Text = "Within State"
+                                End If
                             End With
+
                             BtnFillPartyDetail.Tag = FrmObj
                         End If
                     End If
@@ -1881,7 +1828,14 @@ Public Class FrmPurchInvoiceDirect
     End Sub
 
     Private Sub FrmSaleOrder_BaseEvent_Topctrl_tbAdd() Handles Me.BaseEvent_Topctrl_tbAdd
-        TxtStructure.AgSelectedValue = AgStructure.ClsMain.FGetStructureFromNCat(LblV_Type.Tag, AgL.GcnRead)
+        mQry = "Select * from PurchaseInvoiceSetting  Where V_Type = '" & TxtV_Type.Tag & "' "
+        DtV_TypeSettings = AgL.FillData(mQry, AgL.GCn).Tables(0)
+        If DtV_TypeSettings.Rows.Count = 0 Then
+            MsgBox("Voucher Type Settings are not defined. Can't Continue!")
+            Topctrl1.FButtonClick(14, True)
+            Exit Sub
+        End If
+        TxtStructure.AgSelectedValue = AgL.Dman_Execute("Select IfNull(Max(Structure),'') From Voucher_Type Where V_Type = '" & TxtV_Type.Tag & "'", AgL.GcnRead).ExecuteScalar
         AgCalcGrid1.AgStructure = TxtStructure.AgSelectedValue
         AgCalcGrid1.AgNCat = LblV_Type.Tag
 
@@ -1890,24 +1844,23 @@ Public Class FrmPurchInvoiceDirect
         TxtCustomFields.AgSelectedValue = AgCustomFields.ClsMain.FGetCustomFieldFromV_Type(TxtV_Type.AgSelectedValue, AgL.GCn)
         AgCustomGrid1.AgCustom = TxtCustomFields.AgSelectedValue
 
-        Try
-            TxtGodown.Tag = AgL.XNull(DtV_TypeSettings.Rows(0)("DEFAULT_Godown"))
-            TxtGodown.Text = AgL.XNull(AgL.Dman_Execute(" Select Description From Godown Where Code = '" & TxtGodown.Tag & "'", AgL.GCn).ExecuteScalar)
-        Catch ex As Exception
-            MsgBox("Default Godown Is Not Set In Enviro", MsgBoxStyle.Information)
-        End Try
+        'Try
+        '    TxtGodown.Tag = AgL.XNull(DtV_TypeSettings.Rows(0)("DEFAULT_Godown"))
+        '    TxtGodown.Text = AgL.XNull(AgL.Dman_Execute(" Select Description From Godown Where Code = '" & TxtGodown.Tag & "'", AgL.GCn).ExecuteScalar)
+        'Catch ex As Exception
+        '    MsgBox("Default Godown Is Not Set In Enviro", MsgBoxStyle.Information)
+        'End Try
 
-        Try
-            TxtCurrency.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultCurrency"))
-            TxtCurrency.Text = AgL.XNull(AgL.Dman_Execute(" Select Description From Currency Where Code = '" & TxtCurrency.Tag & "'", AgL.GCn).ExecuteScalar)
-        Catch ex As Exception
-            MsgBox("Default Currency Is Not Set In Enviro", MsgBoxStyle.Information)
-        End Try
 
         FAsignProcess()
         IniGrid()
         TabControl1.SelectedTab = TP1
-        TxtSalesTaxGroupParty.AgSelectedValue = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
+        TxtSalesTaxGroupParty.Tag = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupParty"))
+        If AgL.Dman_Execute("Select Count(Description) From PostingGroupSalesTaxParty Where Description = '" & TxtSalesTaxGroupParty.Tag & "' and Active=1 ", AgL.GCn).ExecuteScalar = 0 Then
+            TxtSalesTaxGroupParty.Tag = ""
+        Else
+            TxtSalesTaxGroupParty.Text = TxtSalesTaxGroupParty.Tag
+        End If
         AgCalcGrid1.AgPostingGroupSalesTaxParty = TxtSalesTaxGroupParty.AgSelectedValue
         AgCalcGrid1.AgPostingGroupSalesTaxItem = AgL.XNull(AgL.PubDtEnviro.Rows(0)("DefaultSalesTaxGroupItem"))
         TxtReferenceNo.Text = AgTemplate.ClsMain.FGetManualRefNo("ReferenceNo", "PurchInvoice", TxtV_Type.AgSelectedValue, TxtV_Date.Text, TxtDivision.AgSelectedValue, TxtSite_Code.AgSelectedValue, AgTemplate.ClsMain.ManualRefType.Max)
@@ -1967,6 +1920,7 @@ Public Class FrmPurchInvoiceDirect
         If Topctrl1.Mode = "Browse" Then Exit Sub
         Dim mRowIndex As Integer, mColumnIndex As Integer
         Dim DrTemp As DataRow() = Nothing
+        Dim I As Integer
         Try
             mRowIndex = Dgl1.CurrentCell.RowIndex
             mColumnIndex = Dgl1.CurrentCell.ColumnIndex
@@ -1976,16 +1930,28 @@ Public Class FrmPurchInvoiceDirect
                     Validating_ItemCode(mColumnIndex, mRowIndex, DrTemp)
                     Call FGetDeliveryMeasureMultiplier(mRowIndex)
 
-                    If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
-                        FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
-                    End If
+                    'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
+                    FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
+                    'End If
 
                 Case Col1ItemCode
                     Validating_ItemCode(mColumnIndex, mRowIndex, DrTemp)
                     Call FGetDeliveryMeasureMultiplier(mRowIndex)
 
-                    If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
-                        FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
+                    'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
+                    FShowTransactionHistory(Dgl1.Item(Col1Item, mRowIndex).Tag)
+                    'End If
+
+                Case Col1LRNo
+                    If Dgl1.Item(Col1LRNo, mRowIndex).Value <> "" Then
+                        If MsgBox("Apply To All ?", MsgBoxStyle.Question + MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2) = MsgBoxResult.Yes Then
+                            For I = mRowIndex To Dgl1.Rows.Count - 1
+                                If Dgl1.Item(Col1Item, I).Value <> "" Then
+                                    Dgl1.Item(Col1LRNo, I).Value = Dgl1.Item(Col1LRNo, mRowIndex).Value
+                                    Dgl1.Item(Col1LRNo, I).Value = Dgl1.Item(Col1LRNo, mRowIndex).Value
+                                End If
+                            Next
+                        End If
                     End If
 
             End Select
@@ -1998,6 +1964,7 @@ Public Class FrmPurchInvoiceDirect
     Private Sub DGL1_RowsAdded(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewRowsAddedEventArgs) Handles Dgl1.RowsAdded, Dgl1.RowsAdded
         'sender(ColSNo, sender.Rows.Count - 1).Value = Trim(sender.Rows.Count)
         sender(ColSNo, e.RowIndex).Value = e.RowIndex + 1
+
     End Sub
 
     Private Sub FrmSaleOrder_BaseFunction_Calculation() Handles Me.BaseFunction_Calculation
@@ -2013,6 +1980,7 @@ Public Class FrmPurchInvoiceDirect
 
         Dim MRATE As Double = 0
         AgCalcGrid1.AgPostingGroupSalesTaxParty = TxtSalesTaxGroupParty.AgSelectedValue
+        AgCalcGrid1.AgPlaceOfSupply = TxtPlaceOfSupply.Text
         AgCalcGrid1.AgVoucherCategory = "PURCH"
 
         For I = 0 To Dgl1.RowCount - 1
@@ -2062,11 +2030,11 @@ Public Class FrmPurchInvoiceDirect
 
 
 
-                If AgL.StrCmp(Dgl1.Item(Col1BillingType, I).Value, "Doc Measure") Then
-                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
-                Else
-                    Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
-                End If
+                'If AgL.StrCmp(Dgl1.Item(Col1BillingType, I).Value, "Doc Measure") Then
+                'Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1TotalDocMeasure, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                'Else
+                Dgl1.Item(Col1Amount, I).Value = Format(Val(Dgl1.Item(Col1DocQty, I).Value) * MRATE, "0.".PadRight(CType(Dgl1.Columns(Col1Amount), AgControls.AgTextColumn).AgNumberRightPlaces + 2, "0"))
+                'End If
 
                 If Val(Dgl1.Item(Col1DiscountPer, I).Value) > 0 Then
                     Dgl1.Item(Col1DiscountAmount, I).Value = Val(Dgl1.Item(Col1Amount, I).Value) * Val(Dgl1.Item(Col1DiscountPer, I).Value) / 100
@@ -2091,7 +2059,7 @@ Public Class FrmPurchInvoiceDirect
         For I = 0 To Dgl1.RowCount - 1
             If Dgl1.Item(Col1Item, I).Value <> "" Then
                 If Val(Dgl1.Item(Col1ProfitMarginPer, I).Value) > 0 Then
-                    Dgl1.Item(Col1SaleRate, I).Value = Format((Val(AgCalcGrid1.AgChargesValue("LV", I, AgStructure.AgCalcGrid.LineColumnType.Amount)) + (Val(AgCalcGrid1.AgChargesValue("LV", I, AgStructure.AgCalcGrid.LineColumnType.Amount)) * Val(Dgl1.Item(Col1ProfitMarginPer, I).Value) / 100)) / Val(Dgl1.Item(Col1Qty, I).Value), "0.00")
+                    Dgl1.Item(Col1SaleRate, I).Value = GetSaleRate(I) 'Format((Val(AgCalcGrid1.AgChargesValue("LV", I, AgStructure.AgCalcGrid.LineColumnType.Amount)) + (Val(AgCalcGrid1.AgChargesValue("LV", I, AgStructure.AgCalcGrid.LineColumnType.Amount)) * Val(Dgl1.Item(Col1ProfitMarginPer, I).Value) / 100)) / Val(Dgl1.Item(Col1Qty, I).Value), "0.00")
                 End If
             End If
         Next I
@@ -2147,23 +2115,19 @@ Public Class FrmPurchInvoiceDirect
             If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
             If Dgl1.CurrentCell Is Nothing Then Exit Sub
             Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
-                Case Col1Qty, Col1DocQty, Col1RejQty
+                Case Col1Qty, Col1RejQty
                     CType(Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex), AgControls.AgTextColumn).AgNumberRightPlaces = Val(Dgl1.Item(Col1QtyDecimalPlaces, Dgl1.CurrentCell.RowIndex).Value)
+                Case Col1DocQty
+                    CType(Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex), AgControls.AgTextColumn).AgNumberRightPlaces = Val(Dgl1.Item(Col1QtyDecimalPlaces, Dgl1.CurrentCell.RowIndex).Value)
+                    If Dgl1.CurrentCell.Tag IsNot Nothing Then Dgl1.CurrentCell.ReadOnly = True
 
                 Case Col1MeasurePerPcs, Col1TotalDocMeasure
                     CType(Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex), AgControls.AgTextColumn).AgNumberRightPlaces = Val(Dgl1.Item(Col1MeasureDecimalPlaces, Dgl1.CurrentCell.RowIndex).Value)
 
-
-                Case Col1Dimension1, Col1Dimension2
-                    If Dgl1.Item(Col1PurchIndent, Dgl1.CurrentCell.RowIndex).Value <> "" Then
-                        Dgl1.Columns(Col1Dimension1).ReadOnly = True
-                        Dgl1.Columns(Col1Dimension2).ReadOnly = True
-                    Else
-                        Dgl1.Columns(Col1Dimension1).ReadOnly = False
-                        Dgl1.Columns(Col1Dimension2).ReadOnly = False
-                    End If
                 Case Col1Rate
                     If Topctrl1.Mode = "Edit" Then Dgl1.CurrentCell.ReadOnly = False
+
+
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -2171,6 +2135,7 @@ Public Class FrmPurchInvoiceDirect
     End Sub
 
     Private Sub TempPurchInvoice_BaseFunction_DispText() Handles Me.BaseFunction_DispText
+        TxtPlaceOfSupply.Enabled = False
         'If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
         '    BtnFillPurchChallan.Enabled = False
         'ElseIf RbtInvoiceForChallan.Checked = True Then
@@ -2218,6 +2183,9 @@ Public Class FrmPurchInvoiceDirect
                     If e.KeyCode = Keys.Insert Then
                         FOpenItemMaster(Dgl1.Columns(Col1Item).Index, Dgl1.CurrentCell.RowIndex)
                     End If
+                Case Col1DocQty
+                    If e.KeyCode = Keys.Space Then ShowPurchInvoiceDimensionDetail(Dgl1.CurrentCell.RowIndex)
+
             End Select
         End If
         'If e.KeyCode = Keys.Enter Then
@@ -2233,13 +2201,142 @@ Public Class FrmPurchInvoiceDirect
         'Call FOpenMaster(e)
     End Sub
 
+    Public Shared Sub PostStructureLineToAccounts(ByVal FGMain As AgStructure.AgCalcGrid, ByVal mNarr As String, ByVal mDocID As String, ByVal mDiv_Code As String,
+                                               ByVal mSite_Code As String, ByVal Div_Code As String, ByVal mV_Type As String, ByVal mV_Prefix As String, ByVal mV_No As Integer,
+                                               ByVal mRecID As String, ByVal PostingPartyAc As String, ByVal mV_Date As String,
+                                               ByVal Conn As SQLiteConnection, ByVal Cmd As SQLiteCommand, Optional ByVal mCostCenter As String = "")
+        Dim StrContraTextJV As String = ""
+        Dim mPostSubCode = ""
+        Dim I As Integer, J As Integer
+        Dim mQry$ = "", bSelectionQry$ = ""
+        Dim DtTemp As DataTable = Nothing
+
+        bSelectionQry = ""
+        For I = 0 To FGMain.Rows.Count - 1
+            For J = 0 To FGMain.AgLineGrid.Rows.Count - 1
+                If FGMain.AgLineGrid.Rows(J).Visible Then
+                    If AgL.XNull(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.PostAc)) <> "" Then
+                        If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
+
+                        bSelectionQry += " Select 1 as TmpCol, '" & FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.PostAc) & "' As PostAc, " &
+                        " Case When " & AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) & " = 'Dr' Then " & Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) & "  " &
+                        "      When " & AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) & " = 'Cr' Then " & -Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) & " End As Amount "
+                    ElseIf Trim(AgL.XNull(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_PostAc, I).Value)) <> "" Then
+                        If bSelectionQry <> "" Then bSelectionQry += " UNION ALL "
+
+                        bSelectionQry += " Select 1 as TmpCol,'" & FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_PostAc, I).Value & "' As PostAc, " &
+                        " Case When " & AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) & " = 'Dr' Then " & Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) & "  " &
+                        "      When " & AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) & " = 'Cr' Then " & -Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) & " End As Amount "
+
+                    End If
+
+                    If Val(FGMain.AgChargesValue(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_Charges, I).Tag, J, AgStructure.AgCalcGrid.LineColumnType.Amount)) <> 0 Then
+                        If AgL.Chk_Text(FGMain(AgStructure.AgCalcGrid.AgCalcGridColumn.Col_DrCr, I).Value) Is Nothing Then
+                            Err.Raise(1, , "Error In Ledger Posting. Dr/Cr not defined for any value.")
+                        End If
+                    End If
+                End If
+            Next
+        Next
+
+        If bSelectionQry = "" Then Exit Sub
+
+
+        mQry = " Select Count(*)  " &
+                " From (" & bSelectionQry & ") As V1 Group by tmpCol " &
+                " Having Sum(Case When IfNull(V1.Amount,0) > 0 Then IfNull(V1.Amount,0) Else 0 End) <> abs(Sum(Case When IfNull(V1.Amount,0) < 0 Then IfNull(V1.Amount,0) Else 0 End))  "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+        If DtTemp.Rows.Count > 0 Then
+            If AgL.VNull(DtTemp.Rows(0)(0)) > 0 Then
+                Console.Write(mQry)
+                Err.Raise(1, , "Error In Ledger Posting. Debit and Credit balances are not equal.")
+            End If
+        End If
+
+
+
+        mQry = " Select V1.PostAc, IfNull(Sum(Cast(V1.Amount as Float)),0) As Amount, " &
+                " Case When IfNull(Sum(V1.Amount),0) > 0 Then 'Dr' " &
+                "      When IfNull(Sum(V1.Amount),0) < 0 Then 'Cr' End As DrCr " &
+                " From (" & bSelectionQry & ") As V1 " &
+                " Group BY V1.PostAc "
+        DtTemp = AgL.FillData(mQry, AgL.GcnRead).Tables(0)
+
+        With DtTemp
+            For I = 0 To .Rows.Count - 1
+                If Trim(AgL.XNull(.Rows(I)("PostAc"))) <> "" Then
+                    If AgL.StrCmp(AgL.XNull(.Rows(I)("PostAc")), "|PARTY|") Then
+                        If AgL.VNull(.Rows(I)("Amount")) <> 0 And AgL.XNull(.Rows(I)("DrCr")) <> "" Then
+                            If StrContraTextJV <> "" Then StrContraTextJV += vbCrLf
+                            FPrepareContraText(False, StrContraTextJV, PostingPartyAc, Math.Abs(AgL.VNull(.Rows(I)("Amount"))), AgL.XNull(.Rows(I)("DrCr")))
+                        End If
+                    Else
+                        If AgL.VNull(.Rows(I)("Amount")) <> 0 And AgL.XNull(.Rows(I)("DrCr")) <> "" Then
+                            If StrContraTextJV <> "" Then StrContraTextJV += vbCrLf
+                            FPrepareContraText(False, StrContraTextJV, AgL.XNull(.Rows(I)("PostAc")), Math.Abs(Val(AgL.VNull(.Rows(I)("Amount")))), AgL.XNull(.Rows(I)("DrCr")))
+                        End If
+                    End If
+                End If
+            Next
+        End With
+
+        Dim mSrl As Integer = 0, mDebit As Double, mCredit As Double
+        mQry = "Delete from Ledger where docId='" & mDocID & "'"
+        AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+
+        With DtTemp
+            For I = 0 To .Rows.Count - 1
+                If Trim(AgL.XNull(.Rows(I)("PostAc"))) <> "" And Val(AgL.VNull(.Rows(I)("Amount"))) <> 0 Then
+                    mSrl += 1
+
+                    mDebit = 0 : mCredit = 0
+                    If AgL.StrCmp(AgL.XNull(.Rows(I)("PostAc")), "|PARTY|") Then
+                        mPostSubCode = PostingPartyAc
+                    Else
+                        mPostSubCode = AgL.XNull(.Rows(I)("PostAc"))
+                    End If
+
+                    If AgL.StrCmp(AgL.XNull(.Rows(I)("DrCr")), "Dr") Then
+                        mDebit = Math.Abs(AgL.VNull(.Rows(I)("Amount")))
+                    ElseIf AgL.StrCmp(AgL.XNull(.Rows(I)("DrCr")), "Cr") Then
+                        mCredit = Math.Abs(AgL.VNull(.Rows(I)("Amount")))
+                    End If
+
+                    mQry = "Insert Into Ledger(DocId,RecId,V_SNo,V_Date,SubCode,ContraSub,AmtDr,AmtCr," &
+                         " Narration,V_Type,V_No,V_Prefix,Site_Code,DivCode,Chq_No,Chq_Date,TDSCategory,TDSOnAmt,TDSDesc," &
+                         " TDSPer,TDS_Of_V_SNo,System_Generated,FormulaString,ContraText, CostCenter) Values " &
+                         " ('" & mDocID & "','" & mRecID & "'," & mSrl & "," & AgL.Chk_Text(CDate(mV_Date).ToString("u")) & "," & AgL.Chk_Text(mPostSubCode) & "," & AgL.Chk_Text("") & ", " &
+                         " " & mDebit & "," & mCredit & ", " &
+                         " " & AgL.Chk_Text(mNarr) & ",'" & mV_Type & "','" & mV_No & "','" & mV_Prefix & "'," &
+                         " '" & mSite_Code & "','" & mDiv_Code & "','" & AgL.Chk_Text("") & "'," &
+                         " " & AgL.Chk_Text("") & "," & AgL.Chk_Text("") & "," &
+                         " " & Val("") & "," & AgL.Chk_Text("") & "," & Val("") & "," & 0 & ",'Y','" & "" & "','" & StrContraTextJV & "', " & AgL.Chk_Text(mCostCenter) & ")"
+                    AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
+                End If
+            Next I
+        End With
+    End Sub
+
+    Public Shared Sub FPrepareContraText(ByVal BlnOverWrite As Boolean, ByRef StrContraTextVar As String,
+                                       ByVal StrContraName As String, ByVal DblAmount As Double, ByVal StrDrCr As String)
+        Dim IntNameMaxLen As Integer = 35, IntAmtMaxLen As Integer = 18, IntSpaceNeeded As Integer = 2
+        StrContraName = AgL.XNull(AgL.Dman_Execute("Select Name from Subgroup  Where SubCode = '" & StrContraName & "'  ", AgL.GcnRead).ExecuteScalar)
+
+        If BlnOverWrite Then
+            StrContraTextVar = Mid(Trim(StrContraName), 1, IntNameMaxLen) & Space((IntNameMaxLen + IntSpaceNeeded) - Len(Mid(Trim(StrContraName), 1, IntNameMaxLen))) & Space(IntAmtMaxLen - Len(Format(Val(DblAmount), "##,##,##,##,##0.00"))) & Format(Val(DblAmount), "##,##,##,##,##0.00") & " " & Trim(StrDrCr)
+        Else
+            StrContraTextVar += Mid(Trim(StrContraName), 1, IntNameMaxLen) & Space((IntNameMaxLen + IntSpaceNeeded) - Len(Mid(Trim(StrContraName), 1, IntNameMaxLen))) & Space(IntAmtMaxLen - Len(Format(Val(DblAmount), "##,##,##,##,##0.00"))) & Format(Val(DblAmount), "##,##,##,##,##0.00") & " " & Trim(StrDrCr)
+        End If
+    End Sub
+
+
     Private Function FGetRelationalData() As Boolean
         Try
             Dim bRData As String
             '// Check for relational data in Purchase Return
             mQry = " DECLARE @Temp NVARCHAR(Max); "
             mQry += " SET @Temp=''; "
-            mQry += " SELECT  @Temp=@Temp +  X.VNo || ', ' FROM (SELECT DISTINCT H.V_Type || '-' || Convert(VARCHAR,H.V_No) AS VNo From PurchInvoiceDetail  L LEFT JOIN PurchInvoice H ON L.DocId = H.DocID WHERE L.ReferenceDocID  = '" & TxtDocId.Text & "' And IfNull(H.IsDeleted,0) = 0) AS X  "
+            mQry += " SELECT  @Temp=@Temp +  X.VNo || ', ' FROM (SELECT DISTINCT H.V_Type || '-' || Convert(VARCHAR,H.V_No) AS VNo From PurchInvoiceDetail  L LEFT JOIN PurchInvoice H ON L.DocId = H.DocID WHERE L.ReferenceDocID  = '" & TxtDocId.Text & "' ) AS X  "
             mQry += " SELECT @Temp as RelationalData "
             bRData = AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar
             If bRData.Trim <> "" Then
@@ -2284,21 +2381,21 @@ Public Class FrmPurchInvoiceDirect
 
         If Topctrl1.Mode = "Add" Then
             mQry = " SELECT COUNT(*) FROM PurchInvoice WHERE ReferenceNo = '" & TxtReferenceNo.Text & "'   " &
-                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "' And IfNull(IsDeleted,0) = 0  "
+                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'   "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Reference No. Already Exists") : TxtReferenceNo.Focus()
         Else
             mQry = " SELECT COUNT(*) FROM PurchInvoice WHERE ReferenceNo = '" & TxtReferenceNo.Text & "'  " &
-                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "' And IfNull(IsDeleted,0) = 0 AND DocID <>'" & mSearchCode & "'  "
+                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'  AND DocID <>'" & mSearchCode & "'  "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Reference No. Already Exists") : TxtReferenceNo.Focus()
         End If
 
         If Topctrl1.Mode = "Add" Then
             mQry = " SELECT COUNT(*) FROM PurchInvoice WHERE VendorDocNo = '" & TxtVendorDocNo.Text & "' And Vendor = '" & TxtVendor.AgSelectedValue & "'  " &
-                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "' And IfNull(IsDeleted,0) = 0  "
+                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'   "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Vendor Doc. No. Already Exists") : TxtReferenceNo.Focus()
         Else
             mQry = " SELECT COUNT(*) FROM PurchInvoice WHERE VendorDocNo = '" & TxtVendorDocNo.Text & "'  And Vendor = '" & TxtVendor.AgSelectedValue & "'  " &
-                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "' And IfNull(IsDeleted,0) = 0 AND DocID <>'" & mSearchCode & "'  "
+                   " AND V_Type ='" & TxtV_Type.AgSelectedValue & "'  And Div_Code = '" & TxtDivision.AgSelectedValue & "' And Site_Code = '" & TxtSite_Code.AgSelectedValue & "'  AND DocID <>'" & mSearchCode & "'  "
             If AgL.Dman_Execute(mQry, AgL.GCn).ExecuteScalar > 0 Then FCheckDuplicateRefNo = False : MsgBox("Vendor Doc No. Already Exists") : TxtReferenceNo.Focus()
         End If
     End Function
@@ -2323,12 +2420,12 @@ Public Class FrmPurchInvoiceDirect
         AgL.Dman_ExecuteNonQry(mQry, Conn, Cmd)
 
         mQry = " INSERT INTO  Stock(DocID, Sr, V_Type, V_Prefix, V_Date, V_No, Div_Code, Site_Code,  
-                 SubCode, Currency, SalesTaxGroupParty, Structure, BillingType, Item,  
-                 Godown,EType_IR, Qty_Iss, Qty_Rec, Unit, LotNo, MeasurePerPcs, Measure_Iss, Measure_Rec, MeasureUnit, 
-                 Rate, Amount, Landed_Value, Remarks, RecId, ReferenceDocId, ReferenceDocIdSr, ExpiryDate, Sale_Rate, MRP, Process) 
+                 SubCode,  SalesTaxGroupParty, Structure, Item,  
+                 Godown,EType_IR, Qty_Iss, Qty_Rec, Unit, LotNo, Measure_Iss, Measure_Rec, MeasureUnit, 
+                 Rate, Amount, Remarks, RecId, ReferenceDocId, ReferenceDocIdSr, ExpiryDate, Sale_Rate, MRP, Process) 
                  Select L.DocId, L.Sr, H.V_Type, H.V_Prefix, H.V_Date, H.V_No, H.Div_Code, H.Site_Code, 
-                 H.Vendor, H.Currency, H.SalesTaxGroupParty, H.Structure, H.BillingType, L.Item, H.Godown,'R', 0, L.Qty, 
-                 L.Unit, L.LotNo, L.MeasurePerPcs,0, L.TotalMeasure, L.MeasureUnit, L.Rate, L.Amount, L.Landed_Value, 
+                 H.Vendor, H.SalesTaxGroupParty, H.Structure, L.Item, L.Godown,'R', 0, L.Qty, 
+                 L.Unit, L.LotNo,0, L.DealQty, L.DealUnit, L.Rate, L.Amount, 
                  L.Remark, H.ReferenceNo, L.DocId, L.Sr, L.ExpiryDate, L.Sale_Rate, L.MRP, Process 
                  FROM PurchInvoiceDetail L  
                  LEFT JOIN PurchInvoice H On L.DocId = H.DocId 
@@ -2342,14 +2439,9 @@ Public Class FrmPurchInvoiceDirect
         Catch ex As Exception
         End Try
         Try
-            If Dgl1.AgHelpDataSet(Col1BillingType) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1BillingType).Dispose() : Dgl1.AgHelpDataSet(Col1BillingType) = Nothing
-        Catch ex As Exception
-        End Try
-        Try
             If Dgl1.AgHelpDataSet(Col1ItemCode) IsNot Nothing Then Dgl1.AgHelpDataSet(Col1ItemCode).Dispose() : Dgl1.AgHelpDataSet(Col1ItemCode) = Nothing
         Catch ex As Exception
         End Try
-        If TxtCurrency.AgHelpDataSet IsNot Nothing Then TxtCurrency.AgHelpDataSet.Dispose() : TxtCurrency.AgHelpDataSet = Nothing
         If TxtVendor.AgHelpDataSet IsNot Nothing Then TxtVendor.AgHelpDataSet.Dispose() : TxtVendor.AgHelpDataSet = Nothing
         If TxtSalesTaxGroupParty.AgHelpDataSet IsNot Nothing Then TxtSalesTaxGroupParty.AgHelpDataSet.Dispose() : TxtSalesTaxGroupParty.AgHelpDataSet = Nothing
     End Sub
@@ -2369,6 +2461,12 @@ Public Class FrmPurchInvoiceDirect
             FrmObj.DispText(IIf(Topctrl1.Mode = "Browse", False, True))
             FrmObj.ShowDialog()
             If FrmObj.mOkButtonPressed Then BtnFillPartyDetail.Tag = FrmObj
+            If AgL.PubSiteStateCode <> FrmObj.TxtState.Tag Then
+                TxtPlaceOfSupply.Text = "Outside State"
+            Else
+                TxtPlaceOfSupply.Text = "Within State"
+            End If
+
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -2376,7 +2474,7 @@ Public Class FrmPurchInvoiceDirect
 
     Private Sub FrmPurchInvoice_StoreItem_BaseEvent_Topctrl_tbPrn(ByVal SearchCode As String) Handles Me.BaseEvent_Topctrl_tbPrn
         mQry = " SELECT H.DocID, H.V_Type, H.V_Date, H.ReferenceNo, " &
-                    " H.Currency, H.SalesTaxGroupParty, H.BillingType, H.VendorDocNo, H.VendorDocDate,  " &
+                    " H.SalesTaxGroupParty, H.BillingType, H.VendorDocNo, H.VendorDocDate,  " &
                     " H.Form, H.FormNo, H.Remarks, H.EntryBy, H.EntryDate, H.ApproveBy, H.ApproveDate, " &
                     " L.DocId, L.Sr, L.Item, L.Specification, L.SalesTaxGroupItem, L.DocQty, L.RejQty, L.Qty, L.Unit, U.DecimalPlaces as UnitDecimalPlaces,  " &
                     " L.MeasurePerPcs, L.MeasureUnit, L.TotalDocMeasure, L.TotalRejMeasure, L.TotalMeasure, L.Rate, L.Amount, L.Remark, L.LotNo, " &
@@ -2465,27 +2563,31 @@ Public Class FrmPurchInvoiceDirect
             If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
             If Dgl1.CurrentCell Is Nothing Then Exit Sub
             Select Case Dgl1.Columns(Dgl1.CurrentCell.ColumnIndex).Name
+                Case Col1ItemCategory
+                    If e.KeyCode <> Keys.Enter And e.KeyCode <> Keys.Insert Then
+                        If Dgl1.AgHelpDataSet(Col1ItemCategory) Is Nothing Then
+                            FCreateHelpItemCategory()
+                        End If
+                    ElseIf e.KeyCode = Keys.Insert Then
+                        FOpenItemCategoryMaster(Dgl1.Columns(Col1Item).Index, Dgl1.CurrentCell.RowIndex)
+                    End If
+
+                Case Col1ItemGroup
+                    If e.KeyCode <> Keys.Enter And e.KeyCode <> Keys.Insert Then
+                        If Dgl1.AgHelpDataSet(Col1ItemGroup) Is Nothing Then
+                            FCreateHelpItemGroup(Dgl1.CurrentCell.RowIndex)
+                        End If
+                    ElseIf e.KeyCode = Keys.Insert Then
+                        FOpenItemGroupMaster(Dgl1.Columns(Col1Item).Index, Dgl1.CurrentCell.RowIndex)
+                    End If
+
                 Case Col1Item
                     If e.KeyCode <> Keys.Enter And e.KeyCode <> Keys.Insert Then
                         If Dgl1.AgHelpDataSet(Col1Item) Is Nothing Then
-                            FCreateHelpItem(Col1Item)
+                            FCreateHelpItem(Dgl1.CurrentCell.RowIndex)
                         End If
                     ElseIf e.KeyCode = Keys.Insert Then
                         FOpenItemMaster(Dgl1.Columns(Col1Item).Index, Dgl1.CurrentCell.RowIndex)
-                    End If
-
-
-
-                Case Col1BillingType
-                    If Dgl1.AgHelpDataSet(Col1BillingType) Is Nothing Then
-                        mQry = " SELECT 'Qty' AS Code, 'Qty' AS Name " &
-                            " Union ALL " &
-                            " SELECT 'Doc Qty' AS Code, 'Doc Qty' AS Name " &
-                            " Union ALL " &
-                            " SELECT 'Measure' AS Code, 'Measure' AS Name " &
-                            " Union ALL " &
-                            " SELECT 'Doc Measure' AS Code, 'Doc Measure' AS Name "
-                        Dgl1.AgHelpDataSet(Col1BillingType) = AgL.FillData(mQry, AgL.GCn)
                     End If
 
                 Case Col1TotalDocMeasure
@@ -2568,6 +2670,7 @@ Public Class FrmPurchInvoiceDirect
 
                     Dgl1.Item(Col1Specification, mRow).Value = AgL.XNull(DrTemp(0)("Specification"))
                     Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(DrTemp(0)("Unit"))
+                    Dgl1.Item(Col1Unit, mRow).Tag = AgL.XNull(DrTemp(0)("showdimensiondetailInPurchase"))
                     Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DrTemp(0)("Rate"))
                     Dgl1.Item(Col1SalesTaxGroup, mRow).Tag = AgL.XNull(DrTemp(0)("SalesTaxPostingGroup"))
                     Dgl1.Item(Col1SalesTaxGroup, mRow).Tag = AgL.XNull(DrTemp(0)("SalesTaxPostingGroup"))
@@ -2585,7 +2688,6 @@ Public Class FrmPurchInvoiceDirect
                     Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(DrTemp(0)("QtyDecimalPlaces"))
                     Dgl1.Item(Col1MeasureDecimalPlaces, mRow).Value = AgL.VNull(DrTemp(0)("MeasureDecimalPlaces"))
 
-                    Dgl1.Item(Col1BillingType, mRow).Value = "Qty"
                     Dgl1.Item(Col1DocQty, mRow).Value = AgL.VNull(DrTemp(0)("Bal.DocQty"))
                     Dgl1.Item(Col1FreeQty, mRow).Value = AgL.VNull(DrTemp(0)("Bal.FreeQty"))
                     Dgl1.Item(Col1Qty, mRow).Value = AgL.VNull(DrTemp(0)("Bal.Qty"))
@@ -2597,6 +2699,7 @@ Public Class FrmPurchInvoiceDirect
                         Dgl1.Item(Col1ItemCode, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("ManualCode").Value)
                         Dgl1.Item(Col1Specification, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("Specification").Value)
                         Dgl1.Item(Col1Unit, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("Unit").Value)
+                        Dgl1.Item(Col1Unit, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("showdimensiondetailInPurchase").Value)
                         'Dgl1.Item(Col1Rate, mRow).Value = AgL.XNull(Dgl1.AgDataRow.Cells("Rate").Value)
 
                         Dgl1.Item(Col1SalesTaxGroup, mRow).Tag = AgL.XNull(Dgl1.AgDataRow.Cells("SalesTaxPostingGroup").Value)
@@ -2610,7 +2713,6 @@ Public Class FrmPurchInvoiceDirect
                         Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("QtyDecimalPlaces").Value)
                         Dgl1.Item(Col1MeasureDecimalPlaces, mRow).Value = AgL.VNull(Dgl1.AgDataRow.Cells("MeasureDecimalPlaces").Value)
 
-                        Dgl1.Item(Col1BillingType, mRow).Value = "Qty"
 
 
                         mQry = " Select L.Rate, L.MRP From PurchInvoiceDetail L LEFT JOIN PurchInvoice H ON L.DocId = H.DocId Where L.Item = '" & Dgl1.Item(Col1Item, mRow).Tag & "' Order By H.V_Date Desc Limit 1 "
@@ -2621,25 +2723,93 @@ Public Class FrmPurchInvoiceDirect
                             Dgl1.Item(Col1Rate, mRow).Value = AgL.VNull(DtTemp.Rows(0)("Rate"))
                         End If
 
-                        mQry = "Select ProfitMarginPer " &
-                               "From Item " &
-                               "Where Code = '" & AgL.XNull(Dgl1.AgDataRow.Cells("Code").Value) & "' "
-                        DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
-
-                        If DtTemp.Rows.Count > 0 Then
-                            Dgl1.Item(Col1ProfitMarginPer, mRow).Value = AgL.VNull(DtTemp.Rows(0)("ProfitMarginPer"))
-                        End If
 
                     End If
                 End If
 
-                Try
-                    If mRow <> 0 Then Dgl1.Item(Col1BillingType, mRow).Value = Dgl1.Item(Col1BillingType, mRow - 1).Value
-                Catch ex As Exception
-                End Try
             End If
+
+            If Dgl1.Item(Col1Item, mRow).Value <> "" Then
+                mQry = "Select I.ProfitMarginPer, I.ItemGroup as ItemGroupCode, IG.Description as ItemGroupName, 
+                        I.ItemCategory as ItemCategoryCode, IC.Description as ItemCategoryName 
+                        From Item I
+                        Left Join ItemGroup IG on I.ItemGroup = IG.Code
+                        Left Join ItemCategory IC on I.ItemCategory = IC.Code
+                        Where I.Code = '" & AgL.XNull(Dgl1.Item(Col1Item, mRow).Tag) & "' "
+                DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+
+                If DtTemp.Rows.Count > 0 Then
+                    Dgl1.Item(Col1ProfitMarginPer, mRow).Value = AgL.VNull(DtTemp.Rows(0)("ProfitMarginPer"))
+                    Dgl1.Item(Col1ItemCategory, mRow).Tag = AgL.XNull(DtTemp.Rows(0)("ItemCategoryCode"))
+                    Dgl1.Item(Col1ItemCategory, mRow).Value = AgL.XNull(DtTemp.Rows(0)("ItemCategoryName"))
+                    Dgl1.Item(Col1ItemGroup, mRow).Tag = AgL.XNull(DtTemp.Rows(0)("ItemGroupCode"))
+                    Dgl1.Item(Col1ItemGroup, mRow).Value = AgL.XNull(DtTemp.Rows(0)("ItemGroupName"))
+                End If
+            End If
+
+            If mRow > 1 Then
+                If Dgl1.Item(Col1LRNo, mRow - 1).Value <> "" Then
+                    Dgl1.Item(Col1LRNo, mRow).Value = Dgl1.Item(Col1LRNo, mRow - 1).Value
+                    Dgl1.Item(Col1LRDate, mRow).Value = Dgl1.Item(Col1LRDate, mRow - 1).Value
+                End If
+            End If
+
+            Dgl1.Item(Col1DocQty, mRow).Tag = Nothing
+            If (Dgl1.Item(Col1Unit, mRow).Tag) Then
+                Dgl1.Item(Col1DocQty, mRow).Style.ForeColor = Color.Blue
+                ShowPurchInvoiceDimensionDetail(mRow)
+            End If
+
+
         Catch ex As Exception
             MsgBox(ex.Message & " On Validating_Item Function ")
+        End Try
+    End Sub
+
+    Private Function GetSaleRate(RowIndex As Integer) As Double
+        Dim mPricePerUnit As Double
+        Dim mSaleRate As Double = 0
+        If Val(Dgl1.Item(Col1ProfitMarginPer, RowIndex).Value) > 0 Then
+            mPricePerUnit = Val(Dgl1.Item(Col1Amount, RowIndex).Value) / Val(Dgl1.Item(Col1Qty, RowIndex).Value)
+            mSaleRate = Math.Round(mPricePerUnit + mPricePerUnit * Val(Dgl1.Item(Col1ProfitMarginPer, RowIndex).Value) / 100, 2)
+        End If
+        GetSaleRate = mSaleRate
+    End Function
+
+    Private Sub Validating_ItemCategory(ByVal mColumn As Integer, ByVal mRow As Integer, ByVal DrTemp As DataRow())
+        Dim DtTemp As DataTable = Nothing
+        Try
+            Dgl1.Item(Col1ItemGroup, mRow).Value = ""
+            Dgl1.Item(Col1ItemGroup, mRow).Tag = ""
+            Dgl1.Item(Col1Item, mRow).Value = ""
+            Dgl1.Item(Col1Item, mRow).Tag = ""
+            Dgl1.Item(Col1Unit, mRow).Value = ""
+            Dgl1.Item(Col1Dimension1, mRow).Value = ""
+            Dgl1.Item(Col1Dimension1, mRow).Tag = ""
+            Dgl1.Item(Col1Dimension2, mRow).Value = ""
+            Dgl1.Item(Col1Dimension2, mRow).Tag = ""
+
+            Dgl1.AgHelpDataSet(Col1ItemGroup) = Nothing
+            Dgl1.AgHelpDataSet(Col1Item) = Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message & " On Validating_ItemCategory Function ")
+        End Try
+    End Sub
+
+    Private Sub Validating_ItemGroup(ByVal mColumn As Integer, ByVal mRow As Integer, ByVal DrTemp As DataRow())
+        Dim DtTemp As DataTable = Nothing
+        Try
+            Dgl1.Item(Col1Item, mRow).Value = ""
+            Dgl1.Item(Col1Item, mRow).Tag = ""
+            Dgl1.Item(Col1Unit, mRow).Value = ""
+            Dgl1.Item(Col1Dimension1, mRow).Value = ""
+            Dgl1.Item(Col1Dimension1, mRow).Tag = ""
+            Dgl1.Item(Col1Dimension2, mRow).Value = ""
+            Dgl1.Item(Col1Dimension2, mRow).Tag = ""
+
+            Dgl1.AgHelpDataSet(Col1Item) = Nothing
+        Catch ex As Exception
+            MsgBox(ex.Message & " On Validating_ItemGroup Function ")
         End Try
     End Sub
 
@@ -2670,17 +2840,11 @@ Public Class FrmPurchInvoiceDirect
         End Try
     End Sub
 
-    Private Sub TxtCurrency_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtCurrency.KeyDown, TxtVendor.KeyDown, TxtSalesTaxGroupParty.KeyDown, TxtGodown.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown
+    Private Sub Txt_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles TxtVendor.KeyDown, TxtSalesTaxGroupParty.KeyDown, TxtBillToParty.KeyDown, TxtProcess.KeyDown, TxtAgent.KeyDown
         Try
             If AgL.StrCmp(Topctrl1.Mode, "Browse") Then Exit Sub
             Select Case sender.name
-                Case TxtCurrency.Name
-                    If TxtCurrency.AgHelpDataSet Is Nothing Then
-                        mQry = "SELECT Code, Description AS Currency, IfNull(IsDeleted,0) AS IsDeleted " &
-                                " FROM Currency " &
-                                " ORDER BY Code "
-                        TxtCurrency.AgHelpDataSet(1, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
-                    End If
+
 
                 Case TxtVendor.Name
                     If TxtVendor.AgHelpDataSet Is Nothing Then
@@ -2706,16 +2870,12 @@ Public Class FrmPurchInvoiceDirect
                         TxtSalesTaxGroupParty.AgHelpDataSet(1, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
                     End If
 
-                Case TxtGodown.Name
-                    If TxtGodown.AgHelpDataSet Is Nothing Then
-                        mQry = "SELECT H.Code, H.Description " &
-                                " FROM Godown H " &
-                                " Where H.Div_Code = '" & TxtDivision.Tag & "' " &
-                                " And H.Site_Code = '" & TxtSite_Code.Tag & "' " &
-                                " And IfNull(H.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " &
-                                " Order By H.Description"
-                        TxtGodown.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+                Case TxtAgent.Name
+                    If TxtAgent.AgHelpDataSet Is Nothing Then
+                        mQry = "SELECT Code, Name From ViewHelpSubgroup Where SubgroupType = 'Agent' Order By Name "
+                        TxtAgent.AgHelpDataSet(0, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
                     End If
+
 
                 Case TxtProcess.Name
                     If e.KeyCode <> Keys.Enter Then
@@ -2745,30 +2905,29 @@ Public Class FrmPurchInvoiceDirect
                 strCond += " And CharIndex('|' || H.GroupCode || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_AcGroup")) & "') <= 0 "
             End If
 
-            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_SubgroupDivision")) <> "" Then
-                strCond += " And CharIndex('|' || H.Div_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_subGroupDivision")) & "') > 0 "
-            End If
+            'If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_SubgroupDivision")) <> "" Then
+            '    strCond += " And CharIndex('|' || H.Div_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_subGroupDivision")) & "') > 0 "
+            'End If
 
-            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_SubgroupSite")) <> "" Then
-                strCond += " And CharIndex('|' || H.Site_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_subGroupSite")) & "') > 0 "
-            End If
+            'If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_SubgroupSite")) <> "" Then
+            '    strCond += " And CharIndex('|' || H.Site_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_subGroupSite")) & "') > 0 "
+            'End If
         End If
 
-        strCond += " And H.Nature In ('" & ClsMain.SubGroupNature.Customer & "','" & ClsMain.SubGroupNature.Supplier & "','" & ClsMain.SubGroupNature.Cash & "','" & ClsMain.SubGroupNature.Bank & "')"
+        strCond += " And H.Nature In ('" & ClsMain.SubGroupNature.Customer & "','" & ClsMain.SubGroupNature.Supplier & "','" & ClsMain.SubGroupNature.Cash & "')"
 
         mQry = " SELECT H.SubCode, H.Name || (Case When C.CityName Is Not Null Then ',' || C.CityName Else '' End) AS [Party], " &
-                " H.Currency, C1.Description As CurrencyDesc, H.Nature, H.SalesTaxPostingGroup " &
+                " H.Nature, H.SalesTaxPostingGroup " &
                 " FROM SubGroup H  " &
                 " LEFT JOIN City C ON H.CityCode = C.CityCode  " &
-                " LEFT JOIN Currency C1 On H.Currency = C1.Code " &
                 " Where IfNull(H.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
-        sender.AgHelpDataSet(4, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
+        sender.AgHelpDataSet(2, TabControl1.Top + TP1.Top, TabControl1.Left + TP1.Left) = AgL.FillData(mQry, AgL.GCn)
     End Sub
 
     Private Sub Dgl1_RowEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Dgl1.RowEnter
-        If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
-            FShowTransactionHistory(Dgl1.Item(Col1Item, e.RowIndex).Tag)
-        End If
+        'If CType(AgL.VNull(DtV_TypeSettings.Rows(0)("IsVisible_TransactionHistory")), Boolean) = True Then
+        FShowTransactionHistory(Dgl1.Item(Col1Item, e.RowIndex).Tag)
+        'End If
     End Sub
 
     Private Sub Dgl1_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Dgl1.Leave
@@ -2896,7 +3055,7 @@ Public Class FrmPurchInvoiceDirect
         End Try
     End Sub
 
-    Private Sub FCreateHelpItem(ByVal ColumnName As String)
+    Private Sub FCreateHelpItem(RowIndex As Integer)
         Dim strCond As String = ""
 
         Dim ContraV_TypeCondStr As String = ""
@@ -2922,32 +3081,77 @@ Public Class FrmPurchInvoiceDirect
                 strCond += " And CharIndex('|' || I.Item || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterExclude_Item")) & "') <= 0 "
             End If
 
-            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) <> "" Then
-                strCond += " And CharIndex('|' || I.Div_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) & "') > 0 "
-            End If
+            'If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) <> "" Then
+            '    strCond += " And CharIndex('|' || I.Div_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemDivision")) & "') > 0 "
+            'End If
 
-            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) <> "" Then
-                strCond += " And CharIndex('|' || I.Site_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) & "') > 0 "
-            End If
+            'If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) <> "" Then
+            '    strCond += " And CharIndex('|' || I.Site_Code || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemSite")) & "') > 0 "
+            'End If
 
-            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ContraV_Type")) <> "" Then
-                ContraV_TypeCondStr += " And CharIndex('|' || H.V_Type || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ContraV_Type")) & "') > 0 "
-            End If
+            'If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ContraV_Type")) <> "" Then
+            '    ContraV_TypeCondStr += " And CharIndex('|' || H.V_Type || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ContraV_Type")) & "') > 0 "
+            'End If
         End If
 
-        Select Case ColumnName
-            Case Col1Item
-                mQry = "SELECT I.Code, I.Description, I.Specification, I.ManualCode,  
+        If Dgl1.Item(Col1ItemCategory, RowIndex).Value <> "" Then
+            strCond += " And I.ItemCategory = '" & Dgl1.Item(Col1ItemCategory, RowIndex).Tag & "' "
+        End If
+
+        If Dgl1.Item(Col1ItemGroup, RowIndex).Value <> "" Then
+            strCond += " And I.ItemGroup = '" & Dgl1.Item(Col1ItemGroup, RowIndex).Tag & "' "
+        End If
+
+        mQry = "SELECT I.Code, I.Description, I.Specification, I.ManualCode,  
                         I.Unit, I.SalesTaxPostingGroup , 
                         I.Measure As MeasurePerPcs, I.MeasureUnit, 
-                        U.DecimalPlaces As QtyDecimalPlaces, U1.DecimalPlaces As MeasureDecimalPlaces 
+                        U.DecimalPlaces As QtyDecimalPlaces, U.showdimensiondetailInPurchase, U1.DecimalPlaces As MeasureDecimalPlaces 
                         FROM Item I 
                         Left JOIN Unit U On I.Unit = U.Code
                         LEFT JOIN Unit U1 On I.MeasureUnit = U1.Code 
                         Where IfNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
-                Dgl1.AgHelpDataSet(Col1Item, 4) = AgL.FillData(mQry, AgL.GCn)
-        End Select
+        Dgl1.AgHelpDataSet(Col1Item, 6) = AgL.FillData(mQry, AgL.GCn)
     End Sub
+
+    Private Sub FCreateHelpItemCategory()
+        Dim strCond As String = ""
+
+        Dim ContraV_TypeCondStr As String = ""
+
+        If DtV_TypeSettings.Rows.Count > 0 Then
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) <> "" Then
+                strCond += " And CharIndex('|' || I.ItemType || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') > 0 "
+            End If
+        End If
+
+        mQry = "SELECT I.Code, I.Description
+                        FROM ItemCategory I 
+                        Where IfNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+        Dgl1.AgHelpDataSet(Col1ItemCategory) = AgL.FillData(mQry, AgL.GCn)
+    End Sub
+
+    Private Sub FCreateHelpItemGroup(RowIndex As Integer)
+        Dim strCond As String = ""
+
+        Dim ContraV_TypeCondStr As String = ""
+
+        If DtV_TypeSettings.Rows.Count > 0 Then
+            If AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) <> "" Then
+                strCond += " And CharIndex('|' || I.ItemType || '|','" & AgL.XNull(DtV_TypeSettings.Rows(0)("FilterInclude_ItemType")) & "') > 0 "
+            End If
+        End If
+
+        If Dgl1.Item(Col1ItemCategory, RowIndex).Value <> "" Then
+            strCond += " And I.ItemCategory = '" & Dgl1.Item(Col1ItemCategory, RowIndex).Tag & "' "
+        End If
+
+
+        mQry = "SELECT I.Code, I.Description
+                        FROM ItemGroup I 
+                        Where IfNull(I.Status,'" & AgTemplate.ClsMain.EntryStatus.Active & "') = '" & AgTemplate.ClsMain.EntryStatus.Active & "' " & strCond
+        Dgl1.AgHelpDataSet(Col1ItemGroup) = AgL.FillData(mQry, AgL.GCn)
+    End Sub
+
 
     Private Sub FOpenItemMaster(ByVal ColumnIndex As Integer, ByVal RowIndex As Integer)
         Dim DrTemp As DataRow() = Nothing
@@ -2956,12 +3160,47 @@ Public Class FrmPurchInvoiceDirect
         Dgl1.Item(ColumnIndex, RowIndex).Value = ""
         Dgl1.Item(ColumnIndex, RowIndex).Tag = ""
         Dgl1.CurrentCell = Dgl1.Item(Col1DocQty, RowIndex)
-        FCreateHelpItem(Dgl1.Columns(ColumnIndex).Name)
+        'FCreateHelpItem(Dgl1.Columns(ColumnIndex).Name)
+        FCreateHelpItem(0)
         DrTemp = Dgl1.AgHelpDataSet(ColumnIndex).Tables(0).Select("Code = '" & bItemCode & "'")
         Dgl1.Item(ColumnIndex, RowIndex).Tag = bItemCode
         Dgl1.Item(ColumnIndex, RowIndex).Value = AgL.XNull(AgL.Dman_Execute("Select Description From Item Where Code = '" & Dgl1.Item(ColumnIndex, Dgl1.CurrentCell.RowIndex).Tag & "'", AgL.GCn).ExecuteScalar)
         Validating_ItemCode(ColumnIndex, RowIndex, DrTemp)
         Dgl1.CurrentCell = Dgl1.Item(Col1Item, RowIndex)
+        SendKeys.Send("{Enter}")
+    End Sub
+
+    Private Sub FOpenItemCategoryMaster(ByVal ColumnIndex As Integer, ByVal RowIndex As Integer)
+        Dim DrTemp As DataRow() = Nothing
+        Dim bItemCode$ = ""
+        bItemCode = AgTemplate.ClsMain.FOpenMaster(Me, "Item Category Master", TxtV_Type.Tag)
+        Dgl1.Item(ColumnIndex, RowIndex).Value = ""
+        Dgl1.Item(ColumnIndex, RowIndex).Tag = ""
+        Dgl1.CurrentCell = Dgl1.Item(Col1ItemGroup, RowIndex)
+        'FCreateHelpItem(Dgl1.Columns(ColumnIndex).Name)
+        FCreateHelpItemCategory()
+        DrTemp = Dgl1.AgHelpDataSet(ColumnIndex).Tables(0).Select("Code = '" & bItemCode & "'")
+        Dgl1.Item(ColumnIndex, RowIndex).Tag = bItemCode
+        Dgl1.Item(ColumnIndex, RowIndex).Value = AgL.XNull(AgL.Dman_Execute("Select Description From ItemCategory Where Code = '" & Dgl1.Item(ColumnIndex, Dgl1.CurrentCell.RowIndex).Tag & "'", AgL.GCn).ExecuteScalar)
+        Validating_ItemCode(ColumnIndex, RowIndex, DrTemp)
+        Dgl1.CurrentCell = Dgl1.Item(Col1ItemCategory, RowIndex)
+        SendKeys.Send("{Enter}")
+    End Sub
+
+    Private Sub FOpenItemGroupMaster(ByVal ColumnIndex As Integer, ByVal RowIndex As Integer)
+        Dim DrTemp As DataRow() = Nothing
+        Dim bItemCode$ = ""
+        bItemCode = AgTemplate.ClsMain.FOpenMaster(Me, "Item Group Master", TxtV_Type.Tag)
+        Dgl1.Item(ColumnIndex, RowIndex).Value = ""
+        Dgl1.Item(ColumnIndex, RowIndex).Tag = ""
+        Dgl1.CurrentCell = Dgl1.Item(Col1ItemGroup, RowIndex)
+        'FCreateHelpItem(Dgl1.Columns(ColumnIndex).Name)
+        FCreateHelpItemGroup(RowIndex)
+        DrTemp = Dgl1.AgHelpDataSet(ColumnIndex).Tables(0).Select("Code = '" & bItemCode & "'")
+        Dgl1.Item(ColumnIndex, RowIndex).Tag = bItemCode
+        Dgl1.Item(ColumnIndex, RowIndex).Value = AgL.XNull(AgL.Dman_Execute("Select Description From ItemGroup Where Code = '" & Dgl1.Item(ColumnIndex, Dgl1.CurrentCell.RowIndex).Tag & "'", AgL.GCn).ExecuteScalar)
+        Validating_ItemGroup(ColumnIndex, RowIndex, DrTemp)
+        Dgl1.CurrentCell = Dgl1.Item(Col1ItemGroup, RowIndex)
         SendKeys.Send("{Enter}")
     End Sub
 
@@ -2996,70 +3235,53 @@ Public Class FrmPurchInvoiceDirect
     End Sub
 
     Private Sub BtnHeaderDetail_Click(sender As Object, e As EventArgs) Handles BtnHeaderDetail.Click
-        Dim FrmObj As FrmPurchaseInvoiceHeader = Nothing
-        If AgL.StrCmp(Topctrl1.Mode, "Browse") Then
-            FMoveRecPurchaseHeaderDetail(mSearchCode)
-            BtnHeaderDetail.Tag.ShowDialog()
+        ShowPurchInvoiceHeader()
+    End Sub
+
+
+    Private Sub Dgl1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles Dgl1.CellDoubleClick
+        Dim mRow As Integer
+        mRow = e.RowIndex
+        If Dgl1.Columns(e.ColumnIndex).Name = Col1DocQty Then ShowPurchInvoiceDimensionDetail(mRow)
+    End Sub
+
+    Private Sub ShowPurchInvoiceDimensionDetail(mRow As Integer)
+        If Dgl1.Item(Col1DocQty, mRow).Tag IsNot Nothing Then
+            CType(Dgl1.Item(Col1DocQty, mRow).Tag, FrmPurchaseInvoiceDimension).EntryMode = Topctrl1.Mode
+            Dgl1.Item(Col1DocQty, mRow).Tag.ShowDialog()
+            Dgl1.Item(Col1DocQty, mRow).Value = CType(Dgl1.Item(Col1DocQty, mRow).Tag, FrmPurchaseInvoiceDimension).GetTotalQty
+            Dgl1.Item(Col1Qty, mRow).Value = CType(Dgl1.Item(Col1DocQty, mRow).Tag, FrmPurchaseInvoiceDimension).GetTotalQty
         Else
-            FillUnitConversionDetail(True)
-        End If
-    End Sub
+            If Dgl1.Item(Col1Unit, mRow).Tag Then
+                Dim FrmObj As FrmPurchaseInvoiceDimension
+                FrmObj = New FrmPurchaseInvoiceDimension
+                FrmObj.ItemName = Dgl1.Item(Col1Item, mRow).Value
+                FrmObj.Unit = Dgl1.Item(Col1Unit, mRow).Value
+                FrmObj.UnitDecimalPlace = Val(Dgl1.Item(Col1QtyDecimalPlaces, mRow).Value)
+                FrmObj.IniGrid(mSearchCode, Val(Dgl1.Item(ColSNo, mRow).Tag))
+                FrmObj.EntryMode = Topctrl1.Mode
+                Dgl1.Item(Col1DocQty, mRow).Tag = FrmObj
 
-    Public Sub FMoveRecPurchaseHeaderDetail(ByVal SearchCode As String)
-        Dim DtTemp As DataTable = Nothing
-        Dim I As Integer = 0
-        Try
-            BtnHeaderDetail.Tag = FunRetNewUnitConversionObject()
-            BtnHeaderDetail.Tag.Dgl1.Readonly = IIf(AgL.StrCmp(Topctrl1.Mode, "Browse"), True, False)
-            mQry = " SELECT H.*, 
-                    Agent.Name as AgentName, Transporter.Name as TransporterName
-                    FROM PurchInvoice H 
-                     LEFT JOIN viewHelpSubgroup Agent On H.Agent= Agent.Code  
-                     LEFT JOIN viewHelpSubgroup Transporter On H.Transporter = Transporter.Code 
-                     WHERE H.DocId = '" & SearchCode & "' "
-            DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
+                Dgl1.Item(Col1DocQty, mRow).Tag.ShowDialog()
 
-            With DtTemp
-
-                'BtnHeaderDetail.Tag.Dgl1.RowCount = 1 : BtnHeaderDetail.Tag.Dgl1.Rows.Clear()
-                If DtTemp.Rows.Count > 0 Then
-                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Tag = AgL.XNull(DtTemp.Rows(0)("Agent"))
-                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowAgent).Value = AgL.XNull(.Rows(0)("AgentName"))
-                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Tag = AgL.XNull(.Rows(0)("Transporter"))
-                    BtnHeaderDetail.Tag.Dgl1.Item(FrmPurchaseInvoiceHeader.Col1Value, FrmPurchaseInvoiceHeader.rowTransporter).Value = AgL.XNull(.Rows(0)("TransporterName"))
-
-                    BtnHeaderDetail.Tag.EntryMode = Topctrl1.Mode
-                End If
-            End With
-
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
-
-    Private Sub FillUnitConversionDetail(ByVal ShowWindow As Boolean)
-        If BtnHeaderDetail.Tag Is Nothing Then
-            FMoveRecPurchaseHeaderDetail(mSearchCode)
-            If BtnHeaderDetail.Tag Is Nothing Then
-                BtnHeaderDetail.Tag = FunRetNewUnitConversionObject()
+                Dgl1.Item(Col1DocQty, mRow).Value = CType(Dgl1.Item(Col1DocQty, mRow).Tag, FrmPurchaseInvoiceDimension).GetTotalQty
+                Dgl1.Item(Col1Qty, mRow).Value = CType(Dgl1.Item(Col1DocQty, mRow).Tag, FrmPurchaseInvoiceDimension).GetTotalQty
             End If
         End If
-
-        BtnHeaderDetail.Tag.Dgl1.Readonly = IIf(AgL.StrCmp(Topctrl1.Mode, "Browse"), True, False)
-        BtnHeaderDetail.Tag.EntryMode = Topctrl1.Mode
-
-        If ShowWindow = True Then BtnHeaderDetail.Tag.ShowDialog()
     End Sub
 
-    Private Function FunRetNewUnitConversionObject() As Object
-        Dim FrmObj As FrmPurchaseInvoiceHeader
-        Try
+    Private Sub ShowPurchInvoiceHeader()
+        If BtnHeaderDetail.Tag IsNot Nothing Then
+            CType(BtnHeaderDetail.Tag, FrmPurchaseInvoiceHeader).EntryMode = Topctrl1.Mode
+            BtnHeaderDetail.Tag.ShowDialog()
+        Else
+            Dim FrmObj As FrmPurchaseInvoiceHeader
             FrmObj = New FrmPurchaseInvoiceHeader
-            FrmObj.IniGrid()
-            FunRetNewUnitConversionObject = FrmObj
-        Catch ex As Exception
-            FunRetNewUnitConversionObject = Nothing
-            MsgBox(ex.Message)
-        End Try
-    End Function
+            FrmObj.IniGrid(mSearchCode)
+            FrmObj.EntryMode = Topctrl1.Mode
+            BtnHeaderDetail.Tag = FrmObj
+            BtnHeaderDetail.Tag.ShowDialog()
+        End If
+    End Sub
+
 End Class

@@ -243,9 +243,9 @@ Public Class ClsMDIFunctions
 
 
     Public Sub FUpdateUserGroupLevels(ByVal mConn As SQLiteConnection, ByVal mCmd As SQLiteCommand)
-        Agl.Dman_ExecuteNonQry("UPDATE User_Permission SET GroupLevel = X.GroupLevel " &
-                               "FROM (SELECT UserName, MainStreamCode, (SELECT Count(*) FROM User_Permission UP WHERE LEFT(UP.MainStreamCode, Len(P.mainStreamCode))=P.MainStreamCode AND UP.UserName =P.UserName) AS GroupLevel FROM User_Permission P WHERE P.UserName='SA') AS X " &
-                               "WHERE User_Permission.MainStreamCode =X.MainStreamCode AND User_Permission.UserName =X.UserName ", mConn, mCmd)
+        'Agl.Dman_ExecuteNonQry("UPDATE User_Permission SET GroupLevel = X.GroupLevel " &
+        '                       "FROM (SELECT UserName, MainStreamCode, (SELECT Count(*) FROM User_Permission UP WHERE LEFT(UP.MainStreamCode, Len(P.mainStreamCode))=P.MainStreamCode AND UP.UserName =P.UserName) AS GroupLevel FROM User_Permission P WHERE P.UserName='SA') AS X " &
+        '                       "WHERE User_Permission.MainStreamCode =X.MainStreamCode AND User_Permission.UserName =X.UserName ", mConn, mCmd)
     End Sub
 
     Public Sub FManageEntryPointPermission(ByVal mConn As SQLiteConnection, ByVal mCmd As SQLiteCommand)

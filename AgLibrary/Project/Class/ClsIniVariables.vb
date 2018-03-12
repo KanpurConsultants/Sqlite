@@ -463,12 +463,12 @@ Public Class ClsIniVariables
         Dim mQry As String
         Try
             If SiteCodeStr.Trim <> "" Then
-                mQry = "Select S.*, C.CityName, " &
-                        " Case IfNull(S.Ho_Yn,'N') When 'N' Then 0 When '' Then 0 Else 1 End As IsHO, " &
-                        " S.ManualCode, S.Add1, S.Add2, S.Add3, S.Phone, S.Mobile, S.PinNo " &
-                        " From SiteMast S " &
-                        " LEFT JOIN City C ON S.City_Code = C.CityCode " &
-                        " Where S.Code = '" & SiteCodeStr & "'"
+                mQry = "Select S.*, C.CityName, 
+                        Case IfNull(S.Ho_Yn,'N') When 'N' Then 0 When '' Then 0 Else 1 End As IsHO, 
+                        S.ManualCode, S.Add1, S.Add2, S.Add3, S.Phone, S.Mobile, S.PinNo, C.State 
+                        From SiteMast S 
+                        Left Join City C On S.City_Code = C.CityCode                         
+                        Where S.Code = '" & SiteCodeStr & "'"
 
                 DtTemp = Agl.FillData(mQry, Agl.ECompConn).TABLES(0)
                 If DtTemp.Rows.Count > 0 Then
@@ -483,6 +483,7 @@ Public Class ClsIniVariables
                     Agl.PubSitePinNo = Agl.XNull(DtTemp.Rows(0).Item("PinNo"))
                     Agl.PubSitePhone = Agl.XNull(DtTemp.Rows(0).Item("Phone"))
                     Agl.PubSiteMobile = Agl.XNull(DtTemp.Rows(0).Item("Mobile"))
+                    Agl.PubSiteStateCode = Agl.XNull(DtTemp.Rows(0).Item("State"))
 
                     Agl.PubSiteCodeDisplay = "('" & DtTemp.Rows(0).Item("Code") & "')"
                     Agl.PubLogSiteName = Agl.PubSiteName

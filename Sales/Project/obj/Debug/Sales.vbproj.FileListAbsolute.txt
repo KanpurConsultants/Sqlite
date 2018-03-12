@@ -153,3 +153,4 @@ D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.MDIMain.resources
 D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.Resources.resources
 D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.vbproj.GenerateResource.Cache
 D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.FrmSaleInvoiceDirect.resources
+D:\KC\Source\Sqlite\Sales\Project\obj\Debug\Sales.vbprojResolveAssemblyReference.cache

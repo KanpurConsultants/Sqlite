@@ -329,7 +329,7 @@ Public Class TempTransaction
                     mTrans = True
 
                     If LogSystem Then
-                        AgL.Dman_ExecuteNonQry("Update " & LogTableName & " Set EntryType='Delete', EntryBy=" & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " Where UID='" & mSearchCode & "'", AgL.GCn, AgL.ECmd)
+                        AgL.Dman_ExecuteNonQry("Update " & LogTableName & " Set EntryBy=" & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " Where UID='" & mSearchCode & "'", AgL.GCn, AgL.ECmd)
                     End If
 
                     Call AgL.LogTableEntry(mSearchCode, Me.Text, "D", AgL.PubMachineName, AgL.PubUserName, AgL.PubLoginDate, AgL.GCn, AgL.ECmd)
@@ -510,21 +510,21 @@ Public Class TempTransaction
 
             If Topctrl1.Mode = "Add" Then
                 If FrmType = EntryPointType.Main Then
-                    mQry = "INSERT INTO " & MainTableName & " (DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, Status) " &
-                            "VALUES (" & AgL.Chk_Text(mInternalCode) & ", '" & TxtDivision.AgSelectedValue & "',  " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & "," & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",  " & Val(TxtV_No.Text) & "," & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(ClsMain.LogStatus.LogAdd) & ", " & AgL.Chk_Text(TxtStatus.Text) & " )"
+                    mQry = "INSERT INTO " & MainTableName & " (DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate, Status) " &
+                            "VALUES (" & AgL.Chk_Text(mInternalCode) & ", '" & TxtDivision.AgSelectedValue & "',  " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & "," & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",  " & Val(TxtV_No.Text) & "," & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ",  " & AgL.Chk_Text(TxtStatus.Text) & " )"
 
                 Else
-                    mQry = "INSERT INTO " & LogTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, Status) " &
-                            "VALUES (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(mInternalCode) & ", '" & TxtDivision.AgSelectedValue & "',  " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & "," & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",  " & Val(TxtV_No.Text) & "," & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ", " & AgL.Chk_Text(Topctrl1.Mode) & ", " & AgL.Chk_Text(LogStatus.LogOpen) & ", " & AgL.Chk_Text(TxtStatus.Text) & " )"
+                    mQry = "INSERT INTO " & LogTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  Status) " &
+                            "VALUES (" & AgL.Chk_Text(mSearchCode) & ", " & AgL.Chk_Text(mInternalCode) & ", '" & TxtDivision.AgSelectedValue & "',  " & AgL.Chk_Text(TxtSite_Code.AgSelectedValue) & "," & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", " & AgL.Chk_Text(TxtV_Type.AgSelectedValue) & ", " & AgL.Chk_Text(LblPrefix.Text) & ",  " & Val(TxtV_No.Text) & "," & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ",  " & AgL.Chk_Text(TxtStatus.Text) & " )"
                 End If
 
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
             Else
                 If FrmType = EntryPointType.Main Then
-                    mQry = "Update " & MainTableName & " Set V_Date=" & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & " " &
+                    mQry = "Update " & MainTableName & " Set V_Date=" & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", MoveToLog = " & AgL.Chk_Text(AgL.PubUserName) & ", MoveToLogDate = " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & " " &
                            " Where DocID = " & AgL.Chk_Text(mInternalCode) & "  "
                 Else
-                    mQry = "Update " & LogTableName & " Set V_Date=" & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", EntryBy = " & AgL.Chk_Text(AgL.PubUserName) & ", EntryDate = " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & ",  EntryType = " & AgL.Chk_Text(Topctrl1.Mode) & ", EntryStatus=" & AgL.Chk_Text(LogStatus.LogOpen) & " " &
+                    mQry = "Update " & LogTableName & " Set V_Date=" & AgL.Chk_Text(CDate(TxtV_Date.Text).ToString("u")) & ", MoveToLog = " & AgL.Chk_Text(AgL.PubUserName) & ", MoveToLogDate = " & AgL.Chk_Text(CDate(AgL.GetDateTime(AgL.GcnRead)).ToString("u")) & " " &
                            " Where UID = " & AgL.Chk_Text(mSearchCode) & "  "
                 End If
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GCn, AgL.ECmd)
@@ -609,10 +609,10 @@ Public Class TempTransaction
 
 
                 If FrmType = ClsMain.EntryPointType.Main Then
-                    mQry = "Select DocID, Div_Code, Site_Code, V_Type, V_Prefix, V_No, V_Date, EntryBy, EntryType, ApproveBy, MoveToLog, Status " & _
+                    mQry = "Select DocID, Div_Code, Site_Code, V_Type, V_Prefix, V_No, V_Date, EntryBy,  ApproveBy, MoveToLog, Status " &
                         " From " & MainTableName & "  Where DocId='" & mSearchCode & "'"
                 Else
-                    mQry = "Select DocID, Div_Code, Site_Code, V_Type, V_Prefix, V_No, V_Date, EntryBy, EntryType, ApproveBy, MoveToLog, Status " & _
+                    mQry = "Select DocID, Div_Code, Site_Code, V_Type, V_Prefix, V_No, V_Date, EntryBy,  ApproveBy, MoveToLog, Status " &
                         " From " & LogTableName & "  Where UID='" & mSearchCode & "'"
                 End If
                 DsTemp = AgL.FillData(mQry, AgL.GCn)
@@ -630,11 +630,10 @@ Public Class TempTransaction
                     TxtV_Type.AgLastValueText = TxtV_Type.Text
                     LblPrefix.Text = AgL.XNull(.Rows(0)("V_Prefix"))
                     TxtV_No.Text = AgL.VNull(.Rows(0)("V_No"))
-                    TxtV_Date.Text = AgL.XNull(.Rows(0)("V_Date"))
+                    TxtV_Date.Text = AgL.RetDate(AgL.XNull(.Rows(0)("V_Date")))
                     CmdStatus.Tag = AgL.XNull(.Rows(0)("Status"))
                     TxtStatus.Text = AgL.XNull(.Rows(0)("Status"))
                     TxtEntryBy.Text = AgL.XNull(.Rows(0)("EntryBy"))
-                    TxtEntryType.Text = AgL.XNull(.Rows(0)("EntryType"))
                     TxtApproveBy.Text = AgL.XNull(.Rows(0)("ApproveBy"))
                     TxtMoveToLog.Text = AgL.XNull(.Rows(0)("MoveToLog"))
                     CmdApprove.Enabled = CBool(TxtApproveBy.Text.ToString = "" And GBoxApprove.Enabled)
@@ -817,21 +816,20 @@ Public Class TempTransaction
                     '----------------------------------------------------------
                     mQry = " Select Count(*) from " & MainTableName & " Where DocID ='" & mInternalCode & "' "
                     If AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar = 0 Then
-                        mQry = "INSERT INTO " & MainTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, MoveToLog, MoveToLogDate, ApproveBy, ApproveDate) " & _
-                               "Select UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, Null, Null, " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " From " & LogTableName & "  Where UID = '" & mSearchCode & "' "
+                        mQry = "INSERT INTO " & MainTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  MoveToLog, MoveToLogDate, ApproveBy, ApproveDate) " &
+                               "Select UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  Null, Null, " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " From " & LogTableName & "  Where UID = '" & mSearchCode & "' "
 
                     Else
-                        mQry = "UPDATE " & MainTableName & " " & _
-                        "   SET  " & _
-                        "" & MainTableName & ".EntryBy =  " & LogTableName & ".entryby, " & _
-                        "" & MainTableName & ".EntryType =  " & LogTableName & ".entryType, " & _
-                        "" & MainTableName & ".EntryDate =  " & LogTableName & ".entrydate, " & _
-                        "" & MainTableName & ".ApproveBy =  " & AgL.Chk_Text(AgL.PubUserName) & ", " & _
-                        "" & MainTableName & ".ApproveDate =  " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & _
-                        "" & MainTableName & ".MoveToLog =  NULL, " & _
-                        "" & MainTableName & ".MoveToLogDate =  NULL " & _
-                        "From " & LogTableName & " " & _
-                        "Where " & MainTableName & ".DocID = " & LogTableName & ".DocId " & _
+                        mQry = "UPDATE " & MainTableName & " " &
+                        "   SET  " &
+                        "" & MainTableName & ".EntryBy =  " & LogTableName & ".entryby, " &
+                        "" & MainTableName & ".EntryDate =  " & LogTableName & ".entrydate, " &
+                        "" & MainTableName & ".ApproveBy =  " & AgL.Chk_Text(AgL.PubUserName) & ", " &
+                        "" & MainTableName & ".ApproveDate =  " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
+                        "" & MainTableName & ".MoveToLog =  NULL, " &
+                        "" & MainTableName & ".MoveToLogDate =  NULL " &
+                        "From " & LogTableName & " " &
+                        "Where " & MainTableName & ".DocID = " & LogTableName & ".DocId " &
                         "And " & LogTableName & ".UID = '" & mSearchCode & "'"
 
                     End If
@@ -945,21 +943,20 @@ Public Class TempTransaction
             '----------------------------------------------------------
             mQry = " Select Count(*) from " & MainTableName & "  Where DocID ='" & mInternalCode & "' "
             If AgL.Dman_Execute(mQry, AgL.GcnRead).ExecuteScalar = 0 Then
-                mQry = "INSERT INTO " & MainTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, MoveToLog, MoveToLogDate, ApproveBy, ApproveDate) " & _
-                       "Select UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  EntryType, EntryStatus, Null, Null, " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " From " & LogTableName & " Where UID = '" & mSearchCode & "' "
+                mQry = "INSERT INTO " & MainTableName & " (UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  MoveToLog, MoveToLogDate, ApproveBy, ApproveDate) " &
+                       "Select UID, DocId, Div_Code, Site_Code, V_Date, V_Type, V_Prefix, V_No, EntryBy, EntryDate,  Null, Null, " & AgL.Chk_Text(AgL.PubUserName) & ", " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & " From " & LogTableName & " Where UID = '" & mSearchCode & "' "
 
             Else
-                mQry = "UPDATE " & MainTableName & " " & _
-                "   SET  " & _
-                "" & MainTableName & ".EntryBy =  " & LogTableName & ".entryby, " & _
-                "" & MainTableName & ".EntryType =  " & LogTableName & ".entryType, " & _
-                "" & MainTableName & ".EntryDate =  " & LogTableName & ".entrydate, " & _
-                "" & MainTableName & ".ApproveBy =  " & AgL.Chk_Text(AgL.PubUserName) & ", " & _
-                "" & MainTableName & ".ApproveDate =  " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & _
-                "" & MainTableName & ".MoveToLog =  NULL, " & _
-                "" & MainTableName & ".MoveToLogDate =  NULL " & _
-                "From " & LogTableName & " " & _
-                "Where " & MainTableName & ".DocID = " & LogTableName & ".DocId " & _
+                mQry = "UPDATE " & MainTableName & " " &
+                "   SET  " &
+                "" & MainTableName & ".EntryBy =  " & LogTableName & ".entryby, " &
+                "" & MainTableName & ".EntryDate =  " & LogTableName & ".entrydate, " &
+                "" & MainTableName & ".ApproveBy =  " & AgL.Chk_Text(AgL.PubUserName) & ", " &
+                "" & MainTableName & ".ApproveDate =  " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
+                "" & MainTableName & ".MoveToLog =  NULL, " &
+                "" & MainTableName & ".MoveToLogDate =  NULL " &
+                "From " & LogTableName & " " &
+                "Where " & MainTableName & ".DocID = " & LogTableName & ".DocId " &
                 "And " & LogTableName & ".UID = '" & mSearchCode & "'"
 
             End If
@@ -1264,12 +1261,11 @@ Public Class TempTransaction
                     TxtEntryBy.Text = AgL.PubUserName
                     TxtEntryType.Text = "STATUS"
 
-                    mQry = "Update " & MainTableName & " " & _
-                            " Set " & _
-                            " Status = " & AgL.Chk_Text(IIf(TxtStatus.Text = "", ClsMain.EntryStatus.Active, TxtStatus.Text)) & ", " & _
-                            " EntryBy = " & AgL.Chk_Text(TxtEntryBy.Text) & ", " & _
-                            " EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " & _
-                            " EntryType = " & AgL.Chk_Text(TxtEntryType.Text) & " " & _
+                    mQry = "Update " & MainTableName & " " &
+                            " Set " &
+                            " Status = " & AgL.Chk_Text(IIf(TxtStatus.Text = "", ClsMain.EntryStatus.Active, TxtStatus.Text)) & ", " &
+                            " EntryBy = " & AgL.Chk_Text(TxtEntryBy.Text) & ", " &
+                            " EntryDate = " & AgL.Chk_Text(AgL.GetDateTime(AgL.GcnRead)) & ", " &
                             " Where DocID = '" & mSearchCode & "' "
 
                     AgL.Dman_ExecuteNonQry(mQry, AgL.GCn)

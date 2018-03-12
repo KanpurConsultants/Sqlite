@@ -32,6 +32,7 @@ Public Class ClsMain
     Public PubSiteAdd3 As String
     Public PubSiteCity As String
     Public PubSiteCityCode As String
+    Public PubSiteStateCode As String
     Public PubSitePinNo As String
     Public PubSitePhone As String
     Public PubSiteMobile As String

@@ -1,3 +1,4 @@
+Imports System.ComponentModel
 Imports System.Data.SqlClient
 Public Class FrmPurchPartyDetail
     Dim mQry As String = ""
@@ -88,8 +89,11 @@ Public Class FrmPurchPartyDetail
         Try
             Select Case sender.Name
                 Case TxtVendorCity.Name
-                    mQry = " SELECT C.CityCode AS Code, C.CityName FROM City C "
-                    TxtVendorCity.AgHelpDataSet = AgL.FillData(mQry, AgL.GCn)
+                    mQry = " SELECT C.CityCode AS Code, C.CityName, S.Description as StateName, C.State as StateCode 
+                             FROM City C 
+                            Left Join State S On S.Code = C.State
+                           "
+                    TxtVendorCity.AgHelpDataSet(1) = AgL.FillData(mQry, AgL.GCn)
             End Select
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -102,10 +106,11 @@ Public Class FrmPurchPartyDetail
             Select Case sender.Name
                 Case TxtVendorMobile.Name
                     If TxtVendorMobile.Text <> "" And TxtVendorName.Text = "" Then
-                        mQry = " Select H.SaleToPartyName, H.SaleToPartyAddress, H.SaleToPartyCity, C.CityName As SaleToPartyCityName " & _
-                                " From SaleInvoice H " & _
-                                " LEFT JOIN City C On H.SaleToPartyCity = C.CityCode " & _
-                                " Where H.SaleToPartyMobile = '" & TxtVendorMobile.Text & "' "
+                        mQry = " Select H.SaleToPartyName, H.SaleToPartyAddress, H.SaleToPartyCity, C.CityName As SaleToPartyCityName, C.State as StateCode, S.Description as StateName " &
+                                " From SaleInvoice H " &
+                                " LEFT JOIN City C On H.SaleToPartyCity = C.CityCode " &
+                                " Left Join State S On C.State = S.Code" &
+                                " Where H.SaleToPartyMobile = '" & TxtVendorMobile.Text & "' Order by V_Date Desc Limit 1"
                         DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                         With DtTemp
                             If .Rows.Count > 0 Then
@@ -114,6 +119,8 @@ Public Class FrmPurchPartyDetail
                                 TxtVendorAdd2.Text = AgL.XNull(.Rows(0)("SaleToPartyAdd2"))
                                 TxtVendorCity.Tag = AgL.XNull(.Rows(0)("SaleToPartyCity"))
                                 TxtVendorCity.Text = AgL.XNull(.Rows(0)("SaleToPartyCityName"))
+                                TxtState.Tag = AgL.XNull(.Rows(0)("StateCode"))
+                                TxtState.Text = AgL.XNull(.Rows(0)("StateName"))
                             End If
                         End With
                     End If
@@ -121,5 +128,15 @@ Public Class FrmPurchPartyDetail
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+    End Sub
+
+    Private Sub TxtVendorCity_Validating(sender As Object, e As CancelEventArgs) Handles TxtVendorCity.Validating
+        Dim DrTemp As DataRow() = Nothing
+
+        DrTemp = TxtVendorCity.AgHelpDataSet.Tables(0).Select("Code = '" & TxtVendorCity.Tag & "'")
+        If DrTemp.Length > 0 Then
+            TxtState.Tag = AgL.XNull(DrTemp(0)("StateCode"))
+            TxtState.Text = AgL.XNull(DrTemp(0)("StateName"))
+        End If
     End Sub
 End Class

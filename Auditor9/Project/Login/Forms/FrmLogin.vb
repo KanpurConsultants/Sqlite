@@ -67,7 +67,7 @@ Public Class FrmLogin
 
     Private Sub FCreateTables(ByVal StrIniPath As String)
         Dim mQry$ = ""
-        'Dim Agl.Gcn As SqlClient.SqlConnection = New SqlClient.SqlConnection()
+        'Dim Agl.Gcn As Sqlite.SqliteConnection = New Sqlite.SqliteConnection()
         Dim bDbUserSql$ = "", bDBPasswordSQL$ = "", bDataSource$ = "", bCompanyDBName$ = ""
         Try
 
@@ -575,8 +575,8 @@ Public Class FrmLogin
     Public Function ConnectDb(ByVal ServerName As String, ByVal DatabaseName As String, Optional ByVal DatabaseUser As String = "sa", Optional ByVal DatabasePassword As String = "") As String
         Agl.AglObj = Agl
         Agl.PubDBUserSQL = "SA"
-        Agl.GCn = New SqlClient.SqlConnection
-        Agl.GcnRead = New SqlClient.SqlConnection
+        Agl.GCn = New Sqlite.SqliteConnection
+        Agl.GcnRead = New Sqlite.SqliteConnection
         Agl.Gcn_ConnectionString = "Persist Security Info=False;User ID='" & DatabaseUser & "';pwd=" & DatabasePassword & ";Initial Catalog=" & DatabaseName & ";Data Source=" & ServerName
         Agl.GCn.ConnectionString = Agl.Gcn_ConnectionString
         Agl.GcnRead.ConnectionString = Agl.Gcn_ConnectionString
@@ -584,7 +584,7 @@ Public Class FrmLogin
         Try
             AgL.GCn.Open()
             Agl.GcnRead.Open()
-            Agl.ECmd = New SqlClient.SqlCommand
+            Agl.ECmd = New Sqlite.SqliteCommand
             Agl.ECmd = Agl.GCn.CreateCommand
         Catch ex As Exception
             ConnectDb = ex.Message

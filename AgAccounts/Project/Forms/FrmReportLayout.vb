@@ -3032,7 +3032,7 @@ Public Class FrmReportLayout
 
         StrSQLQuery = "Select LG.V_date,LG.Amtcr,LG.AmtDr,LG.V_type,Cast(LG.V_No as Varchar) As V_no,LG.V_prefix as V_add,LG.Chq_No, "
         StrSQLQuery = StrSQLQuery + "LG.Chq_Date,LG.Narration As narr,LG.V_Sno,LedgerM.Narration As mnarration,LG.Docid,SG.Name As Name,St.name As SiteName ,LG.Site_Code "
-        StrSQLQuery = StrSQLQuery + "FROM Ledger LG LEFT  JOIN  LedgerM ON LG.DocId = dbo.LedgerM.DocId "
+        StrSQLQuery = StrSQLQuery + "FROM Ledger LG LEFT  JOIN  LedgerM ON LG.DocId = LedgerM.DocId "
         StrSQLQuery = StrSQLQuery + "Left Join Subgroup SG On SG.Subcode=LG.Subcode "
         StrSQLQuery = StrSQLQuery + "Left join Voucher_type VType on Vtype.V_Type=LG.V_Type "
         StrSQLQuery = StrSQLQuery + "LEFT JOIN SiteMast ST ON LG.Site_Code =St.code "
@@ -3065,7 +3065,7 @@ Public Class FrmReportLayout
 
         StrSQLQuery = "Select LG.V_date,LG.Amtcr,LG.AmtDr,LG.V_type,Cast(LG.V_No as Varchar) As V_no,LG.V_prefix as V_add,LG.Chq_No, "
         StrSQLQuery = StrSQLQuery + "LG.Chq_Date,LG.Narration As narr,LG.V_Sno,LedgerM.Narration As mnarration,LG.Docid,SG.Name As Name,St.name As SiteName,LG.Site_Code "
-        StrSQLQuery = StrSQLQuery + "FROM Ledger LG LEFT  JOIN  LedgerM ON LG.DocId = dbo.LedgerM.DocId "
+        StrSQLQuery = StrSQLQuery + "FROM Ledger LG LEFT  JOIN  LedgerM ON LG.DocId = LedgerM.DocId "
         StrSQLQuery = StrSQLQuery + " Left Join Subgroup SG On SG.Subcode=LG.Subcode "
         StrSQLQuery = StrSQLQuery + "Left join Voucher_type VType on Vtype.V_Type=LG.V_Type "
         StrSQLQuery = StrSQLQuery + "LEFT JOIN SiteMast ST ON LG.Site_Code =St.code"

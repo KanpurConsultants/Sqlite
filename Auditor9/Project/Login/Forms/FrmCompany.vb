@@ -40,9 +40,9 @@ Public Class FrmCompany
         Dim CondStr As String = " Where 1 = 1 "
 
         FGMain.Rows.Clear()
-        CondStr += " And IsNull(DeletedYN,'N') <> 'Y' "
+        CondStr += " And IfNull(DeletedYN,'N') <> 'Y' "
         'If AgL.PubDivisionApplicable Then
-        '    CondStr += " And IsNull(Div_Code,'')='" & AgL.PubDivCode & "'"
+        '    CondStr += " And IfNull(Div_Code,'')='" & AgL.PubDivCode & "'"
         'End If
         DTTemp = AgL.FillData("Select Comp_Code,Comp_Name,CYear, City From Company " & CondStr & " Order By Start_Dt Desc", AgL.GcnMain).TABLES(0)
 
@@ -98,7 +98,7 @@ Public Class FrmCompany
             If Trim(AgL.PubSiteCode) = "" Then
                 mQry = "SELECT Code As Site_Code " &
                        " FROM SiteMast S " &
-                       " WHERE IsNull(S.Active,0) <> 0"
+                       " WHERE IfNull(S.Active,0) <> 0"
                 DtTemp = AgL.FillData(mQry, AgL.GCn).Tables(0)
                 If DtTemp.Rows.Count = 1 Then
                     AgIniVar.ProcIniSiteDetail(DtTemp.Rows(0).Item("Site_Code"), AgIniVar)
@@ -113,25 +113,24 @@ Public Class FrmCompany
 
             mU_EntDt = AgL.GetDateTime(AgL.GcnMain)
 
-            mQry = "Select IsNull(Count(Table_Name),0) As Cnt From INFORMATION_SCHEMA.Tables Where Table_Name='Login_Log' And Table_Type='BASE TABLE'"
-            AgL.ECmd = AgL.Dman_Execute(mQry, AgL.GcnMain)
-            If AgL.ECmd.ExecuteScalar > 0 Then
+
+            If AgL.FillData("PRAGMA table_info(Login_Log);", AgL.GcnMain).Tables(0).rows.count > 0 Then
                 mQry = "Insert Into Login_Log (User_Name, MachineName, Div_Code, Site_Code , Comp_Code, U_EntDt) Values(" &
                         " " & AgL.Chk_Text(AgL.PubUserName) & "," & AgL.Chk_Text(AgL.PubMachineName) & "," & AgL.Chk_Text(AgL.PubDivCode) & "," &
-                        " " & AgL.Chk_Text(AgL.PubSiteCode) & "," & AgL.Chk_Text(AgL.PubCompCode) & ",'" & mU_EntDt & "')"
+                        " " & AgL.Chk_Text(AgL.PubSiteCode) & "," & AgL.Chk_Text(AgL.PubCompCode) & "," & AgL.Chk_Date(CDate(mU_EntDt).ToString("u")) & ")"
                 AgL.Dman_ExecuteNonQry(mQry, AgL.GcnMain)
             End If
 
             Call FPreventPiracy()
 
-            Dim MD As New MDIMain
-            FAddMenu(MD, AgLibrary.ClsConstant.Module_Common_Master)
-            MD.StrCurrentModule = AgLibrary.ClsConstant.Module_Common_Master
-            MD.Show()
-            Me.Dispose()
+                Dim MD As New MDIMain
+                FAddMenu(MD, AgLibrary.ClsConstant.Module_Common_Master)
+                MD.StrCurrentModule = AgLibrary.ClsConstant.Module_Common_Master
+                MD.Show()
+                Me.Dispose()
 
-            DtTemp.Dispose()
-        End If
+                DtTemp.Dispose()
+            End If
     End Sub
 
     Public Function FGetAllSiteList()

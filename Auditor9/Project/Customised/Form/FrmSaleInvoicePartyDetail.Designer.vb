@@ -19,19 +19,21 @@ Partial Class FrmSaleInvoicePartyDetail
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.BtnOk = New System.Windows.Forms.Button
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.BtnCancel = New System.Windows.Forms.Button
-        Me.TxtSaleToPartyName = New AgControls.AgTextBox
-        Me.LblBuyerName = New System.Windows.Forms.Label
-        Me.TxtSaleToPartyAdd1 = New AgControls.AgTextBox
-        Me.LblAddress = New System.Windows.Forms.Label
-        Me.TxtSaleToPartyCity = New AgControls.AgTextBox
-        Me.LblCity = New System.Windows.Forms.Label
-        Me.TxtSaleToPartyMobile = New AgControls.AgTextBox
-        Me.LblMobile = New System.Windows.Forms.Label
-        Me.TxtSaleToPartyAdd2 = New AgControls.AgTextBox
-        Me.Label4 = New System.Windows.Forms.Label
+        Me.BtnOk = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.BtnCancel = New System.Windows.Forms.Button()
+        Me.TxtSaleToPartyName = New AgControls.AgTextBox()
+        Me.LblBuyerName = New System.Windows.Forms.Label()
+        Me.TxtSaleToPartyAdd1 = New AgControls.AgTextBox()
+        Me.LblAddress = New System.Windows.Forms.Label()
+        Me.TxtSaleToPartyCity = New AgControls.AgTextBox()
+        Me.LblCity = New System.Windows.Forms.Label()
+        Me.TxtSaleToPartyMobile = New AgControls.AgTextBox()
+        Me.LblMobile = New System.Windows.Forms.Label()
+        Me.TxtSaleToPartyAdd2 = New AgControls.AgTextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.AgTextBox1 = New AgControls.AgTextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BtnOk
@@ -39,7 +41,7 @@ Partial Class FrmSaleInvoicePartyDetail
         Me.BtnOk.BackColor = System.Drawing.Color.Transparent
         Me.BtnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnOk.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnOk.Location = New System.Drawing.Point(277, 161)
+        Me.BtnOk.Location = New System.Drawing.Point(281, 241)
         Me.BtnOk.Name = "BtnOk"
         Me.BtnOk.Size = New System.Drawing.Size(60, 23)
         Me.BtnOk.TabIndex = 5
@@ -49,10 +51,10 @@ Partial Class FrmSaleInvoicePartyDetail
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox2.Location = New System.Drawing.Point(5, 141)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 228)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(416, 5)
         Me.GroupBox2.TabIndex = 737
@@ -64,7 +66,7 @@ Partial Class FrmSaleInvoicePartyDetail
         Me.BtnCancel.BackColor = System.Drawing.Color.Transparent
         Me.BtnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.BtnCancel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnCancel.Location = New System.Drawing.Point(342, 161)
+        Me.BtnCancel.Location = New System.Drawing.Point(346, 241)
         Me.BtnCancel.Name = "BtnCancel"
         Me.BtnCancel.Size = New System.Drawing.Size(60, 23)
         Me.BtnCancel.TabIndex = 6
@@ -246,12 +248,49 @@ Partial Class FrmSaleInvoicePartyDetail
         Me.Label4.TabIndex = 749
         Me.Label4.Text = "Ä"
         '
+        'AgTextBox1
+        '
+        Me.AgTextBox1.AgAllowUserToEnableMasterHelp = False
+        Me.AgTextBox1.AgLastValueTag = Nothing
+        Me.AgTextBox1.AgLastValueText = Nothing
+        Me.AgTextBox1.AgMandatory = False
+        Me.AgTextBox1.AgMasterHelp = False
+        Me.AgTextBox1.AgNumberLeftPlaces = 8
+        Me.AgTextBox1.AgNumberNegetiveAllow = False
+        Me.AgTextBox1.AgNumberRightPlaces = 2
+        Me.AgTextBox1.AgPickFromLastValue = False
+        Me.AgTextBox1.AgRowFilter = ""
+        Me.AgTextBox1.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.AgTextBox1.AgSelectedValue = Nothing
+        Me.AgTextBox1.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.AgTextBox1.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.AgTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.AgTextBox1.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AgTextBox1.Location = New System.Drawing.Point(106, 144)
+        Me.AgTextBox1.MaxLength = 0
+        Me.AgTextBox1.Name = "AgTextBox1"
+        Me.AgTextBox1.Size = New System.Drawing.Size(300, 18)
+        Me.AgTextBox1.TabIndex = 750
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(15, 145)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(46, 16)
+        Me.Label1.TabIndex = 751
+        Me.Label1.Text = "Mobile"
+        '
         'FrmSaleInvoicePartyDetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(421, 193)
+        Me.ClientSize = New System.Drawing.Size(421, 272)
         Me.ControlBox = False
+        Me.Controls.Add(Me.AgTextBox1)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.TxtSaleToPartyAdd2)
         Me.Controls.Add(Me.TxtSaleToPartyMobile)
@@ -289,4 +328,6 @@ Partial Class FrmSaleInvoicePartyDetail
     Public WithEvents TxtSaleToPartyMobile As AgControls.AgTextBox
     Public WithEvents TxtSaleToPartyAdd2 As AgControls.AgTextBox
     Protected WithEvents Label4 As System.Windows.Forms.Label
+    Public WithEvents AgTextBox1 As AgControls.AgTextBox
+    Protected WithEvents Label1 As Label
 End Class

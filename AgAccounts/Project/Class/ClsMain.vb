@@ -1561,133 +1561,133 @@ Public Class ClsMain
             '==================== Voucher Type Entry Starts =====================
             '====================================================================
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STAX'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STAX', 'Inward GTA', 'STAX', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STAXR'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STAXR', 'Inward GTA Reverse', 'STAXR', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STXOW'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STXOW', 'Outward GTA', 'STXOW', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STXOR'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STXOR', 'Outward GTA Reverse', 'STXOR', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STXNG'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STXNG', 'Non GTA', 'STXNG', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='STXNR'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'STAX', 'STXNR', 'Non GTA Reverse', 'STXNR', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuServiceTaxEntry','Service Tax Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='ASSET'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'ASSET', 'ASSET', 'Fixed Asset', 'ASSET', 'Y', 'sa', 'sa', '07/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='ASTAP'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'ASTTR', 'ASTAP', 'Appreciation Asset', 'ASTAP', 'Y', 'sa', 'sa', '07/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='ASTOP'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'ASTTR', 'ASTOP', 'Opening Asset', 'ASTOP', 'Y', 'sa', 'sa', '07/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='ASTPR'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'ASTTR', 'ASTPR', 'Purchase Asset', 'ASTPR', 'Y', 'sa', 'sa', '07/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='ASTSL'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'ASTTR', 'ASTSL', 'Sale Asset', 'ASTSL', 'Y', 'sa', 'sa', '07/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='BDGT'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'BDGT', 'BDGT', 'Budget Schedule', 'BDGT', 'Y', 'sa', 'sa', '01/Sep/2008 12:00:00 AM', 'A','','','')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='CN'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'JV', 'CN', 'Credit Note', 'CN', 'Y', 'SA', 'SA', '01/Jan/1900 12:00:00 AM', 'A','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='CPV'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'PMT', 'CPV', 'Cash Payment', 'CP', 'Y', 'SA', 'SA', '29/May/2007 12:00:00 AM', 'E','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='CRV'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'RCT', 'CRV', 'Cash Receipt', 'CR', 'Y', 'SA', 'SA', '11/Apr/2007 12:00:00 AM', 'E','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='DN'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'JV', 'DN', 'Debit Note', 'DN', 'Y', 'SA', 'SA', '01/Jan/1900 12:00:00 AM', 'A','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='JV'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'JV', 'JV', 'Journal', 'JV', 'Y', 'SA', 'SA', '27/Mar/2007 12:00:00 AM', 'E','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='OPBAL'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'JV', 'OPBAL', 'Opening Balance', 'OPBAL', 'Y', 'sa', 'sa', '30/Aug/2008 12:00:00 AM', 'A','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='CNTRA'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'JV', 'CNTRA', 'Contra', 'CNTRA', 'Y', 'sa', 'sa', '30/Aug/2008 12:00:00 AM', 'A','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='PMT'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'PMT', 'PMT', 'Bank Payment', 'PMT', 'Y', 'SA', 'SA', '29/May/2007 12:00:00 AM', 'E','MnuVoucherEntry','Voucher Entry','Accounts','Y')"
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='RCT'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule,AuditAllowed) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'RCT', 'RCT', 'Bank Receipt', 'RCT', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','MnuVoucherEntry','Voucher Entry','Accounts','Y') "
                 SQLCmd.ExecuteNonQuery()
             End If
 
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From Voucher_Type VT Where VT.V_Type='BREC'", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
+                SQLCmd.CommandText = "INSERT INTO Voucher_Type (NCat, Category, V_Type, Description, Short_Name, SystemDefine, ModifiedBy, PreparedBy, U_EntDt, U_AE,MnuName,MnuText,MnuAttachedInModule) "
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FA', 'BREC', 'BREC', 'Bank Reconcilation', 'BREC', 'Y', 'SA', 'SA', '13/Jun/2005 12:00:00 AM', 'E','','','') "
                 SQLCmd.ExecuteNonQuery()
             End If
@@ -1702,123 +1702,123 @@ Public Class ClsMain
             '=================== Account Group Entry Starts =====================
             '====================================================================
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From AcGroup ", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0001', NULL, 'Capital Account', 'Capital Account', NULL, 'L', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0002', NULL, 'Loan (Liability)', 'Loan (Liability)', NULL, 'L', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0003', NULL, 'Current Liabilities', 'Current Liabilities', NULL, 'L', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0004', NULL, 'Fixed Assets', 'Fixed Assets', NULL, 'A', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0005', NULL, 'Investments', 'Investments', NULL, 'A', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0006', NULL, 'Current Assets', 'Current Assets', NULL, 'A', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0007', NULL, 'Branch/Divisions', 'Branch/Divisions', NULL, 'A', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0008', NULL, 'Misc. Expences (Asset)', 'Misc. Expences (Asset)', NULL, 'A', 'Expenses', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0009', NULL, 'Suspense A/c', 'Suspense A/c', NULL, 'A', 'Others', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0010', NULL, 'Reserves & Surplus', 'Reserves & Surplus', NULL, 'L', 'Others', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0011', NULL, 'Bank OD A/c', 'Bank OD A/c', NULL, 'L', 'Bank', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0012', NULL, 'Secured Loans', 'Secured Loans', NULL, 'L', 'Others', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0013', NULL, 'Unsecured Loans', 'Unsecured Loans', NULL, 'L', 'Others', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0014', NULL, 'Duties & Taxes', 'Duties & Taxes', NULL, 'L', 'Expenses', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0015', NULL, 'Provisions', 'Provisions', NULL, 'L', 'Expenses', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0016', NULL, 'Sundry Creditors', 'Sundry Creditors', NULL, 'L', 'Supplier', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0017', NULL, 'Opening Stock', 'Opening Stock', NULL, 'E', 'Direct', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0018', NULL, 'Deposits (Asset)', 'Deposits (Asset)', NULL, 'A', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0019', NULL, 'Loans & Advances (Asset)', 'Loans & Advances (Asset)', NULL, 'A', 'Others', 'Y', 'SA', '02/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0020', NULL, 'Sundry Debtors', 'Sundry Debtors', NULL, 'A', 'Customer', 'Y', 'SA', '07/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0021', NULL, 'Cash-in-Hand', 'Cash-In-Hand', NULL, 'A', 'Cash', 'Y', 'SA', '05/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0022', NULL, 'Bank Accounts', 'Bank Accounts', NULL, 'A', 'Bank', 'Y', 'sa', '17/Aug/2008 12:00:00 AM', 'B')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0023', NULL, 'Sales Accounts', 'Sales Accounts', NULL, 'R', 'Sales', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0024', NULL, 'Purchase Accounts', 'Purchase Accounts', NULL, 'E', 'Purchase', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0025', NULL, 'Direct Incomes', 'Direct Incomes', NULL, 'R', 'Direct', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0026', NULL, 'Direct Expenses', 'Direct Expenses', NULL, 'E', 'Direct', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0027', NULL, 'Indirect Incomes', 'Indirect Incomes', NULL, 'R', 'Indirect', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0028', NULL, 'Indirect Expenses', 'Indirect Expenses', NULL, 'E', 'Indirect', 'Y', 'SA', '05/Jul/2008 12:00:00 AM', 'E')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0029', NULL, 'Profit & Loss A/c', 'Profit & Loss A/c', NULL, 'L', 'Others', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
+                SQLCmd.CommandText = "INSERT INTO AcGroup (GroupCode, SNo, GroupName, ContraGroupName, GroupUnder, GroupNature, Nature, SysGroup, U_Name, U_EntDt, U_AE)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('0030', NULL, 'Closing Stock', 'Closing Stock', NULL, 'R', 'Direct', 'Y', 'SA', '01/Apr/2003 12:00:00 AM', 'A')"
                 SQLCmd.ExecuteNonQuery()
             End If
@@ -1831,39 +1831,39 @@ Public Class ClsMain
             '===================== Item Type Entry Starts =======================
             '====================================================================
             If Not CMain.FGetMaxNo("Select Count(*) As Cnt From ItemType ", AgL.GCn) > 0 Then
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FM', 'Finished Mtrl.')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('OT', 'Others')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('PM', 'Packing Mtrl.')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('RM', 'Raw Mtrl.')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('SM', 'Store Mtrl.')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('FL', 'Fuel')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('CL', 'Coal')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('CM', 'Chemical')"
                 SQLCmd.ExecuteNonQuery()
 
-                SQLCmd.CommandText = "INSERT INTO dbo.ItemType (Code, Name)"
+                SQLCmd.CommandText = "INSERT INTO ItemType (Code, Name)"
                 SQLCmd.CommandText = SQLCmd.CommandText & "VALUES ('SF', 'Semi Finished')"
                 SQLCmd.ExecuteNonQuery()
             End If

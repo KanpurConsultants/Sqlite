@@ -85,3 +85,19 @@ D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.pdb
 D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.dll.config
 D:\Satyam\Active Projects\SqLite\AgStructure\Release\AgStructure.dll
 D:\Satyam\Active Projects\SqLite\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.dll.config
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.dll
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.pdb
+D:\KC\Source\Sqlite\AgStructure\Release\AgStructure.xml
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmCharges.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmNCat.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmStructure.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmStructureAcPosting.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.FrmTaxPostingGroupEntry.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.MDIMain.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.Resources.resources
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.vbproj.GenerateResource.Cache
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.dll
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.xml
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.pdb
+D:\KC\Source\Sqlite\AgStructure\Project\obj\Debug\AgStructure.vbprojResolveAssemblyReference.cache

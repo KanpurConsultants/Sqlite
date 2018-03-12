@@ -19,18 +19,20 @@ Partial Class FrmPurchPartyDetail
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.BtnOk = New System.Windows.Forms.Button
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.BtnCancel = New System.Windows.Forms.Button
-        Me.TxtVendorName = New AgControls.AgTextBox
-        Me.LblBuyerName = New System.Windows.Forms.Label
-        Me.TxtVendorAdd1 = New AgControls.AgTextBox
-        Me.LblAddress = New System.Windows.Forms.Label
-        Me.TxtVendorCity = New AgControls.AgTextBox
-        Me.LblCity = New System.Windows.Forms.Label
-        Me.TxtVendorMobile = New AgControls.AgTextBox
-        Me.LblMobile = New System.Windows.Forms.Label
-        Me.TxtVendorAdd2 = New AgControls.AgTextBox
+        Me.BtnOk = New System.Windows.Forms.Button()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.BtnCancel = New System.Windows.Forms.Button()
+        Me.TxtVendorName = New AgControls.AgTextBox()
+        Me.LblBuyerName = New System.Windows.Forms.Label()
+        Me.TxtVendorAdd1 = New AgControls.AgTextBox()
+        Me.LblAddress = New System.Windows.Forms.Label()
+        Me.TxtVendorCity = New AgControls.AgTextBox()
+        Me.LblCity = New System.Windows.Forms.Label()
+        Me.TxtVendorMobile = New AgControls.AgTextBox()
+        Me.LblMobile = New System.Windows.Forms.Label()
+        Me.TxtVendorAdd2 = New AgControls.AgTextBox()
+        Me.TxtState = New AgControls.AgTextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BtnOk
@@ -48,7 +50,7 @@ Partial Class FrmPurchPartyDetail
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.BackColor = System.Drawing.Color.WhiteSmoke
         Me.GroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox2.Location = New System.Drawing.Point(5, 141)
@@ -73,6 +75,8 @@ Partial Class FrmPurchPartyDetail
         'TxtVendorName
         '
         Me.TxtVendorName.AgAllowUserToEnableMasterHelp = False
+        Me.TxtVendorName.AgLastValueTag = Nothing
+        Me.TxtVendorName.AgLastValueText = Nothing
         Me.TxtVendorName.AgMandatory = True
         Me.TxtVendorName.AgMasterHelp = False
         Me.TxtVendorName.AgNumberLeftPlaces = 8
@@ -106,6 +110,8 @@ Partial Class FrmPurchPartyDetail
         'TxtVendorAdd1
         '
         Me.TxtVendorAdd1.AgAllowUserToEnableMasterHelp = False
+        Me.TxtVendorAdd1.AgLastValueTag = Nothing
+        Me.TxtVendorAdd1.AgLastValueText = Nothing
         Me.TxtVendorAdd1.AgMandatory = False
         Me.TxtVendorAdd1.AgMasterHelp = False
         Me.TxtVendorAdd1.AgNumberLeftPlaces = 8
@@ -139,6 +145,8 @@ Partial Class FrmPurchPartyDetail
         'TxtVendorCity
         '
         Me.TxtVendorCity.AgAllowUserToEnableMasterHelp = False
+        Me.TxtVendorCity.AgLastValueTag = Nothing
+        Me.TxtVendorCity.AgLastValueText = Nothing
         Me.TxtVendorCity.AgMandatory = False
         Me.TxtVendorCity.AgMasterHelp = False
         Me.TxtVendorCity.AgNumberLeftPlaces = 8
@@ -155,7 +163,7 @@ Partial Class FrmPurchPartyDetail
         Me.TxtVendorCity.Location = New System.Drawing.Point(102, 102)
         Me.TxtVendorCity.MaxLength = 0
         Me.TxtVendorCity.Name = "TxtVendorCity"
-        Me.TxtVendorCity.Size = New System.Drawing.Size(126, 18)
+        Me.TxtVendorCity.Size = New System.Drawing.Size(300, 18)
         Me.TxtVendorCity.TabIndex = 4
         '
         'LblCity
@@ -172,6 +180,8 @@ Partial Class FrmPurchPartyDetail
         'TxtVendorMobile
         '
         Me.TxtVendorMobile.AgAllowUserToEnableMasterHelp = False
+        Me.TxtVendorMobile.AgLastValueTag = Nothing
+        Me.TxtVendorMobile.AgLastValueText = Nothing
         Me.TxtVendorMobile.AgMandatory = False
         Me.TxtVendorMobile.AgMasterHelp = False
         Me.TxtVendorMobile.AgNumberLeftPlaces = 8
@@ -205,6 +215,8 @@ Partial Class FrmPurchPartyDetail
         'TxtVendorAdd2
         '
         Me.TxtVendorAdd2.AgAllowUserToEnableMasterHelp = False
+        Me.TxtVendorAdd2.AgLastValueTag = Nothing
+        Me.TxtVendorAdd2.AgLastValueText = Nothing
         Me.TxtVendorAdd2.AgMandatory = False
         Me.TxtVendorAdd2.AgMasterHelp = False
         Me.TxtVendorAdd2.AgNumberLeftPlaces = 8
@@ -224,12 +236,49 @@ Partial Class FrmPurchPartyDetail
         Me.TxtVendorAdd2.Size = New System.Drawing.Size(300, 18)
         Me.TxtVendorAdd2.TabIndex = 3
         '
+        'TxtState
+        '
+        Me.TxtState.AgAllowUserToEnableMasterHelp = False
+        Me.TxtState.AgLastValueTag = Nothing
+        Me.TxtState.AgLastValueText = Nothing
+        Me.TxtState.AgMandatory = False
+        Me.TxtState.AgMasterHelp = False
+        Me.TxtState.AgNumberLeftPlaces = 8
+        Me.TxtState.AgNumberNegetiveAllow = False
+        Me.TxtState.AgNumberRightPlaces = 2
+        Me.TxtState.AgPickFromLastValue = False
+        Me.TxtState.AgRowFilter = ""
+        Me.TxtState.AgSearchMethod = AgControls.AgLib.TxtSearchMethod.Simple
+        Me.TxtState.AgSelectedValue = Nothing
+        Me.TxtState.AgTxtCase = AgControls.AgTextBox.TxtCase.None
+        Me.TxtState.AgValueType = AgControls.AgTextBox.TxtValueType.Text_Value
+        Me.TxtState.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtState.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtState.Location = New System.Drawing.Point(102, 122)
+        Me.TxtState.MaxLength = 0
+        Me.TxtState.Name = "TxtState"
+        Me.TxtState.Size = New System.Drawing.Size(300, 18)
+        Me.TxtState.TabIndex = 749
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(19, 124)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 16)
+        Me.Label1.TabIndex = 750
+        Me.Label1.Text = "State"
+        '
         'FrmPurchPartyDetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(421, 193)
         Me.ControlBox = False
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TxtState)
         Me.Controls.Add(Me.TxtVendorAdd2)
         Me.Controls.Add(Me.TxtVendorMobile)
         Me.Controls.Add(Me.LblMobile)
@@ -265,4 +314,6 @@ Partial Class FrmPurchPartyDetail
     Public WithEvents TxtVendorCity As AgControls.AgTextBox
     Public WithEvents TxtVendorMobile As AgControls.AgTextBox
     Public WithEvents TxtVendorAdd2 As AgControls.AgTextBox
+    Public WithEvents TxtState As AgControls.AgTextBox
+    Protected WithEvents Label1 As Label
 End Class

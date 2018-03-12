@@ -669,10 +669,10 @@ Public Class FrmDisplayHierarchy
             StrSQLQuery = StrSQLQuery + "Else IfNull(AG1.GroupCode,'') End)  As GroupCode, "
             StrSQLQuery = StrSQLQuery + "Max(Case IfNull(AG1.GroupName,'') When '' Then IfNull(AG.GroupName,'') "
             StrSQLQuery = StrSQLQuery + "Else IfNull(AG1.GroupName,'') End)  As GName, "
-            StrSQLQuery = StrSQLQuery + "(Case When (IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0))>0 Then  "
-            StrSQLQuery = StrSQLQuery + "(IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0)) Else 0 End) As AmtDr, "
+            StrSQLQuery = StrSQLQuery + "(Case When (IfNull(Sum(LG.AmtDr),0.0)-IfNull(Sum(LG.AmtCr),0.0))>0 Then  "
+            StrSQLQuery = StrSQLQuery + "(IfNull(Sum(LG.AmtDr) ,0.0)-IfNull(Sum(LG.AmtCr),0.0)) Else 0 End)*1.0 As AmtDr, "
             StrSQLQuery = StrSQLQuery + "(Case When (IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0))>0 Then "
-            StrSQLQuery = StrSQLQuery + "(IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0)) Else 0 End) As AmtCr "
+            StrSQLQuery = StrSQLQuery + "(IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0)) Else 0 End)*1.0 As AmtCr "
             StrSQLQuery = StrSQLQuery + "From Ledger LG Left Join SubGroup SG On LG.SubCode=SG.SubCode  Left Join "
             StrSQLQuery = StrSQLQuery + "AcGroup AG On AG.GroupCode=SG.GroupCode Left Join "
             StrSQLQuery = StrSQLQuery + "AcGroupPath AGP On AGP.GroupCode=AG.GroupCode And AGP.SNo=" & IntLevel & " Left Join "
@@ -685,7 +685,8 @@ Public Class FrmDisplayHierarchy
             StrSQLQuery = StrSQLQuery + "Order By Max(Case IfNull(AG1.GroupName,'') When '' Then IfNull(AG.GroupName,'') "
             StrSQLQuery = StrSQLQuery + "Else IfNull(AG1.GroupName,'') End) "
 
-            DTTemp = cmain.FGetDatTable(StrSQLQuery, Agl.Gcn)
+            'DTTemp = cmain.FGetDatTable(StrSQLQuery, Agl.Gcn)
+            DTTemp = AgL.FillData(StrSQLQuery, AgL.GCn).tables(0)
 
             If DTTemp.Rows.Count > 0 Then
                 FGMain.Rows.Add(DTTemp.Rows.Count + 1)
@@ -769,9 +770,9 @@ Public Class FrmDisplayHierarchy
             StrSQLQuery += "(IfNull(Max(SG.Name),'') || ' - ' || IfNull(Max(CT.CityName),'')) As SName, "
             StrSQLQuery += "0 As OPBal, "
             StrSQLQuery += "(Case When (IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0))>0 Then  "
-            StrSQLQuery += "(IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0)) Else 0 End) As AmtDr, "
+            StrSQLQuery += "(IfNull(Sum(LG.AmtDr),0)-IfNull(Sum(LG.AmtCr),0)) Else 0 End)*1.0 As AmtDr, "
             StrSQLQuery += "(Case When (IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0))>0 Then "
-            StrSQLQuery += "(IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0)) Else 0 End) As AmtCr "
+            StrSQLQuery += "(IfNull(Sum(LG.AmtCr),0)-IfNull(Sum(LG.AmtDr),0)) Else 0 End)*1.0 As AmtCr "
             StrSQLQuery += "From Ledger LG Left Join SubGroup SG On LG.SubCode=SG.SubCode Left Join "
             StrSQLQuery += "City CT On CT.CityCode=SG.CityCode "
             StrSQLQuery += StrCondition1 & StrConditionAcGroup
